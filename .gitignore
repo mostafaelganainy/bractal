@@ -2,9 +2,10 @@
 
 # dependencies
 /node_modules
-./.sass-cache
+.sass-cache
 styles/.sass-cache
 styles/.sass-cache/*
+package-lock.json
 
 # testing
 /coverage
