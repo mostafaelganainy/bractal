@@ -1,43 +1,23 @@
 import i18next from 'i18next';
 import { reactI18nextModule } from 'react-i18next';
 
-i18next
-  .use(reactI18nextModule)
-  .init(
-    {
-      interpolation: {
-      // React already does escaping
-        escapeValue: false,
-      },
-      lng: 'en', // 'en' | 'es'
-      resources: {
-        en: {
-          translation: {
-            age: { label: 'Age' },
-            home: { label: 'Home' },
-            name: { label: 'Name' },
-            friends: 'Friends',
-            appName: 'Ayk',
-            hello: 'Hello',
+class Loader {
+  static load = (callback) => {
+    i18next
+      .use(reactI18nextModule)
+      .init(
+        {
+          fallbackLng: 'en',
+          interpolation: {
+          // React already does escaping
+            escapeValue: false,
           },
+          lng: 'en', // 'en' | 'es'
         },
-        ar: {
-          translation: {
-            age: { label: ' ' },
-            home: { label: 'Casa' },
-            name: { label: 'Nombre' },
-            friends: 'أصدقاء',
-            appName: 'ايك',
-            hello: 'مرحباً',
-          },
-        },
-      },
-    },
-    (err, t) => {
-      if (err) {
-        return console.error(err);
-      }
-    },
-  );
+        callback,
+      );
+    return i18next;
+  };
+};
 
-export default i18next;
+export default Loader;
