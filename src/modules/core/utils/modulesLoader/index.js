@@ -20,7 +20,7 @@ const ModulesLoader = {
 
     return modules;
   },
-  Context: React.createContext(['Ooooo']),
+  Context: React.createContext([]),
 };
 
 export default ModulesLoader;

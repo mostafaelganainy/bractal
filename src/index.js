@@ -11,17 +11,20 @@ import registerServiceWorker from './registerServiceWorker';
 
 import i18nextLoader from './i18n'; // initialized i18next instance
 import ModulesLoader from './modules/core/utils/modulesLoader';
+import RelayInitializer from './modules/core/utils/relayInitializer';
 import modulesConfig from './modulesConfig';
 
 let i18next = null;
 
-const renderApp = (modules) => {
+const renderApp = (modules, environment) => {
   ReactDOM.render(
-    <ModulesLoader.Context.Provider value={modules} >
-      <I18nextProvider i18n={i18next}>
-        <App />
-      </I18nextProvider>
-    </ModulesLoader.Context.Provider>,
+    <RelayInitializer.Context.Provider value={environment}>
+      <ModulesLoader.Context.Provider value={modules} >
+        <I18nextProvider i18n={i18next}>
+          <App />
+        </I18nextProvider>
+      </ModulesLoader.Context.Provider>
+    </RelayInitializer.Context.Provider>,
     document.getElementById('root'),
   );
   registerServiceWorker();
@@ -29,7 +32,8 @@ const renderApp = (modules) => {
 
 i18next = i18nextLoader.load((err) => {
   if (err) return console.error(err);
+  const environment = RelayInitializer.init('http://ayk-test.badrit.com/graphql');
   const modules = ModulesLoader.loadModules(modulesConfig);
-  renderApp(modules);
+  renderApp(modules, environment);
   return null;
 });

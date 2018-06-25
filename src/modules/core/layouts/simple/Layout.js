@@ -2,7 +2,7 @@ import React from 'react';
 import DesktopMenu from './DesktopMenu';
 import PageContent from './PageContent';
 
-export default function ProductCard() {
+export default function Layout() {
   return (
     <React.Fragment>
       <DesktopMenu />
