@@ -9,10 +9,6 @@ const loadLocales = () => {
     },
     home: {
       menuTitle: 'Account',
-      howToUse: {
-        title: 'Usage',
-        description: 'In the above menu, every link opens the entry page for each extension.',
-      },
     },
   }, true, true);
 
