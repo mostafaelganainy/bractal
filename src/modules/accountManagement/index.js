@@ -4,12 +4,16 @@ import loadLocales from './locales/index';
 import Home from './containers/Home';
 
 const ModuleEntry = {
-  loadModule: (options) => {
+  name: 'accountManagement',
+  homePath: '/account',
+  displayName: 'ToBeLoaded',
+  menuItemTitle: 'ToBeLoaded',
+  loadModule: () => {
     loadLocales();
+    ModuleEntry.displayName = i18next.t('accountManagement:metadata.displayName');
     ModuleEntry.menuItemTitle = i18next.t('accountManagement:home.menuTitle');
   },
   HomePage: Home,
-  menuItemTitle: 'TO BE LOADED',
 };
 
 export default ModuleEntry;

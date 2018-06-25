@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import { reactI18nextModule } from 'react-i18next';
 
-class Loader {
-  static load = (callback) => {
+const Loader = {
+  load: (callback) => {
     i18next
       .use(reactI18nextModule)
       .init(
@@ -17,7 +17,7 @@ class Loader {
         callback,
       );
     return i18next;
-  };
+  },
 };
 
 export default Loader;

@@ -9,7 +9,7 @@ const HomePage = () =>
       <br />
       <React.Fragment>
         <Header size="huge">
-          <Trans i18nKey="metadata.moduleName" />
+          <Trans i18nKey="metadata.displayName" />
         </Header>
         <Header.Subheader>
           <Trans i18nKey="metadata.description" />

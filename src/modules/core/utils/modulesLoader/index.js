@@ -1,23 +1,19 @@
 import React from 'react';
-import coreModuleEntry from '../../index';
-
-const defaultModuleSpec = {
-  name: 'core',
-  moduleEntry: coreModuleEntry,
-};
+import CoreModule from '../../index';
 
 const ModulesLoader = {
-  loadModules: (modulesSpecs) => {    
+  loadModules: (modulesSpecs) => {
     if (!Array.isArray(modulesSpecs)) {
       throw new Error('ModuleSpecs must be of type Array');
     }
 
-    modulesSpecs.push(defaultModuleSpec);
+    // Adding the core module to the modules array (At the front)
+    modulesSpecs.unshift(CoreModule);
 
-    const modules = modulesSpecs.map((moduleSpec) => {
-      console.log(`Loading Module : ${moduleSpec.name}`);
-      moduleSpec.moduleEntry.loadModule();
-      return moduleSpec;
+    const modules = modulesSpecs.map((module) => {
+      console.log(`Loading Module : ${module.name}`);
+      module.loadModule();
+      return module;
     });
 
     ModulesLoader.Context = React.createContext(modules);
@@ -28,3 +24,4 @@ const ModulesLoader = {
 };
 
 export default ModulesLoader;
+export { default as withModules } from './withModules';

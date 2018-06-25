@@ -1,48 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Input, Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import { translate, Trans } from 'react-i18next';
+import PropTypes from 'prop-types';
+
 import LanguageSelector from '../../components/common/LanguageSelector';
+import { withModules } from '../../utils/modulesLoader';
 
-class DesktopMenu extends Component {
-  state = { activeItem: 'home' };
+const DesktopMenu = ({ modules }) => (
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  <Menu >
+    <Menu.Item header>
+      <Trans i18nKey="metadata.appName" />
+    </Menu.Item>
 
-  render() {
-    const { activeItem } = this.state;
+    { modules.map(module => (
+      <Menu.Item header key={module.name} as={NavLink} exact to={module.homePath}>
+        {module.menuItemTitle}
+      </Menu.Item>
+    ))}
 
-    return (
-      <Menu >
-        <Menu.Item header>
-          <Trans i18nKey="metadata.appName" />
-        </Menu.Item>
-        <Menu.Item header as={NavLink} exact to="/">
-          <Trans i18nKey="home.menuTitle" />
-        </Menu.Item>
-        <Menu.Item header as={NavLink} exact to="/account">
-          <Trans i18nKey="home.menuTitle" />
-        </Menu.Item>
-        <Menu.Item header as={NavLink} exact to="/products">
-          <Trans i18nKey="home.menuTitle" />
-        </Menu.Item>
+    <Menu.Menu position="right">
+      <Menu.Item>
+        <Input icon="search" placeholder="Search..." />
+      </Menu.Item>
+      <Menu.Item>
+        <LanguageSelector />
+      </Menu.Item>
+      <Menu.Item name="logout" />
+    </Menu.Menu>
+  </Menu>
+);
 
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Input icon="search" placeholder="Search..." />
-          </Menu.Item>
-          <Menu.Item>
-            <LanguageSelector />
-          </Menu.Item>
-          <Menu.Item
-            name="logout"
-            active={activeItem === 'logout'}
-            onClick={this.handleItemClick}
-          />
-        </Menu.Menu>
-      </Menu> 
-    );
-  }
-}
+DesktopMenu.propTypes = {
+  modules: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
-export default translate('core')(DesktopMenu);
+export default translate('core')(withModules(DesktopMenu));

@@ -3,7 +3,8 @@ import i18next from 'i18next';
 const loadLocales = () => {
   i18next.addResourceBundle('en', 'accountManagement', {
     metadata: {
-      moduleName: 'Account Management',
+      name: 'accountManagement',
+      displayName: 'Account Management Module',
       description: 'This module is used to handle all common features related to managing users, like signup, signin, manage profile....etc',
     },
     home: {

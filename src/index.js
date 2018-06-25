@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { I18nextProvider } from 'react-i18next';
@@ -29,4 +31,5 @@ i18next = i18nextLoader.load((err) => {
   if (err) return console.error(err);
   const modules = ModulesLoader.loadModules(modulesConfig);
   renderApp(modules);
+  return null;
 });
