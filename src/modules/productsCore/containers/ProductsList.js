@@ -11,9 +11,9 @@ import dummyData from './dummyProductData';
 const styles = {
   container: {
     display: 'flex',
-    'flex-flow': 'row wrap',
-    'align-items': 'flex-start',
-    'align-content': 'flex-start',
+    flexFlow: 'row wrap',
+    alignItems: 'flex-start',
+    alignContent: 'flex-start',
     justifyContent: 'center',
   },
 };
