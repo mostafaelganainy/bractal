@@ -1,0 +1,131 @@
+$blue: #33a8ff;
+
+.products-search {
+  margin: auto;
+  height: 40px;
+
+  .field {
+    display: inline-block;
+  }
+  .ui.icon.input {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+  }
+  .ui.pointing.dropdown {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 120px;
+    background-color: #fff;
+    display: inline-block;
+    float: left;
+    padding: 0 15px;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 2px;
+      background-color: #f5f5f5;
+    }
+    .text {
+      font-size: 12px;
+      color: #666666;
+      font-weight: 900;
+      margin-right: 3px;
+    }
+  }
+  .ui.action.input {
+    width: 30em;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 37px;
+      height: 25px;
+      width: 2px;
+      background-color: #f5f5f5;
+    }
+    .ui.button,
+    .ui.button:hover {
+      background-color: #ffff;
+      color: #000000;
+    }
+    input {
+      border: none;
+    }
+  }
+  i.icon.chevron {
+    font-size: 8px;
+    margin-left: 8px;
+    color: #666666;
+  }
+  .ui.selection.dropdown,
+  .ui.input > input {
+    height: 40px;
+    border: none;
+  }
+  .ui.action.input:not([class*="left action"]) > input {
+    border: none;
+  }
+}
+.ui.menu .ui.dropdown .menu > .selected.item,
+.ui.menu .ui.dropdown .menu > .item:hover,
+.ui.dropdown .menu .active.item {
+  background-color: transparent !important;
+}
+@-moz-document url-prefix() { 
+  .products-search i.icon.chevron {
+     margin: 0;
+  }
+}
+@media (max-width: 1201px) {
+  .products-search {
+    width: 93%;
+    margin: auto;
+    background-color: #fff;
+    // border-top-left-radius: 5px;
+    // border-bottom-left-radius: 5px;
+    .ui.action.input {
+      width: 75%;
+      > input {
+        height: 55px;
+      }
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    .ui.pointing.dropdown {
+      width: 25%;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      height: 55px;
+      line-height: 55px;
+      > menu {
+        width: 100%;
+      }
+    }
+    .ui.action.input::after {
+      content: initial;
+    }
+    .ui.pointing.dropdown {
+      > .menu {
+        min-width: 100%;
+      }
+      .text {
+        font-size: 16.5px;
+      }
+    }
+    i.icon.chevron {
+      font-size: 10px;
+    }
+    .ui.action.input:not([class*="left action"]) > input {
+      font-size: 18px;
+    }
+  }
+}

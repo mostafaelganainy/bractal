@@ -1,0 +1,146 @@
+.AllContnt {
+    .LoginContnt,
+    .crteAcuntSec {
+        padding: 0px 30px;
+    }
+
+    .BkHdr {
+        background-color: #f7f7f7;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        .Hdr {
+            padding-top: 22px !important;
+            margin-bottom: 0px !important;
+            font-weight: bold;
+        }
+
+        .header {
+            margin-bottom: 0px;
+        }
+
+        p {
+            margin-bottom: 45px;
+            padding-bottom: 19px;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.58;
+        }
+    }
+
+    .LoginCont {
+        padding-bottom: 42px;
+
+        .Loginsec {
+            width: 87%;
+            margin: 0 auto;
+
+            .LoginContnt {
+                [type='checkbox'] {
+                    position: relative;
+                    top: 10px;
+                    margin-right: 5px;
+                }
+
+                .Bylogin {
+                    font-weight: 600;
+
+                    label {
+                        font-size: 10.5px;
+                        line-height: 3;
+                        text-align: left;
+                        color: #309de0;
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+
+                .LognBtn {
+                    width: 100%;
+                    background-color: #309de0;
+                    width: 100%;
+                    border-radius: 5px;
+                    border: none;
+                    line-height: 3;
+                    margin: 12px 0px;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+
+                .RmmberLost {
+                    line-height: 2.86;
+                    padding: 19px 0px;
+
+                    .RemmberMe {
+                        opacity: 0.61;
+                    }
+
+                    .LostPass {
+                        float: right;
+                        color: #309de0;
+                        font-weight: 600;
+                        text-decoration: underline;
+                        padding-top: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .createAccount {
+        width: 87%;
+        margin: 0 auto;
+
+        .AYKMailLogo {
+            width: 100%;
+            height: 73px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .RegisterTxt {
+            opacity: 0.6;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 0;
+            width: 98%;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .creatAccBtn {
+            width: 100%;
+            background-color: #309de0;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            line-height: 3;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 42px;
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .Loginsec:after {
+        content: "";
+        background-color: #d9d9d9;
+        position: absolute;
+        width: 1px;
+        height: 64%;
+        top: 35%;
+        left: 100%;
+        display: block;
+    }
+}
+
+@-moz-document url-prefix() {
+    .AllContnt .createAccount .creatAccBtn {
+        margin-top: 31px;
+    }
+}

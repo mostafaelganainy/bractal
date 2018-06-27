@@ -1,0 +1,29 @@
+@import "mixins";
+
+@font-face {
+  font-family: Panton;
+  src: url("../../assets/fonts/Panton/Panton-Regular.otf");
+}
+@font-face {
+  font-family: Frutiger;
+  src: url("../../assets/fonts/FrutigerLTArabic/FrutigerLTArabic-55Roman.ttf");
+}
+
+body,
+.ui.menu,
+.ui.header,
+button,
+input,
+optgroup,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Panton;
+}
+.ar {
+  font-family: Frutiger;
+}
