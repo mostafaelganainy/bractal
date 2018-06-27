@@ -1,0 +1,32 @@
+import React from 'react';
+import {
+  Segment,
+} from 'semantic-ui-react';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
+import PropTypes from 'prop-types';
+
+const {{uiItemName}}sListEntry = ({ {{camelCase uiItemName}}Info }) => {
+  const fieldsNames = '{{itemsListEntryFields}}';
+  const fields = fieldsNames.split(' ').filter(field => field !== 'id');
+
+  return (
+    <Segment >
+      {fields.map(field => (
+        <div><b>{field} : </b>{ {{camelCase uiItemName}}Info[field] }</div>
+      ))}
+    </Segment>
+  );
+};
+
+{{uiItemName}}sListEntry.propTypes = {
+  {{camelCase uiItemName}}Info: PropTypes.shape({}).isRequired,
+};
+
+export default createFragmentContainer({{uiItemName}}sListEntry, graphql`
+  fragment {{uiItemName}}sListEntry_{{camelCase uiItemName}}Info on {{modelName}} {
+    {{itemsListEntryFields}}
+  }
+`);

@@ -12,7 +12,7 @@ const loadLocales = () => {
     },
   }, true, true);
 
-  i18next.loadNamespaces('accountManagement');
+  i18next.loadNamespaces('productsCore');
 };
 
 export default loadLocales;

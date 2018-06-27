@@ -1,0 +1,43 @@
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Container, Segment } from 'semantic-ui-react';
+
+import {{uiItemName}}sListEntry from './{{uiItemName}}sListEntry';
+
+const {{uiItemName}}sList = ({ query }) => (
+  <Container >
+    <Segment >
+      {
+        query ?
+          query.{{graphQLMainQueryName}}.map(entry => (
+            // eslint-disable-next-line no-underscore-dangle
+            <{{uiItemName}}sListEntry key={entry.__id} {{camelCase uiItemName}}Info={entry} />
+          ))
+        :
+          'Loading...'
+      }
+    </Segment>
+  </Container>
+);
+
+{{uiItemName}}sList.propTypes = {
+  query: PropTypes.shape({
+    {{graphQLMainQueryName}}: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
+};
+
+export default createFragmentContainer({{uiItemName}}sList, graphql`
+{{#if graphQLRootEntry}}    
+  fragment {{uiItemName}}sList_query on User {    
+{{else}}
+  fragment {{uiItemName}}sList_query on Query {    
+{{/if}}   
+    {{graphQLMainQueryName}} {
+      ...{{uiItemName}}sListEntry_{{camelCase uiItemName}}Info
+    }
+  }
+`);

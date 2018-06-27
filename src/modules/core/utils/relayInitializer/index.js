@@ -8,7 +8,7 @@ const {
 } = require('relay-runtime');
 
 const RelayInitializer = {
-  init: (endPoint) => {
+  init: (endPoint, additionalHeaders) => {
     // 2
     const store = new Store(new RecordSource());
     // 3
@@ -16,6 +16,7 @@ const RelayInitializer = {
     const network = Network.create((operation, variables) => fetch(endPoint, {
       method: 'POST',
       headers: {
+        ...additionalHeaders,
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },

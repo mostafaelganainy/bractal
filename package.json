@@ -61,7 +61,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "eslint .",
-    "compile-relay": "relay-compiler  --verbose --src ./src/ --schema ./schema.graphql"
+    "refetch-schema": "graphql-fetch-schema http://ayk-test.badrit.com/graphql",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules --schema ./schema.graphql"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",

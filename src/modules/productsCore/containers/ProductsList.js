@@ -6,7 +6,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Product from './Product';
-import dummyData from './dummyProductData';
 
 const styles = {
   container: {
@@ -22,18 +21,10 @@ const ProductsList = ({ query }) => (
   <div style={styles.container}>
     {
       query ?
-        query.products.map((entry) => {
-          const dummyProps = {
-            image: dummyData.getRandomImage(),
-            oldPrice: dummyData.getRandomOldPrice(),
-            ratingCount: dummyData.getRandomRatingCount(),
-            rating: dummyData.getRandomRating(),
-            doesHaveDiscount: dummyData.getRandomDiscountDecision(),
-            discount: dummyData.getRandomDiscount(),
-          };
+        query.products.map(entry => (
           // eslint-disable-next-line no-underscore-dangle
-          return (<Product key={entry.__id} productInfo={entry} dummyProps={dummyProps} />);
-        })
+          <Product key={entry.__id} productInfo={entry} />
+        ))
       :
         ''
     }

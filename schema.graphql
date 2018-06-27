@@ -1,5 +1,5 @@
 type Mutation {
-  # An example field added by the generator
+  """An example field added by the generator"""
   testField: String
 }
 
@@ -13,10 +13,10 @@ type OptionValue {
 }
 
 type Products {
-  id: ID!
   available_on: String
   description: String
   display_price: String
+  id: ID!
   master: Variant
   meta_description: String
   meta_keywords: String
@@ -30,7 +30,7 @@ type Products {
 }
 
 type Query {
-  # An example field added by the generator
+  """An example field added by the generator"""
   products(limit: Int, offset: Int): [Products]!
 }
 
@@ -45,7 +45,7 @@ type Variant {
   description: String
   display_price: String
   height: String
-  id: String!
+  id: ID!
   images: [String]
   in_stock: Boolean
   is_backorderable: Boolean
@@ -63,4 +63,3 @@ type Variant {
   weight: String
   width: String
 }
-
