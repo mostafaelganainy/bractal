@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Icon } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
 
 export default class NavWishList extends Component {
   state = {};

@@ -22,9 +22,14 @@ class BottomNav extends Component {
       <div className="nav-department">
         <Container>
           <Menu>
-            {menuInfo.items.map(item => (
+            {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (
               <MenuItemRenderer itemInfo={item} />
             ))}
+            <Menu.Menu position="right">
+              {menuInfo.items.filter(item => item.position === 'right').map(item => (
+                <MenuItemRenderer itemInfo={item} />
+              ))}
+            </Menu.Menu>
           </Menu>
           {/*
           const { modules } = this.props;
