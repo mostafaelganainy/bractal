@@ -22,7 +22,7 @@ const ProductsListPage = ({ environment }) => (
     query={AllProductsQuery}
     render={({ error, props }) => {
       if (error) {
-          return <div>{error.message}</div>;
+        return <ProductsList />; // return <div>{error.message}</div>;
       } else if (props) {
           return <ProductsList query={props} />;
       }

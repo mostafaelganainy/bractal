@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Header,
   Segment,
   Grid,
@@ -115,13 +114,6 @@ const ProductCard = ({ productInfo }) => {
         <Label style={styles.card_current_price}>
           <b>{productInfo.price} QAR</b>
         </Label>
-        <Button
-          style={styles.card_more_details_button}
-          floated="right"
-          color="orange"
-        >
-          More Details
-        </Button>
       </Grid.Row>
     </Segment>
   );

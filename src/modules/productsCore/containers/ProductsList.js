@@ -26,7 +26,10 @@ const ProductsList = ({ query }) => (
           <Product key={entry.__id} productInfo={entry} />
         ))
       :
-        ''
+        [{ id: '1', name: 'product name', price: '20' }, { id: '2', name: 'product name', price: '30' }, { id: '3', name: 'product name', price: '40' }].map(entry => (
+          // eslint-disable-next-line no-underscore-dangle
+          <Product key={entry.__id} productInfo={entry} />
+        ))
     }
   </div>
 );
