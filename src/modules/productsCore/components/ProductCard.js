@@ -28,6 +28,7 @@ const styles = {
   card_header: {
     marginTop: '0.5em',
     marginBottom: '0.5em',
+    fontSize: '1em',
   },
   card_ratings_count: {
     fontSize: '0.8em',
@@ -39,12 +40,12 @@ const styles = {
     color: 'rgba(119, 119, 119, 0.4)',
     marginTop: '0.3em',
     height: '1.1em',
+    background: 'rgba(255, 255, 255, 1)',
   },
   card_current_price: {
     fontSize: '1.2em',
     color: '#00b0e4',
     marginTop: '0.4em',
-    padding: '0.4em 0.9em',
   },
   card_more_details_button: {
     padding: '0.55em',
@@ -69,7 +70,7 @@ const ProductCard = ({ productInfo }) => {
   const dummyProps = generateDummyProps();
 
   return (
-    <Segment style={styles.card}>
+    <Segment style={styles.card} className="product-card">
       <div style={styles.card_tag_container}>
         {dummyProps.doesHaveDiscount
             ? (
@@ -111,7 +112,7 @@ const ProductCard = ({ productInfo }) => {
         </b>
       </div>
       <Grid.Row>
-        <Label style={styles.card_current_price}>
+        <Label style={styles.card_current_price} className="product-card-price">
           <b>{productInfo.price} QAR</b>
         </Label>
       </Grid.Row>

@@ -1523,5 +1523,9 @@ h5 {
     transform: scale(1); }
   50% {
     transform: scale(1.5); } }
+.product-card .product-card-price {
+  background: transparent;
+  font-size: 15.5px;
+  padding: 0; }
 
 /*# sourceMappingURL=App.css.map */
