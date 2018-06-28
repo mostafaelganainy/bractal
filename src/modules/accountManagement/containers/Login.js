@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Header, Container, Checkbox } from 'semantic-ui-react';
+import { Grid, Header, Container, Checkbox, Label } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import i18next from 'i18next';
 
 import SocialMedia from '../components/SocialMedia';
@@ -215,9 +214,9 @@ export default class LoginPage extends Component {
 
                           </Grid.Column>
                           <Grid.Column>
-                            <Link href="/" className="fontSize11 LostPass">
+                            <Label className="fontSize11 LostPass">
                               <Trans i18nKey="LostYourPassword" />
-                            </Link>
+                            </Label>
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
@@ -231,9 +230,9 @@ export default class LoginPage extends Component {
                       <p className="TextCenter fontSize11 Bylogin">
                         <Trans i18nKey="Byloginyouagreetoour" />
                         {' '}
-                        <Link href="/">
+                        <Label>
                           <Trans i18nKey="termsconditions" />
-                        </Link>
+                        </Label>
                         <Trans i18nKey="ofuse" />
                       </p>
                     </form>

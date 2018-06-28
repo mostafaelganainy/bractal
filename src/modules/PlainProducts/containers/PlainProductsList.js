@@ -32,7 +32,7 @@ PlainProductsList.propTypes = {
 
 export default createFragmentContainer(PlainProductsList, graphql`
   fragment PlainProductsList_query on Query {    
-    products {
+    list_products(taxon_id: 99) {
       ...PlainProductsListEntry_plainProductInfo
     }
   }

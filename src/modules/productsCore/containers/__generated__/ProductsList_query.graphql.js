@@ -12,7 +12,7 @@ type Product_productInfo$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ProductsList_query$ref: FragmentReference;
 export type ProductsList_query = {|
-  +products: $ReadOnlyArray<?{|
+  +list_products: $ReadOnlyArray<?{|
     +$fragmentRefs: Product_productInfo$ref
   |}>,
   +$refType: ProductsList_query$ref,
@@ -30,9 +30,16 @@ const node/*: ConcreteFragment*/ = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "products",
-      "storageKey": null,
-      "args": null,
+      "name": "list_products",
+      "storageKey": "list_products(taxon_id:99)",
+      "args": [
+        {
+          "kind": "Literal",
+          "name": "taxon_id",
+          "value": 99,
+          "type": "Int"
+        }
+      ],
       "concreteType": "Product",
       "plural": true,
       "selections": [
@@ -46,5 +53,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'fa451e88e99572165c07e00ca009d0c1';
+(node/*: any*/).hash = '60e490ca4ac51a00e0a6fa6a218c06b8';
 module.exports = node;

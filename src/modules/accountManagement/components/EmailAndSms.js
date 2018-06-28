@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
-import {Grid} from 'semantic-ui-react';
-import {Trans} from 'react-i18next';
+import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
+import { Trans } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 export default class EmailAndSms extends Component {
   ShowEmail = () => {
-    this.props.ShowEmail ();
+    this.props.ShowEmail();
   };
   ShowSMS = () => {
-    this.props.ShowSMS ();
+    this.props.ShowSMS();
   };
 
-  render () {
+  render() {
     return (
       <div>
         <div className="EmailOrSms">
@@ -53,18 +54,18 @@ export default class EmailAndSms extends Component {
                       <Trans i18nKey="VerifyByMail" />
                     </strong>
                     {'   '}
-                    <label>
+                    <span>
                       <Trans i18nKey="VerfySMSOrEmail_Lorem" />
-                    </label>
+                    </span>
                   </li>
                   <li>
                     <strong>
                       <Trans i18nKey="VerifybySMS" />
                     </strong>
                     {'   '}
-                    <label>
+                    <span>
                       <Trans i18nKey="VerfySMSOrEmail_Lorem" />
-                    </label>
+                    </span>
                   </li>
                 </ul>
               </Grid.Column>
@@ -75,3 +76,8 @@ export default class EmailAndSms extends Component {
     );
   }
 }
+
+EmailAndSms.propTypes = {
+  ShowSMS: PropTypes.func.isRequired,
+  ShowEmail: PropTypes.func.isRequired,
+}.isRequired;

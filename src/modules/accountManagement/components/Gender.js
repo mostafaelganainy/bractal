@@ -1,12 +1,13 @@
-import React, {Component} from 'react';
-import {Trans} from 'react-i18next';
+import React, { Component, Label } from 'react';
+import { Trans } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 export default class Gender extends Component {
-  handleChange = event => {
-    this.props.handleChange (event);
+  handleChange = (event) => {
+    this.props.handleChange(event);
   };
 
-  render () {
+  render() {
     let MaleImage = <img src="images/AccountManagement/male-copy.png" alt="Male" />;
     let FemaleImage = <img src="images/AccountManagement/female.png" alt="Female" />;
     if (this.props.MaleIsactive !== '') {
@@ -21,12 +22,12 @@ export default class Gender extends Component {
     return (
       <div>
         <div className="genderLblCont">
-          <label className="genderLbl">
+          <Label className="genderLbl">
             <Trans i18nKey="Gender" />
-          </label>
+          </Label>
         </div>
         <div className="GenderTypes">
-          <label className="MaleSvg">
+          <Label className="MaleSvg">
             <input
               type="radio"
               name="gender"
@@ -38,8 +39,8 @@ export default class Gender extends Component {
               onChange={this.handleChange}
             />
             {MaleImage}
-          </label>
-          <label>
+          </Label>
+          <Label>
             <input
               type="radio"
               name="gender"
@@ -51,9 +52,15 @@ export default class Gender extends Component {
               onChange={this.handleChange}
             />
             {FemaleImage}
-          </label>
+          </Label>
         </div>
       </div>
     );
   }
 }
+
+Gender.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  MaleIsactive: PropTypes.bool.isRequired,
+  gender: PropTypes.string.isRequired,
+}.isRequired;

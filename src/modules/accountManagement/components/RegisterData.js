@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
-import {Grid, Header} from 'semantic-ui-react';
-import {Trans} from 'react-i18next';
+import React, { Component } from 'react';
+import { Grid, Header } from 'semantic-ui-react';
+import { Trans } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 export default class RegisterData extends Component {
   ToggleLoginContnt = () => {
-    this.props.ToggleLoginContnt ();
-    this.props.ToggleCreateAccContnt ();
+    this.props.ToggleLoginContnt();
+    this.props.ToggleCreateAccContnt();
   };
-  render () {
+  render() {
     return (
       <div>
         <Grid.Row>
@@ -42,3 +43,8 @@ export default class RegisterData extends Component {
     );
   }
 }
+RegisterData.propTypes = {
+  ToggleLoginContnt: PropTypes.func.isRequired,
+  ToggleCreateAccContnt: PropTypes.func.isRequired,
+}.isRequired;
+
