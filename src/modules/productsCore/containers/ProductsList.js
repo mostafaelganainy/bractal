@@ -21,7 +21,7 @@ const ProductsList = ({ query }) => (
   <div style={styles.container}>
     {
       query ?
-        query.products.map(entry => (
+        query.list_products.map(entry => (
           // eslint-disable-next-line no-underscore-dangle
           <Product key={entry.__id} productInfo={entry} />
         ))
@@ -39,7 +39,7 @@ ProductsList.propTypes = {
 
 export default createFragmentContainer(ProductsList, graphql`
   fragment ProductsList_query on Query {    
-    products {
+    list_products(taxon_id: 99) {
       ...Product_productInfo
     }
   }

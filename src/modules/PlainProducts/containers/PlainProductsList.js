@@ -13,7 +13,7 @@ const PlainProductsList = ({ query }) => (
     <Segment >
       {
         query ?
-          query.products.map(entry => (
+          query.list_products.map(entry => (
             // eslint-disable-next-line no-underscore-dangle
             <PlainProductsListEntry key={entry.__id} plainProductInfo={entry} />
           ))
@@ -32,7 +32,7 @@ PlainProductsList.propTypes = {
 
 export default createFragmentContainer(PlainProductsList, graphql`
   fragment PlainProductsList_query on Query {    
-    products {
+    list_products(taxon_id: 99) {
       ...PlainProductsListEntry_plainProductInfo
     }
   }
