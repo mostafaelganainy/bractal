@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a46fc43d4204e41ffd0316ceff69b143
+ * @relayHash 953d5feed70d7b9c174ed651104abb2e
  */
 
 /* eslint-disable */
@@ -29,7 +29,7 @@ fragment ProductsList_query on Query {
   }
 }
 
-fragment Product_productInfo on Products {
+fragment Product_productInfo on Product {
   id
   name
   price
@@ -41,7 +41,7 @@ const node/*: ConcreteRequest*/ = {
   "operationKind": "query",
   "name": "ProductsListPageQuery",
   "id": null,
-  "text": "query ProductsListPageQuery {\n  ...ProductsList_query\n}\n\nfragment ProductsList_query on Query {\n  products {\n    ...Product_productInfo\n    id\n  }\n}\n\nfragment Product_productInfo on Products {\n  id\n  name\n  price\n}\n",
+  "text": "query ProductsListPageQuery {\n  ...ProductsList_query\n}\n\nfragment ProductsList_query on Query {\n  products {\n    ...Product_productInfo\n    id\n  }\n}\n\nfragment Product_productInfo on Product {\n  id\n  name\n  price\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -68,7 +68,7 @@ const node/*: ConcreteRequest*/ = {
         "name": "products",
         "storageKey": null,
         "args": null,
-        "concreteType": "Products",
+        "concreteType": "Product",
         "plural": true,
         "selections": [
           {

@@ -33,7 +33,7 @@ const node/*: ConcreteFragment*/ = {
       "name": "products",
       "storageKey": null,
       "args": null,
-      "concreteType": "Products",
+      "concreteType": "Product",
       "plural": true,
       "selections": [
         {

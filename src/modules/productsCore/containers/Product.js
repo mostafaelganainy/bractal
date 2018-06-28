@@ -15,7 +15,7 @@ Product.propTypes = {
 };
 
 export default createFragmentContainer(Product, graphql`
-  fragment Product_productInfo on Products {
+  fragment Product_productInfo on Product {
     id
     name
     price

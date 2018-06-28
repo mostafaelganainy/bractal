@@ -14,7 +14,7 @@ PlainProductsListEntry.propTypes = {
 };
 
 export default createFragmentContainer(PlainProductsListEntry, graphql`
-  fragment PlainProductsListEntry_plainProductInfo on Products {
+  fragment PlainProductsListEntry_plainProductInfo on Product {
     id name price
   }
 `);

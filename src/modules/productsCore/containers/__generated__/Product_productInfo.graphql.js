@@ -13,7 +13,7 @@ declare export opaque type Product_productInfo$ref: FragmentReference;
 export type Product_productInfo = {|
   +id: string,
   +name: string,
-  +price: ?string,
+  +price: ?number,
   +$refType: Product_productInfo$ref,
 |};
 */
@@ -22,7 +22,7 @@ export type Product_productInfo = {|
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
   "name": "Product_productInfo",
-  "type": "Products",
+  "type": "Product",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -50,5 +50,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '174ed82a43bc8e055643f5bc9b04b3e7';
+(node/*: any*/).hash = '3a1243a0e06050c34433638307930c57';
 module.exports = node;
