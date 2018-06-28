@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, Image } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
+import ExternalLink from './ExternalLink';
 
 export default class NavSocialMedia extends Component {
   state = {};
@@ -9,40 +9,32 @@ export default class NavSocialMedia extends Component {
     return (
       <Menu.Menu position="right" className="social-media">
         <Menu.Item>
-          <Link to="http://www.google.com" target="_self ">
-            <Image
-              verticalAlign="middle"
-              src="images/SocialMedia/fb-lg.png"
-              alt=""
+          <ExternalLink url="http://www.google.com">
+            <i
+              className="icon-fb"
             />
-          </Link>
+          </ExternalLink>
         </Menu.Item>
         <Menu.Item>
-          <a href="">
-            <Image
-              verticalAlign="middle"
-              src="images/SocialMedia/tr-lg.png"
-              alt=""
+          <ExternalLink url="http://www.google.com">
+            <i
+              className="icon-twitter"
             />
-          </a>
+          </ExternalLink>
         </Menu.Item>
         <Menu.Item>
-          <a href="">
-            <Image
-              verticalAlign="middle"
-              src="images/SocialMedia/yb-lg.png"
-              alt=""
+          <ExternalLink url="http://www.google.com">
+            <i
+              className="icon-shape-26"
             />
-          </a>
+          </ExternalLink>
         </Menu.Item>
         <Menu.Item>
-          <a href="">
-            <Image
-              verticalAlign="middle"
-              src="images/SocialMedia/inst-lg.png"
-              alt=""
+          <ExternalLink url="http://www.google.com">
+            <i
+              className="icon-instagrame"
             />
-          </a>
+          </ExternalLink>
         </Menu.Item>
       </Menu.Menu>
     );

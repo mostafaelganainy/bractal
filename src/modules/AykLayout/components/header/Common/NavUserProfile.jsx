@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NavUserProfile = () => (
-  <React.Fragment />
+  <React.Fragment><div className="user-profile"><i className="icon-user" /></div></React.Fragment>
 );
 
 export default NavUserProfile;
@@ -45,12 +45,7 @@ export default class NavUserProfile extends Component {
       userImage = <Image src="images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <Image
-          src="images/Header/user.png"
-          srcSet="images/Header/user@2x.png 2x,
- images/Header/user@3x.png 3x"
-          onClick={this.show ('blurring')}
-        />
+        <i className="icon-user" onClick={this.show ('blurring')} />
       );
     }
     return (

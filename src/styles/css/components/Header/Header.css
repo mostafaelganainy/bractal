@@ -2,12 +2,12 @@
 Error: Undefined mixin 'prefix'.
         on line 34 of src/styles/scss/components/Header/_SideMenu.scss, in `prefix'
         from line 34 of src/styles/scss/components/Header/_SideMenu.scss
-        from line 16 of src/styles/scss/components/Header/Header.scss
+        from line 18 of src/styles/scss/components/Header/Header.scss
 
 Backtrace:
 src/styles/scss/components/Header/_SideMenu.scss:34:in `prefix'
 src/styles/scss/components/Header/_SideMenu.scss:34
-src/styles/scss/components/Header/Header.scss:16
+src/styles/scss/components/Header/Header.scss:18
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/tree/visitors/perform.rb:352:in `block in visit_mixin'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:98:in `block in with_mixin'
 /var/lib/gems/2.3.0/gems/sass-3.5.6/lib/sass/stack.rb:135:in `with_frame'
@@ -112,4 +112,4 @@ src/styles/scss/components/Header/Header.scss:16
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'prefix'.\A         on line 34 of src/styles/scss/components/Header/_SideMenu.scss, in `prefix'\A         from line 34 of src/styles/scss/components/Header/_SideMenu.scss\A         from line 16 of src/styles/scss/components/Header/Header.scss"; }
+  content: "Error: Undefined mixin 'prefix'.\A         on line 34 of src/styles/scss/components/Header/_SideMenu.scss, in `prefix'\A         from line 34 of src/styles/scss/components/Header/_SideMenu.scss\A         from line 18 of src/styles/scss/components/Header/Header.scss"; }
