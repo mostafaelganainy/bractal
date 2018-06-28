@@ -46,6 +46,7 @@ export default class HeaderMobile extends Component {
                     src="images/Header/logo-header.png"
                     srcSet="images/Header/logo-header@2x.png 2x,
              images/Header/logo-header@3x.png 3x"
+                    className="logo"
                   />
                 </Menu.Item>
                 <Menu.Menu position="right">
