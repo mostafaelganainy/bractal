@@ -4,7 +4,8 @@
   left: 0;
   right: 0;
   top: 70px;
-  border-radius: 7px; }
+  border-radius: 7px;
+  z-index: 1; }
   .departments-tabs .ui.vertical.menu .active.item {
     color: #309de0; }
   .departments-tabs .ui.menu {
@@ -120,5 +121,7 @@
   border: solid;
   border-color: rgba(40, 40, 40, 0.1);
   border-width: 1px; }
+.main-header .container {
+  position: relative; }
 
 /*# sourceMappingURL=App.css.map */
