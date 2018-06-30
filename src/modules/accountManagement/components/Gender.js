@@ -1,4 +1,6 @@
-import React, { Component, Label } from 'react';
+// eslint-disable-next-line
+/* eslint-disable jsx-a11y/label-has-for, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
+import React, { Component } from 'react';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -22,12 +24,12 @@ export default class Gender extends Component {
     return (
       <div>
         <div className="genderLblCont">
-          <Label className="genderLbl">
+          <label className="genderLbl">
             <Trans i18nKey="Gender" />
-          </Label>
+          </label>
         </div>
         <div className="GenderTypes">
-          <Label className="MaleSvg">
+          <label className="MaleSvg">
             <input
               type="radio"
               name="gender"
@@ -39,8 +41,8 @@ export default class Gender extends Component {
               onChange={this.handleChange}
             />
             {MaleImage}
-          </Label>
-          <Label>
+          </label>
+          <label>
             <input
               type="radio"
               name="gender"
@@ -52,7 +54,7 @@ export default class Gender extends Component {
               onChange={this.handleChange}
             />
             {FemaleImage}
-          </Label>
+          </label>
         </div>
       </div>
     );

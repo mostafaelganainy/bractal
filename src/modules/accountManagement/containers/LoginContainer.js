@@ -1,4 +1,7 @@
-import React, { Component, Button } from 'react';
+// eslint-disable-next-line
+/* eslint-disable jsx-a11y/label-has-for, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
+
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import axios from 'axios';
@@ -108,9 +111,9 @@ class LoginContainer extends Component {
           </Container>
           <p className="TextCenter FooterTxt">
             <Trans i18nKey="AlreadyHaveanaccount" />
-            <Button className="LoginLbl" onClick={this.toggleLoginContnt}>
+            <label className="LoginLbl" onClick={this.toggleLoginContnt}>
               <Trans i18nKey="Login" />
-            </Button>
+            </label>
           </p>
         </div>
       );

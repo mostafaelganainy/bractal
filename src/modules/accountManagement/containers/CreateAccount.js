@@ -1,4 +1,7 @@
-import React, { Component, Button } from 'react';
+// eslint-disable-next-line
+/* eslint-disable jsx-a11y/label-has-for, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
+
+import React, { Component } from 'react';
 import { Grid, Header, Container } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import i18next from 'i18next';
@@ -38,7 +41,7 @@ export default class CreateAccount extends Component {
         ? localStorage.getItem('SavedEmail')
         : '',
       MaleIsactive: '',
-      DropdownisShown: '',
+      DropdownisShown: false,
     };
   }
 
@@ -245,13 +248,13 @@ export default class CreateAccount extends Component {
             <div className="RegisterHdrCont">
               <div className="hdrCont">
                 <Header as="h3" textAlign="center">
-                  <Button className="bkBtn" onClick={BackLogin}>
+                  <label className="bkBtn" onClick={BackLogin}>
                     <Trans i18nKey="ArrowBack" />
                     {' '}
                     <span className="BkTxt">
                       {' '}<Trans i18nKey="Back" />
                     </span>
-                  </Button>
+                  </label>
 
                   <Trans i18nKey="REGISTER" />
                 </Header>
@@ -379,7 +382,7 @@ export default class CreateAccount extends Component {
                           <Gender
                             handleChange={this.handleChange}
                             MaleIsactive={this.state.MaleIsactive}
-                            gender={this.state.gender}
+                            gender={this.state.gender || ''}
                           />
                           <p className="ErrorMsg">
                             {' '}

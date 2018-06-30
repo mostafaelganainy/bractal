@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 
-import React, { Component, Image } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -84,7 +84,7 @@ export default class CountriesCode extends Component {
           <div id="dropdown-button" className="dropdown-button">
 
             {this.state.SelectedImg !== ''
-            ? <Image src={this.state.SelectedImg} alt={this.state.SelectedMobCode} />
+            ? <img src={this.state.SelectedImg} alt={this.state.SelectedMobCode} />
             : ''
             }
             <span>

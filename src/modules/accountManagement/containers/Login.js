@@ -182,7 +182,7 @@ export default class LoginPage extends Component {
                           autoComplete="off"
                           onChange={this.handleChange}
                           required
-                          value={this.state.email}
+                          value={this.state.email || ''}
                         />
                       </Grid.Row>
                       <p className="ErrorMsg">
@@ -196,7 +196,7 @@ export default class LoginPage extends Component {
                           autoComplete="off"
                           onChange={this.handleChange}
                           required
-                          value={this.state.password}
+                          value={this.state.password || ''}
                         />
                       </Grid.Row>
                       <p className="ErrorMsg">
@@ -227,14 +227,19 @@ export default class LoginPage extends Component {
                         <Trans i18nKey="Login" />
 
                       </button>
-                      <p className="TextCenter fontSize11 Bylogin">
-                        <Trans i18nKey="Byloginyouagreetoour" />
-                        {' '}
-                        <Label>
+                      <div className="TextCenter fontSize11 Bylogin">
+                        <span className="TextCenter fontSize11 Bylogin">
+                          <Trans i18nKey="Byloginyouagreetoour" />
+                          {' '}
+                        </span>
+                        <a className="TextCenter fontSize11 Bylogin" href="/">
                           <Trans i18nKey="termsconditions" />
-                        </Label>
-                        <Trans i18nKey="ofuse" />
-                      </p>
+                        </a>
+                        <span className="TextCenter fontSize11 Bylogin">
+                          {' '}
+                          <Trans i18nKey="ofuse" />
+                        </span>
+                      </div>
                     </form>
                   </div>
                 </Grid.Column>
