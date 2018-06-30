@@ -22,7 +22,7 @@ export default class DepartmentsTab extends Component {
     });
 
     return (
-      <div style={{ zIndex: 1 }} className="departments-tabs">
+      <div style={{ zIndex: 1, position: 'absolute', top: '200px' }} className="departments-tabs">
         <Tab menu={{ attached: 'bottom' }} panes={panes} />
       </div>
     );

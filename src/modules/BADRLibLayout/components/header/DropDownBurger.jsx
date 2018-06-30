@@ -4,17 +4,26 @@ import { Icon } from 'semantic-ui-react';
 const style = {
   width: '61px',
   color: '#fff',
-  alignItems: 'center',
   backgroundColor: '#33a8ff',
-  textAlign: 'center',
-  paddingTop: '1px',
-  'border-top-left-radius': '7px',
-  'border-bottom-left-radius': '7px',
-  'font-size': '20px',
+  fontSize: '20px',
+  cursor: 'pointer',
+  borderTopLeftRadius: '7px',
+  borderBottomLeftRadius: '7px',
+  // Draw outside the border slightly
+  marginTop: '-1px',
+  marginBottom: '-1px',
+  marginLeft: '-1px',
+  // Center content, horizontal/vertical
+  display: 'flex',
+  alignItems: 'center',
+  height: '51px',
+  flexDirection: 'column',
+  justifyContent: 'center',
 };
 
 const iconStyle = {
   marginRight: 0,
+  verticalAlign: 'middle',
 };
 
 const DropDownBurger = () => (

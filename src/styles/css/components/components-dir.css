@@ -159,7 +159,8 @@
     .top-nav .ui.menu {
       border: none;
       box-shadow: none;
-      background-color: transparent; }
+      background-color: transparent;
+      border-radius: 7px; }
     .top-nav .ui.default.dropdown:not(.button) > .text,
     .top-nav .ui.dropdown:not(.button) > .default.text {
       color: #666666; }
@@ -202,29 +203,26 @@
       content: initial !important; }
     .top-nav .right.menu .item:last-child {
       margin-right: 0; }
-    .top-nav .ui.menu:not(.vertical) .right.item,
-    .top-nav .ui.menu:not(.vertical) .right.menu {
-      margin-left: 0 !important; }
-      .top-nav .ui.menu:not(.vertical) .right.item > .item,
-      .top-nav .ui.menu:not(.vertical) .right.menu > .item {
-        position: relative;
-        margin-right: 20px; }
-        .top-nav .ui.menu:not(.vertical) .right.item > .item:after,
-        .top-nav .ui.menu:not(.vertical) .right.menu > .item:after {
-          content: "";
-          position: absolute;
-          right: -10px;
-          top: 28px;
-          height: 20px;
-          width: 1px;
-          background-color: #a6a5a5;
-          opacity: 0.4; }
-        .top-nav .ui.menu:not(.vertical) .right.item > .item:last-child,
-        .top-nav .ui.menu:not(.vertical) .right.menu > .item:last-child {
-          margin-right: 0; }
-          .top-nav .ui.menu:not(.vertical) .right.item > .item:last-child:after,
-          .top-nav .ui.menu:not(.vertical) .right.menu > .item:last-child:after {
-            content: initial; } }
+    .top-nav .ui.menu:not(.vertical) .right.item > .item,
+    .top-nav .ui.menu:not(.vertical) .right.menu > .item {
+      position: relative;
+      margin-right: 20px; }
+      .top-nav .ui.menu:not(.vertical) .right.item > .item:after,
+      .top-nav .ui.menu:not(.vertical) .right.menu > .item:after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: 28px;
+        height: 20px;
+        width: 1px;
+        background-color: #a6a5a5;
+        opacity: 0.4; }
+      .top-nav .ui.menu:not(.vertical) .right.item > .item:last-child,
+      .top-nav .ui.menu:not(.vertical) .right.menu > .item:last-child {
+        margin-right: 0; }
+        .top-nav .ui.menu:not(.vertical) .right.item > .item:last-child:after,
+        .top-nav .ui.menu:not(.vertical) .right.menu > .item:last-child:after {
+          content: initial; } }
 @media screen and (min-width: 1201px) and (min-width: 1023px) {
   .top-nav .ui.menu .item {
     padding: 0; } }

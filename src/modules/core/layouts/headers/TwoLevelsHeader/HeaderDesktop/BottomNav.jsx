@@ -17,7 +17,7 @@ class BottomNav extends Component {
     const { menuInfo } = this.props;
 
     return (
-      <div className="nav-department">
+      <div className="bottom-nav">
         <Container>
           <Menu>
             {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (

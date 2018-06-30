@@ -6,6 +6,7 @@ import TwoLevelsHeader from '../../core/layouts/headers/TwoLevelsHeader';
 import DropDownBurger from '../components/header/DropDownBurger';
 import DepartmentsDropDownMenu from '../components/header/departments/DepartmentsTab';
 import { withModules } from '../../core/utils/modulesLoader';
+import NavCurrencyDesktop from '../components/header/headerActions/NavCurrency/NavCurrencyDesktop';
 
 const SocialMediaItemRenderer = (src, url) => (
   <Menu.Item style={{ padding: '0 3px' }} >
@@ -23,6 +24,10 @@ const Header = ({ modules }) => {
           {
             iconImageSrc: 'https://badrit.com/img/logo-b.png',
             targetURL: '/',
+          },
+          {
+            iconRenderer: <NavCurrencyDesktop currency={[{ text: 'QAR' }, { text: 'USD' }]} />,
+            position: 'right',
           },
         ],
       },
@@ -78,7 +83,9 @@ const Header = ({ modules }) => {
   }));
 
   return (
-    <TwoLevelsHeader menuInfo={menuInfo} />
+    <div className="main-header">
+      <TwoLevelsHeader menuInfo={menuInfo} />
+    </div>
   );
 };
 

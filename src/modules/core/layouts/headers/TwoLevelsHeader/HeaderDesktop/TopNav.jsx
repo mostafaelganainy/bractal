@@ -8,9 +8,14 @@ const TopNav = ({ menuInfo }) => (
   <div className="top-nav">
     <Container>
       <Menu>
-        {menuInfo.items.map(item => (
+        {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (
           <MenuItemRenderer key={item.key} itemInfo={item} />
         ))}
+        <Menu.Menu position="right">
+          {menuInfo.items.filter(item => item.position === 'right').map(item => (
+            <MenuItemRenderer key={item.key} itemInfo={item} />
+          ))}
+        </Menu.Menu>
       </Menu>
     </Container>
   </div>
