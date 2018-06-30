@@ -21,10 +21,10 @@ export default class EmailOrSms extends Component {
       <div>
         <div className="SmsOrEmailVerify">
           <div>
-            {this.props.ToggleEmail
+            {this.props.toggleEmail
                   ? <div><img src="images/AccountManagement/SMSImages.png" alt="Email" /></div>
                   : ''}
-            {this.props.ToggleSms
+            {this.props.toggleSms
                   ? <div> <img src="images/AccountManagement/sms.png" alt="Mobile" /></div>
                   : ''}
             <p>
@@ -36,7 +36,7 @@ export default class EmailOrSms extends Component {
             <div>
               <input
                 type="text"
-                placeholder={i18next.t('AddCodeHere')}
+                placeholder={i18next.t('accountManagement:AddCodeHere')}
                 id="Code"
                 onChange={this.handleChange}
               />

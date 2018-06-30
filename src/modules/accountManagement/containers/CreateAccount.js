@@ -101,7 +101,7 @@ export default class CreateAccount extends Component {
       }
     }
   };
-  TogglePass =() => {
+  togglePass =() => {
     this.setState({
       type: this.state.type === 'text' ? 'password' : 'text',
     });
@@ -269,7 +269,7 @@ export default class CreateAccount extends Component {
                         <Grid.Column>
                           <input
                             type="text"
-                            placeholder={i18next.t('FirstName')}
+                            placeholder={i18next.t('accountManagement:FirstName')}
                             id="first_name"
                             onChange={this.handleChange}
                             required
@@ -286,7 +286,7 @@ export default class CreateAccount extends Component {
                         <Grid.Column>
                           <input
                             type="text"
-                            placeholder={i18next.t('LastName')}
+                            placeholder={i18next.t('accountManagement:LastName')}
                             id="last_name"
                             onChange={this.handleChange}
                             required
@@ -308,7 +308,7 @@ export default class CreateAccount extends Component {
                         <Grid.Column>
                           <input
                             type="email"
-                            placeholder={i18next.t('Email')}
+                            placeholder={i18next.t('accountManagement:Email')}
                             id="email"
                             onChange={this.handleChange}
                             required
@@ -322,7 +322,7 @@ export default class CreateAccount extends Component {
                         <Grid.Column>
                           <input
                             type={this.state.type}
-                            placeholder={i18next.t('password')}
+                            placeholder={i18next.t('accountManagement:password')}
                             id="password"
                             onChange={this.handleChange}
                             required
@@ -333,7 +333,7 @@ export default class CreateAccount extends Component {
                           <i
                             aria-hidden="true"
                             className="eye icon"
-                            onClick={this.TogglePass}
+                            onClick={this.togglePass}
                           />
 
                           <p className="ErrorMsg">

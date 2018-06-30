@@ -22,7 +22,7 @@ export default class NewsLetterReg extends Component {
     <div>
       <Grid.Row className="chlBxCont">
         <Checkbox
-          label={i18next.t('RegisterFornewsLetter')}
+          label={i18next.t('accountManagement:RegisterFornewsLetter')}
           checked={this.state.newsLetter}
           onChange={this.toggleChange}
           id="newsLetter"

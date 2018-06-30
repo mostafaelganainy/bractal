@@ -25,7 +25,7 @@ export default class MobileNum extends Component {
               <input
                 type="text"
                 className="phoneInp"
-                placeholder={i18next.t('Phone')}
+                placeholder={i18next.t('accountManagement:Phone')}
                 id="mobile_number"
                 onChange={this.handleChange}
               />

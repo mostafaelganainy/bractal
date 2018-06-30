@@ -4,9 +4,9 @@ import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 export default class RegisterData extends Component {
-  ToggleLoginContnt = () => {
-    this.props.ToggleLoginContnt();
-    this.props.ToggleCreateAccContnt();
+  toggleLoginContnt = () => {
+    this.props.toggleLoginContent();
+    this.props.toggleCreateAccountContent();
   };
   render() {
     return (
@@ -31,7 +31,7 @@ export default class RegisterData extends Component {
                 </p>
                 <button
                   className="creatAccBtn"
-                  onClick={this.ToggleLoginContnt}
+                  onClick={this.toggleLoginContnt}
                 >
                   <Trans i18nKey="CreateAnAccount" />
                 </button>
@@ -44,7 +44,7 @@ export default class RegisterData extends Component {
   }
 }
 RegisterData.propTypes = {
-  ToggleLoginContnt: PropTypes.func.isRequired,
-  ToggleCreateAccContnt: PropTypes.func.isRequired,
+  toggleLoginContnt: PropTypes.func.isRequired,
+  toggleCreateAccountContent: PropTypes.func.isRequired,
 }.isRequired;
 

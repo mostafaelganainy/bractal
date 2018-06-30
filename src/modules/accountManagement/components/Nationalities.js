@@ -15,7 +15,7 @@ export default class Nationalities extends Component {
     ));
     return (
       <div>
-        <select required placeholder={i18next.t('Nationality')} id="nationality" onChange={this.handleChange} className="nationalitySelect">
+        <select required placeholder={i18next.t('accountManagement:Nationality')} id="nationality" onChange={this.handleChange} className="nationalitySelect">
           <option value="" disabled selected>
             <Trans i18nKey="Nationality" />
           </option>
