@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Image, Menu } from 'semantic-ui-react';
 
 import TwoLevelsHeader from '../../core/layouts/headers/TwoLevelsHeader';
-import DropDownBurger from '../components/common/DropDownBurger';
-import DepartmentsDropDownMenu from '../../core/layouts/headers/TwoLevelsHeader/HeaderDesktop/Departments/DepartmentsTab';
+import DropDownBurger from '../components/header/DropDownBurger';
+import DepartmentsDropDownMenu from '../components/header/departments/DepartmentsTab';
 import { withModules } from '../../core/utils/modulesLoader';
 
 const SocialMediaItemRenderer = (src, url) => (
@@ -37,22 +37,22 @@ const Header = ({ modules }) => {
           },
           {
             iconRenderer: SocialMediaItemRenderer('images/SocialMedia/fb-lg.png', 'http://facebook.com'),
-            targetURL: '/',
+            targetURL: 'http://facebook.com',
             position: 'right',
           },
           {
             iconRenderer: SocialMediaItemRenderer('images/SocialMedia/tr-lg.png', 'http://facebook.com'),
-            targetURL: '/',
+            targetURL: 'http://twitter.com',
             position: 'right',
           },
           {
             iconRenderer: SocialMediaItemRenderer('images/SocialMedia/yb-lg.png', 'http://facebook.com'),
-            targetURL: '/',
+            targetURL: 'http://youtube.com',
             position: 'right',
           },
           {
             iconRenderer: SocialMediaItemRenderer('images/SocialMedia/inst-lg.png', 'http://facebook.com'),
-            targetURL: '/',
+            targetURL: 'http://instagram.com',
             position: 'right',
           },
           {
@@ -60,6 +60,14 @@ const Header = ({ modules }) => {
             position: 'right',
           },
         ],
+      },
+    },
+    mobileMenuInfo: {
+      top: {
+        items: [],
+      },
+      bottom: {
+        items: [],
       },
     },
   };

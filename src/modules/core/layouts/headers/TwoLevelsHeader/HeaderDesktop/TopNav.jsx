@@ -9,7 +9,7 @@ const TopNav = ({ menuInfo }) => (
     <Container>
       <Menu>
         {menuInfo.items.map(item => (
-          <MenuItemRenderer itemInfo={item} />
+          <MenuItemRenderer key={item.key} itemInfo={item} />
         ))}
       </Menu>
     </Container>

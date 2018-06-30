@@ -2,7 +2,7 @@ import React from 'react';
 import { translate, Trans } from 'react-i18next';
 import { Header, Container } from 'semantic-ui-react';
 
-import AykLayout from '../layouts/AykLayout';
+import AykLayout from '../layouts/Layout';
 
 const HomePage = () =>
   (
