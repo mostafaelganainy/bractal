@@ -144,6 +144,7 @@ export default class CreateAccount extends Component {
       }
     });
   };
+
   ShowServerRegErrors = (ErrorObj) => {
     [
       'email',
@@ -156,8 +157,10 @@ export default class CreateAccount extends Component {
       'country_code',
     ].forEach((fieldName) => {
       if (fieldName !== 'country_code') {
-        if (Object.prototype.hasOwnProperty.call(ErrorObj, fieldName)) {
-          const msgError = ErrorObj[fieldName].filter(val => val).join(', ');
+        if (ErrorObj[fieldName]) {
+          const msgError = ErrorObj[fieldName]
+            .filter(val => val)
+            .join(', ');
           this.setState({
             [this.errorLabelStateFieldName(fieldName)]: msgError,
           });
@@ -166,10 +169,11 @@ export default class CreateAccount extends Component {
             [this.errorLabelStateFieldName(fieldName)]: '',
           });
         }
-      } else if (!Object.prototype.hasOwnProperty.call(ErrorObj, 'mobile_number')) {
-        if (Object.prototype.hasOwnProperty.call(ErrorObj, fieldName)) {
+      } else if (!ErrorObj.mobile_number) {
+        if (ErrorObj[fieldName]) {
           const msgError = ErrorObj[fieldName]
-            .filter(val => val).join(', ');
+            .filter(val => val)
+            .join(', ');
           this.setState({
             mobile_numberErrorMessage: msgError,
           });
@@ -216,6 +220,7 @@ export default class CreateAccount extends Component {
   saveStateToLocalStorage = () => {
     const SavedEmailval = localStorage.getItem('SavedEmail');
     localStorage.setItem('SavedEmail', SavedEmailval);
+    this.setState({ SavedEmail: SavedEmailval });
   }
 
   RemoveMobileDropdown = (event) => {

@@ -35,25 +35,26 @@ export default class LoginPage extends Component {
     );
     this.saveStateToLocalStorage();
   }
-
   setErrors = (err) => {
-    if (Object.prototype.hasOwnProperty.call(err.response.data.errors, 'email')) {
-      this.setState({
-        EmailErrorMessage: err.response.data.errors.email,
-      });
-    } else {
-      this.setState({
-        EmailErrorMessage: '',
-      });
-    }
-    if (Object.prototype.hasOwnProperty.call(err.response.data.errors, 'password')) {
-      this.setState({
-        PassErrorMessage: err.response.data.errors.password,
-      });
-    } else {
-      this.setState({
-        PassErrorMessage: '',
-      });
+    if (err.response) {
+      if (err.response.data.errors.email) {
+        this.setState({
+          EmailErrorMessage: err.response.data.errors.email,
+        });
+      } else {
+        this.setState({
+          EmailErrorMessage: '',
+        });
+      }
+      if (err.response.data.errors.password) {
+        this.setState({
+          PassErrorMessage: err.response.data.errors.password,
+        });
+      } else {
+        this.setState({
+          PassErrorMessage: '',
+        });
+      }
     }
   };
 

@@ -238,7 +238,7 @@
                     width: 11px;
                     background: #fff;
                     position: absolute;
-                    top: 43px;
+                    top: 44px;
                     left: 22px;
                     -webkit-transform: rotate(134deg);
                     -ms-transform: rotate(134deg);
@@ -375,7 +375,9 @@
         width: 93%;
         padding: 7px;
 }
-
+.AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li:first-child:hover {
+    background: white;
+}
 .FooterTxt {
     margin-top: 10px;
     font-size: 14px;

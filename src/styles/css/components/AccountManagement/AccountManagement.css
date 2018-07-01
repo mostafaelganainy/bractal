@@ -94,7 +94,7 @@
     color: white;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 44px; }
+    margin-top: 47px; }
 
 @media screen and (min-width: 1025px) {
   .Loginsec:after {
@@ -452,7 +452,7 @@
         width: 11px;
         background: #fff;
         position: absolute;
-        top: 43px;
+        top: 44px;
         left: 22px;
         -webkit-transform: rotate(134deg);
         -ms-transform: rotate(134deg);
@@ -556,6 +556,9 @@
   margin: 7px;
   width: 93%;
   padding: 7px; }
+
+.AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li:first-child:hover {
+  background: white; }
 
 .FooterTxt {
   margin-top: 10px;

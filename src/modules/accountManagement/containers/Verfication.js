@@ -124,10 +124,10 @@ export default class Verification extends Component {
   ResendAccountConfiramtion = (event) => {
     event.preventDefault();
     const ConfirmationCode = {
-      email: this.props.SavedEmail,
+      email: localStorage.getItem('SavedEmail'),
     };
 
-    if (this.props.SavedEmail) {
+    if (localStorage.getItem('SavedEmail')) {
       axios({
         url: 'http://ayk-test.badrit.com/api/confirmation/resend',
         data: ConfirmationCode,
