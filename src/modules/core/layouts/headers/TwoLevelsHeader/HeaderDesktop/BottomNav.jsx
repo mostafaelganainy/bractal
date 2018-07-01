@@ -1,10 +1,23 @@
 
 import React, { Component } from 'react';
-import { Container, Menu } from 'semantic-ui-react';
+import styled from 'styled-components';
+import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import { withModules } from '../../../../utils/modulesLoader';
 import MenuItemRenderer from './MenuItemRenderer';
+
+const LightBorderMenu = styled(Menu)`
+  &&& {
+    border: solid;
+    border-color: rgba(40,40,40,0.1);
+    border-width: 1px;
+
+    .item:before {
+      background: rgba(34,36,38,0);
+    }
+  }
+`;
 
 class BottomNav extends Component {
   state = {
@@ -17,20 +30,16 @@ class BottomNav extends Component {
     const { menuInfo } = this.props;
 
     return (
-      <div className="bottom-nav">
-        <Container>
-          <Menu>
-            {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (
-              <MenuItemRenderer key={item.key} itemInfo={item} />
-            ))}
-            <Menu.Menu position="right">
-              {menuInfo.items.filter(item => item.position === 'right').map(item => (
-                <MenuItemRenderer key={item.key} itemInfo={item} />
-              ))}
-            </Menu.Menu>
-          </Menu>
-        </Container>
-      </div>
+      <LightBorderMenu>
+        {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (
+          <MenuItemRenderer key={item.key} itemInfo={item} />
+        ))}
+        <Menu.Menu position="right">
+          {menuInfo.items.filter(item => item.position === 'right').map(item => (
+            <MenuItemRenderer key={item.key} itemInfo={item} />
+          ))}
+        </Menu.Menu>
+      </LightBorderMenu>
     );
   }
 }

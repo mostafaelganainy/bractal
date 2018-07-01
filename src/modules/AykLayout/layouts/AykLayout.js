@@ -1,4 +1,5 @@
 import React from 'react';
+
 import HeaderDesktop from '../components/header/HeaderDesktop';
 import HeaderMobile from '../components/header/HeaderMobile';
 
@@ -32,7 +33,12 @@ class Layout extends React.Component {
       header = <HeaderDesktop />;
     }
 
-    return header;
+    return (
+      <React.Fragment>
+        { header }
+      </React.Fragment>
+
+    );
   }
 }
 

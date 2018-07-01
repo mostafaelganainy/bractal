@@ -1,27 +1,5 @@
 @import "components/Header/NavDepartmentTab";
 
 .main-header {
-
-  .ui.menu {
-    border: none;
-    box-shadow: none;
-    background-color: transparent;
-    border-radius: 8px;
-    border-color: rgba(34,36,38,0.1);
-  }
-  .ui.menu .item:before {
-    background: rgba(34,36,38,0);
-  }
-
-  .bottom-nav {
-    .ui.menu {
-      border: solid;
-      border-color: rgba(40,40,40,0.1);
-      border-width: 1px;
-    }
-  }
-
-  .container {
-    position: relative;
-  }
+  color: red;
 }
