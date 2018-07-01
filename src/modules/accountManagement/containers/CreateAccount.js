@@ -143,7 +143,6 @@ export default class CreateAccount extends Component {
       }
     });
   };
-
   ShowServerRegErrors = (ErrorObj) => {
     [
       'email',
@@ -156,10 +155,8 @@ export default class CreateAccount extends Component {
       'country_code',
     ].forEach((fieldName) => {
       if (fieldName !== 'country_code') {
-        if (ErrorObj[fieldName]) {
-          const msgError = ErrorObj[fieldName]
-            .filter(val => val)
-            .join(', ');
+        if (Object.prototype.hasOwnProperty.call(ErrorObj, fieldName)) {
+          const msgError = ErrorObj[fieldName].filter(val => val).join(', ');
           this.setState({
             [this.errorLabelStateFieldName(fieldName)]: msgError,
           });
@@ -168,11 +165,12 @@ export default class CreateAccount extends Component {
             [this.errorLabelStateFieldName(fieldName)]: '',
           });
         }
-      } else if (!ErrorObj.mobile_number) {
-        const msgError = ErrorObj[fieldName]
-          .filter(val => val)
-          .join(', ');
-        if (ErrorObj[fieldName]) {
+      } else if (!Object.prototype.hasOwnProperty.call(ErrorObj, 'mobile_number')) {
+        /* eslint-disable no-debugger */
+        debugger;
+        if (Object.prototype.hasOwnProperty.call(ErrorObj, fieldName)) {
+          const msgError = ErrorObj[fieldName]
+            .filter(val => val).join(', ');
           this.setState({
             mobile_numberErrorMessage: msgError,
           });
@@ -184,7 +182,6 @@ export default class CreateAccount extends Component {
       }
     });
   };
-
   handleRegSubmit = (event) => {
     const { handleSignUp } = this.props;
 

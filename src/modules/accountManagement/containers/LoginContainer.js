@@ -71,7 +71,7 @@ class LoginContainer extends Component {
           localStorage.setItem('client', resp.headers.client);
           this.props.close();
         } else {
-          this.toggleLoginContnt();
+          this.toggleLoginContent();
           this.ShowVerify();
         }
       })
@@ -81,7 +81,7 @@ class LoginContainer extends Component {
       });
   };
 
-  toggleLoginContnt = () => {
+  toggleLoginContent = () => {
     this.setState({ showLoginCont: !this.state.showLoginCont });
   };
   render() {
@@ -91,7 +91,7 @@ class LoginContainer extends Component {
     if (this.state.showLoginCont) {
       ALlContentLogin = (
         <Login
-          toggleLoginContnt={this.toggleLoginContnt}
+          toggleLoginContent={this.toggleLoginContent}
           handleSubmit={this.handleSubmit}
           isLoading={this.state.isLoading}
           toggleCreateAccountContent={this.toggleCreateAccountContent}
@@ -102,7 +102,7 @@ class LoginContainer extends Component {
         <div className="CreateVeriCont">
           <Container className="CreateAccContainer">
             <CreateAccount
-              BackLogin={this.toggleLoginContnt}
+              BackLogin={this.toggleLoginContent}
               close={close}
               showCreateAccCont={this.state.showCreateAccCont}
               handleSignUp={this.handleRegSubmit}
@@ -111,7 +111,7 @@ class LoginContainer extends Component {
           </Container>
           <p className="TextCenter FooterTxt">
             <Trans i18nKey="AlreadyHaveanaccount" />
-            <label className="LoginLbl" onClick={this.toggleLoginContnt}>
+            <label className="LoginLbl" onClick={this.toggleLoginContent}>
               <Trans i18nKey="Login" />
             </label>
           </p>

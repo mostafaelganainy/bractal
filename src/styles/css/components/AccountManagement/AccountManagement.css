@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .AllContnt .LoginContnt,
 .AllContnt .crteAcuntSec {
   padding: 0px 30px; }
@@ -270,6 +271,8 @@
       .AllRegCont .TwoSides #borderrBtom #firstSide {
         width: 65% !important;
         padding: 20px; }
+        .AllRegCont .TwoSides #borderrBtom #firstSide .column {
+          padding: 0px 6px; }
       .AllRegCont .TwoSides #borderrBtom #firstSide:after {
         content: "";
         background-color: #d9d9d9;
@@ -309,7 +312,7 @@
         border-radius: 50%;
         display: inline-block;
         position: relative;
-        top: -2px; }
+        top: 0px; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData ul {
         height: 100px;
         overflow: auto; }
@@ -322,9 +325,9 @@
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button {
         margin: 0;
         outline: 0;
-        line-height: 1.3em;
+        line-height: 2.0em;
         padding: 0.37857143em 1em;
-        font-size: 1em;
+        font-size: 12px;
         background: #fff;
         border: 1px solid rgba(34, 36, 38, 0.15);
         color: rgba(0, 0, 0, 0.87);
@@ -337,7 +340,8 @@
         text-overflow: ellipsis;
         overflow: hidden;
         width: 100%;
-        white-space: nowrap; }
+        white-space: nowrap;
+        padding-left:  8px; }
         .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
           position: relative;
           top: 3px; }
@@ -399,7 +403,7 @@
           width: 10%;
           float: left; }
         .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li .countryName {
-          width: 70%;
+          width: 67%;
           float: right;
           display: inherit; }
         .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li .codeLbl {

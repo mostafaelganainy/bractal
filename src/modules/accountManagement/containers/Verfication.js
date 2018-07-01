@@ -32,20 +32,14 @@ export default class Verification extends Component {
   toggleSMSorEmailVerify = () => this.setState({ SmsOrEmailVerify: !this.state.SmsOrEmailVerify })
 
   ShowSMS =() => {
-    this.setState(
-      {
-        toggleSms: !this.state.toggleSms,
-      },
-      () => this.toggleSMSorEmailVerify,
-    );
+    this.setState({
+      toggleSms: !this.state.toggleSms,
+    }, () => this.setState({ SmsOrEmailVerify: !this.state.SmsOrEmailVerify }));
   };
   ShowEmail =() => {
-    this.setState(
-      {
-        toggleEmail: !this.state.toggleEmail,
-      },
-      () => this.toggleSMSorEmailVerify,
-    );
+    this.setState({
+      toggleEmail: !this.state.toggleEmail,
+    }, () => this.setState({ SmsOrEmailVerify: !this.state.SmsOrEmailVerify }));
   };
 
   handleChange = (event) => {

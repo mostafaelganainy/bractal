@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Container, Checkbox, Label } from 'semantic-ui-react';
+import { Grid, Header, Container, Checkbox } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 import i18next from 'i18next';
@@ -12,12 +12,8 @@ export default class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: localStorage.getItem('email') !== 'null'
-        ? localStorage.getItem('email')
-        : '',
-      password: localStorage.getItem('password') !== 'null'
-        ? localStorage.getItem('password')
-        : '',
+      email: '',
+      password: '',
       rememberMe: false,
       EmailErrorMessage: '',
       PassErrorMessage: '',
@@ -41,7 +37,7 @@ export default class LoginPage extends Component {
   }
 
   setErrors = (err) => {
-    if (err.response.data.errors.email) {
+    if (Object.prototype.hasOwnProperty.call(err.response.data.errors, 'email')) {
       this.setState({
         EmailErrorMessage: err.response.data.errors.email,
       });
@@ -50,7 +46,7 @@ export default class LoginPage extends Component {
         EmailErrorMessage: '',
       });
     }
-    if (err.response.data.errors.password) {
+    if (Object.prototype.hasOwnProperty.call(err.response.data.errors, 'password')) {
       this.setState({
         PassErrorMessage: err.response.data.errors.password,
       });
@@ -214,9 +210,9 @@ export default class LoginPage extends Component {
 
                           </Grid.Column>
                           <Grid.Column>
-                            <Label className="fontSize11 LostPass">
+                            <span className="fontSize11 LostPass">
                               <Trans i18nKey="LostYourPassword" />
-                            </Label>
+                            </span>
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
@@ -245,7 +241,7 @@ export default class LoginPage extends Component {
                 </Grid.Column>
                 <Grid.Column only="large screen">
                   <RegisterData
-                    toggleLoginContent={this.props.toggleLoginContnt}
+                    toggleLoginContent={this.props.toggleLoginContent}
                     toggleCreateAccountContent={
                       this.props.toggleCreateAccountContent
                     }

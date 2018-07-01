@@ -87,7 +87,7 @@ export default class CountriesCode extends Component {
             ? <img src={this.state.SelectedImg} alt={this.state.SelectedMobCode} />
             : ''
             }
-            <span>
+            <span className="codeSelected">
               {this.state.SelectedMobCode}
             </span>
           </div>
