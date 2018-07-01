@@ -1,7 +1,4 @@
 @charset "UTF-8";
-.AllContnt .LoginContnt,
-.AllContnt .crteAcuntSec {
-  padding: 0px 30px; }
 .AllContnt .BkHdr {
   background-color: #f7f7f7;
   border-bottom-right-radius: 10px;
@@ -40,7 +37,6 @@
     .AllContnt .LoginCont .Loginsec .LoginContnt .LognBtn {
       width: 100%;
       background-color: #309de0;
-      width: 100%;
       border-radius: 5px;
       border: none;
       line-height: 2.89;
@@ -48,6 +44,18 @@
       color: white;
       font-size: 14px;
       font-weight: bold; }
+    .AllContnt .LoginCont .Loginsec .LoginContnt .ResponsiveCreateAccountBtn {
+      width: 100%;
+      background-color: white;
+      border-radius: 5px;
+      line-height: 3;
+      margin: 12px 0px;
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid #309de0;
+      color: #309de0; }
+    .AllContnt .LoginCont .Loginsec .LoginContnt .ResponsiveCreateAccountTxt {
+      margin-top: -3px; }
     .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
       line-height: 2.86;
       padding: 19px 0px; }
@@ -97,7 +105,66 @@
     height: 64%;
     top: 35%;
     left: 100%;
-    display: block; } }
+    display: block; }
+
+  .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
+    display: none; }
+
+  .LoginContnt,
+  .crteAcuntSec {
+    padding: 0px 30px; } }
+@media screen and (max-width: 1024px) {
+  .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
+    display: block; }
+
+  .SocialMediaCont  {
+    width: 25%; }
+
+  .SocialMediaCont .faceBok, .SocialMediaCont .Google, .SocialMediaCont .Insta, .SocialMediaCont .Tiwiter {
+    text-align: center;
+    padding-top: 5px; } }
+@media screen and (max-width: 768px) {
+  .SocialMediaCont  {
+    width: 31%; }
+
+  .SvgCont {
+    margin: 0 auto; }
+
+  .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+    padding: 0px; }
+
+  Button {
+    font-size: 42.5px; }
+
+  .RmmberLost {
+    font-size: 33px; }
+
+  .ErrorMsg, .LoginContnt p {
+    font-size: 30px; }
+
+  .AllContnt .LoginContnt,  .AllContnt .crteAcuntSec  {
+    padding: 0px 10px; }
+
+  .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
+    line-height: 0.8;
+    padding: 12px 0px;
+    padding-bottom: 34px; }
+
+  .AllContnt .LoginCont .Loginsec {
+    width: 80%;
+    margin:  0 auto;
+    padding:  0px 45px;
+    border-bottom:  1px solid black; }
+
+  .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
+    padding-top: 16px; }
+
+  .Bylogin {
+    margin-bottom: 21px;
+    margin-top: 0px; }
+
+  .AllContnt .LoginCont {
+    border-bottom: 1px solid #00000024; } }
 @-moz-document url-prefix() {
   .AllContnt .createAccount .creatAccBtn {
     margin-top: 31px; } }
@@ -372,6 +439,7 @@
         transform-origin: top;
         padding: 0;
         list-style: none;
+        background-color: white;
         box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
         position: absolute;
         left: 0;
@@ -390,7 +458,8 @@
         -ms-transform: rotate(134deg);
         transform: rotate(134deg);
         border-left: 1px solid #d4d4d5bd;
-        border-bottom: 1px solid #d4d4d5bd; }
+        border-bottom: 1px solid #d4d4d5bd;
+        z-index: 1000; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li {
         background: #fff;
         padding: 8px 5px;
@@ -481,6 +550,12 @@
           color: rgba(128, 130, 133, 0.7);
           width: 95%;
           margin-left: 10px; }
+
+#input {
+  border-radius: 0px;
+  margin: 7px;
+  width: 93%;
+  padding: 7px; }
 
 .FooterTxt {
   margin-top: 10px;

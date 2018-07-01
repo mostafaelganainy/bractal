@@ -84,7 +84,10 @@ export default class LoginPage extends Component {
     localStorage.setItem('uid', uid);
     localStorage.setItem('client', client);
   }
-
+  ToggleLoginContnt = () => {
+    this.props.toggleLoginContent();
+    this.props.toggleCreateAccountContent();
+  };
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -224,17 +227,17 @@ export default class LoginPage extends Component {
 
                       </button>
                       <div className="TextCenter fontSize11 Bylogin">
-                        <span className="TextCenter fontSize11 Bylogin">
+                        <p className="TextCenter fontSize11 Bylogin">
                           <Trans i18nKey="Byloginyouagreetoour" />
-                          {' '}
-                        </span>
-                        <a className="TextCenter fontSize11 Bylogin" href="/">
-                          <Trans i18nKey="termsconditions" />
-                        </a>
-                        <span className="TextCenter fontSize11 Bylogin">
-                          {' '}
+                          {'  '}
+                          <a className="TextCenter fontSize11 Bylogin" href="/">
+                            <Trans i18nKey="termsconditions" />
+                          </a>
+                          {'  '}
                           <Trans i18nKey="ofuse" />
-                        </span>
+                        </p>
+                        <p className="TextCenter fontSize11 ResponsiveCreateAccountTxt">Don’t have account?</p>
+                        <button className="ResponsiveCreateAccountBtn" onClick={this.ToggleLoginContnt}>Create an account</button>
                       </div>
                     </form>
                   </div>

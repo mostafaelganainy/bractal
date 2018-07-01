@@ -16,6 +16,22 @@ export default class CountriesCode extends Component {
   componentWillMount() {
     this.loadSelectedCode();
   }
+  SearchInp= (event) => {
+    event.preventDefault();
+    /* eslint-disable no-debugger */
+    debugger;
+    const input = document.getElementById('input');
+    const filter = input.value.toUpperCase();
+    const lis = document.getElementsByClassName('CountryDataLi');
+    for (let i = 0; i < lis.length; i += 1) {
+      const name = lis[i].getElementsByClassName('countryName')[0].innerHTML;
+      if (name.toUpperCase().indexOf(filter) === 0) {
+        lis[i].style.display = 'list-item';
+      } else {
+        lis[i].style.display = 'none';
+      }
+    }
+  }
   loadSelectedCode = () => {
     axios
       .get('http://ayk-test.badrit.com/api/user/phonecode')
@@ -47,6 +63,7 @@ export default class CountriesCode extends Component {
     <div>
       <div className="Arrowul" />
       <ul className="dropdown-selection" id="CountriesCodeList">
+        <li><input type="text" className="searchInp" id="input" onKeyUp={this.SearchInp} /></li>
         {countriesCodeOpt}
       </ul>
     </div>
@@ -61,6 +78,7 @@ export default class CountriesCode extends Component {
           code={country.callingCodes}
           value={country.callingCodes}
           key={country.name}
+          className="CountryDataLi"
           onClick={() => this.GetSelectedOpt(country)}
         >
           <div className="imgCountry">
@@ -77,21 +95,21 @@ export default class CountriesCode extends Component {
         </li>
       ));
     }
-
     return (
-      <div className="CountriesData" onClick={this.showDropdown}>
+      <div className="CountriesData">
         <div className="dropdown" id="Countries-dropdown">
-          <div id="dropdown-button" className="dropdown-button">
-
-            {this.state.SelectedImg !== ''
+          <div id="dropdown-button" className="dropdown-button" >
+            <div onClick={this.showDropdown}>
+              {this.state.SelectedImg !== ''
             ? <img src={this.state.SelectedImg} alt={this.state.SelectedMobCode} />
             : ''
             }
-            <span className="codeSelected">
-              {this.state.SelectedMobCode}
-            </span>
+              <span className="codeSelected">
+                {this.state.SelectedMobCode}
+              </span>
+            </div>
+            <span className="triangle">&#9660;</span>
           </div>
-          <span className="triangle">&#9660;</span>
           {this.props.DropdownisShown
           ? this.renderDropdown(countriesCodeOpt)
           : ''

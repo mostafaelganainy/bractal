@@ -223,6 +223,7 @@
                     transform-origin: top;
                     padding: 0;
                     list-style: none;
+                    background-color: white;
                     box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
                     position: absolute;
                     left: 0;
@@ -244,6 +245,7 @@
                     transform: rotate(134deg);
                     border-left: 1px solid #d4d4d5bd;
                     border-bottom: 1px solid #d4d4d5bd;
+                    z-index: 1000;
                 }
 
                 .dropdown li {
@@ -366,6 +368,12 @@
             }
         }
     }
+}
+#input{
+        border-radius: 0px;
+        margin: 7px;
+        width: 93%;
+        padding: 7px;
 }
 
 .FooterTxt {

@@ -84,6 +84,7 @@ export default class CreateAccount extends Component {
     this.state.mobile_number !== undefined
   );
 
+
   handleCodeChange = Code => this.setState({ country_code: Code });
 
   errorLabelStateFieldName = fieldName => `${fieldName}ErrorMessage`;
@@ -166,8 +167,6 @@ export default class CreateAccount extends Component {
           });
         }
       } else if (!Object.prototype.hasOwnProperty.call(ErrorObj, 'mobile_number')) {
-        /* eslint-disable no-debugger */
-        debugger;
         if (Object.prototype.hasOwnProperty.call(ErrorObj, fieldName)) {
           const msgError = ErrorObj[fieldName]
             .filter(val => val).join(', ');
@@ -219,9 +218,11 @@ export default class CreateAccount extends Component {
     localStorage.setItem('SavedEmail', SavedEmailval);
   }
 
-  RemoveMobileDropdown = () => {
-    if (this.state.DropdownisShown === true) {
-      this.showDropdown();
+  RemoveMobileDropdown = (event) => {
+    if (event.target.id !== 'input') {
+      if (this.state.DropdownisShown === true) {
+        this.showDropdown();
+      }
     }
   };
 

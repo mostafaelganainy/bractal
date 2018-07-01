@@ -74,7 +74,7 @@ body {
         -webkit-transition: color 0.1s ease, border-color 0.1s ease;
         transition: color 0.1s ease, border-color 0.1s ease;
         width: 100%;
-        margin-bottom: 11px;
+        margin-bottom: 12.5px;
     }
 
     input:-webkit-autofill,
@@ -185,9 +185,26 @@ body {
    
     }
 }
-
-@media screen and (max-width: 767px) {
-    .ui.modal {
-        width: 85% !important;
+@media only screen and (min-width: 768px) and (max-width:1023px){
+.ui.modal {
+    width:100%;
+    height:99.9%;
+}
+}
+@media screen and (max-width: 768px) {
+    .ui.modal>.icon:first-child+*, .ui.modal>:first-child:not(.icon) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
+    .ui.modal>.content, .ui.modal .content>.description{
+        padding:0 !important;
+    }
+
+    .modals.dimmer .ui.scrolling.modal{
+        width: 100% !important;
+        margin-top:0 !important;
+      }
+      .modal input[type="text"], .modal input[type="password"], .modal input[type="email"], .modal select {
+        line-height: 1.314286em;
+      }
 }
