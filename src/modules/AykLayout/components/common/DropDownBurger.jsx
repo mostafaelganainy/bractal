@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dropdown, Icon } from 'semantic-ui-react';
+
 import PropTypes from 'prop-types';
 
 const trigger = (
@@ -12,7 +13,6 @@ const DropDownBurger = ({ handleClick }) => (
 );
 
 DropDownBurger.propTypes = {
-  // eslint-disable-next-line function-paren-newline
   handleClick: PropTypes.func.isRequired,
 };
 

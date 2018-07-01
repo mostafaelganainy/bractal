@@ -1,0 +1,126 @@
+.departments-tabs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 70px;
+  border-radius: 7px;
+  z-index: 1; }
+  .departments-tabs .ui.vertical.menu .active.item {
+    color: #309de0; }
+  .departments-tabs .ui.menu {
+    margin: 0; }
+  .departments-tabs .ui.attached + .ui.attached.menu:not(.top) {
+    padding: 15px 0; }
+  .departments-tabs .ui[class*="bottom attached"].menu {
+    display: inline-block;
+    width: 20%;
+    float: left;
+    border-top-right-radius: 0;
+    height: 432px;
+    border-bottom-right-radius: 0;
+    border-top: 1px solid #e1e1e1 !important;
+    background-color: #fff; }
+    .departments-tabs .ui[class*="bottom attached"].menu a {
+      color: #b4b4b4;
+      position: relative; }
+      .departments-tabs .ui[class*="bottom attached"].menu a:after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        width: 85%;
+        left: 7%;
+        border-top: 1px solid #e1e1e1;
+        bottom: 0; }
+      .departments-tabs .ui[class*="bottom attached"].menu a:last-child:after {
+        content: initial; }
+  .departments-tabs .tab-content {
+    background-color: #e1e1e1; }
+    .departments-tabs .tab-content .ui.header {
+      color: #636363;
+      font-size: 14px; }
+    .departments-tabs .tab-content a {
+      text-transform: capitalize;
+      color: rgba(0, 158, 255, 0.8);
+      text-decoration: underline;
+      font-size: 12px; }
+    .departments-tabs .tab-content .ui.grid > .column:not(.row),
+    .departments-tabs .tab-content .ui.grid > .row > .column {
+      padding-left: 3rem;
+      padding-right: 3rem; }
+    .departments-tabs .tab-content .list .item {
+      text-transform: capitalize;
+      font-size: 12px;
+      color: #a8a8a8; }
+    .departments-tabs .tab-content .ui.bulleted.list .list > .item,
+    .departments-tabs .tab-content .ui.bulleted.list > .item,
+    .departments-tabs .tab-content ul.ui.list li {
+      color: #636363;
+      font-size: 12px;
+      font-weight: 300;
+      text-transform: capitalize; }
+    .departments-tabs .tab-content .ui.grid > .row {
+      padding-top: 27px;
+      padding-bottom: 27px; }
+  .departments-tabs .ui.tab.active,
+  .departments-tabs .ui.tab.open {
+    display: inline-block;
+    width: 80%;
+    border-top: 1px solid;
+    height: 432px;
+    border-top-right-radius: 7px;
+    border-top: 1px solid #e1e1e1;
+    background-color: #fafafa; }
+  .departments-tabs .item {
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: bold; }
+    .departments-tabs .item > i.icon {
+      position: absolute;
+      right: 7px;
+      font-size: 14px;
+      text-transform: capitalize;
+      color: #cacaca; }
+  .departments-tabs .ui.menu .active.item,
+  .departments-tabs .ui.menu .active.item:hover,
+  .departments-tabs .ui.link.menu .item:hover,
+  .departments-tabs .ui.menu .dropdown.item:hover,
+  .departments-tabs .ui.menu .link.item:hover,
+  .departments-tabs .ui.menu a.item:hover {
+    color: #309de0;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: transparent; }
+    .departments-tabs .ui.menu .active.item i,
+    .departments-tabs .ui.menu .active.item:hover i,
+    .departments-tabs .ui.link.menu .item:hover i,
+    .departments-tabs .ui.menu .dropdown.item:hover i,
+    .departments-tabs .ui.menu .link.item:hover i,
+    .departments-tabs .ui.menu a.item:hover i {
+      color: #309de0; }
+  .departments-tabs .ui.bottom.attached.menu:before {
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    position: absolute;
+    top: -8px;
+    left: 22px;
+    transform: rotate(134deg);
+    border-left: 1px solid #d4d4d5;
+    border-bottom: 1px solid #d4d4d5; }
+
+.main-header .ui.menu {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-radius: 8px;
+  border-color: rgba(34, 36, 38, 0.1); }
+.main-header .ui.menu .item:before {
+  background: rgba(34, 36, 38, 0); }
+.main-header .bottom-nav .ui.menu {
+  border: solid;
+  border-color: rgba(40, 40, 40, 0.1);
+  border-width: 1px; }
+.main-header .container {
+  position: relative; }
+
+/*# sourceMappingURL=simpleOverride.css.map */

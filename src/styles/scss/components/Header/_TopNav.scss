@@ -8,6 +8,7 @@ $blue: #33a8ff;
     border: none;
     box-shadow: none;
     background-color: transparent;
+    border-radius: 7px;
   }
 
   .ui.default.dropdown:not(.button) > .text,
@@ -69,7 +70,6 @@ $blue: #33a8ff;
   }
   .ui.menu:not(.vertical) .right.item,
   .ui.menu:not(.vertical) .right.menu {
-    margin-left: 0 !important;
     > .item {
       position: relative;
       margin-right: 20px;

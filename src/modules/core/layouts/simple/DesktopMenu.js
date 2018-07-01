@@ -33,7 +33,10 @@ const DesktopMenu = ({ modules }) => (
 );
 
 DesktopMenu.propTypes = {
-  modules: PropTypes.arrayOf(PropTypes.object).isRequired,
+  modules: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    homePath: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default translate('core')(withModules(DesktopMenu));
