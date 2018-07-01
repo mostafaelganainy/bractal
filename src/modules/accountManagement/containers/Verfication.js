@@ -12,8 +12,8 @@ export default class Verification extends Component {
     super(props);
     this.state = {
       SmsOrEmailVerify: true,
-      ToggleSms: false,
-      ToggleEmail: false,
+      toggleSms: false,
+      toggleEmail: false,
       Code: '',
       ErrorCode: '',
       SuccessCode: '',
@@ -34,7 +34,7 @@ export default class Verification extends Component {
   ShowSMS =() => {
     this.setState(
       {
-        ToggleSms: !this.state.ToggleSms,
+        toggleSms: !this.state.toggleSms,
       },
       () => this.toggleSMSorEmailVerify,
     );
@@ -42,7 +42,7 @@ export default class Verification extends Component {
   ShowEmail =() => {
     this.setState(
       {
-        ToggleEmail: !this.state.ToggleEmail,
+        toggleEmail: !this.state.toggleEmail,
       },
       () => this.toggleSMSorEmailVerify,
     );
@@ -174,8 +174,8 @@ export default class Verification extends Component {
                       />
                     :
                       <EmailOrSms
-                        ToggleEmail={this.state.ToggleEmail}
-                        ToggleSms={this.state.ToggleSms}
+                        toggleEmail={this.state.toggleEmail}
+                        toggleSms={this.state.toggleSms}
                         handleChange={this.handleChange}
                         ErrorCode={this.state.ErrorCode}
                         ResndEmailerror={this.state.ResndEmailerror}

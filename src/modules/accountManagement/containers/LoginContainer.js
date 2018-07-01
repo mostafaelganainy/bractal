@@ -1,4 +1,7 @@
-import React, { Component, Button } from 'react';
+// eslint-disable-next-line
+/* eslint-disable jsx-a11y/label-has-for, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
+
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 import axios from 'axios';
@@ -38,7 +41,7 @@ class LoginContainer extends Component {
         ShowServerRegErrors(err.response.data.errors);
       });
   };
-  ToggleCreateAccContnt = () => {
+  toggleCreateAccountContent = () => {
     this.setState({ showCreateAccCont: true });
   };
   ShowVerify = () => {
@@ -68,7 +71,7 @@ class LoginContainer extends Component {
           localStorage.setItem('client', resp.headers.client);
           this.props.close();
         } else {
-          this.ToggleLoginContnt();
+          this.toggleLoginContnt();
           this.ShowVerify();
         }
       })
@@ -78,7 +81,7 @@ class LoginContainer extends Component {
       });
   };
 
-  ToggleLoginContnt = () => {
+  toggleLoginContnt = () => {
     this.setState({ showLoginCont: !this.state.showLoginCont });
   };
   render() {
@@ -88,10 +91,10 @@ class LoginContainer extends Component {
     if (this.state.showLoginCont) {
       ALlContentLogin = (
         <Login
-          ToggleLoginContnt={this.ToggleLoginContnt}
+          toggleLoginContnt={this.toggleLoginContnt}
           handleSubmit={this.handleSubmit}
           isLoading={this.state.isLoading}
-          ToggleCreateAccContnt={this.ToggleCreateAccContnt}
+          toggleCreateAccountContent={this.toggleCreateAccountContent}
         />
       );
     } else {
@@ -99,7 +102,7 @@ class LoginContainer extends Component {
         <div className="CreateVeriCont">
           <Container className="CreateAccContainer">
             <CreateAccount
-              BackLogin={this.ToggleLoginContnt}
+              BackLogin={this.toggleLoginContnt}
               close={close}
               showCreateAccCont={this.state.showCreateAccCont}
               handleSignUp={this.handleRegSubmit}
@@ -108,9 +111,9 @@ class LoginContainer extends Component {
           </Container>
           <p className="TextCenter FooterTxt">
             <Trans i18nKey="AlreadyHaveanaccount" />
-            <Button className="LoginLbl" onClick={this.ToggleLoginContnt}>
+            <label className="LoginLbl" onClick={this.toggleLoginContnt}>
               <Trans i18nKey="Login" />
-            </Button>
+            </label>
           </p>
         </div>
       );

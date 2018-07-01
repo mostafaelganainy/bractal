@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { Menu, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+import DropdownContentTracker from './DropdownContentTracker';
+
 // eslint-disable-next-line react/prop-types
 const renderIconImage = ({ iconImageSrc, styleClass }) => (
   <Image className={styleClass} src={iconImageSrc} srcSet={iconImageSrc} />
@@ -38,7 +40,7 @@ const renderIconLinkItem = itemInfo => (
   </React.Fragment>
 );
 
-const TopNavMenuItem = ({ itemInfo }) => (
+const ItemRenderer = itemInfo => (
   <React.Fragment>
     { itemInfo.iconRenderer == null
       ? renderIconLinkItem(itemInfo)
@@ -47,7 +49,25 @@ const TopNavMenuItem = ({ itemInfo }) => (
   </React.Fragment>
 );
 
-TopNavMenuItem.ItemInfoPropTypes = {
+const MenuItemRenderer = ({ itemInfo }) => {
+  const itemRenderer = ItemRenderer(itemInfo);
+
+  return (
+    <React.Fragment>
+      { !itemInfo.dropdownContent
+        ?
+          itemRenderer
+        :
+          <DropdownContentTracker
+            itemRenderer={itemRenderer}
+            dropdownContent={itemInfo.dropdownContent}
+          />
+      }
+    </React.Fragment>
+  );
+};
+
+MenuItemRenderer.ItemInfoPropTypes = {
   spacerWithWidth: PropTypes.number,
   iconImageSrc: PropTypes.string,
   iconRenderer: PropTypes.element,
@@ -58,10 +78,10 @@ TopNavMenuItem.ItemInfoPropTypes = {
   styleClass: PropTypes.string,
 };
 
-TopNavMenuItem.propTypes = PropTypes.shape({
+MenuItemRenderer.propTypes = PropTypes.shape({
   itemInfo: PropTypes.shape({
-    ...TopNavMenuItem.ItemInfoPropTypes,
+    ...MenuItemRenderer.ItemInfoPropTypes,
   }).isRequired,
 }).isRequired;
 
-export default TopNavMenuItem;
+export default MenuItemRenderer;

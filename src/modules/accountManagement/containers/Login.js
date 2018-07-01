@@ -177,12 +177,12 @@ export default class LoginPage extends Component {
                       <Grid.Row>
                         <input
                           type="text"
-                          placeholder={i18next.t('EmailMobileNumber')}
+                          placeholder={i18next.t('accountManagement:EmailMobileNumber')}
                           id="email"
                           autoComplete="off"
                           onChange={this.handleChange}
                           required
-                          value={this.state.email}
+                          value={this.state.email || ''}
                         />
                       </Grid.Row>
                       <p className="ErrorMsg">
@@ -191,12 +191,12 @@ export default class LoginPage extends Component {
                       <Grid.Row>
                         <input
                           type="password"
-                          placeholder={i18next.t('password')}
+                          placeholder={i18next.t('accountManagement:password')}
                           id="password"
                           autoComplete="off"
                           onChange={this.handleChange}
                           required
-                          value={this.state.password}
+                          value={this.state.password || ''}
                         />
                       </Grid.Row>
                       <p className="ErrorMsg">
@@ -207,7 +207,7 @@ export default class LoginPage extends Component {
                           <Grid.Column>
 
                             <Checkbox
-                              label={i18next.t('RememberMe')}
+                              label={i18next.t('accountManagement:RememberMe')}
                               checked={this.state.rememberMe}
                               onChange={this.handleChangeRem}
                             />
@@ -227,20 +227,25 @@ export default class LoginPage extends Component {
                         <Trans i18nKey="Login" />
 
                       </button>
-                      <p className="TextCenter fontSize11 Bylogin">
-                        <Trans i18nKey="Byloginyouagreetoour" />
-                        {' '}
-                        <Label>
+                      <div className="TextCenter fontSize11 Bylogin">
+                        <span className="TextCenter fontSize11 Bylogin">
+                          <Trans i18nKey="Byloginyouagreetoour" />
+                          {' '}
+                        </span>
+                        <a className="TextCenter fontSize11 Bylogin" href="/">
                           <Trans i18nKey="termsconditions" />
-                        </Label>
-                        <Trans i18nKey="ofuse" />
-                      </p>
+                        </a>
+                        <span className="TextCenter fontSize11 Bylogin">
+                          {' '}
+                          <Trans i18nKey="ofuse" />
+                        </span>
+                      </div>
                     </form>
                   </div>
                 </Grid.Column>
                 <Grid.Column only="large screen">
                   <RegisterData
-                    toggleLoginContent={this.props.toggleLoginContent}
+                    toggleLoginContent={this.props.toggleLoginContnt}
                     toggleCreateAccountContent={
                       this.props.toggleCreateAccountContent
                     }

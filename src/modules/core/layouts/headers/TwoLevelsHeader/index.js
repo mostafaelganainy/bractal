@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cuid from 'cuid';
 
 import HeaderDesktop from './HeaderDesktop';
 import PageContent from '../../content/AllLoadedModulesContent';
@@ -28,11 +29,30 @@ class TwoLevelsHeader extends React.Component {
     this.setState({ width: window.innerWidth });
   };
 
+  generateMenuItemsKeys = (menuInfo) => {
+    [menuInfo.desktopMenuInfo.top,
+      menuInfo.desktopMenuInfo.bottom,
+      menuInfo.mobileMenuInfo.top,
+      menuInfo.mobileMenuInfo.bottom].forEach((menuSpecs) => {
+      // eslint-disable-next-line no-param-reassign
+      menuSpecs.items = menuSpecs.items.map((item) => {
+        if (item.key) return item;
+
+        return {
+          ...item,
+          key: cuid(),
+        };
+      });
+    });
+  }
+
   render() {
     const { menuInfo } = this.props;
     const { width } = this.state;
     const isMobile = width <= 1201;
     let header;
+
+    this.generateMenuItemsKeys(menuInfo);
 
     if (isMobile) {
       header = <HeaderMobile />;
