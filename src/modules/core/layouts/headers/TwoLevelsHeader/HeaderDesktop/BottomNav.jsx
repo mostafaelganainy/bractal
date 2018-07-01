@@ -16,6 +16,8 @@ const LightBorderMenu = styled(Menu)`
     .item:before {
       background: rgba(34,36,38,0);
     }
+
+    ${props => props['custom-header-styles']}
   }
 `;
 
@@ -27,10 +29,10 @@ class BottomNav extends Component {
     this.setState({ dropdownMenuVisible: !this.state.dropdownMenuVisible });
   };
   render() {
-    const { menuInfo } = this.props;
+    const { menuInfo, customHeaderStyles } = this.props;
 
     return (
-      <LightBorderMenu>
+      <LightBorderMenu custom-header-styles={customHeaderStyles}>
         {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (
           <MenuItemRenderer key={item.key} itemInfo={item} />
         ))}
@@ -55,6 +57,7 @@ BottomNav.MenuInfoPropTypes = {
 };
 
 BottomNav.propTypes = PropTypes.shape({
+  customHeaderStyles: PropTypes.string,
   menuInfo: PropTypes.shape({
     ...BottomNav.MenuInfoPropTypes,
   }).isRequired,

@@ -14,10 +14,10 @@ const PositionedContainer = styled(Container)`
   }
 `;
 
-const HeaderDesktop = ({ menuInfo }) => (
+const HeaderDesktop = ({ menuInfo, topHeaderStyles, bottomHeaderStyles }) => (
   <PositionedContainer>
-    <TopNav menuInfo={menuInfo.top} />
-    <BottomNav menuInfo={menuInfo.bottom} />
+    <TopNav menuInfo={menuInfo.top} customHeaderStyles={topHeaderStyles} />
+    <BottomNav menuInfo={menuInfo.bottom} customHeaderStyles={bottomHeaderStyles} />
   </PositionedContainer>
 );
 
@@ -31,6 +31,8 @@ HeaderDesktop.MenuInfoPropTypes = {
 };
 
 HeaderDesktop.propTypes = PropTypes.shape({
+  topHeaderStyles: PropTypes.string,
+  bottomHeaderStyles: PropTypes.string,
   menuInfo: PropTypes.shape({
     ...HeaderDesktop.MenuInfoPropTypes,
   }).isRequired,

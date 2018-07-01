@@ -15,11 +15,13 @@ const BorderLessHeader = styled(Menu)`
     .item:before {
       background: rgba(34,36,38,0);
     }
+
+    ${props => props['custom-header-styles']}
   }
 `;
 
-const TopNav = ({ menuInfo }) => (
-  <BorderLessHeader>
+const TopNav = ({ menuInfo, customHeaderStyles }) => (
+  <BorderLessHeader custom-header-styles={customHeaderStyles}>
     {menuInfo.items.filter(item => !item.position || item.position !== 'right').map(item => (
       <MenuItemRenderer key={item.key} itemInfo={item} />
     ))}
@@ -38,6 +40,7 @@ TopNav.MenuInfoPropTypes = {
 };
 
 TopNav.propTypes = PropTypes.shape({
+  customHeaderStyles: PropTypes.string,
   menuInfo: PropTypes.shape({
     ...TopNav.MenuInfoPropTypes,
   }).isRequired,
