@@ -18,8 +18,6 @@ export default class CountriesCode extends Component {
   }
   SearchInp= (event) => {
     event.preventDefault();
-    /* eslint-disable no-debugger */
-    debugger;
     const input = document.getElementById('input');
     const filter = input.value.toUpperCase();
     const lis = document.getElementsByClassName('CountryDataLi');
@@ -58,6 +56,9 @@ export default class CountriesCode extends Component {
   };
   showDropdown = () => {
     this.props.showDropdown();
+    // if (document.getElementById('input')) {
+    //   setTimeout(() => document.getElementById('input').focus(), 300);
+    // }
   };
   renderDropdown = countriesCodeOpt => (
     <div>
