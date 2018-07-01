@@ -3,7 +3,6 @@ import {
   Header,
   Segment,
   Grid,
-  Image,
   Label,
   Rating,
 } from 'semantic-ui-react';
@@ -14,16 +13,16 @@ import dummyData from './dummyProductData';
 
 const styles = {
   card: {
-    width: '290px',
+    // width: '290px',
     margin: '1em',
   },
   card_tag_container: {
-    height: '2em',
+    height: '37px',
   },
   card_image: {
-    marginTop: '3.5em',
-    marginBottom: '2em',
-    height: '150px',
+    // marginTop: '3.5em',
+    // marginBottom: '2em',
+    // height: '150px',
   },
   card_header: {
     marginTop: '0.5em',
@@ -74,19 +73,25 @@ const ProductCard = ({ productInfo }) => {
       <div style={styles.card_tag_container}>
         {dummyProps.doesHaveDiscount
             ? (
-              <Label style={styles.card_tag} as="a" color="red" ribbon >
-                {Math.floor(dummyProps.discount * 100)}% Off
+              <Label style={styles.card_tag} className="offer" tag>
+                <span>{Math.floor(dummyProps.discount * 100)}</span>% Off
               </Label>
             )
             : ' '
         }
+        <div className="assets">
+          <div><i className="icon-compare" /></div>
+          <div><i className="icon-heart-1" /></div>
+        </div>
       </div>
-      <Image
-        style={styles.card_image}
-        src={dummyProps.image}
-        centered
-      />
-      <Label horizontal>Mobile Shop</Label>
+      <div className="img-preview">
+        <img
+          style={styles.card_image}
+          src={dummyProps.image}
+          alt=""
+        />
+      </div>
+      {/* <Label horizontal>Mobile Shop</Label> */}
       <Header style={styles.card_header} size="small">
         {productInfo.name}
       </Header>
@@ -103,7 +108,7 @@ const ProductCard = ({ productInfo }) => {
       </Grid.Row>
       <div style={styles.card_original_price}>
         <b>
-          <strike>
+          <strike className="discount">
             {dummyProps.doesHaveDiscount
               ? `${(parseFloat(productInfo.price) / (1 - dummyProps.discount)).toFixed(2)} QAR`
               : ' '

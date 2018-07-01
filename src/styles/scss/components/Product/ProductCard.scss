@@ -1,7 +1,131 @@
-.product-card {
+.ui.segment.product-card {
+  text-align: left;
+  margin: 0 !important;
+  box-shadow: none;
+  .header {
+    text-transform: capitalize;
+  }
   .product-card-price {
     background: transparent;
     font-size: 15.5px;
     padding: 0;
+  }
+  .discount {
+    font-size: 12.5px;
+  }
+  .assets {
+    display: inline-block;
+    float: right;
+    div {
+      display: inline-block;
+      color: #fb9410;
+      width: 37px;
+      height: 37px;
+      line-height: 41px;
+      text-align: center;
+      border: 1px solid #fb9410;
+      border-radius: 50%;
+      font-size: 19px;
+    }
+    div:first-child {
+      margin-right: 9px;
+    }
+  }
+  .ui.tag.label:after,
+  .ui.tag.labels .label:after {
+    box-shadow: none;
+  }
+  .ui.tag.label:before,
+  .ui.tag.labels .label:before {
+    width: 17px;
+    height: 17px;
+    right: 0;
+  }
+  .ui.label.tag {
+    color: #fff;
+    font-size: 12px;
+    display: inline-block;
+    height: 24px;
+    line-height: 15px;
+    border-radius: 0;
+    margin-left: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin-top: 7px;
+    span:after {
+      content: "";
+      border: 1px dashed #f5f5f5;
+      left: 6px;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      opacity: 0.75;
+    }
+  }
+  .offer {
+    background-color: #fd464b;
+  }
+  .ui.tag.label:after,
+  .ui.tag.labels .label:after {
+    right: -3px;
+    left: auto;
+    width: 5px;
+    height: 5px;
+  }
+  .img-preview {
+    height: 268px;
+    line-height: 268px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f5f5f5;
+    margin: 15px;
+    img {
+      max-height: 87%;
+      margin:auto !important;
+      max-width: 100%;
+    }
+  }
+}
+.slick-slider {
+  text-align: center;
+  .slick-dots li {
+    margin: 0;
+    &.slick-active button:before {
+      font-size: 12px;
+      color: #fb9410;
+    }
+    button:before {
+      font-size: 10px;
+      color: #fb9410;
+    }
+  }
+  .slick-next:before,
+  .slick-prev:before {
+    color: rgba(0, 0, 0, 0.1);
+  }
+  .slick-dots {
+    display: inline-block !important;
+    width: auto;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    width: 17px;
+    height: 17px;
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 13px;
+  }
+  .slick-prev:before {
+    content: "\f104";
+    font-family: Icons;
+  }
+  .slick-next:before {
+    content: "\f105";
+    font-family: Icons;
+  }
+  .slick-slide > div {
+    margin: 24px 15px !important;
   }
 }
