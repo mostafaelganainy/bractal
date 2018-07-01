@@ -77,7 +77,11 @@
     .TwoSides {
         padding: 0px 30px;
        
-
+.codeSelected{
+    position: relative;
+    top: -2px;
+    left: 3px;
+}
         #borderrBtom {
             border-bottom: 1px solid #d9d9d9;
             padding-bottom: 15px !important;
