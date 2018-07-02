@@ -21,7 +21,6 @@
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
     "eslint-plugin-flowtype": "2.39.1",
-    "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.4.0",
     "extract-text-webpack-plugin": "3.0.2",
@@ -53,6 +52,8 @@
     "semantic-ui-react": "^0.80.2",
     "slick-carousel": "^1.8.1",
     "style-loader": "0.19.0",
+    "styled-components": "^3.3.3",
+    "styled-theming": "^2.2.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
@@ -61,14 +62,17 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "sass --watch src/styles/scss:src/styles/css | PORT=3003 node scripts/start.js",
+    "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3003 node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint": "eslint .",
+    "lint": "npm run lint:css && npm run lint:es",
     "refetch-schema": "graphql-fetch-schema http://ayk-test.badrit.com/graphql",
-    "compile-relay": "relay-compiler  --verbose --src ./src/modules --schema ./schema.graphql"
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules --schema ./schema.graphql",
+    "lint:css": "stylelint './src/**/*.js*'",
+    "lint:es": "eslint ./src ",
+    "start": "npm run lint:css && npm run start-internal"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",
@@ -76,14 +80,21 @@
     "@storybook/addons": "^3.4.6",
     "@storybook/react": "^3.4.6",
     "babel-core": "^6.26.3",
+    "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-relay": "^1.6.0",
     "babel-runtime": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.12.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
-    "graphql": "^0.13.2"
+    "graphql": "^0.13.2",
+    "stylelint": "^9.3.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.3.1"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -117,14 +128,6 @@
       "jsx",
       "node",
       "mjs"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      "relay"
     ]
   },
   "eslintConfig": {

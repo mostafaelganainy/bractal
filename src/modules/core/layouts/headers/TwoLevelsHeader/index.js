@@ -47,7 +47,7 @@ class TwoLevelsHeader extends React.Component {
   }
 
   render() {
-    const { menuInfo } = this.props;
+    const { menuInfo, desktopTopHeaderStyles, desktopBottomHeaderStyles } = this.props;
     const { width } = this.state;
     const isMobile = width <= 1201;
     let header;
@@ -61,6 +61,8 @@ class TwoLevelsHeader extends React.Component {
         <React.Fragment >
           <HeaderDesktop
             menuInfo={menuInfo.desktopMenuInfo}
+            topHeaderStyles={desktopTopHeaderStyles}
+            bottomHeaderStyles={desktopBottomHeaderStyles}
           />
           <PageContent />
         </React.Fragment >
@@ -72,6 +74,8 @@ class TwoLevelsHeader extends React.Component {
 }
 
 TwoLevelsHeader.propTypes = PropTypes.shape({
+  desktopTopHeaderStyles: PropTypes.string,
+  desktopBottomHeaderStyles: PropTypes.string,
   menuInfo: PropTypes.shape({
     desktopMenuInfo: PropTypes.shape({
       ...HeaderDesktop.MenuInfoPropTypes,

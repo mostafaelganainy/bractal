@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import NavLanguageMobile from '../NavLanguage/NavLanguageMobile';
+import NavLanguageDesktop from '../NavLanguage/NavLanguageDesktop';
 
-import HeaderDesktop from '../components/header/HeaderDesktop';
-import HeaderMobile from '../components/header/HeaderMobile';
-
-class Layout extends React.Component {
+export default class NavLanguage extends Component {
   state = {
     width: window.innerWidth,
   };
-
   componentWillMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
@@ -25,21 +23,19 @@ class Layout extends React.Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 1201;
-    let header;
+
+    let languageView;
 
     if (isMobile) {
-      header = <HeaderMobile />;
+      languageView = <NavLanguageMobile />;
     } else {
-      header = <HeaderDesktop />;
+      languageView = <NavLanguageDesktop />;
     }
 
     return (
-      <React.Fragment>
-        { header }
-      </React.Fragment>
-
+      <div>
+        {languageView}
+      </div>
     );
   }
 }
-
-export default Layout;
