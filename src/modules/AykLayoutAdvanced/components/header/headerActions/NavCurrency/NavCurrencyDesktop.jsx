@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 
-import { VerticalAlign } from 'modules/core/styles/containers';
+import { VerticalAlign } from '~/modules/core/styles/containers';
 
 const NavCurrencyDesktop = props => (
   <VerticalAlign>
