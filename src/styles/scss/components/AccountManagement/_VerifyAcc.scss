@@ -104,3 +104,48 @@
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .VerfyAccCont {
+        .PaddingSides {
+            padding: 10px 10px;
+            padding-bottom: 0px;
+
+            .borderCont {
+                padding-bottom: 21px;
+
+                .VerfyAcc {
+                    width: 90%;
+                    margin: 0 auto;
+
+                    img {
+                        margin: 33px 0px;
+                        margin-bottom: -14px;
+                    }
+
+                    p {
+                        line-height: 1.98;
+                    }
+
+                    button {
+                        margin-bottom: 25px;
+                    }
+
+                    ul {
+                        li {
+                            text-align: left;
+                            margin-bottom: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
+        width: 100%;
+        margin: 0 auto;
+    }
+}

@@ -221,15 +221,18 @@ body {
     .ui.modal > .content, .ui.modal .content > .description {
         padding: 0 !important;
     }
-
-    .modals.dimmer .ui.scrolling.modal {
-        // width: 100% !important;
-        // margin-top:0 !important;
-   
+    .ui.modal > .content{
+        min-height: 95% !important;
     }
 
     .modal input[type="text"], .modal input[type="password"], .modal input[type="email"], .modal select {
         line-height: 1.314286em;
+    }
+    .ui.modal>.actions {
+        background: white;
+        padding: 0px !important;
+        border-top: none;
+        text-align: right;
     }
 }
 

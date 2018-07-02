@@ -112,6 +112,7 @@
 
     .SocialMediaCont {
         width: 100%;
+        margin-bottom:32px;
          .SvgCont{
             margin:0 auto;
             position: relative;
@@ -127,6 +128,9 @@
 
         .IconsCont {
             display: none;
+        }
+        .connectWith{
+          margin-bottom: 8px;
         }
     }
 }

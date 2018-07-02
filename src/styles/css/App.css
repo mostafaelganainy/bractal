@@ -168,8 +168,17 @@ body {
   .ui.modal > .content, .ui.modal .content > .description {
     padding: 0 !important; }
 
+  .ui.modal > .content {
+    min-height: 95% !important; }
+
   .modal input[type="text"], .modal input[type="password"], .modal input[type="email"], .modal select {
-    line-height: 1.314286em; } }
+    line-height: 1.314286em; }
+
+  .ui.modal > .actions {
+    background: white;
+    padding: 0px !important;
+    border-top: none;
+    text-align: right; } }
 @media only screen and (max-width: 991px) {
   .modals.dimmer .ui.scrolling.modal {
     margin-top: 0 !important;
@@ -1145,7 +1154,8 @@ h5 {
     text-align: left; } }
 @media screen and (max-width: 1024px) {
   .SocialMediaCont {
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 32px; }
     .SocialMediaCont .SvgCont {
       margin: 0 auto;
       position: relative;
@@ -1157,7 +1167,9 @@ h5 {
       text-align: left !important;
       padding: 23px 0px; }
     .SocialMediaCont .IconsCont {
-      display: none; } }
+      display: none; }
+    .SocialMediaCont .connectWith {
+      margin-bottom: 8px; } }
 .content {
   padding: 0px !important; }
 
@@ -1629,6 +1641,29 @@ h5 {
               cursor: pointer;
               margin-left: 6px; }
 
+@media screen and (max-width: 1024px) {
+  .VerfyAccCont .PaddingSides {
+    padding: 10px 10px;
+    padding-bottom: 0px; }
+    .VerfyAccCont .PaddingSides .borderCont {
+      padding-bottom: 21px; }
+      .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
+        width: 90%;
+        margin: 0 auto; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc img {
+          margin: 33px 0px;
+          margin-bottom: -14px; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc p {
+          line-height: 1.98; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc button {
+          margin-bottom: 25px; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc ul li {
+          text-align: left;
+          margin-bottom: 6px; } }
+@media screen and (max-width: 425px) {
+  .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
+    width: 100%;
+    margin: 0 auto; } }
 .LoaderCont {
   height: 100%;
   width: 100%;
@@ -1642,7 +1677,7 @@ h5 {
     position: relative;
     top: 53%;
     color: #309de0;
-    left: 43%;
+    text-align: center;
     font-size: 14px; }
 
 .lds-default {
@@ -1726,5 +1761,17 @@ h5 {
     transform: scale(1); }
   50% {
     transform: scale(1.5); } }
+@media screen and (max-width: 1024px) {
+  .lds-default {
+    left: 45%; }
+
+  .LoaderCont p {
+    left: auto !important;
+    text-align: center;
+    top: 50% !important; } }
+@media screen and (max-width: 425px) {
+  .lds-default {
+    left: 39%;
+    top: 38%; } }
 
 /*# sourceMappingURL=App.css.map */

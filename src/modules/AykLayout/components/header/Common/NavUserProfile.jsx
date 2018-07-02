@@ -1,11 +1,16 @@
 
 import React, { Component } from 'react';
-import { Image, Modal } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
 import LoginContainer from '../../../../accountManagement/containers/LoginContainer';
 import userAuthurization from '../../../../accountManagement/utilities/AccountManagement';
 
 export default class NavUserProfile extends Component {
-  state = { open: false };
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
   componentWillMount() {
     const expiryDate = parseFloat(localStorage.getItem('expiryDate'));
     if (
@@ -22,15 +27,7 @@ export default class NavUserProfile extends Component {
   }
   show = dimmer => () => this.setState({ dimmer, open: true });
   close = () => this.setState({ open: false });
-
   render() {
-    const inlineStyle = {
-      modal: {
-        marginTop: '0px !important',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-    };
     const Token = userAuthurization();
     let userImage = '';
 
@@ -49,25 +46,7 @@ export default class NavUserProfile extends Component {
     return (
       <div className="user-profile">
         {userImage}
-        <Modal
-          dimmer={this.state.dimmer}
-          open={this.state.open}
-          style={inlineStyle.modal}
-        >
-          <Modal.Content>
-            <Modal.Description>
-              <i
-                aria-hidden="true"
-                className="close big icon closePopup"
-                onClick={this.close}
-              />
-              <button className="closeSvg" onClick={this.close}>
-                <img src="images/AccountManagement/close-copy.png" alt="close Popup" />
-              </button>
-              <LoginContainer close={this.close} />
-            </Modal.Description>
-          </Modal.Content>
-        </Modal>
+        <LoginContainer open={this.state.open} dimmer={this.state.dimmer} close={this.close} />
       </div>
     );
   }

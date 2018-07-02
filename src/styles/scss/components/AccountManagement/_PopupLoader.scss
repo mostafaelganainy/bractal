@@ -12,7 +12,7 @@
         position: relative;
         top: 53%;
         color: #309de0;
-        left: 43%;
+        text-align: center;
         font-size: 14px;
     }
 }
@@ -114,5 +114,24 @@
 
     50% {
         transform: scale(1.5);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .lds-default {
+        left: 45%;
+    }
+
+    .LoaderCont p {
+        left: auto !important;
+        text-align: center;
+        top: 50% !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .lds-default {
+        left: 39%;
+        top: 38%;
     }
 }
