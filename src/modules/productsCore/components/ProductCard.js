@@ -19,25 +19,25 @@ const styles = {
     height: '37px',
   },
   card_header: {
-    marginTop: '0.5em',
-    marginBottom: '0.5em',
+    marginTop: '0.625em',
+    marginBottom: '0.625em',
     fontSize: '14px',
   },
   card_ratings_count: {
-    fontSize: '0.8em',
+    fontSize: '13px',
     verticalAlign: 'top',
     fontWeight: 'bold',
   },
   card_original_price: {
     fontSize: '1.2em',
     color: 'rgba(119, 119, 119, 0.4)',
-    marginTop: '0.3em',
+    marginTop: '15px',
     height: '1.1em',
     background: 'rgba(255, 255, 255, 1)',
   },
   card_current_price: {
     color: '#00b0e4',
-    marginTop: '9px',
+    marginTop: '5px',
   },
   card_more_details_button: {
     padding: '0.55em',

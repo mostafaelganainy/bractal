@@ -245,6 +245,9 @@ body {
 @font-face {
   font-family: Frutiger;
   src: url("../../assets/fonts/FrutigerLTArabic/FrutigerLTArabic-55Roman.ttf"); }
+html {
+  font-size: 16px !important; }
+
 body,
 .ui.menu,
 .ui.header,

@@ -1301,13 +1301,16 @@
   margin: 0 !important;
   box-shadow: none; }
   .ui.segment.product-card .header {
-    text-transform: capitalize; }
+    text-transform: capitalize;
+    font-size: 18px !important; }
+  .ui.segment.product-card .ui.small.rating {
+    font-size: 16px; }
   .ui.segment.product-card .product-card-price {
     background: transparent;
-    font-size: 15.5px;
+    font-size: 20px;
     padding: 0; }
   .ui.segment.product-card .discount {
-    font-size: 12.5px; }
+    font-size: 16px; }
   .ui.segment.product-card .assets {
     display: inline-block;
     float: right; }
@@ -1328,15 +1331,15 @@
     box-shadow: none; }
   .ui.segment.product-card .ui.tag.label:before,
   .ui.segment.product-card .ui.tag.labels .label:before {
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
     right: 0; }
   .ui.segment.product-card .ui.label.tag {
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     display: inline-block;
-    height: 24px;
-    line-height: 15px;
+    height: 30px;
+    line-height: 17px;
     border-radius: 0;
     margin-left: 0;
     border-top-left-radius: 3px;
