@@ -20,6 +20,7 @@ const dummyData = {
   getRandomRating: () => Math.floor(Math.random() * 5),
   getRandomDiscountDecision: () => (Math.random() > 0.7),
   getRandomDiscount: () => ((Math.random() / 4).toFixed(2)),
+  getRandomOfferType: () => (['haveDiscount', 'hotOffer', 'offer'][(Math.floor(Math.random() * 3))]),
 };
 
 export default dummyData;

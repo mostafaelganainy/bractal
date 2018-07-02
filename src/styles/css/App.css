@@ -1567,40 +1567,6 @@ h5 {
     transform: scale(1.5); } }
 .ui.segment.product-card .ui.tag.label:after,
 .ui.segment.product-card .ui.tag.labels .label:after {
-  box-shadow: none; }
-.ui.segment.product-card .ui.tag.label:before,
-.ui.segment.product-card .ui.tag.labels .label:before {
-  width: 20px;
-  height: 20px;
-  right: 0; }
-.ui.segment.product-card .ui.label.tag {
-  color: #fff;
-  font-size: 14px;
-  display: inline-block;
-  height: 30px;
-  line-height: 17px;
-  border-radius: 0;
-  margin-left: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-top: 7px;
-  text-transform: capitalize; }
-  .ui.segment.product-card .ui.label.tag span:after {
-    content: "";
-    border: 1px dashed #f5f5f5;
-    left: 6px;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    opacity: 0.75; }
-.ui.segment.product-card .hot-offer {
-  background-color: #fd464b; }
-.ui.segment.product-card .have-discount {
-  background-color: #65b3c1; }
-.ui.segment.product-card .offer {
-  background-color: #2adf1c; }
-.ui.segment.product-card .ui.tag.label:after,
-.ui.segment.product-card .ui.tag.labels .label:after {
   right: -3px;
   left: auto;
   width: 5px;

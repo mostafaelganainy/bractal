@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Label,
   Header,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -12,6 +11,7 @@ import { Spacer } from '~/modules/core/components/layouts/helpers';
 import AykRating from '~/modules/productsCore/components/common/AykRating';
 import PriceLabelStriked from '~/modules/productsCore/components/common/PriceLabelStriked';
 import PriceLabel from '~/modules/productsCore/components/common/PriceLabel';
+import ProductTag from '~/modules/productsCore/components/common/ProductTag';
 
 import dummyData from '../dummyProductData';
 
@@ -27,10 +27,6 @@ const CardContentHeader = styled(Header)`
   }
 `;
 
-const ProductsCardContainer = styled.div`
-  width: 350px;
-`;
-
 const generateDummyProps = () => (
   {
     image: dummyData.getRandomImage(),
@@ -38,8 +34,21 @@ const generateDummyProps = () => (
     rating: dummyData.getRandomRating(),
     doesHaveDiscount: dummyData.getRandomDiscountDecision(),
     discount: dummyData.getRandomDiscount(),
+    offerType: dummyData.getRandomOfferType(),
   }
 );
+
+const renderProductTag = (dummyProps) => {
+  const { offerType, doesHaveDiscount } = dummyProps;
+
+  if (!doesHaveDiscount) return <div />;
+
+  return (
+    <ProductTag offerType={offerType}>
+      discount <span>{Math.floor(dummyProps.discount * 100)}</span>%
+    </ProductTag>
+  );
+};
 
 const ProductCard = ({ productInfo }) => {
   const dummyProps = generateDummyProps();
@@ -48,13 +57,11 @@ const ProductCard = ({ productInfo }) => {
   const currentPrice = `${productInfo.price} QAR`;
 
   return (
-    <ProductsCardContainer>
+    <div>
       <Card
         productInfo={productInfo}
         headerLeftRenderer={
-          <Label className="have-discount" tag>
-            discount <span>{Math.floor(dummyProps.discount * 100)}</span>%
-          </Label>
+          renderProductTag(dummyProps)
         }
         headerRightRenderer={
           <CardActionsContainer className="assets">
@@ -88,7 +95,7 @@ const ProductCard = ({ productInfo }) => {
           null
         }
       />
-    </ProductsCardContainer>
+    </div>
   );
 };
 

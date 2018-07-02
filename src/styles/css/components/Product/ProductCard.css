@@ -1,23 +1,23 @@
 /*
 Error: Undefined mixin 'prefix'.
-        on line 96 of src/styles/scss/components/Product/ProductCard.scss, in `prefix'
-        from line 96 of src/styles/scss/components/Product/ProductCard.scss
+        on line 56 of src/styles/scss/components/Product/ProductCard.scss, in `prefix'
+        from line 56 of src/styles/scss/components/Product/ProductCard.scss
 
-91:     display: inline-block;
-92:     color: #7f7f7f;
-93:     background-color: #fff;
-94:     z-index: 1;
-95:     top: 48%;
-96:     @include prefix(box-shadow, 0px 1px 5px 0px rgba(0, 0, 0, 0.1));
-97:     &:before {
-98:       font-size: 47px;
-99:       color: rgba(0, 0, 0, 0.5);
-100:     }
-101:     &:hover:before {
+51:     display: inline-block;
+52:     color: #7f7f7f;
+53:     background-color: #fff;
+54:     z-index: 1;
+55:     top: 48%;
+56:     @include prefix(box-shadow, 0px 1px 5px 0px rgba(0, 0, 0, 0.1));
+57:     &:before {
+58:       font-size: 47px;
+59:       color: rgba(0, 0, 0, 0.5);
+60:     }
+61:     &:hover:before {
 
 Backtrace:
-src/styles/scss/components/Product/ProductCard.scss:96:in `prefix'
-src/styles/scss/components/Product/ProductCard.scss:96
+src/styles/scss/components/Product/ProductCard.scss:56:in `prefix'
+src/styles/scss/components/Product/ProductCard.scss:56
 /Users/vip/.rvm/gems/ruby-2.4.1@global/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:352:in `block in visit_mixin'
 /Users/vip/.rvm/gems/ruby-2.4.1@global/gems/sass-3.5.5/lib/sass/stack.rb:98:in `block in with_mixin'
 /Users/vip/.rvm/gems/ruby-2.4.1@global/gems/sass-3.5.5/lib/sass/stack.rb:135:in `with_frame'
@@ -84,4 +84,4 @@ src/styles/scss/components/Product/ProductCard.scss:96
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'prefix'.\A         on line 96 of src/styles/scss/components/Product/ProductCard.scss, in `prefix'\A         from line 96 of src/styles/scss/components/Product/ProductCard.scss\A \A 91:     display: inline-block;\A 92:     color: #7f7f7f;\A 93:     background-color: #fff;\A 94:     z-index: 1;\A 95:     top: 48%;\A 96:     @include prefix(box-shadow, 0px 1px 5px 0px rgba(0, 0, 0, 0.1));\A 97:     &:before {\A 98:       font-size: 47px;\A 99:       color: rgba(0, 0, 0, 0.5);\A 100:     }\A 101:     &:hover:before {"; }
+  content: "Error: Undefined mixin 'prefix'.\A         on line 56 of src/styles/scss/components/Product/ProductCard.scss, in `prefix'\A         from line 56 of src/styles/scss/components/Product/ProductCard.scss\A \A 51:     display: inline-block;\A 52:     color: #7f7f7f;\A 53:     background-color: #fff;\A 54:     z-index: 1;\A 55:     top: 48%;\A 56:     @include prefix(box-shadow, 0px 1px 5px 0px rgba(0, 0, 0, 0.1));\A 57:     &:before {\A 58:       font-size: 47px;\A 59:       color: rgba(0, 0, 0, 0.5);\A 60:     }\A 61:     &:hover:before {"; }
