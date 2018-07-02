@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Container } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -146,47 +146,45 @@ export default class Verification extends Component {
 
   render() {
     return (
-      <Container>
-        <div className="VerfyAccCont">
-          <div className="PaddingSides">
-            <div className="borderCont">
-              <div className="VerfyAcc">
-                <div>
-                  <Header as="h3">
-                    <Trans i18nKey="VerifyYourAccount" />
-                  </Header>
-                  <p>
-                    <Trans i18nKey="NecessarySteptoactiveyouraccount" />
-                  </p>
-                </div>
-                <div>
-                  {this.state.SmsOrEmailVerify
-                    ?
-                      <EmailAndSms
-                        ShowEmail={this.ShowEmail}
-                        ShowSMS={this.ShowSMS}
-                      />
-                    :
-                      <EmailOrSms
-                        toggleEmail={this.state.toggleEmail}
-                        toggleSms={this.state.toggleSms}
-                        handleChange={this.handleChange}
-                        ErrorCode={this.state.ErrorCode}
-                        ResndEmailerror={this.state.ResndEmailerror}
-                        SuccessCode={this.state.SuccessCode}
-                        ResendAccountConfiramtion={
-                          this.ResendAccountConfiramtion
-                        }
-                        handleVerifyCode={this.handleVerifyCode}
-                      />
-                  }
+      <div className="VerfyAccCont">
+        <div className="PaddingSides">
+          <div className="borderCont">
+            <div className="VerfyAcc">
+              <div>
+                <Header as="h3">
+                  <Trans i18nKey="VerifyYourAccount" />
+                </Header>
+                <p>
+                  <Trans i18nKey="NecessarySteptoactiveyouraccount" />
+                </p>
+              </div>
+              <div>
+                {this.state.SmsOrEmailVerify
+                  ?
+                    <EmailAndSms
+                      ShowEmail={this.ShowEmail}
+                      ShowSMS={this.ShowSMS}
+                    />
+                  :
+                    <EmailOrSms
+                      toggleEmail={this.state.toggleEmail}
+                      toggleSms={this.state.toggleSms}
+                      handleChange={this.handleChange}
+                      ErrorCode={this.state.ErrorCode}
+                      ResndEmailerror={this.state.ResndEmailerror}
+                      SuccessCode={this.state.SuccessCode}
+                      ResendAccountConfiramtion={
+                        this.ResendAccountConfiramtion
+                      }
+                      handleVerifyCode={this.handleVerifyCode}
+                    />
+                }
 
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     );
   }
 }

@@ -751,20 +751,31 @@
       .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
         width: 90%;
         margin: 0 auto; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify .CodeContainer {
+          width: 90%; }
+          .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify .CodeContainer #Code {
+            margin-bottom: 5px; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify img {
+          margin-bottom: 11px; }
         .VerfyAccCont .PaddingSides .borderCont .VerfyAcc img {
           margin: 33px 0px;
           margin-bottom: -14px; }
         .VerfyAccCont .PaddingSides .borderCont .VerfyAcc p {
           line-height: 1.98; }
-        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc button {
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .EmailOrSms button {
           margin-bottom: 25px; }
+        .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify button {
+          margin-bottom: 15px; }
         .VerfyAccCont .PaddingSides .borderCont .VerfyAcc ul li {
           text-align: left;
           margin-bottom: 6px; } }
 @media screen and (max-width: 425px) {
   .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
     width: 100%;
-    margin: 0 auto; } }
+    margin: 0 auto; }
+
+  .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify .CodeContainer {
+    width: 100%; } }
 .LoaderCont {
   height: 100%;
   width: 100%;

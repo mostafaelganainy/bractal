@@ -118,6 +118,20 @@
                     width: 90%;
                     margin: 0 auto;
 
+                    .SmsOrEmailVerify {
+                        .CodeContainer {
+                            width: 90%;
+
+                            #Code {
+                                margin-bottom: 5px;
+                            }
+                        }
+
+                        img {
+                            margin-bottom: 11px;
+                        }
+                    }
+
                     img {
                         margin: 33px 0px;
                         margin-bottom: -14px;
@@ -127,8 +141,12 @@
                         line-height: 1.98;
                     }
 
-                    button {
+                    .EmailOrSms button {
                         margin-bottom: 25px;
+                    }
+
+                    .SmsOrEmailVerify button {
+                        margin-bottom: 15px;
                     }
 
                     ul {
@@ -147,5 +165,19 @@
     .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
         width: 100%;
         margin: 0 auto;
+    }
+
+    .VerfyAccCont {
+        .PaddingSides {
+            .borderCont {
+                .VerfyAcc {
+                    .SmsOrEmailVerify {
+                        .CodeContainer {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
