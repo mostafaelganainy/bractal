@@ -141,7 +141,7 @@
             color: white;
             font-size: 14px;
             font-weight: bold;
-            margin-top: 44px;
+            margin-top: 35px;
         }
     }
 }
@@ -184,7 +184,9 @@
     .AllContnt .LoginContnt,  .AllContnt .crteAcuntSec  {
         padding: 0px 10px;
     }
-
+    .AllContnt .BkHdr p {
+        margin-bottom: 15px;
+    }
     .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
         line-height: 0.8;
         padding: 12px 0px;

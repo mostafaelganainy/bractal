@@ -44,7 +44,7 @@ body {
   tap-highlight-color: rgba(255, 255, 255, 0);
   line-height: 0.51428571em;
   padding: 0.67857143em 1em;
-  font-size: 1em;
+  font-size: 12px;
   background: #fff;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
@@ -53,7 +53,8 @@ body {
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   transition: color 0.1s ease, border-color 0.1s ease;
   width: 100%;
-  margin-bottom: 12.5px; }
+  margin-bottom: 12.5px;
+  padding-top: 10px; }
 .modal input:-webkit-autofill,
 .modal textarea:-webkit-autofill,
 .modal select:-webkit-autofill {
@@ -100,7 +101,7 @@ body {
   display: inline-block; }
 .modal .closeSvg {
   position: absolute;
-  right: 7px;
+  right: 4px;
   z-index: 1;
   display: none;
   background: none;
@@ -150,6 +151,9 @@ body {
 
   .closeSvg {
     display: inline-block !important; }
+
+  .modals.dimmer .ui.scrolling.modal {
+    margin: 0em auto !important; }
 
   .ui.modal {
     width: 100% !important;
