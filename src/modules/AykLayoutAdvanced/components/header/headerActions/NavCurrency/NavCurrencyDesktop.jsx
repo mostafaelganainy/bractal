@@ -2,8 +2,10 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 
+import { VerticalAlign } from 'modules/core/styles/containers';
+
 const NavCurrencyDesktop = props => (
-  <div>
+  <VerticalAlign>
     <Dropdown
       text="QAR"
       pointing
@@ -17,7 +19,7 @@ const NavCurrencyDesktop = props => (
         <Dropdown.Item>{props.currency[1].text}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-  </div>
+  </VerticalAlign>
 );
 
 NavCurrencyDesktop.propTypes = {

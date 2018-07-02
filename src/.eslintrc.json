@@ -11,10 +11,8 @@
         "node": true
     },
     "settings": {
-        "import/resolver": {            
-            "babel-module": {
-                "extensions": [".js", ".jsx"]
-            }
+        "import/resolver": {
+            "babel-module": {}
         }
     }
 }

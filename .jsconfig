@@ -1,0 +1,15 @@
+ {
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "test/*": ["test/*"],
+      "underscore": ["lodash"]
+    },
+    "target": "es6"
+  },
+  "exclude": [
+      "node_modules"
+  ]
+}
+  
