@@ -1,36 +1,5 @@
 .ui.segment.product-card {
-  text-align: left;
-  margin: 0 !important;
-  box-shadow: none;
-  .header {
-    text-transform: capitalize;
-  }
-  .product-card-price {
-    background: transparent;
-    font-size: 15.5px;
-    padding: 0;
-  }
-  .discount {
-    font-size: 12.5px;
-  }
-  .assets {
-    display: inline-block;
-    float: right;
-    div {
-      display: inline-block;
-      color: #fb9410;
-      width: 37px;
-      height: 37px;
-      line-height: 41px;
-      text-align: center;
-      border: 1px solid #fb9410;
-      border-radius: 50%;
-      font-size: 19px;
-    }
-    div:first-child {
-      margin-right: 9px;
-    }
-  }
+  
   .ui.tag.label:after,
   .ui.tag.labels .label:after {
     box-shadow: none;
@@ -79,6 +48,10 @@
     width: 5px;
     height: 5px;
   }
+
+
+
+
   .img-preview {
     height: 268px;
     line-height: 268px;

@@ -2,7 +2,7 @@ import i18next from 'i18next';
 
 import loadLocales from './locales/index';
 import Home from './containers/Home';
-import ProductCard from './components/ProductCard';
+import ProductCard from './components/productCard/ProductCard';
 
 const ModuleEntry = {
   name: 'productsCore',
