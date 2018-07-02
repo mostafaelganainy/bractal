@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const GrayLabel = styled.div`
   color: rgba(119, 119, 119, 0.4);
-  font-size: 12.5px;
+  font-size: 16px;
   height: 1.1em;
 `;
 

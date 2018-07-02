@@ -20,9 +20,15 @@ const CardActionsContainer = styled.div`
 `;
 
 const CardContentHeader = styled(Header)`
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  font-size: 14px;
+  &&& {
+    margin-top: 0.625em;
+    margin-bottom: 0.625em;
+    font-size: 18px;
+  }
+`;
+
+const ProductsCardContainer = styled.div`
+  width: 350px;
 `;
 
 const generateDummyProps = () => (
@@ -42,7 +48,7 @@ const ProductCard = ({ productInfo }) => {
   const currentPrice = `${productInfo.price} QAR`;
 
   return (
-    <React.Fragment>
+    <ProductsCardContainer>
       <Card
         productInfo={productInfo}
         headerLeftRenderer={
@@ -82,7 +88,7 @@ const ProductCard = ({ productInfo }) => {
           null
         }
       />
-    </React.Fragment>
+    </ProductsCardContainer>
   );
 };
 

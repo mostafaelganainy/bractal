@@ -6,10 +6,11 @@ import { Rating } from 'semantic-ui-react';
 const RatingContainer = styled.div`
   display: flex;
   align-items: center;
+  font-size: 18px !important;
 `;
 
 const RatingCount = styled.div`
-  font-size: 0.8em;
+  font-size: 13px;
   vertical-align: top;
   font-weight: bold;  
   margin-top: 3px;
