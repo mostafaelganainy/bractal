@@ -13,21 +13,15 @@ import dummyData from './dummyProductData';
 
 const styles = {
   card: {
-    // width: '290px',
     margin: '1em',
   },
   card_tag_container: {
     height: '37px',
   },
-  card_image: {
-    // marginTop: '3.5em',
-    // marginBottom: '2em',
-    // height: '150px',
-  },
   card_header: {
     marginTop: '0.5em',
     marginBottom: '0.5em',
-    fontSize: '1em',
+    fontSize: '14px',
   },
   card_ratings_count: {
     fontSize: '0.8em',
@@ -42,9 +36,8 @@ const styles = {
     background: 'rgba(255, 255, 255, 1)',
   },
   card_current_price: {
-    fontSize: '1.2em',
     color: '#00b0e4',
-    marginTop: '0.4em',
+    marginTop: '9px',
   },
   card_more_details_button: {
     padding: '0.55em',
@@ -73,11 +66,24 @@ const ProductCard = ({ productInfo }) => {
       <div style={styles.card_tag_container}>
         {dummyProps.doesHaveDiscount
             ? (
-              <Label style={styles.card_tag} className="offer" tag>
-                <span>{Math.floor(dummyProps.discount * 100)}</span>% Off
+              <Label style={styles.card_tag} className="have-discount" tag>
+              discount <span>{Math.floor(dummyProps.discount * 100)}</span>%
               </Label>
             )
+            /* : (
+              <Label style={styles.card_tag} className="hot-deal" tag>
+                <span>hot deal</span>
+              </Label>
+            ) */
+
+            /* : (
+              <Label style={styles.card_tag} className="offer" tag>
+                <span>offers</span>
+              </Label>
+            ) */
+
             : ' '
+
         }
         <div className="assets">
           <div><i className="icon-compare" /></div>
