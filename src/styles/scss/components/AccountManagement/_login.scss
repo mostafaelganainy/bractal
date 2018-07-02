@@ -1,7 +1,6 @@
 .AllContnt {
-
     .BkHdr {
-        background-color: #f7f7f7;
+        // background-color: #f7f7f7;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
 
@@ -63,26 +62,39 @@
                     font-size: 14px;
                     font-weight: bold;
                 }
-                .ResponsiveCreateAccountBtn{
-                    width:100%;
-                    background-color:white;
-                    border-radius:5px;
-                    line-height:3;
-                    margin:12px 0px;
-                    font-size:14px;
-                    font-weight:bold;
-                    border:1px solid#309de0;
-                    color:#309de0;
-              }
-              .ResponsiveCreateAccountTxt{
-                  margin-top:-3px;
-              }
+
+                .ResponsiveCreateAccountBtn {
+                    width: 100%;
+                    background-color: white;
+                    border-radius: 5px;
+                    line-height: 3;
+                    margin: 12px 0px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    border: 1px solid #309de0;
+                    color: #309de0;
+                }
+
+                .ResponsiveCreateAccountTxt {
+                    margin-top: -3px;
+                }
+
                 .RmmberLost {
                     line-height: 2.86;
                     padding: 19px 0px;
+                    font-size: 11px;
 
                     .RemmberMe {
                         opacity: 0.61;
+                    }
+
+                    .checkbox.ui {
+                        margin-top: 10px;
+                        min-width: 100px;
+                    }
+
+                    .ui.checkbox label {
+                        font-size: 11px;
                     }
 
                     .LostPass {
@@ -129,13 +141,16 @@
             color: white;
             font-size: 14px;
             font-weight: bold;
-            margin-top: 47px;
+            margin-top: 44px;
         }
     }
- 
 }
 
 @media screen and (min-width: 1025px) {
+    .BkHdr {
+        background-color: #f7f7f7;
+    }
+
     .Loginsec:after {
         content: "";
         background-color: #d9d9d9;
@@ -146,77 +161,79 @@
         left: 100%;
         display: block;
     }
-    .ResponsiveCreateAccountBtn,.ResponsiveCreateAccountTxt{
-        display:none;
+
+    .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
+        display: none;
     }
+
     .LoginContnt,
     .crteAcuntSec {
         padding: 0px 30px;
     }
-
 }
 
-@media screen and (max-width:1024px){
-    .ResponsiveCreateAccountBtn,.ResponsiveCreateAccountTxt{
-        display:block;
+@media screen and (max-width: 1024px) {
+    .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
+        display: block;
     }
-    .SocialMediaCont {
-        width:25%
+
+    .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+        padding: 0px;
     }
-    .SocialMediaCont .faceBok, .SocialMediaCont .Google, .SocialMediaCont .Insta, .SocialMediaCont .Tiwiter{
-          text-align:center;
-          padding-top:5px;
+
+    .AllContnt .LoginContnt,  .AllContnt .crteAcuntSec  {
+        padding: 0px 10px;
+    }
+
+    .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
+        line-height: 0.8;
+        padding: 12px 0px;
+        padding-bottom: 34px;
+    }
+
+    .AllContnt .LoginCont .Loginsec {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
+        padding-top: 16px;
+    }
+
+    .Bylogin {
+        margin-bottom: 21px;
+        margin-top: 0px;
+    }
+
+    .AllContnt .LoginCont {
+        border-bottom: 1px solid #00000024;
+        padding-bottom: 23px;
+    }
+
+    .connectWith {
+        margin-bottom: 10px;
     }
 }
 
-@media screen and (max-width:768px){
+@media only screen and (max-width: 991px) and (min-width: 770px) {
+    .AllContnt .LoginCont .Loginsec {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
 
-    .SocialMediaCont {
-        width:31%
-        }
-        .SvgCont{
-        margin:0 auto;
-        }
-        .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer{
-            padding:0px;
-        }
-        Button{
-            font-size:42.5px;
-        }
-       .RmmberLost{
-            font-size:33px;
-        }
-        .ErrorMsg ,.LoginContnt p{
-            font-size:30px;
-        }
-        .AllContnt .LoginContnt, .AllContnt .crteAcuntSec {
-            padding:0px 10px;
-        }
-        .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
-            line-height: 0.8;
-            padding: 12px 0px;
-            padding-bottom: 34px;
-        }
-        .AllContnt .LoginCont .Loginsec{
-            width:80%;
-            margin: 0 auto;
-            padding: 0px 45px;
-            border-bottom: 1px solid black;
-         }
-         .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
-            padding-top: 16px;
-        }
-        .Bylogin{
-            margin-bottom:21px;
-            margin-top:0px;
-        }
-        .AllContnt .LoginCont {
-            border-bottom: 1px solid #00000024;
-        }
+@media screen and (max-width: 425px) {
+    .LoginColmn {
+        padding: 0px !important;
+    }
+
+    .AllContnt .LoginCont .Loginsec {
+        width: 100%;
+    }
 }
 
 @-moz-document url-prefix() {
     .AllContnt .createAccount .creatAccBtn {
-        margin-top: 31px;
+        margin-top: 32px;
     }
 }

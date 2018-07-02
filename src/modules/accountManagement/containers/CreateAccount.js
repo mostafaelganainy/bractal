@@ -267,12 +267,12 @@ export default class CreateAccount extends Component {
               </div>
             </div>
             <Grid className="TwoSides">
-              <Grid.Row columns={2} className="padd0" id="borderrBtom">
-                <Grid.Column id="firstSide">
+              <Grid.Row columns="equal" className="padd0" id="borderrBtom">
+                <Grid.Column id="firstSide" mobile={16} tablet={16} computer={8}>
                   <div>
                     <Grid columns={2} className="padd0">
                       <Grid.Row className="padd0">
-                        <Grid.Column>
+                        <Grid.Column mobile={16} tablet={16} computer={8}>
                           <input
                             type="text"
                             placeholder={i18next.t('accountManagement:FirstName')}
@@ -289,7 +289,7 @@ export default class CreateAccount extends Component {
                             {this.state.first_nameErrorMessage}
                           </p>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column mobile={16} tablet={16} computer={8}>
                           <input
                             type="text"
                             placeholder={i18next.t('accountManagement:LastName')}
@@ -311,7 +311,7 @@ export default class CreateAccount extends Component {
                     </Grid>
                     <Grid columns={2}>
                       <Grid.Row className="padd0">
-                        <Grid.Column>
+                        <Grid.Column mobile={16} tablet={16} computer={8}>
                           <input
                             type="email"
                             placeholder={i18next.t('accountManagement:Email')}
@@ -325,7 +325,7 @@ export default class CreateAccount extends Component {
                             {this.state.emailErrorMessage}
                           </p>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column mobile={16} tablet={16} computer={8}>
                           <input
                             type={this.state.type}
                             placeholder={i18next.t('accountManagement:password')}
@@ -353,7 +353,7 @@ export default class CreateAccount extends Component {
 
                     <Grid columns={2}>
                       <Grid.Row className="padd0">
-                        <Grid.Column>
+                        <Grid.Column mobile={16} tablet={16} computer={8}>
                           <Nationalities
                             handleChange={this.handleChange}
                             CountriesData={this.state.CountriesData}
@@ -363,7 +363,7 @@ export default class CreateAccount extends Component {
                             {this.state.nationalityErrorMessage}
                           </p>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column mobile={16} tablet={16} computer={8}>
                           <MobileNum
                             CountriesData={this.state.CountriesData}
                             handleChange={this.handleChange}
@@ -381,7 +381,7 @@ export default class CreateAccount extends Component {
                     <Grid columns={2} className="padd0">
                       <Grid.Row className="padd0">
                         <Grid.Column width={4} />
-                        <Grid.Column width={8} className="GenderData">
+                        <Grid.Column mobile={16} tablet={16} computer={8} className="GenderData">
                           <Gender
                             handleChange={this.handleChange}
                             MaleIsactive={this.state.MaleIsactive}
@@ -398,7 +398,7 @@ export default class CreateAccount extends Component {
                     </Grid>
                   </div>
                 </Grid.Column>
-                <Grid.Column id="SecondSide">
+                <Grid.Column id="SecondSide" mobile={16} tablet={16} computer={8}>
                   <NewsLetterReg handleRegSubmit={this.handleRegSubmit} />
                 </Grid.Column>
               </Grid.Row>

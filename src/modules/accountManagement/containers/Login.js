@@ -160,7 +160,7 @@ export default class LoginPage extends Component {
           <div className="LoginCont">
             <Grid className="padd0">
               <Grid.Row columns="equal" className="padd0">
-                <Grid.Column>
+                <Grid.Column className="LoginColmn">
                   <div className="Loginsec">
                     <div className="BkHdr">
                       <Header as="h3" textAlign="center" className="Hdr">

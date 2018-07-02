@@ -1,6 +1,5 @@
 @charset "UTF-8";
 .AllContnt .BkHdr {
-  background-color: #f7f7f7;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px; }
   .AllContnt .BkHdr .Hdr {
@@ -58,9 +57,15 @@
       margin-top: -3px; }
     .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
       line-height: 2.86;
-      padding: 19px 0px; }
+      padding: 19px 0px;
+      font-size: 11px; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .RemmberMe {
         opacity: 0.61; }
+      .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .checkbox.ui {
+        margin-top: 10px;
+        min-width: 100px; }
+      .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .ui.checkbox label {
+        font-size: 11px; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
         float: right;
         color: #309de0;
@@ -94,9 +99,12 @@
     color: white;
     font-size: 14px;
     font-weight: bold;
-    margin-top: 47px; }
+    margin-top: 44px; }
 
 @media screen and (min-width: 1025px) {
+  .BkHdr {
+    background-color: #f7f7f7; }
+
   .Loginsec:after {
     content: "";
     background-color: #d9d9d9;
@@ -117,30 +125,8 @@
   .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
     display: block; }
 
-  .SocialMediaCont  {
-    width: 25%; }
-
-  .SocialMediaCont .faceBok, .SocialMediaCont .Google, .SocialMediaCont .Insta, .SocialMediaCont .Tiwiter {
-    text-align: center;
-    padding-top: 5px; } }
-@media screen and (max-width: 768px) {
-  .SocialMediaCont  {
-    width: 31%; }
-
-  .SvgCont {
-    margin: 0 auto; }
-
   .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
     padding: 0px; }
-
-  Button {
-    font-size: 42.5px; }
-
-  .RmmberLost {
-    font-size: 33px; }
-
-  .ErrorMsg, .LoginContnt p {
-    font-size: 30px; }
 
   .AllContnt .LoginContnt,  .AllContnt .crteAcuntSec  {
     padding: 0px 10px; }
@@ -151,10 +137,8 @@
     padding-bottom: 34px; }
 
   .AllContnt .LoginCont .Loginsec {
-    width: 80%;
-    margin:  0 auto;
-    padding:  0px 45px;
-    border-bottom:  1px solid black; }
+    width: 90%;
+    margin: 0 auto; }
 
   .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
     padding-top: 16px; }
@@ -164,10 +148,24 @@
     margin-top: 0px; }
 
   .AllContnt .LoginCont {
-    border-bottom: 1px solid #00000024; } }
+    border-bottom: 1px solid #00000024;
+    padding-bottom: 23px; }
+
+  .connectWith {
+    margin-bottom: 10px; } }
+@media only screen and (max-width: 991px) and (min-width: 770px) {
+  .AllContnt .LoginCont .Loginsec {
+    width: 100%;
+    margin: 0 auto; } }
+@media screen and (max-width: 425px) {
+  .LoginColmn {
+    padding: 0px !important; }
+
+  .AllContnt .LoginCont .Loginsec {
+    width: 100%; } }
 @-moz-document url-prefix() {
   .AllContnt .createAccount .creatAccBtn {
-    margin-top: 31px; } }
+    margin-top: 32px; } }
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -254,33 +252,21 @@
     text-align: left; } }
 @media screen and (max-width: 1024px) {
   .SocialMediaCont {
-    width: 50%; }
-    .SocialMediaCont .SvgCont {
-      margin-left: 9px;
-      margin-top: 8px; }
-    .SocialMediaCont .IconsCont {
-      display: none; }
-    .SocialMediaCont .faceBok, .SocialMediaCont .Google, .SocialMediaCont .Insta, .SocialMediaCont .Tiwiter {
-      width: 23% !important;
-      margin-right: 6px;
-      text-align: left !important; } }
-@media screen and (max-width: 768px) {
-  .SocialMediaCont {
-    width: 60%; } }
-@media screen and (max-width: 767px) {
-  .SocialMediaCont {
     width: 100%; }
     .SocialMediaCont .SvgCont {
-      margin-left: 34%;
-      margin-top: 8px; } }
+      margin: 0 auto;
+      position: relative;
+      top: -10px; }
+    .SocialMediaCont .faceBok, .SocialMediaCont .Google, .SocialMediaCont .Insta, .SocialMediaCont .Tiwiter {
+      width: 46px !important;
+      height: 46px !important;
+      margin-right: 6px;
+      text-align: left !important;
+      padding: 23px 0px; }
+    .SocialMediaCont .IconsCont {
+      display: none; } }
 .content {
   padding: 0px !important; }
-
-.CreateVeriCont {
-  background-image: url("../../assets/images/BackGroundImgs/-e-Ellipse-popup-bg@1x.png");
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: contain; }
 
 .CreateAccContainer {
   padding: 21px;
@@ -339,20 +325,6 @@
     .AllRegCont .TwoSides #borderrBtom {
       border-bottom: 1px solid #d9d9d9;
       padding-bottom: 15px !important; }
-      .AllRegCont .TwoSides #borderrBtom #firstSide {
-        width: 65% !important;
-        padding: 20px; }
-        .AllRegCont .TwoSides #borderrBtom #firstSide .column {
-          padding: 0px 6px; }
-      .AllRegCont .TwoSides #borderrBtom #firstSide:after {
-        content: "";
-        background-color: #d9d9d9;
-        position: absolute;
-        width: 1px;
-        height: 94%;
-        top: 4%;
-        left: 100%;
-        display: block; }
       .AllRegCont .TwoSides #borderrBtom .phoneSlctCont {
         width: 40% !important; }
         .AllRegCont .TwoSides #borderrBtom .phoneSlctCont .phoneSelect {
@@ -575,6 +547,83 @@
     border-bottom: 1px solid #309de0;
     margin-left: 6px; }
 
+@media screen and (min-width: 1025px) {
+  .bkBtn {
+    display: inline-block; }
+
+  .CreateVeriCont {
+    background-image: url("../../assets/images/BackGroundImgs/-e-Ellipse-popup-bg@1x.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain; }
+
+  #firstSide {
+    width: 65% !important;
+    padding: 20px; }
+    #firstSide .column {
+      padding: 0px 6px; }
+
+  #firstSide:after {
+    content: "";
+    background-color: #d9d9d9;
+    position: absolute;
+    width: 1px;
+    height: 94%;
+    top: 4%;
+    left: 100%;
+    display: block; } }
+@media screen and (max-width: 1024px) {
+  .CreateAccContainer {
+    padding: 17px;
+    padding-bottom: 0px; }
+    .CreateAccContainer .bkBtn {
+      display: none; }
+    .CreateAccContainer .hdrCont {
+      padding-right: 0px; }
+    .CreateAccContainer .AllRegCont {
+      padding: 6px 15px;
+      margin: 0px 22.5px; }
+      .CreateAccContainer .AllRegCont .RegisterHdrCont .hdrCont p {
+        margin-right: 0px; }
+      .CreateAccContainer .AllRegCont .TwoSides {
+        padding: 0 !important;
+        width: 90%;
+        margin: 0 auto !important; }
+        .CreateAccContainer .AllRegCont .TwoSides #firstSide {
+          padding: 0px !important; }
+        .CreateAccContainer .AllRegCont .TwoSides #borderrBtom {
+          padding-bottom: 38px !important; }
+          .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .GenderData .genderLblCont {
+            width: 19%;
+            float: left;
+            padding-top: 9px; }
+          .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide {
+            text-align: left;
+            width: 100% !important;
+            padding: 0px; }
+            .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide p {
+              margin-left: 0px;
+              width: 100%;
+              margin-top: 10px; }
+            .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide .chlBxCont {
+              margin-left: 0px;
+              margin-top: 25px;
+              text-align: left; }
+            .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide .RegisterBtn {
+              width: 100%;
+              margin-top: 33px; } }
+@media screen and (max-width: 425px) {
+  .CreateAccContainer .AllRegCont {
+    padding: 7px 1px;
+    margin: 0px; }
+    .CreateAccContainer .AllRegCont .RegisterHdrCont {
+      padding-bottom: 47px; }
+    .CreateAccContainer .AllRegCont .TwoSides {
+      width: 100%; }
+      .CreateAccContainer .AllRegCont .TwoSides .GenderData .genderLblCont {
+        width: 17%;
+        float: left;
+        padding-top: 9px; } }
 .VerfyAccCont {
   text-align: center; }
   .VerfyAccCont .PaddingSides {

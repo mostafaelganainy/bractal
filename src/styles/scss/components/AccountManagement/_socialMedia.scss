@@ -108,39 +108,36 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .SocialMediaCont {
-        width: 50%;
 
-        .SvgCont {
-            margin-left: 9px;
-            margin-top: 8px;
+
+    .SocialMediaCont {
+        width: 100%;
+         .SvgCont{
+            margin:0 auto;
+            position: relative;
+            top: -10px;
+        }
+         .faceBok, .Google,.Insta,.Tiwiter {
+            width:46px !important;
+            height:46px !important;
+            margin-right: 6px;
+            text-align: left !important;
+            padding: 23px 0px;
         }
 
         .IconsCont {
             display: none;
         }
-
-        .faceBok, .Google, .Insta, .Tiwiter {
-            width: 23% !important;
-            margin-right: 6px;
-            text-align: left !important;
-        }
     }
 }
 
-@media screen and (max-width: 768px) {
-    .SocialMediaCont {
-        width: 60%;
-    }
-}
+// @media screen and (max-width: 767px) {
+//     .SocialMediaCont {
+//         width: 100%;
 
-@media screen and (max-width: 767px) {
-    .SocialMediaCont {
-        width: 100%;
-
-        .SvgCont {
-            margin-left: 34%;
-            margin-top: 8px;
-        }
-    }
-}
+//         .SvgCont {
+//             margin-left: 34%;
+//             margin-top: 8px;
+//         }
+//     }
+// }

@@ -3,7 +3,6 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 import { Trans, translate } from 'react-i18next';
 
@@ -100,7 +99,7 @@ class LoginContainer extends Component {
     } else {
       ALlContentLogin = (
         <div className="CreateVeriCont">
-          <Container className="CreateAccContainer">
+          <div className="CreateAccContainer">
             <CreateAccount
               BackLogin={this.toggleLoginContent}
               close={close}
@@ -108,7 +107,7 @@ class LoginContainer extends Component {
               handleSignUp={this.handleRegSubmit}
               isLoading={this.state.isLoading}
             />
-          </Container>
+          </div>
           <p className="TextCenter FooterTxt">
             <Trans i18nKey="AlreadyHaveanaccount" />
             <label className="LoginLbl" onClick={this.toggleLoginContent}>
