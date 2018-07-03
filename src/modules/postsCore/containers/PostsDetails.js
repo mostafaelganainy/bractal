@@ -4,12 +4,18 @@ import {
 } from 'react-relay';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Header } from 'semantic-ui-react';
 
 const PostsDetails = ({ query }) => (
   <Container >
     <Segment >
-      { query.post.id }
+      <Header>
+        { query.post.title }
+      </Header>
+      { `By ${query.post.author.name}`}
+      <br />
+      <br />
+      { query.post.text }
     </Segment>
   </Container>
 );
