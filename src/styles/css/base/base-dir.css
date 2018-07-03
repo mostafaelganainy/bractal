@@ -54,7 +54,9 @@ body {
   transition: color 0.1s ease, border-color 0.1s ease;
   width: 100%;
   margin-bottom: 12.5px;
-  padding-top: 9.6px; }
+  padding-top: 9.6px;
+  height: 37px;
+  max-height: 37px; }
 .modal input:-webkit-autofill,
 .modal textarea:-webkit-autofill,
 .modal select:-webkit-autofill {

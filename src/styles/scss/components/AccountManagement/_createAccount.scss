@@ -169,12 +169,12 @@
                     width: 100%;
                     white-space: nowrap;
                     padding-left: 9px;
-                    height: 39px;
-                    max-height: 39px;
+                    height: 37px;
+                    max-height: 37px;
 
                     img {
                         position: relative;
-                        top: 3px;
+                        top: 2px;
                     }
                 }
 
@@ -517,11 +517,17 @@
         }
     }
     .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button{
-        height: 33px;
-        max-height: 33px;
+        height: 35px;
+        max-height: 35px;
     }
     .FooterTxt {
         margin-top: 16px;
+    }
+    .AllRegCont .TwoSides #borderrBtom .eye.icon {
+        position: absolute;
+        right: 11px;
+        top: 8px;
+        cursor: pointer;
     }
 }
 @media screen and (min-width:922px) and (max-width:1024px){
