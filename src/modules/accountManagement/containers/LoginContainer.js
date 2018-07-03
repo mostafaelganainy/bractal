@@ -48,8 +48,6 @@ class LoginContainer extends Component {
     this.setState({ showCreateAccCont: false });
   };
   ShowLoader = () => {
-    /* eslint-disable no-debugger */
-    debugger;
     this.setState({ isLoading: !this.state.isLoading });
   };
   handleSubmit = (user, clearFields, setErrors) => {

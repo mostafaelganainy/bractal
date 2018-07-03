@@ -63,7 +63,7 @@
         opacity: 0.61; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .checkbox.ui {
         margin-top: 10px;
-        min-width: 100px; }
+        width: 100%; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .ui.checkbox label {
         font-size: 11px; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
@@ -169,8 +169,8 @@
     width: 100%; } }
 @-moz-document url-prefix() {
   .AllContnt .createAccount .RegisterTxt {
-    height: 87px;
-    max-height: 87px; } }
+    height: 91px;
+    max-height: 91px; } }
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -404,7 +404,7 @@
         font-size: 50%;
         position: absolute;
         right: 10px;
-        top: -14px;
+        top: -17px;
         bottom: 0;
         margin-top: auto;
         margin-bottom: auto;

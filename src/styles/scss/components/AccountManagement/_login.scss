@@ -90,7 +90,7 @@
 
                     .checkbox.ui {
                         margin-top: 10px;
-                        min-width: 100px;
+                        width: 100%;
                     }
 
                     .ui.checkbox label {
@@ -237,7 +237,7 @@
 
 @-moz-document url-prefix() {
     .AllContnt .createAccount .RegisterTxt {
-        height: 87px;
-        max-height: 87px;
+        height: 91px;
+        max-height: 91px;
     }
 }

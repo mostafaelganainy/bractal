@@ -5,7 +5,8 @@ body {
 
 .ui.modal {
   top: auto !important;
-  left: auto !important; }
+  left: auto !important;
+  height: 544px; }
 
 .dimmed.dimmable > .ui.animating.dimmer,
 .dimmed.dimmable > .ui.visible.dimmer,
@@ -975,7 +976,7 @@ h5 {
         opacity: 0.61; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .checkbox.ui {
         margin-top: 10px;
-        min-width: 100px; }
+        width: 100%; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .ui.checkbox label {
         font-size: 11px; }
       .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
@@ -1081,8 +1082,8 @@ h5 {
     width: 100%; } }
 @-moz-document url-prefix() {
   .AllContnt .createAccount .RegisterTxt {
-    height: 87px;
-    max-height: 87px; } }
+    height: 91px;
+    max-height: 91px; } }
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -1316,7 +1317,7 @@ h5 {
         font-size: 50%;
         position: absolute;
         right: 10px;
-        top: -14px;
+        top: -17px;
         bottom: 0;
         margin-top: auto;
         margin-bottom: auto;
