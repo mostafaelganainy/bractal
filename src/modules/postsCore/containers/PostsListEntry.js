@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Segment,
   Header,
 } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -17,7 +16,7 @@ const JustifiedRow = styled.div`
   justify-content: space-between;
 `;
 const PostsListEntry = ({ postInfo }) => (
-  <Segment >
+  <React.Fragment>
     <Header>
       <h3>{ postInfo.title }</h3>
     </Header>
@@ -30,7 +29,7 @@ const PostsListEntry = ({ postInfo }) => (
         Show Details
       </Link>
     </JustifiedRow>
-  </Segment>
+  </React.Fragment>
 );
 
 

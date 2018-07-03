@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/anchor-is-valid, react/jsx-boolean-value */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import {
   QueryRenderer,
   graphql,
 } from 'react-relay';
-import { Container } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 
 import { withRelayEnvironment } from '../../core/utils/relayInitializer';
 
@@ -44,7 +44,11 @@ const PostsDetailsPage = ({ environment, match }) => {
               return <Container>{error.message}</Container>;
           // eslint-disable-next-line react/prop-types
           } else if (props && props.post) {
-              return <PostsDetails postInfo={props.post} />;
+              return (
+                <Segment>
+                  <PostsDetails hideHeaderAndAuthor={false} postInfo={props.post} />
+                </Segment>
+              );
           }
           return <Container>Loading ...</Container>;
         }}

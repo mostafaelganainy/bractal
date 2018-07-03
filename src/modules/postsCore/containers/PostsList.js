@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 
 import PostsListEntry from './PostsListEntry';
+import PostsDetails from './PostsDetails';
 
 const PostsList = ({ query }) => (
   <Container >
@@ -16,7 +17,11 @@ const PostsList = ({ query }) => (
       {
         query ?
           query.posts.map(entry => (
-            <PostsListEntry key={entry.__id} postInfo={entry} />
+            <Segment key={entry.__id} >
+              <PostsListEntry postInfo={entry} />
+              <br />
+              <PostsDetails hideHeaderAndAuthor postInfo={entry} />
+            </Segment>
           ))
         :
           'Loading...'
@@ -34,7 +39,8 @@ PostsList.propTypes = {
 export default createFragmentContainer(PostsList, graphql`
   fragment PostsList_query on Query {    
     posts {
-      ...PostsListEntry_postInfo    
+      ...PostsListEntry_postInfo
+      ...PostsDetails_postInfo
     }
   }
 `);
