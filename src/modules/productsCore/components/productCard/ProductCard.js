@@ -43,6 +43,10 @@ const OfferLabel = styled.div`
     font-size: 1em;
     padding: 10px;
     line-height: 1.1;
+    display: flex;
+    img{
+      max-width:100%;
+    }
   }
   span {
     font-size: 12px;
@@ -118,6 +122,7 @@ const ProductCard = ({ productInfo }) => {
           <OfferLabel>
             <div className="offer-label">
               buy 2X
+              {/* <img src="https://images-na.ssl-images-amazon.com/images/I/41nWLrWJRrL.__AC_SY400_.jpg" alt="" /> */}
             </div>
             <span>Free Shipping</span>
           </OfferLabel>
