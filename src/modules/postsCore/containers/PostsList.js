@@ -16,9 +16,7 @@ const PostsList = ({ query }) => (
       {
         query ?
           query.posts.map(entry => (
-            <React.Fragment key={entry.__id}>
-              <PostsListEntry postInfo={entry} />
-            </React.Fragment>
+            <PostsListEntry key={entry.__id} postInfo={entry} />
           ))
         :
           'Loading...'
@@ -36,7 +34,7 @@ PostsList.propTypes = {
 export default createFragmentContainer(PostsList, graphql`
   fragment PostsList_query on Query {    
     posts {
-      ...PostsListEntry_postInfo
+      ...PostsListEntry_postInfo    
     }
   }
 `);

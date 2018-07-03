@@ -21,7 +21,7 @@ const PostsDetails = ({ postInfo }) => (
 );
 
 PostsDetails.propTypes = PropTypes.shape({
-  postInfo: PropTypes.shape({}),
+  postInfo: PropTypes.shape({}).isRequired,
 }).isRequired;
 
 export default createFragmentContainer(PostsDetails, graphql`
