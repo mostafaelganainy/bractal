@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cuid from 'cuid';
 
 import HeaderDesktop from './HeaderDesktop';
-import PageContent from '../../content/AllLoadedModulesContent';
 
 
 const HeaderMobile = () => (
@@ -64,7 +63,6 @@ class TwoLevelsHeader extends React.Component {
             topHeaderStyles={desktopTopHeaderStyles}
             bottomHeaderStyles={desktopBottomHeaderStyles}
           />
-          <PageContent />
         </React.Fragment >
       );
     }

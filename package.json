@@ -68,8 +68,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:css && npm run lint:es",
-    "refetch-schema": "graphql-fetch-schema http://ayk-test.badrit.com/graphql",
-    "compile-relay": "relay-compiler  --verbose --src ./src/modules --schema ./schema.graphql",
+    "refetch-schema": "graphql-fetch-schema https://eu1.prisma.sh/mostafa-elganainy-2630c3/demo_3/dev",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules/postsCore --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",
     "lint:es": "eslint ./src ",
     "start": "npm run lint:css && npm run start-internal"

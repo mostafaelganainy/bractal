@@ -7,15 +7,18 @@ import PropTypes from 'prop-types';
 
 import { withModules } from '../../core/utils/modulesLoader';
 
-function PageContent({ modules }) {
-  return (
-    <Switch>
-      { modules.map(module => (
-        <Route key={module.name} path={module.homePath} exact component={module.HomePage} />
-      )) }
-    </Switch>
-  );
-}
+const PageContent = ({ modules }) => (
+  <Switch>
+    { modules.map(module => (
+      <Route
+        key={module.name}
+        exact={module.homePath === '/'}
+        path={module.homePath}
+        component={module.HomePage}
+      />
+    )) }
+  </Switch>
+);
 
 PageContent.propTypes = {
   modules: PropTypes.arrayOf(PropTypes.object).isRequired,

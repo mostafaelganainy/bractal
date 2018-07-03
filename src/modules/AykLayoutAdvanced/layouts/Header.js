@@ -4,10 +4,7 @@ import { Image, Menu } from 'semantic-ui-react';
 
 import HomePageLogo from '../components/header/HomePageLogo';
 import TwoLevelsHeader from '../../core/layouts/headers/TwoLevelsHeader';
-import DropDownBurger from '../components/header/DropDownBurger';
-import DepartmentsDropDownMenu from '../components/header/departments/DepartmentsTab';
 import { withModules } from '../../core/utils/modulesLoader';
-import NavCurrencyDesktop from '../components/header/headerActions/NavCurrency/NavCurrencyDesktop';
 import {
   desktopTopHeaderStyles,
   desktopBottomHeaderStyles,
@@ -30,38 +27,27 @@ const Header = ({ modules }) => {
             iconRenderer: <HomePageLogo />,
             targetURL: '/',
           },
-          {
-            iconRenderer: <NavCurrencyDesktop currency={[{ text: 'QAR' }, { text: 'USD' }]} />,
-            position: 'right',
-          },
         ],
       },
       bottom: {
         items: [
           {
-            iconRenderer: <DropDownBurger />,
-            dropdownContent: <DepartmentsDropDownMenu />,
-          },
-          {
-            spacerWithWidth: 10,
-          },
-          {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/fb-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/fb-lg.png', 'http://facebook.com'),
             targetURL: 'http://facebook.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/tr-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/tr-lg.png', 'http://facebook.com'),
             targetURL: 'http://twitter.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/yb-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/yb-lg.png', 'http://facebook.com'),
             targetURL: 'http://youtube.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/inst-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/inst-lg.png', 'http://facebook.com'),
             targetURL: 'http://instagram.com',
             position: 'right',
           },

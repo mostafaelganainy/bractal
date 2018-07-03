@@ -11,7 +11,7 @@ function PageContent({ modules }) {
   return (
     <Switch>
       { modules.map(module => (
-        <Route key={module.name} path={module.homePath} exact component={module.HomePage} />
+        <Route key={module.name} path={module.homePath} component={module.HomePage} />
       )) }
     </Switch>
   );

@@ -1,14 +1,8 @@
-import AccountManagement from './modules/accountManagement';
-import ProductsCore from './modules/productsCore';
-import NewProductsCore from './modules/PlainProducts';
-import AykLayout from './modules/AykLayout';
+import PostsCore from './modules/postsCore';
 
 
 const modules = [
-  AccountManagement,
-  ProductsCore,
-  NewProductsCore,
-  AykLayout,
+  PostsCore,
 ];
 
 export default modules;
