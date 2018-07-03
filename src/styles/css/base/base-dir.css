@@ -42,7 +42,7 @@ body {
   margin: 0;
   outline: 0;
   tap-highlight-color: rgba(255, 255, 255, 0);
-  line-height: 0.51428571em;
+  line-height: 1.51428571em;
   padding: 0.67857143em 1em;
   font-size: 12px;
   background: #fff;
@@ -54,7 +54,7 @@ body {
   transition: color 0.1s ease, border-color 0.1s ease;
   width: 100%;
   margin-bottom: 12.5px;
-  padding-top: 10.6px; }
+  padding-top: 9.6px; }
 .modal input:-webkit-autofill,
 .modal textarea:-webkit-autofill,
 .modal select:-webkit-autofill {
@@ -154,7 +154,7 @@ body {
     transform: rotate(360deg); } }
 @media screen and (min-width: 1025px) {
   .ui.modal {
-    height: 550px; } }
+    min-height: 550px; } }
 @media only screen and (max-width: 1024px) {
   .closePopup {
     display: none !important; }

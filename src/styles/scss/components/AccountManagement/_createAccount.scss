@@ -72,7 +72,7 @@
 
         .codeSelected {
             position: relative;
-            top: -4px;
+            top: -3px;
             left: 3px;
         }
 
@@ -169,12 +169,12 @@
                     width: 100%;
                     white-space: nowrap;
                     padding-left: 9px;
-                    height: 35px;
-                    max-height: 35px;
+                    height: 39px;
+                    max-height: 39px;
 
                     img {
                         position: relative;
-                        top: 1.4px;
+                        top: 3px;
                     }
                 }
 
@@ -301,7 +301,7 @@
             .eye.icon {
                 position: absolute;
                 right: 24px;
-                top: 9px;
+                top: 10px;
                 cursor: pointer;
             }
 
@@ -516,7 +516,10 @@
             }
         }
     }
-
+    .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button{
+        height: 33px;
+        max-height: 33px;
+    }
     .FooterTxt {
         margin-top: 16px;
     }
@@ -534,6 +537,22 @@
 @media screen and (min-width: 426px) and (max-width: 1024px) {
     .mobPadd0 {
         padding: 0px !important;
+    }
+}
+@media screen and (max-width: 768px) {
+    .AllRegCont {
+        .TwoSides {
+            #borderrBtom {
+
+                .GenderData {
+                    .genderLblCont {
+                        width: 17%;
+                        float: left;
+                        padding-top: 9px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -597,3 +616,4 @@
         }
     }
 }
+
