@@ -129,6 +129,8 @@
             width: 98%;
             text-align: center;
             margin: 0 auto;
+            height: 92px;
+            max-height: 92px;
         }
 
         .creatAccBtn {
@@ -141,7 +143,6 @@
             color: white;
             font-size: 14px;
             font-weight: bold;
-            margin-top: 35px;
         }
     }
 }
@@ -235,7 +236,8 @@
 }
 
 @-moz-document url-prefix() {
-    .AllContnt .createAccount .creatAccBtn {
-        margin-top: 32px;
+    .AllContnt .createAccount .RegisterTxt {
+        height: 87px;
+        max-height: 87px;
     }
 }

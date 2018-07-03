@@ -75,7 +75,7 @@ body {
         transition: color 0.1s ease, border-color 0.1s ease;
         width: 100%;
         margin-bottom: 12.5px;
-        padding-top: 10px;
+        padding-top: 10.6px;
     }
 
     input:-webkit-autofill,
@@ -208,6 +208,7 @@ body {
     .closePopup {
         display: none !important;
     }
+
     .closeSvg {
         display: inline-block !important;
     }
@@ -230,11 +231,13 @@ body {
     .ui.modal > .content, .ui.modal .content > .description {
         padding: 0 !important;
     }
-    .ui.modal > .content{
-        height:100% !important;
+
+    .ui.modal > .content {
+        height: 100% !important;
         padding-bottom: 47px !important;
     }
-    .actions{
+
+    .actions {
         position: absolute;
         bottom: 0px;
         width: 100%;
@@ -243,12 +246,20 @@ body {
     .modal input[type="text"], .modal input[type="password"], .modal input[type="email"], .modal select {
         line-height: 1.314286em;
     }
-
 }
 
 @media only screen and (max-width: 991px) {
     .modals.dimmer .ui.scrolling.modal {
         margin-top: 0 !important;
         margin-bottom: 0rem !important;
+    }
+}
+
+@-moz-document url-prefix() {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
+        font-size: 13px !important;
     }
 }
