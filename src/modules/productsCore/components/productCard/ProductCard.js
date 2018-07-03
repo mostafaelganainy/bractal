@@ -27,6 +27,29 @@ const CardContentHeader = styled(Header)`
   }
 `;
 
+const OfferLabel = styled.div`
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  .offer-label {
+    width: 58px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #e1e1e1;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1em;
+    padding: 10px;
+    line-height: 1.1;
+  }
+  span {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+`;
+
 const generateDummyProps = () => (
   {
     image: dummyData.getRandomImage(),
@@ -45,7 +68,7 @@ const renderProductTag = (dummyProps) => {
 
   return (
     <ProductTag offerType={offerType}>
-      discount <span>{Math.floor(dummyProps.discount * 100)}</span>%
+      <span>discount {Math.floor(dummyProps.discount * 100)}</span>%
     </ProductTag>
   );
 };
@@ -92,7 +115,12 @@ const ProductCard = ({ productInfo }) => {
           </div>
         }
         footerRightRenderer={
-          null
+          <OfferLabel>
+            <div className="offer-label">
+              buy 2X
+            </div>
+            <span>Free Shipping</span>
+          </OfferLabel>
         }
       />
     </div>

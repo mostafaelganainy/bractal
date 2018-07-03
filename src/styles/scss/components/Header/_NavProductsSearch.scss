@@ -1,9 +1,11 @@
 $blue: #33a8ff;
-
+.item.products-search {
+  width: 70%;
+}
 .products-search {
   margin: auto;
   height: 40px;
-
+  width: 90%;
   .field {
     display: inline-block;
   }
@@ -16,7 +18,7 @@ $blue: #33a8ff;
     height: 40px;
     line-height: 40px;
     text-align: center;
-    width: 120px;
+    width: 20%;
     background-color: #fff;
     display: inline-block;
     float: left;
@@ -39,8 +41,7 @@ $blue: #33a8ff;
     }
   }
   .ui.action.input {
-    // width: 50em;
-    width:30em;
+    width: 80%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     position: relative;
@@ -130,7 +131,22 @@ $blue: #33a8ff;
     }
   }
 }
-
+@media (max-width: 1600px) {
+  .item.products-search {
+    width: 60%;
+  }
+}
+@media (max-width: 1280px) {
+  .item.products-search {
+    width: 50%;
+    .products-search .ui.pointing.dropdown {
+      width: 30%;
+    }
+    .products-search .ui.action.input {
+      width: 70%;
+    }
+  }
+}
 @media (max-width: 568px) {
   .nav-mobile .ui.action.input:not([class*="left action"]) > .button:last-child,
   .nav-mobile
