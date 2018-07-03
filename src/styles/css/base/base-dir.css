@@ -4,8 +4,7 @@ body {
 
 .ui.modal {
   top: auto !important;
-  left: auto !important;
-  height: 544px; }
+  left: auto !important; }
 
 .dimmed.dimmable > .ui.animating.dimmer,
 .dimmed.dimmable > .ui.visible.dimmer,
@@ -153,6 +152,9 @@ body {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+@media screen and (min-width: 1025px) {
+  .ui.modal {
+    height: 550px; } }
 @media only screen and (max-width: 1024px) {
   .closePopup {
     display: none !important; }

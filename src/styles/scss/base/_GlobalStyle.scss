@@ -5,7 +5,6 @@ body {
 .ui.modal {
     top: auto !important;
     left: auto !important;
-    height: 544px;
 }
 
 .dimmed.dimmable > .ui.animating.dimmer,
@@ -204,7 +203,11 @@ body {
         transform: rotate(360deg);
     }
 }
-
+@media screen and (min-width:1025px){
+    .ui.modal{
+        height: 550px;
+    }
+}
 @media only screen and (max-width: 1024px) {
     .closePopup {
         display: none !important;

@@ -11,7 +11,7 @@ export default class MobileNum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      SelectedMobCode: 'Select',
+      SelectedMobCode: '',
       SelectedImg: '',
     };
   }
