@@ -13,6 +13,7 @@ import PriceLabelStriked from '~/modules/productsCore/components/common/PriceLab
 import PriceLabel from '~/modules/productsCore/components/common/PriceLabel';
 import ProductTag from '~/modules/productsCore/components/common/ProductTag';
 import OfferLabel from '~/modules/productsCore/components/common/OfferLabel';
+// import CountDown from '~/modules/productsCore/components/common/CountDown';
 
 import dummyData from '../dummyProductData';
 
@@ -59,6 +60,7 @@ const ProductCard = ({ productInfo }) => {
 
   return (
     <div>
+      {/* <CountDown /> */}
       <Card
         productInfo={productInfo}
         headerLeftRenderer={

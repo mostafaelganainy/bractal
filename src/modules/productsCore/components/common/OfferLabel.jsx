@@ -15,7 +15,7 @@ const OfferLabelItem = styled.div`
     margin-bottom: 5px;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: 1em;
+    font-size: 14px;
     padding: 10px;
     line-height: 1.1;
     display: flex;

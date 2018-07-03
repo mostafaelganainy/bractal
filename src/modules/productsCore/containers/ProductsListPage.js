@@ -7,6 +7,7 @@ import {
 } from 'react-relay';
 
 import { withRelayEnvironment } from '../../core/utils/relayInitializer';
+import Loader from '../components/common/Loader';
 
 import ProductsList from './ProductsList';
 
@@ -16,23 +17,26 @@ const AllProductsQuery = graphql`
     }
 `;
 
-const ProductsListPage = ({ environment }) => (
+const ProductsListPage = ({ environment, MainHeader, SubHeader }) => (
   <QueryRenderer
     environment={environment}
     query={AllProductsQuery}
     render={({ error, props }) => {
       if (error) {
-        return <ProductsList />; // return <div>{error.message}</div>;
+        return <ProductsList MainHeader={MainHeader} SubHeader={SubHeader} />;
+        // return <div>{error.message}</div>;
       } else if (props) {
-          return <ProductsList query={props} />;
+          return <ProductsList MainHeader={MainHeader} SubHeader={SubHeader} query={props} />;
       }
-      return <div>Loading</div>;
+      return <Loader />;
     }}
   />
 );
 
 ProductsListPage.propTypes = {
   environment: PropTypes.shape({}).isRequired,
+  MainHeader: PropTypes.string.isRequired,
+  SubHeader: PropTypes.string.isRequired,
 };
 
 export default translate('core')(withRelayEnvironment(ProductsListPage));

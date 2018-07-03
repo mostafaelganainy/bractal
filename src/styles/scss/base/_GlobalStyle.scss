@@ -197,3 +197,8 @@ body {
     width: 84%;
   }
 }
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+  .ui.container {
+    width: 100%;
+  }
+}
