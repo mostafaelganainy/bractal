@@ -83,7 +83,6 @@ const ProductCard = ({ productInfo }) => {
             ) */
 
             : ' '
-
         }
         <div className="assets">
           <div><i className="icon-compare" /></div>

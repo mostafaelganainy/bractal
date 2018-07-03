@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledPriceLabel = styled.div`
   color: #00b0e4;
-  margin-top: 9px;
+  margin-top: 5px;
   background: transparent;
   font-size: 20px;
   padding: 0;

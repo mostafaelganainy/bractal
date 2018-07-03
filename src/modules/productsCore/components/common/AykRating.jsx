@@ -7,6 +7,9 @@ const RatingContainer = styled.div`
   display: flex;
   align-items: center;
   font-size: 18px !important;
+  .ui.small.rating{
+    font-size: 16px;
+  }
 `;
 
 const RatingCount = styled.div`
