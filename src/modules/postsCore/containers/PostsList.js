@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 
 import PostsListEntry from './PostsListEntry';
-import PostsDetails from './PostsDetails';
 
 const PostsList = ({ query }) => (
   <Container >
@@ -19,7 +18,6 @@ const PostsList = ({ query }) => (
           query.posts.map(entry => (
             <React.Fragment key={entry.__id}>
               <PostsListEntry postInfo={entry} />
-              <PostsDetails postInfo={entry} />
             </React.Fragment>
           ))
         :
@@ -39,7 +37,6 @@ export default createFragmentContainer(PostsList, graphql`
   fragment PostsList_query on Query {    
     posts {
       ...PostsListEntry_postInfo
-      ...PostsDetails_postInfo
     }
   }
 `);
