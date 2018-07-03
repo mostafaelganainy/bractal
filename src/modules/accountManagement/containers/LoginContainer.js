@@ -63,17 +63,12 @@ class LoginContainer extends Component {
     })
       .then((resp) => {
         this.ShowLoader();
-        if (resp.data.data.verified) {
-          localStorage.setItem('AuthToken', resp.headers['access-token']);
-          localStorage.setItem('expiryDate', resp.headers.expiry);
-          localStorage.setItem('tokenType', resp.headers['token-type']);
-          localStorage.setItem('uid', resp.headers.uid);
-          localStorage.setItem('client', resp.headers.client);
-          this.props.close();
-        } else {
-          this.toggleLoginContent();
-          this.ShowVerify();
-        }
+        localStorage.setItem('AuthToken', resp.headers['access-token']);
+        localStorage.setItem('expiryDate', resp.headers.expiry);
+        localStorage.setItem('tokenType', resp.headers['token-type']);
+        localStorage.setItem('uid', resp.headers.uid);
+        localStorage.setItem('client', resp.headers.client);
+        this.props.close();
       })
       .catch((err) => {
         this.ShowLoader();

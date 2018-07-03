@@ -225,6 +225,7 @@ body {
         width: 100% !important;
         left: 2.5% !important;
         min-height: 100%;
+        position: relative !important;
     }
 
     .ui.modal > .icon:first-child + *, .ui.modal > :first-child:not(.icon) {
