@@ -216,7 +216,10 @@ body {
     .closePopup {
         display: none !important;
     }
-
+    .modals.dimmer .ui.scrolling.modal {
+        position: relative !important;
+        left:0px !important;
+    }
     .closeSvg {
         display: inline-block !important;
     }
@@ -270,12 +273,5 @@ body {
     input[type="email"],
     select {
         font-size: 13px !important;
-    }
-}
-
-@media only screen and (max-width: 425px) {
-    .modals.dimmer .ui.scrolling.modal {
-        position: relative !important;
-        left:0px !important;
     }
 }
