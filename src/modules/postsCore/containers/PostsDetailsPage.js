@@ -14,7 +14,9 @@ import PostsDetails from './PostsDetails';
 
 const PostsDetailsPageQuery = graphql`
     query PostsDetailsPageQuery ($filter: PostWhereUniqueInput!) {  
-      ...PostsDetails_query @arguments(filter: $filter)
+      post(where: $filter) {
+        ...PostsDetails_postInfo
+      }
     }
 `;
 
@@ -38,12 +40,11 @@ const PostsDetailsPage = ({ environment, match }) => {
           },
         }}
         render={({ error, props }) => {
-          // eslint-disable-next-line react/prop-types
-          const queryRoot = props;
           if (error) {
               return <Container>{error.message}</Container>;
-          } else if (props) {
-              return <PostsDetails query={queryRoot} />;
+          // eslint-disable-next-line react/prop-types
+          } else if (props && props.post) {
+              return <PostsDetails postInfo={props.post} />;
           }
           return <Container>Loading ...</Container>;
         }}

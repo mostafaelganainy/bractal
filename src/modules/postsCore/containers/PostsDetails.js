@@ -6,37 +6,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Segment, Header } from 'semantic-ui-react';
 
-const PostsDetails = ({ query }) => (
+const PostsDetails = ({ postInfo }) => (
   <Container >
     <Segment >
       <Header>
-        { query.post.title }
+        { postInfo && postInfo.title }
       </Header>
-      { `By ${query.post.author.name}`}
+      { `By ${postInfo && postInfo.author.name}`}
       <br />
       <br />
-      { query.post.text }
+      { postInfo && postInfo.text }
     </Segment>
   </Container>
 );
 
 PostsDetails.propTypes = PropTypes.shape({
-  query: PropTypes.shape({
-    post: PropTypes.shape(PropTypes.object),
-  }),
+  postInfo: PropTypes.shape({}),
 }).isRequired;
 
 export default createFragmentContainer(PostsDetails, graphql`
-  fragment PostsDetails_query on Query @argumentDefinitions(
-    filter: {type: "PostWhereUniqueInput!"},  # Optional argument
-  ) {    
-    post(where: $filter) {
-      id
-      title
-      text
-      author {
-        name
-      }
+  fragment PostsDetails_postInfo on Post {    
+    id
+    title
+    text
+    author {
+      name
     }
   }
 `);

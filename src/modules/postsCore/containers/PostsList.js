@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import {
   createFragmentContainer,
   graphql,
@@ -7,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Container, Segment } from 'semantic-ui-react';
 
 import PostsListEntry from './PostsListEntry';
+import PostsDetails from './PostsDetails';
 
 const PostsList = ({ query }) => (
   <Container >
@@ -14,8 +17,10 @@ const PostsList = ({ query }) => (
       {
         query ?
           query.posts.map(entry => (
-            // eslint-disable-next-line no-underscore-dangle
-            <PostsListEntry key={entry.__id} postInfo={entry} />
+            <React.Fragment key={entry.__id}>
+              <PostsListEntry postInfo={entry} />
+              <PostsDetails postInfo={entry} />
+            </React.Fragment>
           ))
         :
           'Loading...'
@@ -34,6 +39,7 @@ export default createFragmentContainer(PostsList, graphql`
   fragment PostsList_query on Query {    
     posts {
       ...PostsListEntry_postInfo
+      ...PostsDetails_postInfo
     }
   }
 `);

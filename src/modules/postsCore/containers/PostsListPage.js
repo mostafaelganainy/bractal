@@ -12,7 +12,7 @@ import PostsList from './PostsList';
 
 const PostsListPageQuery = graphql`
     query PostsListPageQuery {  
-      ...PostsList_query
+      ...PostsList_query      
     }
 `;
 
