@@ -12,6 +12,7 @@ import AykRating from '~/modules/productsCore/components/common/AykRating';
 import PriceLabelStriked from '~/modules/productsCore/components/common/PriceLabelStriked';
 import PriceLabel from '~/modules/productsCore/components/common/PriceLabel';
 import ProductTag from '~/modules/productsCore/components/common/ProductTag';
+import OfferLabel from '~/modules/productsCore/components/common/OfferLabel';
 
 import dummyData from '../dummyProductData';
 
@@ -24,33 +25,6 @@ const CardContentHeader = styled(Header)`
     margin-top: 0.625em;
     margin-bottom: 0.625em;
     font-size: 18px;
-  }
-`;
-
-const OfferLabel = styled.div`
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  .offer-label {
-    width: 58px;
-    height: 50px;
-    text-align: center;
-    border: 1px solid #e1e1e1;
-    color: rgba(0, 0, 0, 0.6);
-    margin-bottom: 5px;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 1em;
-    padding: 10px;
-    line-height: 1.1;
-    display: flex;
-    img{
-      max-width:100%;
-    }
-  }
-  span {
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.4);
   }
 `;
 
@@ -119,13 +93,16 @@ const ProductCard = ({ productInfo }) => {
           </div>
         }
         footerRightRenderer={
-          <OfferLabel>
-            <div className="offer-label">
-              buy 2X
-              {/* <img src="https://images-na.ssl-images-amazon.com/images/I/41nWLrWJRrL.__AC_SY400_.jpg" alt="" /> */}
-            </div>
-            <span>Free Shipping</span>
-          </OfferLabel>
+          <React.Fragment>
+            {/* <OfferLabel
+            text="Free Shipping"
+            offer={<img src="https://images-na.ssl-images-amazon.com/images/I/41nWLrWJRrL.__AC_SY400_.jpg" alt="" />}
+            /> */}
+            <OfferLabel
+              text="Free Shipping"
+              offer="buy 2x"
+            />
+          </React.Fragment>
         }
       />
     </div>
