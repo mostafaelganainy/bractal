@@ -56,27 +56,30 @@ body {
     border: 1px solid #319de0 !important;
   }
 
-  input[type="text"],
-  input[type="password"],
-  input[type="email"],
-  select {
-    font-family: Panton;
-    margin: 0;
-    outline: 0;
-    tap-highlight-color: rgba(255, 255, 255, 0);
-    line-height: 0.51428571em;
-    padding: 0.67857143em 1em;
-    font-size: 1em;
-    background: #fff;
-    border: 1px solid rgba(34, 36, 38, 0.15);
-    color: rgba(0, 0, 0, 0.87);
-    border-radius: 1.8571429rem;
-    box-shadow: 0 0 0 0 transparent inset;
-    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-    transition: color 0.1s ease, border-color 0.1s ease;
-    width: 100%;
-    margin-bottom: 11px;
-  }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
+        font-family: Panton;
+        margin: 0;
+        outline: 0;
+        tap-highlight-color: rgba(255, 255, 255, 0);
+        line-height: 1.51428571em;
+        padding: 0.67857143em 1em;
+        font-size: 12px;
+        background: #fff;
+        border: 1px solid rgba(34, 36, 38, 0.15);
+        color: rgba(0, 0, 0, 0.87);
+        border-radius: 1.8571429rem;
+        box-shadow: 0 0 0 0 transparent inset;
+        -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+        transition: color 0.1s ease, border-color 0.1s ease;
+        width: 100%;
+        margin-bottom: 12.5px;
+        padding-top: 9.6px;
+        height: 37px;
+        max-height: 37px;
+    }
 
   input:-webkit-autofill,
   textarea:-webkit-autofill,
@@ -124,23 +127,23 @@ body {
     outline-color: white !important;
   }
 
-  .closePopup {
-    position: absolute;
-    right: -8px;
-    top: -39px;
-    color: white;
-    font-weight: lighter;
-    cursor: pointer;
-    font-size: 1.5em !important;
-  }
+    .closePopup {
+        position: absolute;
+        right: -8px;
+        top: -39px;
+        color: white;
+        font-weight: lighter;
+        cursor: pointer;
+        font-size: 1.5em !important;
+    }
 
-  .ErrorMsg {
-    font-family: Panton;
-    font-size: 10px !important;
-    text-align: left !important;
-    color: #ff0000 !important;
-    margin-bottom: 6px !important;
-  }
+    .ErrorMsg {
+        font-family:Panton;
+        font-size: 10px !important;
+        text-align: left !important;
+        color: #ff0000 !important;
+        margin-bottom: 6px !important;
+    }
 
   .SuccessMsg {
     font-family: Panton;
@@ -171,6 +174,14 @@ body {
   right: 50%;
 }
 
+.ui.modal > .actions {
+    background: white;
+    padding: 0px !important;
+    border-top: none;
+    text-align: right;
+    margin-top: 15px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -182,15 +193,16 @@ body {
 }
 
 @media screen and (min-width: 768px) {
-  .ui.modal {
-    // width: 65% !important;
-  }
+    .ui.modal {
+        // width: 65% !important;
+   
+    }
 }
 
 @media screen and (max-width: 767px) {
-  .ui.modal {
-    width: 85% !important;
-  }
+    .ui.modal {
+        width: 85% !important;
+    }
 }
 @media only screen and (min-width: 1200px) {
   .ui.container {
@@ -201,4 +213,20 @@ body {
   .ui.container {
     width: 100%;
   }
+}
+
+@media only screen and (max-width: 991px) {
+    .modals.dimmer .ui.scrolling.modal {
+        margin-top: 0 !important;
+        margin-bottom: 0rem !important;
+    }
+}
+
+@-moz-document url-prefix() {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
+        font-size: 13px !important;
+    }
 }

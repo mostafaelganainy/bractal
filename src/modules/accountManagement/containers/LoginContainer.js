@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/label-has-for, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
 import axios from 'axios';
 import { Trans, translate } from 'react-i18next';
-
+import { Modal } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
+
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -63,17 +63,12 @@ class LoginContainer extends Component {
     })
       .then((resp) => {
         this.ShowLoader();
-        if (resp.data.data.verified) {
-          localStorage.setItem('AuthToken', resp.headers['access-token']);
-          localStorage.setItem('expiryDate', resp.headers.expiry);
-          localStorage.setItem('tokenType', resp.headers['token-type']);
-          localStorage.setItem('uid', resp.headers.uid);
-          localStorage.setItem('client', resp.headers.client);
-          this.props.close();
-        } else {
-          this.toggleLoginContnt();
-          this.ShowVerify();
-        }
+        localStorage.setItem('AuthToken', resp.headers['access-token']);
+        localStorage.setItem('expiryDate', resp.headers.expiry);
+        localStorage.setItem('tokenType', resp.headers['token-type']);
+        localStorage.setItem('uid', resp.headers.uid);
+        localStorage.setItem('client', resp.headers.client);
+        this.props.close();
       })
       .catch((err) => {
         this.ShowLoader();
@@ -81,17 +76,23 @@ class LoginContainer extends Component {
       });
   };
 
-  toggleLoginContnt = () => {
+  toggleLoginContent = () => {
     this.setState({ showLoginCont: !this.state.showLoginCont });
   };
   render() {
     let ALlContentLogin = '';
-    const { close } = this.props;
+    const inlineStyle = {
+      modal: {
+        marginTop: '0px !important',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      },
+    };
 
     if (this.state.showLoginCont) {
       ALlContentLogin = (
         <Login
-          toggleLoginContnt={this.toggleLoginContnt}
+          toggleLoginContent={this.toggleLoginContent}
           handleSubmit={this.handleSubmit}
           isLoading={this.state.isLoading}
           toggleCreateAccountContent={this.toggleCreateAccountContent}
@@ -100,34 +101,50 @@ class LoginContainer extends Component {
     } else {
       ALlContentLogin = (
         <div className="CreateVeriCont">
-          <Container className="CreateAccContainer">
+          <div className="CreateAccContainer">
             <CreateAccount
-              BackLogin={this.toggleLoginContnt}
-              close={close}
+              BackLogin={this.toggleLoginContent}
+              close={this.props.close}
               showCreateAccCont={this.state.showCreateAccCont}
               handleSignUp={this.handleRegSubmit}
               isLoading={this.state.isLoading}
             />
-          </Container>
-          <p className="TextCenter FooterTxt">
-            <Trans i18nKey="AlreadyHaveanaccount" />
-            <label className="LoginLbl" onClick={this.toggleLoginContnt}>
-              <Trans i18nKey="Login" />
-            </label>
-          </p>
+          </div>
         </div>
       );
     }
     return (
-      <div>
-        {ALlContentLogin}
-      </div>
+      <Modal dimmer={this.props.dimmer} open={this.props.open} style={inlineStyle.modal} >
+        <Modal.Content>
+          <Modal.Description>
+            <i aria-hidden="true" className="close big icon closePopup" onClick={this.props.close} />
+            <button className="closeSvg" onClick={this.props.close}>
+              <img src="images/AccountManagement/close-copy.png" alt="close Popup" />
+            </button>
+            <div>
+              {ALlContentLogin}
+            </div>
+          </Modal.Description>
+        </Modal.Content>
+        {!this.state.showLoginCont
+          ?
+            <Modal.Actions>
+              <p className="TextCenter FooterTxt">
+                <Trans i18nKey="AlreadyHaveanaccount" />
+                <label className="LoginLbl" onClick={this.toggleLoginContent}>
+                  <Trans i18nKey="Login" />
+                </label>
+              </p>
+            </Modal.Actions> : ''}
+      </Modal>
     );
   }
 }
 
-LoginContainer.propTypes = PropTypes.shape({
-  close: PropTypes.func.isRequired,
-}).isRequired;
 
 export default translate('accountManagement')(LoginContainer);
+LoginContainer.propTypes = {
+  close: PropTypes.func.isRequired,
+  open: PropTypes.string.isRequired,
+  dimmer: PropTypes.string.isRequired,
+}.isRequired;

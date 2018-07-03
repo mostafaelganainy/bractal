@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Container, Checkbox, Label } from 'semantic-ui-react';
+import { Grid, Header, Container, Checkbox } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 import i18next from 'i18next';
@@ -12,12 +12,8 @@ export default class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: localStorage.getItem('email') !== 'null'
-        ? localStorage.getItem('email')
-        : '',
-      password: localStorage.getItem('password') !== 'null'
-        ? localStorage.getItem('password')
-        : '',
+      email: '',
+      password: '',
       rememberMe: false,
       EmailErrorMessage: '',
       PassErrorMessage: '',
@@ -39,25 +35,26 @@ export default class LoginPage extends Component {
     );
     this.saveStateToLocalStorage();
   }
-
   setErrors = (err) => {
-    if (err.response.data.errors.email) {
-      this.setState({
-        EmailErrorMessage: err.response.data.errors.email,
-      });
-    } else {
-      this.setState({
-        EmailErrorMessage: '',
-      });
-    }
-    if (err.response.data.errors.password) {
-      this.setState({
-        PassErrorMessage: err.response.data.errors.password,
-      });
-    } else {
-      this.setState({
-        PassErrorMessage: '',
-      });
+    if (err.response) {
+      if (err.response.data.errors.email) {
+        this.setState({
+          EmailErrorMessage: err.response.data.errors.email,
+        });
+      } else {
+        this.setState({
+          EmailErrorMessage: '',
+        });
+      }
+      if (err.response.data.errors.password) {
+        this.setState({
+          PassErrorMessage: err.response.data.errors.password,
+        });
+      } else {
+        this.setState({
+          PassErrorMessage: '',
+        });
+      }
     }
   };
 
@@ -88,7 +85,10 @@ export default class LoginPage extends Component {
     localStorage.setItem('uid', uid);
     localStorage.setItem('client', client);
   }
-
+  ToggleLoginContnt = () => {
+    this.props.toggleLoginContent();
+    this.props.toggleCreateAccountContent();
+  };
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -160,7 +160,7 @@ export default class LoginPage extends Component {
           <div className="LoginCont">
             <Grid className="padd0">
               <Grid.Row columns="equal" className="padd0">
-                <Grid.Column>
+                <Grid.Column className="LoginColmn">
                   <div className="Loginsec">
                     <div className="BkHdr">
                       <Header as="h3" textAlign="center" className="Hdr">
@@ -214,9 +214,9 @@ export default class LoginPage extends Component {
 
                           </Grid.Column>
                           <Grid.Column>
-                            <Label className="fontSize11 LostPass">
+                            <span className="fontSize11 LostPass">
                               <Trans i18nKey="LostYourPassword" />
-                            </Label>
+                            </span>
                           </Grid.Column>
                         </Grid.Row>
                       </Grid>
@@ -228,24 +228,24 @@ export default class LoginPage extends Component {
 
                       </button>
                       <div className="TextCenter fontSize11 Bylogin">
-                        <span className="TextCenter fontSize11 Bylogin">
+                        <p className="TextCenter fontSize11 Bylogin">
                           <Trans i18nKey="Byloginyouagreetoour" />
-                          {' '}
-                        </span>
-                        <a className="TextCenter fontSize11 Bylogin" href="/">
-                          <Trans i18nKey="termsconditions" />
-                        </a>
-                        <span className="TextCenter fontSize11 Bylogin">
-                          {' '}
+                          {'  '}
+                          <a className="TextCenter fontSize11 Bylogin" href="/">
+                            <Trans i18nKey="termsconditions" />
+                          </a>
+                          {'  '}
                           <Trans i18nKey="ofuse" />
-                        </span>
+                        </p>
+                        <p className="TextCenter fontSize11 ResponsiveCreateAccountTxt">Don’t have account?</p>
+                        <button className="ResponsiveCreateAccountBtn" onClick={this.ToggleLoginContnt}>Create an account</button>
                       </div>
                     </form>
                   </div>
                 </Grid.Column>
                 <Grid.Column only="large screen">
                   <RegisterData
-                    toggleLoginContent={this.props.toggleLoginContnt}
+                    toggleLoginContent={this.props.toggleLoginContent}
                     toggleCreateAccountContent={
                       this.props.toggleCreateAccountContent
                     }

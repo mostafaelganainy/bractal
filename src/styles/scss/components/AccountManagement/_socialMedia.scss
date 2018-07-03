@@ -78,7 +78,7 @@
 
     .SvgCont {
         margin-top: 4px;
-        margin-right: 3px;
+        margin-right: 2px;
     }
 
     .SmFontSocial {
@@ -108,39 +108,29 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .SocialMediaCont {
-        width: 50%;
 
-        .SvgCont {
-            margin-left: 9px;
-            margin-top: 8px;
+
+    .SocialMediaCont {
+        width: 100%;
+        margin-bottom:32px;
+         .SvgCont{
+            margin:0 auto;
+            position: relative;
+            top: -10px;
+        }
+         .faceBok, .Google,.Insta,.Tiwiter {
+            width:46px !important;
+            height:46px !important;
+            margin-right: 6px;
+            text-align: left !important;
+            padding: 23px 0px;
         }
 
         .IconsCont {
             display: none;
         }
-
-        .faceBok, .Google, .Insta, .Tiwiter {
-            width: 23% !important;
-            margin-right: 6px;
-            text-align: left !important;
-        }
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .SocialMediaCont {
-        width: 60%;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .SocialMediaCont {
-        width: 100%;
-
-        .SvgCont {
-            margin-left: 34%;
-            margin-top: 8px;
+        .connectWith{
+          margin-bottom: 8px;
         }
     }
 }

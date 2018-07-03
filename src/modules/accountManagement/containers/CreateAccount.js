@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import SocialMedia from '../components/SocialMedia';
 import Gender from '../components/Gender';
 import Nationalities from '../components/Nationalities';
-import MobileNum from '../components/MobileNum';
+import MobileNum from './MobileNum';
 import Verification from './Verfication';
 import AllCountries from './AllCountries.json';
 import NewsLetterReg from './NewsLetterReg';
@@ -83,6 +83,7 @@ export default class CreateAccount extends Component {
     this.state.country_code !== undefined &&
     this.state.mobile_number !== undefined
   );
+
 
   handleCodeChange = Code => this.setState({ country_code: Code });
 
@@ -169,10 +170,10 @@ export default class CreateAccount extends Component {
           });
         }
       } else if (!ErrorObj.mobile_number) {
-        const msgError = ErrorObj[fieldName]
-          .filter(val => val)
-          .join(', ');
         if (ErrorObj[fieldName]) {
+          const msgError = ErrorObj[fieldName]
+            .filter(val => val)
+            .join(', ');
           this.setState({
             mobile_numberErrorMessage: msgError,
           });
@@ -184,7 +185,6 @@ export default class CreateAccount extends Component {
       }
     });
   };
-
   handleRegSubmit = (event) => {
     const { handleSignUp } = this.props;
 
@@ -220,11 +220,14 @@ export default class CreateAccount extends Component {
   saveStateToLocalStorage = () => {
     const SavedEmailval = localStorage.getItem('SavedEmail');
     localStorage.setItem('SavedEmail', SavedEmailval);
+    this.setState({ SavedEmail: SavedEmailval });
   }
 
-  RemoveMobileDropdown = () => {
-    if (this.state.DropdownisShown === true) {
-      this.showDropdown();
+  RemoveMobileDropdown = (event) => {
+    if (event.target.id !== 'input') {
+      if (this.state.DropdownisShown === true) {
+        this.showDropdown();
+      }
     }
   };
 
@@ -264,12 +267,12 @@ export default class CreateAccount extends Component {
               </div>
             </div>
             <Grid className="TwoSides">
-              <Grid.Row columns={2} className="padd0" id="borderrBtom">
-                <Grid.Column id="firstSide">
+              <Grid.Row columns="equal" className="padd0" id="borderrBtom">
+                <Grid.Column id="firstSide"largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                   <div>
                     <Grid columns={2} className="padd0">
                       <Grid.Row className="padd0">
-                        <Grid.Column>
+                        <Grid.Column className="mobPadd0" largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                           <input
                             type="text"
                             placeholder={i18next.t('accountManagement:FirstName')}
@@ -286,7 +289,7 @@ export default class CreateAccount extends Component {
                             {this.state.first_nameErrorMessage}
                           </p>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column className="mobPadd0" largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                           <input
                             type="text"
                             placeholder={i18next.t('accountManagement:LastName')}
@@ -306,9 +309,9 @@ export default class CreateAccount extends Component {
 
                       </Grid.Row>
                     </Grid>
-                    <Grid columns={2}>
+                    <Grid columns={2} className="padd0">
                       <Grid.Row className="padd0">
-                        <Grid.Column>
+                        <Grid.Column className="mobPadd0" largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                           <input
                             type="email"
                             placeholder={i18next.t('accountManagement:Email')}
@@ -322,7 +325,7 @@ export default class CreateAccount extends Component {
                             {this.state.emailErrorMessage}
                           </p>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column className="mobPadd0"largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                           <input
                             type={this.state.type}
                             placeholder={i18next.t('accountManagement:password')}
@@ -348,9 +351,9 @@ export default class CreateAccount extends Component {
                       </Grid.Row>
                     </Grid>
 
-                    <Grid columns={2}>
+                    <Grid columns={2} className="padd0">
                       <Grid.Row className="padd0">
-                        <Grid.Column>
+                        <Grid.Column className="mobPadd0" largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                           <Nationalities
                             handleChange={this.handleChange}
                             CountriesData={this.state.CountriesData}
@@ -360,7 +363,7 @@ export default class CreateAccount extends Component {
                             {this.state.nationalityErrorMessage}
                           </p>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column className="mobPadd0" largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                           <MobileNum
                             CountriesData={this.state.CountriesData}
                             handleChange={this.handleChange}
@@ -378,7 +381,7 @@ export default class CreateAccount extends Component {
                     <Grid columns={2} className="padd0">
                       <Grid.Row className="padd0">
                         <Grid.Column width={4} />
-                        <Grid.Column width={8} className="GenderData">
+                        <Grid.Column largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16} className="GenderData mobPadd0">
                           <Gender
                             handleChange={this.handleChange}
                             MaleIsactive={this.state.MaleIsactive}
@@ -395,7 +398,7 @@ export default class CreateAccount extends Component {
                     </Grid>
                   </div>
                 </Grid.Column>
-                <Grid.Column id="SecondSide">
+                <Grid.Column id="SecondSide" largeScreen={8} widescreen={8} mobile={16} tablet={16} computer={16}>
                   <NewsLetterReg handleRegSubmit={this.handleRegSubmit} />
                 </Grid.Column>
               </Grid.Row>
