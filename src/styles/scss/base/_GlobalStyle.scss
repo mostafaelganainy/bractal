@@ -203,11 +203,13 @@ body {
         transform: rotate(360deg);
     }
 }
-@media screen and (min-width:1025px){
-    .ui.modal{
+
+@media screen and (min-width: 1025px) {
+    .ui.modal {
         height: 550px;
     }
 }
+
 @media only screen and (max-width: 1024px) {
     .closePopup {
         display: none !important;
@@ -266,5 +268,12 @@ body {
     input[type="email"],
     select {
         font-size: 13px !important;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .modals.dimmer .ui.scrolling.modal {
+        position: relative !important;
+        left:0px !important;
     }
 }
