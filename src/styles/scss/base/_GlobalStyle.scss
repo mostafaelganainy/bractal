@@ -186,6 +186,14 @@ body {
     right: 50%;
 }
 
+.ui.modal > .actions {
+    background: white;
+    padding: 0px !important;
+    border-top: none;
+    text-align: right;
+    margin-top: 15px;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -200,7 +208,6 @@ body {
     .closePopup {
         display: none !important;
     }
-
     .closeSvg {
         display: inline-block !important;
     }
@@ -212,8 +219,7 @@ body {
     .ui.modal {
         width: 100% !important;
         left: 2.5% !important;
-        // min-height: 100%;
-        // height: 100%;
+        min-height: 100%;
     }
 
     .ui.modal > .icon:first-child + *, .ui.modal > :first-child:not(.icon) {
@@ -224,56 +230,25 @@ body {
     .ui.modal > .content, .ui.modal .content > .description {
         padding: 0 !important;
     }
-
-    .ui.modal > .content {
-        min-height: 90% !important;
+    .ui.modal > .content{
+        height:100% !important;
+        padding-bottom: 47px !important;
+    }
+    .actions{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
     }
 
     .modal input[type="text"], .modal input[type="password"], .modal input[type="email"], .modal select {
         line-height: 1.314286em;
     }
 
-    .ui.modal > .actions {
-        background: white;
-        padding: 0px !important;
-        border-top: none;
-        text-align: right;
-
-        // position: fixed;
-        // width: 100%;
-        // bottom: 0;
-   
-    }
-
-    // .blurring.dimmable > .dimmer {
-    //     background-color: white;
-    // }
 }
 
 @media only screen and (max-width: 991px) {
     .modals.dimmer .ui.scrolling.modal {
         margin-top: 0 !important;
         margin-bottom: 0rem !important;
-    }
-}
-@media screen and (min-height:641px){
-    .ui.modal {
-        min-height: 100%;
-        height: 100%;
-    }
-}
-@media screen and (min-height:737px){
-    .ui.modal > .content {
-        min-height: 92% !important;
-    }
-}
-@media screen and (min-height:1023px){
-    .ui.modal > .content {
-        min-height: 93% !important;
-    }
-}
-@media screen and (min-height:1200px){
-    .ui.modal > .content {
-        min-height: 94.3% !important;
     }
 }

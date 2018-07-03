@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import Login from './Login';
 import CreateAccount from './CreateAccount';
 
+
 class LoginContainer extends Component {
   constructor(props) {
     super(props);
@@ -94,7 +95,6 @@ class LoginContainer extends Component {
         marginRight: 'auto',
       },
     };
-
 
     if (this.state.showLoginCont) {
       ALlContentLogin = (
