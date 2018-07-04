@@ -26,35 +26,54 @@ const settings = {
   slidesToShow: 4,
   slidesToScroll: 4,
   rows: 2,
-  mobileFirst: true,
   responsive: [
     {
-      breakpoint: 1650,
+      breakpoint: 1370,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
         rows: 2,
+        arrows: false,
+
       },
     },
     {
       breakpoint: 1100,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         rows: 1,
-        centerMode: true,
-        centerPadding: '60px',
-        variableWidth: false,
+        arrows: false,
       },
     },
     {
-      breakpoint: 700,
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        rows: 1,
+        arrows: false,
+      },
+    },
+    {
+      breakpoint: 500,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
         rows: 1,
-        centerMode: true,
-        centerPadding: '20px',
+        // centerMode: true,
+        // centerPadding: '20px',
+        arrows: false,
+      },
+    },
+    {
+      breakpoint: 420,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        rows: 1,
+        // centerMode: false,
+        arrows: false,
       },
     },
   ],
