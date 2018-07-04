@@ -34,11 +34,11 @@ export default class TopNav extends Component {
               <NavProductsSearch products={this.state.productsList} />
             </Menu.Item>
             <Menu.Menu position="right">
-              <Menu.Item> <NavWishList /> </Menu.Item>
               <Menu.Item> <NavProductsItems /> </Menu.Item>
+              <Menu.Item> <NavWishList /> </Menu.Item>
+              <Menu.Item> <NavUserProfile /> </Menu.Item>
               <Menu.Item> <NavNotification /> </Menu.Item>
               <Menu.Item> <NavLanguage /> </Menu.Item>
-              <Menu.Item> <NavUserProfile /> </Menu.Item>
               <Menu.Item> <NavCurrency currency={this.state.currency} /> </Menu.Item>
             </Menu.Menu>
           </Menu>

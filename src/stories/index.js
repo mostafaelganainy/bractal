@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
@@ -24,3 +25,4 @@ storiesOf('Product Card', module)
   .add('with text only', () => (
     <ProductCard />
   ));
+*/

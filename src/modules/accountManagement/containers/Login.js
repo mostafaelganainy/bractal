@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Header, Container, Checkbox } from 'semantic-ui-react';
+import { Grid, Header, Checkbox } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
 import i18next from 'i18next';
@@ -155,7 +155,7 @@ export default class LoginPage extends Component {
       Loader = <LoaderIcon />;
     }
     return (
-      <Container className="LoginContainer">
+      <div className="LoginContainer">
         {Loader}
         <div className="AllContnt">
           <div className="LoginCont">
@@ -260,7 +260,7 @@ export default class LoginPage extends Component {
           </div>
           <SocialMedia />
         </div>
-      </Container>
+      </div>
     );
   }
 }

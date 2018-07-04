@@ -35,12 +35,10 @@ export default class NavUserProfile extends Component {
       userImage = <Image src="images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <Image
-          src="images/Header/user.png"
-          srcSet="images/Header/user@2x.png 2x,
- images/Header/user@3x.png 3x"
-          onClick={this.show('blurring')}
-        />
+        // eslint-disable-next-line
+        /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+        <i className="icon-user" onClick={this.show('blurring')} />
+
       );
     }
     return (

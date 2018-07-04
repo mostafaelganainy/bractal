@@ -16,6 +16,8 @@ $blue: #33a8ff;
     span {
       display: block;
       font-size: 12px;
+      position: relative;
+      top: 2px;
     }
     .items-count {
       display: none;
@@ -24,7 +26,7 @@ $blue: #33a8ff;
       right: -3px;
       width: 18px;
       height: 18px;
-      line-height: 18px;
+      line-height: 20px;
       text-align: center;
       background-color: #fb9410;
       color: #fff;
@@ -34,10 +36,10 @@ $blue: #33a8ff;
     }
   }
   .products-items-price {
-    color: #7C7C7C;
+    color: #7c7c7c;
   }
   i {
-    font-size: 36px;
+    font-size: 28px;
     color: $blue;
   }
   .ui.image {
@@ -51,7 +53,7 @@ $blue: #33a8ff;
       span {
         display: none;
       }
-      .items-count{
+      .items-count {
         display: inline-block;
       }
     }

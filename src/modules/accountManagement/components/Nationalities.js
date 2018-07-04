@@ -16,6 +16,7 @@ export default class Nationalities extends Component {
          if (ele.hasAttribute('data-limit')) {
            if (str.length > ele.dataset.limit) {
              let result = `${str.substring(0, ele.dataset.limit - indt.length).trim()}${indt}`;
+             // eslint-disable-next-line
              ele.innerText = result;
              str = null;
              result = null;
