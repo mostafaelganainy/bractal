@@ -21,6 +21,7 @@ export default class LoginPage extends Component {
     this.handleChangeRem = this.handleChangeRem.bind(this);
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.hydrateStateWithLocalStorage();
     window.addEventListener(
       'beforeunload',
@@ -169,6 +170,9 @@ export default class LoginPage extends Component {
                       <p className="TextCenter">
                         <Trans i18nKey="Getinanddescoveryourgift" />
                       </p>
+                    </div>
+                    <div className="mobLoginLogo">
+                      <img src="images/AccountManagement/logo@2x.png" alt="Ayk Logo" />
                     </div>
                     <form autoComplete="off" className="LoginContnt">
                       <div className="ErrorMsg">

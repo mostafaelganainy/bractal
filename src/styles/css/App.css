@@ -1028,6 +1028,9 @@ h5 {
   .BkHdr {
     background-color: #f7f7f7; }
 
+  .mobLoginLogo {
+    display: none; }
+
   .Loginsec:after {
     content: "";
     background-color: #d9d9d9;
@@ -1048,6 +1051,14 @@ h5 {
   .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
     display: block; }
 
+  .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
+    top: 3px; }
+
+  .mobLoginLogo {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 10px; }
+
   .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
     padding: 0px; }
 
@@ -1063,7 +1074,7 @@ h5 {
     padding-bottom: 34px; }
 
   .AllContnt .LoginCont .Loginsec {
-    width: 90%;
+    width: 85%;
     margin: 0 auto; }
 
   .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
@@ -1527,7 +1538,7 @@ h5 {
           margin-right: 0px; }
       .CreateAccContainer .AllRegCont .TwoSides {
         padding: 0 !important;
-        width: 92%;
+        width: 87%;
         margin: 0 auto !important; }
         .CreateAccContainer .AllRegCont .TwoSides #firstSide {
           padding: 0px !important; }
@@ -1685,7 +1696,7 @@ h5 {
     .VerfyAccCont .PaddingSides .borderCont {
       padding-bottom: 21px; }
       .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
-        width: 90%;
+        width: 85%;
         margin: 0 auto; }
         .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify .CodeContainer {
           width: 90%; }
