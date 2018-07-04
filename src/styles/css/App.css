@@ -1093,8 +1093,8 @@ h5 {
     width: 98%;
     text-align: center;
     margin: 0 auto;
-    height: 98px;
-    max-height: 98px; }
+    height: 93px;
+    max-height: 93px; }
   .AllContnt .createAccount .creatAccBtn {
     width: 100%;
     background-color: #309de0;
@@ -1135,6 +1135,9 @@ h5 {
 
   .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
     top: 3px; }
+
+  .ui.grid {
+    margin: 0px !important; }
 
   .mobLoginLogo {
     text-align: center;
@@ -1186,9 +1189,6 @@ h5 {
   .AllContnt .createAccount .RegisterTxt {
     height: 91px;
     max-height: 91px; } }
-.ui.grid {
-  margin: 0px !important; }
-
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -1412,6 +1412,7 @@ h5 {
         border-bottom-right-radius: 0;
         position: relative;
         cursor: pointer;
+        text-align: left;
         width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -1639,12 +1640,15 @@ li:first-child:hover {
           padding: 0px !important; }
         .CreateAccContainer .AllRegCont .TwoSides #borderrBtom {
           padding-bottom: 38px !important; }
+          .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .GenderData {
+            text-align: left !important; }
           .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide {
             text-align: left;
             width: 104% !important;
             padding: 0px;
             position: relative;
-            left: -2%; }
+            left: -2%;
+            padding-left: 14px; }
             .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide p {
               margin-left: 0px;
               width: 100%;

@@ -130,8 +130,8 @@
             width: 98%;
             text-align: center;
             margin: 0 auto;
-            height: 98px;
-            max-height: 98px;
+            height: 93px;
+            max-height: 93px;
         }
 
         .creatAccBtn {
@@ -184,6 +184,9 @@
     }
     .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
         top: 3px;
+    }
+    .ui.grid{
+        margin: 0px!important;
     }
 
     .mobLoginLogo {
@@ -256,9 +259,4 @@
         height: 91px;
         max-height: 91px;
     }
-}
-
-
-.ui.grid{
-    margin: 0px!important;
 }
