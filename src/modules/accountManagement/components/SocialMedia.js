@@ -13,11 +13,12 @@ export default function SocialMedia() {
           <Grid.Row className="allSocialMedia">
             <Grid.Column className="faceBok TextCenter">
 
-              <img
+              {/* <img
                 className="SvgCont"
                 src="images/AccountManagement/Accountfb.png"
                 alt="Facebook"
-              />
+              /> */}
+              <i className="icon-fb" />
 
               <div className="IconsCont">
                 <p className="SmFontSocial"><Trans i18nKey="LogInWith" /></p>
@@ -27,12 +28,12 @@ export default function SocialMedia() {
             </Grid.Column>
             <Grid.Column className="Tiwiter TextCenter">
 
-              <img
+              {/* <img
                 className="SvgCont"
                 src="images/AccountManagement/Accounttwitter.png"
                 alt="Twitter"
-              />
-
+              /> */}
+              <i className="icon-twitter" />
               <div className="IconsCont">
                 <p className="SmFontSocial">
                   <Trans i18nKey="LogInWith" />
@@ -42,12 +43,12 @@ export default function SocialMedia() {
 
             </Grid.Column>
             <Grid.Column className="Google TextCenter">
-
-              <img
+              <i className="icon-googleplus" />
+              {/* <img
                 className="SvgCont"
                 src="images/AccountManagement/google-plus.png"
                 alt="Twitter"
-              />
+              /> */}
 
               <div className="IconsCont">
                 <p className="SmFontSocial"><Trans i18nKey="LogInWith" /> </p>
@@ -56,11 +57,12 @@ export default function SocialMedia() {
             </Grid.Column>
             <Grid.Column className="Insta TextCenter">
 
-              <img
+              {/* <img
                 className="SvgCont"
                 src="images/AccountManagement/instagrame.png"
                 alt="Twitter"
-              />
+              /> */}
+              <i className="icon-inst" />
 
               <div className="IconsCont">
                 <p className="SmFontSocial"><Trans i18nKey="LogInWith" /></p>
