@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
+import { Trans } from 'react-i18next';
 import PropTypes from 'prop-types';
+import i18next from 'i18next';
 
 export default class Nationalities extends Component {
   componentDidMount() {
@@ -30,39 +32,20 @@ export default class Nationalities extends Component {
   handleChange = (event) => {
     this.props.handleChange(event);
   };
-  showNationalitiesDropdown = () => {
-    /* eslint-disable no-debugger */
-    debugger;
-    this.props.showNationalitiesDropdown();
-  };
   render() {
     const NationalitiesList = this.props.CountriesData.map(Nationality => (
-      <li id={Nationality.name} key={Nationality.name} className="NationalityDataLi">
-        <div className="NationalityName">{Nationality.name}</div>
-      </li>
+      <option value={Nationality.name} key={Nationality.name} className="short" data-limit="30">
+        {Nationality.name}
+      </option>
     ));
     return (
-      <div id="NationaltiesList">
-        <button id="NationaltiesSelect" className="Nationalities-button" onClick={this.showNationalitiesDropdown} >
-          {this.props.SelectedImg !== ''
-          ? <img src={this.props.SelectedImg} alt={this.props.SelectedMobCode} />
-           : ''
-          }
-          <span className="codeSelected">
-            {this.props.SelectedMobCode}
-          </span>
-          <span className="triangle">&#9660;</span>
-        </button>
-        {this.props.NationalityDropdownisShown
-          ?
-            <div>
-              <div className="Arrowul" />
-              <ul>
-                {NationalitiesList}
-              </ul>
-            </div>
-          : ''
-          }
+      <div>
+        <select required placeholder={i18next.t('accountManagement:Nationality')} id="nationality" onChange={this.handleChange} className="nationalitySelect">
+          <option value="" disabled selected>
+            <Trans i18nKey="Nationality" />
+          </option>
+          {NationalitiesList}
+        </select>
       </div>
     );
   }
@@ -70,6 +53,4 @@ export default class Nationalities extends Component {
 
 Nationalities.propTypes = {
   CountriesData: PropTypes.arrayOf(PropTypes.any).isRequired,
-  showNationalitiesDropdown: PropTypes.func.isRequired,
-  NationalityDropdownisShown: PropTypes.bool.isRequired,
 }.isRequired;

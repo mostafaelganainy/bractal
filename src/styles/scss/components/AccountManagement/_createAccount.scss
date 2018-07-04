@@ -157,29 +157,6 @@
           width: 100%;
         }
 
-                .dropdown-button {
-                    margin: 0;
-                    outline: 0;
-                    line-height: 0.9914286em;
-                    padding: 0.37857143em 1em;
-                    font-size: 12px;
-                    background: #fff;
-                    border: 1px solid rgba(34, 36, 38, 0.15);
-                    color: rgba(0, 0, 0, 0.87);
-                    border-radius: 1.8571429rem;
-                    border-top-right-radius: 0px;
-                    border-bottom-right-radius: 0;
-                    position: relative;
-                    cursor: pointer;
-                    width: 100%;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    width: 100%;
-                    white-space: nowrap;
-                    padding-left: 9px;
-                    height: 37px;
-                    max-height: 37px;
-                    text-align: left;
         .dropdown-button {
           margin: 0;
           outline: 0;
@@ -332,7 +309,7 @@
       .eye.icon {
         position: absolute;
         right: 24px;
-        top: 10px;
+        top: 7px;
         cursor: pointer;
       }
 
@@ -369,15 +346,6 @@
           margin-bottom: 10px;
         }
 
-                p {
-                    font-size: 11px;
-                    text-align: left;
-                    color: rgba(128, 130, 133, 0.7);
-                    width: 95%;
-                    margin-left: 10px;
-                    margin-top: 4px;
-                }
-            }
         p {
           font-size: 11px;
           text-align: left;
@@ -462,99 +430,6 @@
   }
 }
 
-#NationaltiesSelect {
-    margin: 0;
-    outline: 0;
-    line-height: 0.9914286em;
-    padding: 0.37857143em 1em;
-    font-size: 12px;
-    background: #fff;
-    border: 1px solid rgba(34, 36, 38, 0.15);
-    color: rgba(0, 0, 0, 0.87);
-    border-radius: 1.8571429rem;
-    position: relative;
-    cursor: pointer;
-    width: 100%;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 100%;
-    white-space: nowrap;
-    padding-left: 9px;
-    height: 37px;
-    max-height: 37px;
-    text-align: left;
-}
-
-.triangle {
-    font-size: 50%;
-    position: absolute;
-    right: 10px;
-    top: -9px;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-    height: 5px;
-    color: black;
-    cursor: pointer;
-}
-
-.Arrowul {
-    content: "";
-    height: 11px;
-    width: 11px;
-    background: #fff;
-    position: absolute;
-    top: 42px;
-    left: 50px;
-    -webkit-transform: rotate(134deg);
-    -ms-transform: rotate(134deg);
-    transform: rotate(134deg);
-    border-left: 1px solid #d4d4d5bd;
-    border-bottom: 1px solid #d4d4d5bd;
-    z-index: 1000;
-}
-
-#NationaltiesList li {
-    background: #fff;
-    padding: 8px 5px;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: background .2s ease;
-    position: relative;
-    font-size: 13px;
-    border-bottom: 1px solid #f5f5f5;
-    min-height: 40px;
-}
-
-#NationaltiesList ul {
-    visibility: visible;
-    -webkit-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-    -webkit-transform: scaleY(1);
-    -ms-transform: scaleY(1);
-    transform: scaleY(1);
-    color: #333;
-    height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 100;
-    -webkit-transform-origin: top;
-    -ms-transform-origin: top;
-    transform-origin: top;
-    padding: 0;
-    list-style: none;
-    background-color: white;
-    -webkit-box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
-    position: absolute;
-    left: 0;
-    margin-top: -7px;
-    top: 100%;
-    width: 100%;
-}
-
 @media screen and (max-width: 1024px) {
   .CreateAccContainer {
     padding: 17px;
@@ -580,10 +455,6 @@
         }
       }
 
-            .TwoSides {
-                padding: 0 !important;
-                width: 87%;
-                margin: 0 auto !important;
       .TwoSides {
         padding: 0 !important;
         width: 92%;
@@ -633,6 +504,7 @@
             .dropdown {
               ul {
                 width: 100%;
+                overflow-x: hidden;
 
                 li {
                   .countryName {
@@ -657,17 +529,6 @@
         }
       }
     }
-
-    .FooterTxt {
-        margin-top: 16px;
-    }
-
-    .AllRegCont .TwoSides #borderrBtom .eye.icon {
-        position: absolute;
-        right: 11px;
-        top: 8px;
-        cursor: pointer;
-    }
   }
   .FooterTxt {
     margin-top: 16px;
@@ -679,14 +540,6 @@
     cursor: pointer;
   }
 }
-
-@media screen and (min-width: 922px) and (max-width: 1024px) {
-    .GenderData {
-        .genderLblCont {
-            width: 10% !important;
-            float: left;
-            padding-top: 9px;
-        }
 @media screen and (min-width: 922px) and (max-width: 1024px) {
   .GenderData {
     .genderLblCont {
@@ -702,19 +555,7 @@
     padding: 0px !important;
   }
 }
-
 @media screen and (max-width: 768px) {
-    .AllRegCont {
-        .TwoSides {
-            #borderrBtom {
-                .GenderData {
-                    .genderLblCont {
-                        width: 17%;
-                        float: left;
-                        padding-top: 9px;
-                    }
-                }
-            }
   .AllRegCont {
     .TwoSides {
       #borderrBtom {
