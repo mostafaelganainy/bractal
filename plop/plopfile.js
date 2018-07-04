@@ -1,4 +1,5 @@
 // const path = require('path');
+const changeCase = require('change-case');
 
 module.exports = (plop) => {
   // setGenerator creates a generator that can be run with "plop generatorName"
@@ -6,6 +7,14 @@ module.exports = (plop) => {
     description: "Creating a module that's based on a master detail navigation",
     prompts: [
       {
+        type: 'input',
+        name: 'modelName',
+        message: 'What is a single element model name in GraphQL Schema ? for example : Product  (modelName) ?',
+        validate: (value) => {
+          if ((/.+/).test(value)) { return true; }
+          return 'modelName is required';
+        },
+      }, {
         type: 'input',
         name: 'moduleName',
         message: 'What is your module name (name) ?',
@@ -17,6 +26,7 @@ module.exports = (plop) => {
         type: 'input',
         name: 'moduleDescription',
         message: 'What can you tell the world about your module (description) ?',
+        default: answers => `${changeCase.pascal(answers.moduleName)} is the best module you could ever find and I LOVE it !`,
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'moduleEntryURL is required';
@@ -25,6 +35,7 @@ module.exports = (plop) => {
         type: 'input',
         name: 'moduleShortUniqueName',
         message: 'What is the short and unique name of your module (Will be used for menu, url....etc) (moduleShortUniqueName) ?',
+        default: answers => answers.moduleName,
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'moduleShortUniqueName is required';
@@ -33,22 +44,25 @@ module.exports = (plop) => {
         type: 'input',
         name: 'uiItemName',
         message: 'What would be name of your UI ? for example : HomePageHotDeal   (uiItemName) ?',
+        default: answers => answers.modelName,
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'uiItemName is required';
         },
       }, {
         type: 'input',
-        name: 'modelName',
-        message: 'What is a single element model name in GraphQL Schema ? for example : Product  (modelName) ?',
+        name: 'graphQLMainQueryName',
+        message: 'What is the entry point to your GraphQL (GraphQL query name, i.e, productsList) (graphQLMainQueryName) ?',
+        default: answers => `${changeCase.camel(answers.modelName)}s`,
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
-          return 'modelName is required';
+          return 'graphQLMainQueryName is required';
         },
       }, {
         type: 'input',
-        name: 'graphQLMainQueryName',
-        message: 'What is the entry point to your GraphQL (GraphQL query name, i.e, productsList) (graphQLMainQueryName) ?',
+        name: 'graphQLSingleItemQueryName',
+        message: 'What is your GraphQL entry point for a single item (GraphQL query name, i.e, productWithID) (graphQLSingleItemQueryName) ?',
+        default: answers => `find${changeCase.pascal(answers.modelName)}ByID`,
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'graphQLMainQueryName is required';
@@ -56,10 +70,18 @@ module.exports = (plop) => {
       }, {
         type: 'input',
         name: 'itemsListEntryFields',
-        message: 'What fields should we ask GraphQL endpoint for ? (itemsListEntryFields) ?',
+        message: 'What fields should we ask GraphQL endpoint for the List view ? (itemsListEntryFields) ?',
         validate: (value) => {
           if ((/.+/).test(value)) { return true; }
           return 'itemsListEntryFields is required';
+        },
+      }, {
+        type: 'input',
+        name: 'itemDetailsEntryFields',
+        message: 'What fields should we ask GraphQL endpoint for the Details view ? (itemDetailEntryFields) ?',
+        validate: (value) => {
+          if ((/.+/).test(value)) { return true; }
+          return 'itemDetailsEntryFields is required';
         },
       }, {
         type: 'input',
@@ -119,7 +141,18 @@ module.exports = (plop) => {
         path: '../src/modules/{{moduleName}}/containers/{{uiItemName}}sListPage.js',
         templateFile: 'templates/module_generator_master_details/sampleModule/containers/ItemsListPage.js.hbr',
         abortOnFail: true,
-      }, /*
+      }, {
+        type: 'add',
+        path: '../src/modules/{{moduleName}}/containers/{{uiItemName}}DetailsPage.js',
+        templateFile: 'templates/module_generator_master_details/sampleModule/containers/ItemDetailsPage.js.hbr',
+        abortOnFail: true,
+      }, {
+        type: 'add',
+        path: '../src/modules/{{moduleName}}/containers/{{uiItemName}}Details.js',
+        templateFile: 'templates/module_generator_master_details/sampleModule/containers/ItemDetails.js.hbr',
+        abortOnFail: true,
+      },
+      /*
       function customAction(answers) {
         // move the current working directory to the plop file path
         // this allows this action to work even when the generator is

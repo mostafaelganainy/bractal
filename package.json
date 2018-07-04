@@ -13,6 +13,7 @@
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
+    "change-case": "^3.0.2",
     "css-loader": "0.28.7",
     "cuid": "^2.1.1",
     "dotenv": "4.0.0",
@@ -69,7 +70,7 @@
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:css && npm run lint:es",
     "refetch-schema": "graphql-fetch-schema https://eu1.prisma.sh/mostafa-elganainy-2630c3/demo_3/dev",
-    "compile-relay": "relay-compiler  --verbose --src ./src/modules/postsCore --schema ./schema.graphql",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules/postsNew --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",
     "lint:es": "eslint ./src ",
     "start": "npm run lint:css && npm run start-internal"

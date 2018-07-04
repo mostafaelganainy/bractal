@@ -15,7 +15,9 @@ const {{uiItemName}}sList = ({ query }) => (
         query ?
           query.{{graphQLMainQueryName}}.map(entry => (
             // eslint-disable-next-line no-underscore-dangle
-            <{{uiItemName}}sListEntry key={entry.__id} {{camelCase uiItemName}}Info={entry} />
+            <Segment key={entry.__id} >
+              <PostsListEntry postInfo={entry} />
+            </Segment>
           ))
         :
           'Loading...'
