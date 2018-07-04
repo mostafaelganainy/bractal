@@ -14,7 +14,7 @@ export default class CountriesCode extends Component {
   render() {
     return (
       <div>
-        <div id="dropdown-button" className="dropdown-button" onClick={this.showDropdown} >
+        <button id="dropdown-button" className="dropdown-button" onClick={this.showDropdown} >
           {this.props.SelectedImg !== ''
         ? <img src={this.props.SelectedImg} alt={this.props.SelectedMobCode} />
         : ''
@@ -22,7 +22,7 @@ export default class CountriesCode extends Component {
           <span className="codeSelected">
             {this.props.SelectedMobCode}
           </span>
-        </div>
+        </button>
         <span className="triangle">&#9660;</span>
       </div>
     );

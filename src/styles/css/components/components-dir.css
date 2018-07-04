@@ -1010,7 +1010,8 @@
         white-space: nowrap;
         padding-left: 9px;
         height: 37px;
-        max-height: 37px; }
+        max-height: 37px;
+        text-align: left; }
         .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
           position: relative;
           top: 2px; }
@@ -1202,6 +1203,94 @@
 
   .dropdown {
     padding: 0px; } }
+#NationaltiesSelect {
+  margin: 0;
+  outline: 0;
+  line-height: 0.9914286em;
+  padding: 0.37857143em 1em;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 1.8571429rem;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  padding-left: 9px;
+  height: 37px;
+  max-height: 37px;
+  text-align: left; }
+
+.triangle {
+  font-size: 50%;
+  position: absolute;
+  right: 10px;
+  top: -9px;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 5px;
+  color: black;
+  cursor: pointer; }
+
+.Arrowul {
+  content: "";
+  height: 11px;
+  width: 11px;
+  background: #fff;
+  position: absolute;
+  top: 42px;
+  left: 50px;
+  -webkit-transform: rotate(134deg);
+  -ms-transform: rotate(134deg);
+  transform: rotate(134deg);
+  border-left: 1px solid #d4d4d5bd;
+  border-bottom: 1px solid #d4d4d5bd;
+  z-index: 1000; }
+
+#NationaltiesList li {
+  background: #fff;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background .2s ease;
+  position: relative;
+  font-size: 13px;
+  border-bottom: 1px solid #f5f5f5;
+  min-height: 40px; }
+
+#NationaltiesList ul {
+  visibility: visible;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  color: #333;
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+  -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+  -webkit-box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 0;
+  margin-top: -7px;
+  top: 100%;
+  width: 100%; }
+
 @media screen and (max-width: 1024px) {
   .CreateAccContainer {
     padding: 17px;
