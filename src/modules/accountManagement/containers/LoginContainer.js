@@ -19,6 +19,11 @@ class LoginContainer extends Component {
       showCreateAccCont: true,
     };
   }
+  close=() => {
+    this.setState({ showLoginCont: true, showCreateAccCont: true });
+    this.props.close();
+    // this.setState({ showCreateAccCont: true });
+  }
   handleRegSubmit = (RegistedUser, ShowServerRegErrors) => {
     this.ShowLoader();
 
@@ -68,7 +73,7 @@ class LoginContainer extends Component {
         localStorage.setItem('tokenType', resp.headers['token-type']);
         localStorage.setItem('uid', resp.headers.uid);
         localStorage.setItem('client', resp.headers.client);
-        this.props.close();
+        this.close();
       })
       .catch((err) => {
         this.ShowLoader();
@@ -104,7 +109,7 @@ class LoginContainer extends Component {
           <div className="CreateAccContainer">
             <CreateAccount
               BackLogin={this.toggleLoginContent}
-              close={this.props.close}
+              close={this.close}
               showCreateAccCont={this.state.showCreateAccCont}
               handleSignUp={this.handleRegSubmit}
               isLoading={this.state.isLoading}
@@ -117,8 +122,8 @@ class LoginContainer extends Component {
       <Modal dimmer={this.props.dimmer} open={this.props.open} style={inlineStyle.modal} >
         <Modal.Content>
           <Modal.Description>
-            <i aria-hidden="true" className="close big icon closePopup" onClick={this.props.close} />
-            <button className="closeSvg" onClick={this.props.close}>
+            <i aria-hidden="true" className="close big icon closePopup" onClick={this.close} />
+            <button className="closeSvg" onClick={this.close}>
               <img src="images/AccountManagement/close-copy.png" alt="close Popup" />
             </button>
             <div>

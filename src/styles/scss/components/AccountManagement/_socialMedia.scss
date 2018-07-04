@@ -14,7 +14,7 @@
         font-size: 21px !important;
         margin-right: 2px;
         position: relative;
-        top: -1px;
+        top: -2px;
         right: 1px;
     }
 }
@@ -30,7 +30,7 @@
         font-size: 21px !important;
         margin-right: 2px;
         position: relative;
-        top: -1px;
+        top: -2px;
         right: 1px;
     }
 }
@@ -46,7 +46,7 @@
         font-size: 21px !important;
         margin-right: 2px;
         position: relative;
-        top: -1px;
+        top: -2px;
         right: 1px;
     }
 }
@@ -68,7 +68,7 @@
         font-size: 21px !important;
         margin-right: 2px;
         position: relative;
-        top: -1px;
+        top: -2px;
         right: 1px;
     }
 }
@@ -94,7 +94,7 @@
     }
 
     .SmFontSocial {
-        font-size: 10px;
+        font-size: 9.5px;
         margin-bottom: 0;
     }
 
@@ -136,6 +136,11 @@
             margin-right: 6px;
             text-align: left !important;
             padding: 23px 0px;
+
+            i {
+                top: -12px !important;
+                left: -2px !important;
+            }
         }
 
         .IconsCont {

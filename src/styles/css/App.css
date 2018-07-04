@@ -1209,7 +1209,7 @@ h5 {
     font-size: 21px !important;
     margin-right: 2px;
     position: relative;
-    top: -1px;
+    top: -2px;
     right: 1px; }
 
 .Tiwiter {
@@ -1222,7 +1222,7 @@ h5 {
     font-size: 21px !important;
     margin-right: 2px;
     position: relative;
-    top: -1px;
+    top: -2px;
     right: 1px; }
 
 .Google {
@@ -1235,7 +1235,7 @@ h5 {
     font-size: 21px !important;
     margin-right: 2px;
     position: relative;
-    top: -1px;
+    top: -2px;
     right: 1px; }
 
 .Insta {
@@ -1254,7 +1254,7 @@ h5 {
     font-size: 21px !important;
     margin-right: 2px;
     position: relative;
-    top: -1px;
+    top: -2px;
     right: 1px; }
 
 .connectWith {
@@ -1274,7 +1274,7 @@ h5 {
     margin-top: 4px;
     margin-right: 2px; }
   .SocialMediaCont .SmFontSocial {
-    font-size: 10px;
+    font-size: 9.5px;
     margin-bottom: 0; }
   .SocialMediaCont .LgFontSocial {
     font-size: 11px;
@@ -1305,6 +1305,9 @@ h5 {
       margin-right: 6px;
       text-align: left !important;
       padding: 23px 0px; }
+      .SocialMediaCont .faceBok i, .SocialMediaCont .Google i, .SocialMediaCont .Insta i, .SocialMediaCont .Tiwiter i {
+        top: -12px !important;
+        left: -2px !important; }
     .SocialMediaCont .IconsCont {
       display: none; }
     .SocialMediaCont .connectWith {
