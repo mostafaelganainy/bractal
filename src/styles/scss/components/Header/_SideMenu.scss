@@ -28,7 +28,11 @@
       border-radius: 0;
       background-color: #fff;
       font-size: 18px;
-      @include prefix(box-shadow, none);
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+      -o-box-shadow: none;
+      box-shadow: none;
       border: none;
       > .item {
         color: rgba(51, 168, 255, 0.7) !important;
@@ -52,7 +56,11 @@
       color: rgba(51, 168, 255, 0.7);
       font-weight: 900;
       i:before {
-        @include prefix(transform, rotate(90deg));
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
         position: absolute;
       }
     }
@@ -69,12 +77,20 @@
   .ui.thin.right.sidebar {
     width: 70%;
     padding: 0;
-    @include prefix(box-shadow, none);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
   }
 
   .ui.visible.thin.left.sidebar ~ .fixed,
   .ui.visible.thin.left.sidebar ~ .pusher {
-    @include prefix(transform, translate3d(70%, 0, 0));
+    -webkit-transform: translate3d(70%, 0, 0);
+    -moz-transform: translate3d(70%, 0, 0);
+    -ms-transform: translate3d(70%, 0, 0);
+    -o-transform: translate3d(70%, 0, 0);
+    transform: translate3d(70%, 0, 0);
   }
 
   .ui.menu .ui.dropdown .menu > .item:hover {
