@@ -33,8 +33,6 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         rows: 2,
-        arrows: false,
-
       },
     },
     {
