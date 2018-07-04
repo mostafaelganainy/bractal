@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-for, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 
 import React, { Component } from 'react';
-import { Grid, Header, Container } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
@@ -246,7 +246,9 @@ export default class CreateAccount extends Component {
     }
     if (showCreateAccCont) {
       AllCreateAccCont = (
-        <Container onClick={this.RemoveMobileDropdown}>
+        /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, j
+        sx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+        <div onClick={this.RemoveMobileDropdown}>
           <div className="AllRegCont">
             <div className="RegisterHdrCont">
               <div className="hdrCont">
@@ -405,17 +407,17 @@ export default class CreateAccount extends Component {
             </Grid>
             <SocialMedia />
           </div>
-        </Container>
+        </div>
       );
     } else {
       AllCreateAccCont = (
-        <Container>
+        <div>
           <Verification
             close={close}
             SavedEmail={this.state.SavedEmail}
           />
           <SocialMedia />
-        </Container>
+        </div>
       );
     }
     return (

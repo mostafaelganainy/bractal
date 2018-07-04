@@ -16,7 +16,8 @@
     font-weight: 500;
     line-height: 1.58; }
 .AllContnt .LoginCont {
-  padding-bottom: 42px; }
+  padding-bottom: 42px;
+  margin-top: 2px; }
   .AllContnt .LoginCont .Loginsec {
     width: 87%;
     margin: 0 auto; }
@@ -231,7 +232,7 @@
   font-weight: bold; }
 
 .SocialMediaCont {
-  width: 52%;
+  width: 58%;
   margin: 0 auto;
   margin-bottom: 10px; }
   .SocialMediaCont .SvgCont {
@@ -344,18 +345,23 @@
         padding-right: 0px !important; }
       .AllRegCont .TwoSides #borderrBtom .padd4 {
         padding-left: 4px !important; }
-      .AllRegCont .TwoSides #borderrBtom .GenderData input {
-        display: none; }
-      .AllRegCont .TwoSides #borderrBtom .GenderData img {
-        cursor: pointer;
-        position: relative;
-        top: 1px; }
-      .AllRegCont .TwoSides #borderrBtom .GenderData .genderLblCont {
-        width: 30%;
-        float: left;
-        padding-top: 9px; }
-      .AllRegCont .TwoSides #borderrBtom .GenderData .MaleSvg {
-        margin-right: 11px; }
+      .AllRegCont .TwoSides #borderrBtom .GenderData {
+        text-align: center; }
+        .AllRegCont .TwoSides #borderrBtom .GenderData input {
+          display: none; }
+        .AllRegCont .TwoSides #borderrBtom .GenderData img {
+          cursor: pointer;
+          position: relative;
+          top: 1px; }
+        .AllRegCont .TwoSides #borderrBtom .GenderData .genderLblCont {
+          display: inline-block;
+          position: relative;
+          top: -14px;
+          margin-right: 17px; }
+        .AllRegCont .TwoSides #borderrBtom .GenderData .GenderTypes {
+          display: inline-block; }
+        .AllRegCont .TwoSides #borderrBtom .GenderData .MaleSvg {
+          margin-right: 11px; }
       .AllRegCont .TwoSides #borderrBtom .phoneInp {
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px; }
@@ -413,7 +419,7 @@
         cursor: pointer; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown ul {
         visibility: visible;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         transform: scaleY(1);
         color: #333;
         height: 200px;
@@ -449,7 +455,7 @@
         padding: 8px 5px;
         box-sizing: border-box;
         cursor: pointer;
-        transition: background .2s ease;
+        transition: background 0.2s ease;
         position: relative;
         font-size: 13px;
         border-bottom: 1px solid #f5f5f5;
@@ -471,7 +477,7 @@
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li.check {
         background: #f6f6f6; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li.check:after {
-        content: '';
+        content: "";
         position: absolute;
         height: 15px;
         width: 3px;
@@ -483,7 +489,7 @@
         margin-bottom: auto;
         right: 15px; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li.check:before {
-        content: '';
+        content: "";
         position: absolute;
         height: 3px;
         width: 9px;
@@ -496,7 +502,7 @@
         right: 19px; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li:hover {
         background: #f6f6f6;
-        transition: background .2s ease; }
+        transition: background 0.2s ease; }
       .AllRegCont .TwoSides #borderrBtom .eye.icon {
         position: absolute;
         right: 24px;
@@ -542,7 +548,12 @@
   width: 93%;
   padding: 7px; }
 
-.AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown li:first-child:hover {
+.AllRegCont
+.TwoSides
+#borderrBtom
+.CountriesData
+.dropdown
+li:first-child:hover {
   background: white; }
 
 .FooterTxt {
@@ -611,10 +622,6 @@
           padding: 0px !important; }
         .CreateAccContainer .AllRegCont .TwoSides #borderrBtom {
           padding-bottom: 38px !important; }
-          .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .GenderData .genderLblCont {
-            width: 13%;
-            float: left;
-            padding-top: 9px; }
           .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide {
             text-align: left;
             width: 104% !important;
@@ -651,29 +658,15 @@
     right: 11px;
     top: 8px;
     cursor: pointer; } }
-@media screen and (min-width: 922px) and (max-width: 1024px) {
-  .GenderData .genderLblCont {
-    width: 10% !important;
-    float: left;
-    padding-top: 9px; } }
 @media screen and (min-width: 426px) and (max-width: 1024px) {
   .mobPadd0 {
     padding: 0px !important; } }
-@media screen and (max-width: 768px) {
-  .AllRegCont .TwoSides #borderrBtom .GenderData .genderLblCont {
-    width: 17%;
-    float: left;
-    padding-top: 9px; } }
 @media screen and (max-width: 425px) {
   .CreateAccContainer .AllRegCont {
     padding: 3px 1px;
     margin: 0px; }
     .CreateAccContainer .AllRegCont .TwoSides {
       width: 100%; }
-      .CreateAccContainer .AllRegCont .TwoSides .GenderData .genderLblCont {
-        width: 21% !important;
-        float: left;
-        padding-top: 9px; }
       .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown ul {
         width: 100%; }
         .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown ul li .countryName {
