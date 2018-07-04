@@ -172,6 +172,9 @@
   .AllContnt .createAccount .RegisterTxt {
     height: 91px;
     max-height: 91px; } }
+.ui.grid {
+  margin: 0px !important; }
+
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
