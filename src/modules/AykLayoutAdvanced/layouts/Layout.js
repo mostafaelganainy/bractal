@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 import Header from './Header';
+import PageContent from './PageContent';
 
-const AykBody = styled.div`
+const AykMainContainer = styled.div`
   background: #f8f7f7 !important;
   
   /* '' */
@@ -39,15 +39,11 @@ const AykBody = styled.div`
 
 `;
 
-const Layout = ({ content }) => (
-  <AykBody>
+const Layout = () => (
+  <AykMainContainer>
     <Header />
-    { content }
-  </AykBody>
+    <PageContent />
+  </AykMainContainer>
 );
-
-Layout.propTypes = PropTypes.shape({
-  content: PropTypes.element.isRequired,
-}).isRequired;
 
 export default Layout;

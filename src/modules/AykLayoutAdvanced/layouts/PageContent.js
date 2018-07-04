@@ -3,26 +3,29 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import AykHomePage from '~/modules/aykHome/containers/Home';
 
 import { withModules } from '../../core/utils/modulesLoader';
 
-const PageContent = ({ modules }) => (
+const routes = [
+  {
+    path: '/',
+    component: AykHomePage,
+  },
+];
+
+const PageContent = () => (
   <Switch>
-    { modules.map(module => (
+    { routes.map(route => (
       <Route
-        key={module.name}
-        exact={module.homePath === '/'}
-        path={module.homePath}
-        component={module.HomePage}
+        key={route.path}
+        exact={route.path === '/'}
+        path={route.path}
+        component={route.component}
       />
     )) }
   </Switch>
 );
-
-PageContent.propTypes = {
-  modules: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
 
 export default withModules(PageContent);
 

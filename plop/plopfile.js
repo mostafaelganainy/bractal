@@ -196,4 +196,55 @@ module.exports = (plop) => {
       } */
     ],
   });
+
+  plop.setGenerator('generate_simple_module', {
+    description: 'Creating a very basic and empty module',
+    prompts: [
+      {
+        type: 'input',
+        name: 'moduleName',
+        message: 'What is your module name (name) ?',
+        validate: (value) => {
+          if ((/.+/).test(value)) { return true; }
+          return 'moduleName is required';
+        },
+      }, {
+        type: 'input',
+        name: 'moduleDescription',
+        message: 'What can you tell the world about your module (description) ?',
+        default: answers => `${changeCase.pascal(answers.moduleName)} is the best module you could ever find and I LOVE it !`,
+        validate: (value) => {
+          if ((/.+/).test(value)) { return true; }
+          return 'moduleEntryURL is required';
+        },
+      }, {
+        type: 'input',
+        name: 'moduleShortUniqueName',
+        message: 'What is the short and unique name of your module (Will be used for menu, url....etc) (moduleShortUniqueName) ?',
+        default: answers => answers.moduleName,
+        validate: (value) => {
+          if ((/.+/).test(value)) { return true; }
+          return 'moduleShortUniqueName is required';
+        },
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: '../src/modules/{{moduleName}}/index.js',
+        templateFile: 'templates/module_generator_simple/sampleModule/index.js.hbr',
+        abortOnFail: true,
+      }, {
+        type: 'add',
+        path: '../src/modules/{{moduleName}}/locales/index.js',
+        templateFile: 'templates/module_generator_simple/sampleModule/locales/index.js.hbr',
+        abortOnFail: true,
+      }, {
+        type: 'add',
+        path: '../src/modules/{{moduleName}}/containers/Home.js',
+        templateFile: 'templates/module_generator_simple/sampleModule/containers/Home.js.hbr',
+        abortOnFail: true,
+      },
+    ],
+  });
 };
