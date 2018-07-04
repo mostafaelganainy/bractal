@@ -28,4 +28,10 @@ yarn-error.log*
 *schema.json*
 *schema.graphql*
 
+schema.json
+src/modules/PlainProducts/containers/__generated__/PlainProductsListEntry_plainProductInfo.graphql.js
+src/modules/PlainProducts/containers/__generated__/PlainProductsListPageQuery.graphql.js
+src/modules/PlainProducts/containers/__generated__/PlainProductsList_query.graphql.js
+
+
 /src/styles/css

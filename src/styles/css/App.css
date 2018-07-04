@@ -14,122 +14,124 @@ body {
   display: flex !important;
   opacity: 1; }
 
-.modal .TextCenter {
-  text-align: center; }
-.modal .MarginTop0 {
-  margin-top: 0px !important; }
-.modal .padd0 {
-  padding: 0 !important; }
-.modal .paddR0 {
-  padding-right: 0px !important; }
-.modal .fontSize11 {
-  font-size: 11px; }
-.modal select:required:invalid {
-  color: #999; }
-.modal option[value=””][disabled] {
-  display: none; }
-.modal option {
-  color: #000; }
-.modal input[type="text"]:focus,
-.modal input[type="password"]:focus,
-.modal input[type="email"]:focus,
-.modal select:focus, .modal .dropdown-button:focus {
-  border: 1px solid #319de0 !important; }
-.modal input[type="text"],
-.modal input[type="password"],
-.modal input[type="email"],
-.modal select {
-  font-family: Panton;
-  margin: 0;
-  outline: 0;
-  tap-highlight-color: rgba(255, 255, 255, 0);
-  line-height: 1.51428571em;
-  padding: 0.67857143em 1em;
-  font-size: 12px;
-  background: #fff;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 1.8571429rem;
-  box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-  transition: color 0.1s ease, border-color 0.1s ease;
-  width: 100%;
-  margin-bottom: 12.5px;
-  padding-top: 9.6px;
-  height: 37px;
-  max-height: 37px; }
-.modal input:-webkit-autofill,
-.modal textarea:-webkit-autofill,
-.modal select:-webkit-autofill {
-  background-color: #fff !important; }
-.modal input[type="checkbox"] {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeSpeed;
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  margin-right: 1px;
-  display: block;
-  float: left;
-  position: relative;
-  cursor: pointer;
-  border-radius: 4px; }
-.modal input[type="checkbox"]:after {
-  content: "";
-  vertical-align: middle;
-  text-align: center;
-  line-height: 15px;
-  position: absolute;
-  cursor: pointer;
-  height: 17px;
-  width: 17px;
-  left: 0;
-  top: 0;
-  font-size: 18px;
-  border-radius: 3px;
-  background-color: #fff;
-  border: solid 1px #b7b7b7; }
-.modal .ui.checkbox input:checked ~ .box::after, .modal .ui.checkbox input:checked ~ label::after {
-  color: #f89101; }
-.modal input[type="checkbox"]:focus {
-  outline-color: white !important; }
-.modal .closePopup {
-  position: absolute;
-  right: -8px;
-  top: -39px;
-  color: white;
-  font-weight: lighter;
-  cursor: pointer;
-  font-size: 1.5em !important;
-  display: inline-block; }
-.modal .closeSvg {
-  position: absolute;
-  right: 4px;
-  z-index: 1;
-  display: none;
-  background: none;
-  border: none;
-  top: 20px;
-  outline-color: transparent; }
-  .modal .closeSvg img {
-    width: 32%; }
-.modal .ErrorMsg {
-  font-family: Panton;
-  font-size: 10px !important;
-  text-align: left !important;
-  color: #ff0000 !important;
-  margin-bottom: 6px !important; }
-.modal .SuccessMsg {
-  font-family: Panton;
-  font-size: 12px !important;
-  text-align: center !important;
-  font-weight: bold !important;
-  margin-bottom: 0px !important;
-  background-color: #fcfff5;
-  color: #2c662d !important; }
-.modal button {
-  outline-color: white;
-  cursor: pointer; }
+.modal {
+  overflow-x: hidden; }
+  .modal .TextCenter {
+    text-align: center; }
+  .modal .MarginTop0 {
+    margin-top: 0px !important; }
+  .modal .padd0 {
+    padding: 0 !important; }
+  .modal .paddR0 {
+    padding-right: 0px !important; }
+  .modal .fontSize11 {
+    font-size: 11px; }
+  .modal select:required:invalid {
+    color: #999; }
+  .modal option[value=””][disabled] {
+    display: none; }
+  .modal option {
+    color: #000; }
+  .modal input[type="text"]:focus,
+  .modal input[type="password"]:focus,
+  .modal input[type="email"]:focus,
+  .modal select:focus, .modal .dropdown-button:focus {
+    border: 1px solid #319de0 !important; }
+  .modal input[type="text"],
+  .modal input[type="password"],
+  .modal input[type="email"],
+  .modal select {
+    font-family: Panton;
+    margin: 0;
+    outline: 0;
+    tap-highlight-color: rgba(255, 255, 255, 0);
+    line-height: 1.51428571em;
+    padding: 0.67857143em 1em;
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 1.8571429rem;
+    box-shadow: 0 0 0 0 transparent inset;
+    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+    transition: color 0.1s ease, border-color 0.1s ease;
+    width: 100%;
+    margin-bottom: 12.5px;
+    padding-top: 9.6px;
+    height: 37px;
+    max-height: 37px; }
+  .modal input:-webkit-autofill,
+  .modal textarea:-webkit-autofill,
+  .modal select:-webkit-autofill {
+    background-color: #fff !important; }
+  .modal input[type="checkbox"] {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    margin-right: 1px;
+    display: block;
+    float: left;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px; }
+  .modal input[type="checkbox"]:after {
+    content: "";
+    vertical-align: middle;
+    text-align: center;
+    line-height: 15px;
+    position: absolute;
+    cursor: pointer;
+    height: 17px;
+    width: 17px;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: solid 1px #b7b7b7; }
+  .modal .ui.checkbox input:checked ~ .box::after, .modal .ui.checkbox input:checked ~ label::after {
+    color: #f89101; }
+  .modal input[type="checkbox"]:focus {
+    outline-color: white !important; }
+  .modal .closePopup {
+    position: absolute;
+    right: -8px;
+    top: -39px;
+    color: white;
+    font-weight: lighter;
+    cursor: pointer;
+    font-size: 1.5em !important;
+    display: inline-block; }
+  .modal .closeSvg {
+    position: absolute;
+    right: 4px;
+    z-index: 1;
+    display: none;
+    background: none;
+    border: none;
+    top: 20px;
+    outline-color: transparent; }
+    .modal .closeSvg img {
+      width: 32%; }
+  .modal .ErrorMsg {
+    font-family: Panton;
+    font-size: 10px !important;
+    text-align: left !important;
+    color: #ff0000 !important;
+    margin-bottom: 6px !important; }
+  .modal .SuccessMsg {
+    font-family: Panton;
+    font-size: 12px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    margin-bottom: 0px !important;
+    background-color: #fcfff5;
+    color: #2c662d !important; }
+  .modal button {
+    outline-color: white;
+    cursor: pointer; }
 
 .loader {
   border: 6px solid #adadad;
@@ -1091,8 +1093,8 @@ h5 {
     width: 98%;
     text-align: center;
     margin: 0 auto;
-    height: 98px;
-    max-height: 98px; }
+    height: 93px;
+    max-height: 93px; }
   .AllContnt .createAccount .creatAccBtn {
     width: 100%;
     background-color: #309de0;
@@ -1107,6 +1109,9 @@ h5 {
 @media screen and (min-width: 1025px) {
   .BkHdr {
     background-color: #f7f7f7; }
+
+  .mobLoginLogo {
+    display: none; }
 
   .Loginsec:after {
     content: "";
@@ -1128,6 +1133,17 @@ h5 {
   .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
     display: block; }
 
+  .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
+    top: 3px; }
+
+  .ui.grid {
+    margin: 0px !important; }
+
+  .mobLoginLogo {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 10px; }
+
   .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
     padding: 0px; }
 
@@ -1143,7 +1159,7 @@ h5 {
     padding-bottom: 34px; }
 
   .AllContnt .LoginCont .Loginsec {
-    width: 90%;
+    width: 85%;
     margin: 0 auto; }
 
   .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
@@ -1173,9 +1189,6 @@ h5 {
   .AllContnt .createAccount .RegisterTxt {
     height: 91px;
     max-height: 91px; } }
-.ui.grid {
-  margin: 0px !important; }
-
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -1399,6 +1412,7 @@ h5 {
         border-bottom-right-radius: 0;
         position: relative;
         cursor: pointer;
+        text-align: left;
         width: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -1510,7 +1524,7 @@ h5 {
       .AllRegCont .TwoSides #borderrBtom .eye.icon {
         position: absolute;
         right: 24px;
-        top: 10px;
+        top: 7px;
         cursor: pointer; }
       .AllRegCont .TwoSides #borderrBtom #SecondSide {
         text-align: center;
@@ -1626,12 +1640,15 @@ li:first-child:hover {
           padding: 0px !important; }
         .CreateAccContainer .AllRegCont .TwoSides #borderrBtom {
           padding-bottom: 38px !important; }
+          .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .GenderData {
+            text-align: left !important; }
           .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide {
             text-align: left;
             width: 104% !important;
             padding: 0px;
             position: relative;
-            left: -2%; }
+            left: -2%;
+            padding-left: 14px; }
             .CreateAccContainer .AllRegCont .TwoSides #borderrBtom #SecondSide p {
               margin-left: 0px;
               width: 100%;
@@ -1644,7 +1661,8 @@ li:first-child:hover {
               width: 100%;
               margin-top: 33px; }
           .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown ul {
-            width: 100%; }
+            width: 100%;
+            overflow-x: hidden; }
             .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown ul li .countryName {
               width: 80%; }
             .CreateAccContainer .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown ul li .codeLbl {
@@ -1760,7 +1778,7 @@ li:first-child:hover {
     .VerfyAccCont .PaddingSides .borderCont {
       padding-bottom: 21px; }
       .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
-        width: 90%;
+        width: 85%;
         margin: 0 auto; }
         .VerfyAccCont .PaddingSides .borderCont .VerfyAcc .SmsOrEmailVerify .CodeContainer {
           width: 90%; }
