@@ -96,6 +96,14 @@ const Heading = styled.div`
     color:#a7a9ac;
     font-weight:300;
   }
+  @media (max-width:1024px){
+    h2.ui.header {
+      font-size: 30px;
+    }
+    h3.ui.header {
+      font-size: 15px;
+    }
+  }
 `;
 const SliderWrapper = styled.div`
   background-color: #fff;
