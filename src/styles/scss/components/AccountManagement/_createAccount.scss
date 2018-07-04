@@ -100,7 +100,7 @@
             }
 
             .GenderData {
-                text-align: center;
+                text-align: left;
 
                 input {
                     display: none;
@@ -217,7 +217,7 @@
                     left: 0;
                     margin-top: 0px;
                     top: 100%;
-                    width: 232px;
+                    width: 100%;
                 }
 
                 .Arrowul {
@@ -546,22 +546,6 @@ li:first-child:hover {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .AllRegCont {
-        .TwoSides {
-            #borderrBtom {
-                .GenderData {
-                    .genderLblCont {
-                        // width: 17%;
-                        // float: left;
-                        // padding-top: 9px;
-                   
-                    }
-                }
-            }
-        }
-    }
-}
 
 @media screen and (max-width: 425px) {
     .CreateAccContainer {

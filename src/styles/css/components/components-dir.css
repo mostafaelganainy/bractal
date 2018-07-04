@@ -880,8 +880,11 @@
   padding-top: 5px;
   font-weight: bold; }
   .faceBok i {
-    font-size: 17px !important;
-    margin-right: 0px; }
+    font-size: 21px !important;
+    margin-right: 2px;
+    position: relative;
+    top: -2px;
+    right: 1px; }
 
 .Tiwiter {
   background-color: #1da1f2;
@@ -890,8 +893,11 @@
   padding-top: 5px;
   font-weight: bold; }
   .Tiwiter i {
-    font-size: 17px !important;
-    margin-right: 0px; }
+    font-size: 21px !important;
+    margin-right: 2px;
+    position: relative;
+    top: -2px;
+    right: 1px; }
 
 .Google {
   background-color: #db4437;
@@ -900,8 +906,11 @@
   padding-top: 5px;
   font-weight: bold; }
   .Google i {
-    font-size: 17px !important;
-    margin-right: 0px; }
+    font-size: 21px !important;
+    margin-right: 2px;
+    position: relative;
+    top: -2px;
+    right: 1px; }
 
 .Insta {
   color: white;
@@ -916,8 +925,11 @@
   font-weight: bold;
   margin-right: 0px !important; }
   .Insta i {
-    font-size: 23px !important;
-    margin-right: 0px; }
+    font-size: 21px !important;
+    margin-right: 2px;
+    position: relative;
+    top: -2px;
+    right: 1px; }
 
 .connectWith {
   font-size: 10px;
@@ -936,7 +948,7 @@
     margin-top: 4px;
     margin-right: 2px; }
   .SocialMediaCont .SmFontSocial {
-    font-size: 10px;
+    font-size: 9.5px;
     margin-bottom: 0; }
   .SocialMediaCont .LgFontSocial {
     font-size: 11px;
@@ -967,6 +979,9 @@
       margin-right: 6px;
       text-align: left !important;
       padding: 23px 0px; }
+      .SocialMediaCont .faceBok i, .SocialMediaCont .Google i, .SocialMediaCont .Insta i, .SocialMediaCont .Tiwiter i {
+        top: -12px !important;
+        left: -2px !important; }
     .SocialMediaCont .IconsCont {
       display: none; }
     .SocialMediaCont .connectWith {
@@ -1043,7 +1058,7 @@
       .AllRegCont .TwoSides #borderrBtom .padd4 {
         padding-left: 4px !important; }
       .AllRegCont .TwoSides #borderrBtom .GenderData {
-        text-align: center; }
+        text-align: left; }
         .AllRegCont .TwoSides #borderrBtom .GenderData input {
           display: none; }
         .AllRegCont .TwoSides #borderrBtom .GenderData img {
@@ -1133,7 +1148,7 @@
         left: 0;
         margin-top: 0px;
         top: 100%;
-        width: 232px; }
+        width: 100%; }
       .AllRegCont .TwoSides #borderrBtom .CountriesData .Arrowul {
         content: "";
         height: 11px;

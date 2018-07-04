@@ -16,7 +16,6 @@ body {
 }
 
 .modal {
-    overflow-x: hidden;
     .TextCenter {
         text-align: center;
     }
@@ -76,7 +75,7 @@ body {
         transition: color 0.1s ease, border-color 0.1s ease;
         width: 100%;
         margin-bottom: 12.5px;
-        padding-top: 9.6px;
+        padding-top: 10.6px;
         height: 37px;
         max-height: 37px;
     }
@@ -176,7 +175,6 @@ body {
     }
 }
 
-
 .loader {
     border: 6px solid #adadad;
     -webkit-animation: spin 2s linear infinite;
@@ -195,7 +193,6 @@ body {
     padding: 0px !important;
     border-top: none;
     text-align: right;
-    margin-top: 15px;
 }
 
 @keyframes spin {
@@ -210,7 +207,7 @@ body {
 
 @media screen and (min-width: 1025px) {
     .ui.modal {
-        min-height: 550px;
+        min-height: 526.5px;
     }
 }
 
@@ -218,10 +215,12 @@ body {
     .closePopup {
         display: none !important;
     }
+
     .modals.dimmer .ui.scrolling.modal {
         position: relative !important;
-        left:0px !important;
+        left: 0px !important;
     }
+
     .closeSvg {
         display: inline-block !important;
     }
@@ -235,6 +234,7 @@ body {
         left: 2.5% !important;
         min-height: 100%;
         position: relative !important;
+        overflow-x: hidden;
     }
 
     .ui.modal > .icon:first-child + *, .ui.modal > :first-child:not(.icon) {
@@ -278,13 +278,14 @@ body {
     }
 }
 
-@media only screen and (min-width: 1200px) { 
-  .ui.container { 
-    width: 84%; 
-  } 
-} 
-@media only screen and (max-width: 1199px) and (min-width: 992px) { 
-  .ui.container { 
-    width: 100%; 
-  } 
-} 
+@media only screen and (min-width: 1200px) {
+    .ui.container {
+        width: 84%;
+    }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+    .ui.container {
+        width: 100%;
+    }
+}
