@@ -405,6 +405,11 @@ li:first-child:hover {
         background-size: contain;
     }
 
+    .TwoSides {
+        height: 280px;
+        max-height: 280px;
+    }
+
     #firstSide {
         width: 65% !important;
         padding: 20px;
@@ -457,7 +462,7 @@ li:first-child:hover {
 
             .TwoSides {
                 padding: 0 !important;
-                width: 92%;
+                width: 85%;
                 margin: 0 auto !important;
 
                 #firstSide {
@@ -546,6 +551,13 @@ li:first-child:hover {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .CreateAccContainer {
+        .TwoSides {
+            width: 100% !important;
+        }
+    }
+}
 
 @media screen and (max-width: 425px) {
     .CreateAccContainer {
@@ -598,13 +610,5 @@ li:first-child:hover {
 
     .mobPadd0 {
         padding: 0px 6px !important;
-    }
-}
-
-@media screen and (max-width: 991px) and (min-width: 770px) {
-    .CreateAccContainer {
-        .TwoSides {
-            width: 95% !important;
-        }
     }
 }

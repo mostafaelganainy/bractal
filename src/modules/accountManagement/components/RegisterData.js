@@ -23,12 +23,14 @@ export default class RegisterData extends Component {
             </div>
             <div className="crteAcuntSec">
               <Grid.Column className="TextCenter">
-                <div className="AYKMailLogo">
-                  <img src="images/AccountManagement/logo.png" alt="Ayk Logo" />
+                <div className="FixedHeight">
+                  <div className="AYKMailLogo">
+                    <img src="images/AccountManagement/logo.png" alt="Ayk Logo" />
+                  </div>
+                  <p className="TextCenter RegisterTxt">
+                    <Trans i18nKey="Login_Lorem" />
+                  </p>
                 </div>
-                <p className="TextCenter RegisterTxt">
-                  <Trans i18nKey="Login_Lorem" />
-                </p>
                 <button
                   className="creatAccBtn"
                   onClick={this.toggleLoginContnt}

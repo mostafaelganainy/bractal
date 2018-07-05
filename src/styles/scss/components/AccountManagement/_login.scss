@@ -62,6 +62,7 @@
                     color: white;
                     font-size: 14px;
                     font-weight: bold;
+                    margin-top: 16px;
                 }
 
                 .ResponsiveCreateAccountBtn {
@@ -153,6 +154,10 @@
         background-color: #f7f7f7;
     }
 
+    .FixedHeight{
+        min-height: 210px;
+        max-height: 210px;
+    }
     .mobLoginLogo {
         display: none;
     }
@@ -237,14 +242,14 @@
     }
 }
 
-@media only screen and (max-width: 991px) and (min-width: 770px) {
-    .AllContnt .LoginCont .Loginsec {
-        width: 100%;
-        margin: 0 auto;
-    }
-}
+// @media only screen and (max-width: 991px) and (min-width: 770px) {
+//     .AllContnt .LoginCont .Loginsec {
+//         width: 100%;
+//         margin: 0 auto;
+//     }
+// }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
     .LoginColmn {
         padding: 0px !important;
     }

@@ -1052,7 +1052,8 @@ h5 {
       margin: 12px 0px;
       color: white;
       font-size: 14px;
-      font-weight: bold; }
+      font-weight: bold;
+      margin-top: 16px; }
     .AllContnt .LoginCont .Loginsec .LoginContnt .ResponsiveCreateAccountBtn {
       width: 100%;
       background-color: white;
@@ -1115,6 +1116,10 @@ h5 {
 @media screen and (min-width: 1025px) {
   .BkHdr {
     background-color: #f7f7f7; }
+
+  .FixedHeight {
+    min-height: 210px;
+    max-height: 210px; }
 
   .mobLoginLogo {
     display: none; }
@@ -1181,11 +1186,7 @@ h5 {
 
   .connectWith {
     margin-bottom: 10px; } }
-@media only screen and (max-width: 991px) and (min-width: 770px) {
-  .AllContnt .LoginCont .Loginsec {
-    width: 100%;
-    margin: 0 auto; } }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   .LoginColmn {
     padding: 0px !important; }
 
@@ -1306,8 +1307,9 @@ h5 {
       text-align: left !important;
       padding: 23px 0px; }
       .SocialMediaCont .faceBok i, .SocialMediaCont .Google i, .SocialMediaCont .Insta i, .SocialMediaCont .Tiwiter i {
-        top: -12px !important;
-        left: -2px !important; }
+        top: -15px !important;
+        left: -5px !important;
+        font-size: 27px !important; }
     .SocialMediaCont .IconsCont {
       display: none; }
     .SocialMediaCont .connectWith {
@@ -1620,6 +1622,10 @@ li:first-child:hover {
     background-repeat: no-repeat;
     background-size: contain; }
 
+  .TwoSides {
+    height: 280px;
+    max-height: 280px; }
+
   #firstSide {
     width: 65% !important;
     padding: 20px; }
@@ -1655,7 +1661,7 @@ li:first-child:hover {
           margin-right: 0px; }
       .CreateAccContainer .AllRegCont .TwoSides {
         padding: 0 !important;
-        width: 92%;
+        width: 85%;
         margin: 0 auto !important; }
         .CreateAccContainer .AllRegCont .TwoSides #firstSide {
           padding: 0px !important; }
@@ -1704,6 +1710,9 @@ li:first-child:hover {
 @media screen and (min-width: 426px) and (max-width: 1024px) {
   .mobPadd0 {
     padding: 0px !important; } }
+@media screen and (max-width: 768px) {
+  .CreateAccContainer .TwoSides {
+    width: 100% !important; } }
 @media screen and (max-width: 425px) {
   .CreateAccContainer .AllRegCont {
     padding: 3px 1px;
@@ -1723,9 +1732,6 @@ li:first-child:hover {
 
   .mobPadd0 {
     padding: 0px 6px !important; } }
-@media screen and (max-width: 991px) and (min-width: 770px) {
-  .CreateAccContainer .TwoSides {
-    width: 95% !important; } }
 .VerfyAccCont {
   text-align: center; }
   .VerfyAccCont .PaddingSides {
@@ -1819,7 +1825,7 @@ li:first-child:hover {
         .VerfyAccCont .PaddingSides .borderCont .VerfyAcc ul li {
           text-align: left;
           margin-bottom: 6px; } }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   .VerfyAccCont .PaddingSides .borderCont .VerfyAcc {
     width: 100%;
     margin: 0 auto; }
