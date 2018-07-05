@@ -393,7 +393,7 @@ li:first-child:hover {
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200px) {
     .bkBtn {
         display: inline-block;
     }
@@ -435,7 +435,7 @@ li:first-child:hover {
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
     .CreateAccContainer {
         padding: 17px;
         padding-bottom: 0px;
@@ -545,11 +545,12 @@ li:first-child:hover {
     }
 }
 
-@media screen and (min-width: 426px) and (max-width: 1024px) {
+@media screen and (min-width: 426px) and (max-width: 1199px) {
     .mobPadd0 {
         padding: 0px !important;
     }
 }
+
 
 @media screen and (max-width: 768px) {
     .CreateAccContainer {

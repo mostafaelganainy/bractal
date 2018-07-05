@@ -104,7 +104,7 @@
     font-size: 14px;
     font-weight: bold; }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200px) {
   .BkHdr {
     background-color: #f7f7f7; }
 
@@ -131,7 +131,7 @@
   .LoginContnt,
   .crteAcuntSec {
     padding: 0px 30px; } }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
   .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
     display: block; }
 
@@ -283,7 +283,7 @@
     padding-top: 3px;
     display: inline-block;
     text-align: left; } }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
   .SocialMediaCont {
     width: 100%;
     margin-bottom: 32px; }
@@ -297,14 +297,20 @@
       margin-right: 6px;
       text-align: left !important;
       padding: 23px 0px; }
-      .SocialMediaCont .faceBok i, .SocialMediaCont .Google i, .SocialMediaCont .Insta i, .SocialMediaCont .Tiwiter i {
-        top: -15px !important;
-        left: -5px !important;
-        font-size: 27px !important; }
     .SocialMediaCont .IconsCont {
       display: none; }
     .SocialMediaCont .connectWith {
       margin-bottom: 8px; } }
+@media screen and (max-width: 1024px) {
+  .faceBok i, .Google i, .Insta i, .Tiwiter i {
+    top: -15px !important;
+    left: -5px !important;
+    font-size: 27px !important; } }
+@media screen and (min-width: 1025px) and (max-width: 1199px) {
+  .faceBok i, .Google i, .Insta i, .Tiwiter i {
+    top: 7px !important;
+    left: 2px !important;
+    font-size: 27px !important; } }
 .content {
   padding: 0px !important; }
 
@@ -603,7 +609,7 @@ li:first-child:hover {
     border-bottom: 1px solid #309de0;
     margin-left: 6px; }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200px) {
   .bkBtn {
     display: inline-block; }
 
@@ -635,7 +641,7 @@ li:first-child:hover {
 
   .dropdown {
     padding: 0px; } }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
   .CreateAccContainer {
     padding: 17px;
     padding-bottom: 0px; }
@@ -698,7 +704,7 @@ li:first-child:hover {
     right: 11px;
     top: 8px;
     cursor: pointer; } }
-@media screen and (min-width: 426px) and (max-width: 1024px) {
+@media screen and (min-width: 426px) and (max-width: 1199px) {
   .mobPadd0 {
     padding: 0px !important; } }
 @media screen and (max-width: 768px) {
@@ -789,7 +795,7 @@ li:first-child:hover {
               cursor: pointer;
               margin-left: 6px; }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
   .VerfyAccCont .PaddingSides {
     padding: 10px 10px;
     padding-bottom: 0px; }
@@ -920,7 +926,7 @@ li:first-child:hover {
     transform: scale(1); }
   50% {
     transform: scale(1.5); } }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
   .lds-default {
     left: 45%; }
 

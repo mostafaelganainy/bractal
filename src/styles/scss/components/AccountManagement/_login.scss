@@ -149,7 +149,7 @@
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200px) {
     .BkHdr {
         background-color: #f7f7f7;
     }
@@ -183,7 +183,7 @@
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
     .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
         display: block;
     }
@@ -241,13 +241,6 @@
         margin-bottom: 10px;
     }
 }
-
-// @media only screen and (max-width: 991px) and (min-width: 770px) {
-//     .AllContnt .LoginCont .Loginsec {
-//         width: 100%;
-//         margin: 0 auto;
-//     }
-// }
 
 @media screen and (max-width: 768px) {
     .LoginColmn {

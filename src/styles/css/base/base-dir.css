@@ -175,7 +175,8 @@ body {
     left: 2.5% !important;
     min-height: 100%;
     position: relative !important;
-    overflow-x: hidden; }
+    overflow-x: hidden;
+    border-radius: 0px; }
 
   .ui.modal > .icon:first-child + *, .ui.modal > :first-child:not(.icon) {
     border-top-left-radius: 0;
