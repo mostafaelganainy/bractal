@@ -1,11 +1,6 @@
 .AllContnt {
-    .LoginContnt,
-    .crteAcuntSec {
-        padding: 0px 30px;
-    }
-
     .BkHdr {
-        background-color: #f7f7f7;
+        // background-color: #f7f7f7;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
 
@@ -31,6 +26,7 @@
 
     .LoginCont {
         padding-bottom: 42px;
+        margin-top: 2px;
 
         .Loginsec {
             width: 87%;
@@ -59,7 +55,6 @@
                 .LognBtn {
                     width: 100%;
                     background-color: #309de0;
-                    width: 100%;
                     border-radius: 5px;
                     border: none;
                     line-height: 2.89;
@@ -69,12 +64,38 @@
                     font-weight: bold;
                 }
 
+                .ResponsiveCreateAccountBtn {
+                    width: 100%;
+                    background-color: white;
+                    border-radius: 5px;
+                    line-height: 3;
+                    margin: 12px 0px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    border: 1px solid #309de0;
+                    color: #309de0;
+                }
+
+                .ResponsiveCreateAccountTxt {
+                    margin-top: -3px;
+                }
+
                 .RmmberLost {
                     line-height: 2.86;
                     padding: 19px 0px;
+                    font-size: 11px;
 
                     .RemmberMe {
                         opacity: 0.61;
+                    }
+
+                    .checkbox.ui {
+                        margin-top: 10px;
+                        width: 100%;
+                    }
+
+                    .ui.checkbox label {
+                        font-size: 11px;
                     }
 
                     .LostPass {
@@ -109,6 +130,8 @@
             width: 98%;
             text-align: center;
             margin: 0 auto;
+            height: 93px;
+            max-height: 93px;
         }
 
         .creatAccBtn {
@@ -121,12 +144,19 @@
             color: white;
             font-size: 14px;
             font-weight: bold;
-            margin-top: 44px;
         }
     }
 }
 
 @media screen and (min-width: 1025px) {
+    .BkHdr {
+        background-color: #f7f7f7;
+    }
+
+    .mobLoginLogo {
+        display: none;
+    }
+
     .Loginsec:after {
         content: "";
         background-color: #d9d9d9;
@@ -137,10 +167,96 @@
         left: 100%;
         display: block;
     }
+
+    .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
+        display: none;
+    }
+
+    .LoginContnt,
+    .crteAcuntSec {
+        padding: 0px 30px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .ResponsiveCreateAccountBtn, .ResponsiveCreateAccountTxt {
+        display: block;
+    }
+    .AllRegCont .TwoSides #borderrBtom .CountriesData .dropdown-button img {
+        top: 3px;
+    }
+    .ui.grid{
+        margin: 0px!important;
+    }
+
+    .mobLoginLogo {
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top:10px;
+    }
+
+    .dimmed.dimmable > .ui.animating.dimmer, .dimmed.dimmable > .ui.visible.dimmer, .ui.active.dimmer {
+        padding: 0px;
+    }
+
+    .AllContnt .LoginContnt,  .AllContnt .crteAcuntSec  {
+        padding: 0px 10px;
+    }
+
+    .AllContnt .BkHdr p {
+        margin-bottom: 15px;
+    }
+
+    .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost {
+        line-height: 0.8;
+        padding: 12px 0px;
+        padding-bottom: 34px;
+    }
+
+    .AllContnt .LoginCont .Loginsec {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .AllContnt .LoginCont .Loginsec .LoginContnt .RmmberLost .LostPass {
+        padding-top: 16px;
+    }
+
+    .Bylogin {
+        margin-bottom: 21px;
+        margin-top: 0px;
+    }
+
+    .AllContnt .LoginCont {
+        border-bottom: 1px solid #00000024;
+        padding-bottom: 23px;
+    }
+
+    .connectWith {
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 770px) {
+    .AllContnt .LoginCont .Loginsec {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .LoginColmn {
+        padding: 0px !important;
+    }
+
+    .AllContnt .LoginCont .Loginsec {
+        width: 100%;
+    }
 }
 
 @-moz-document url-prefix() {
-    .AllContnt .createAccount .creatAccBtn {
-        margin-top: 31px;
+    .AllContnt .createAccount .RegisterTxt {
+        height: 91px;
+        max-height: 91px;
     }
 }

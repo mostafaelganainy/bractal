@@ -2,6 +2,7 @@ import React from 'react';
 
 import HeaderDesktop from '../components/header/HeaderDesktop';
 import HeaderMobile from '../components/header/HeaderMobile';
+import ProductsListPage from '../../productsCore/containers/ProductsListPage';
 
 class Layout extends React.Component {
   state = {
@@ -36,6 +37,8 @@ class Layout extends React.Component {
     return (
       <React.Fragment>
         { header }
+        <ProductsListPage MainHeader="most popular" SubHeader="Enjoy our popular products" />
+        <ProductsListPage MainHeader="new arrivals" SubHeader="Check our New Arrival Products" />
       </React.Fragment>
 
     );

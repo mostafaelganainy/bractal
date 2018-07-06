@@ -12,7 +12,7 @@ const NavProductsSearch = ({ products }) => (
       options={products}
     />
     <Input
-      action={{ icon: 'search' }}
+      action={{ icon: { className: 'icon-lens' } }}
       placeholder={i18next.t('aykLayout:header.search')}
     />
   </div>

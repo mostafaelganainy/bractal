@@ -1,9 +1,11 @@
 $blue: #33a8ff;
-
+.item.products-search {
+  width: 70%;
+}
 .products-search {
   margin: auto;
   height: 40px;
-
+  width: 90%;
   .field {
     display: inline-block;
   }
@@ -16,7 +18,7 @@ $blue: #33a8ff;
     height: 40px;
     line-height: 40px;
     text-align: center;
-    width: 120px;
+    width: 20%;
     background-color: #fff;
     display: inline-block;
     float: left;
@@ -39,8 +41,7 @@ $blue: #33a8ff;
     }
   }
   .ui.action.input {
-    // width: 50em;
-    width:30em;
+    width: 80%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     position: relative;
@@ -130,7 +131,28 @@ $blue: #33a8ff;
     }
   }
 }
-
+@media (max-width: 1600px) {
+  .item.products-search {
+    width: 60%;
+  }
+}
+@media (max-width: 1280px) {
+  .item.products-search {
+    width: 50%;
+    .products-search .ui.pointing.dropdown {
+      width: 30%;
+    }
+    .products-search .ui.action.input {
+      width: 70%;
+    }
+  }
+}
+@media (max-width: 1201px) {
+  .products-search {
+    height: auto;
+    margin-bottom: 15px;
+  }
+}
 @media (max-width: 568px) {
   .nav-mobile .ui.action.input:not([class*="left action"]) > .button:last-child,
   .nav-mobile
@@ -152,7 +174,32 @@ $blue: #33a8ff;
   }
 }
 @media (max-width: 480px) {
+  .products-search {
+    background-color: transparent;
+    .ui.action.input {
+      width: 100%;
+    }
+    .ui.pointing.dropdown {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    i.icon.chevron {
+      float: right;
+    }
+  }
   .nav-mobile .menu-btn.item i.icon {
     font-size: 1.5rem !important;
+  }
+  .nav-mobile .ui.action.input:not([class*="left action"]) > .button:last-child,
+  .nav-mobile
+    .ui.action.input:not([class*="left action"])
+    > .buttons:last-child
+    > .button,
+  .nav-mobile
+    .ui.action.input:not([class*="left action"])
+    > .dropdown:last-child {
+    width: 43px;
   }
 }

@@ -17,7 +17,7 @@ const HomePage = () =>
         <br />
         <br />
       </Container>
-      
+
       <h3>I love BADR :)</h3>
     </React.Fragment>
   );

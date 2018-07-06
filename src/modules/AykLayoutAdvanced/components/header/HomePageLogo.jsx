@@ -4,7 +4,6 @@ import { Image } from 'semantic-ui-react';
 
 const LogoImage = styled(Image)`
   padding: 0px;
-  height: 100px;
 `;
 
 const HomePageLogo = () => (

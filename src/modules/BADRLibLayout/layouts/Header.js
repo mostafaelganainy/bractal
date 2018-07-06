@@ -18,7 +18,7 @@ const SocialMediaItemRenderer = (src, url) => (
 
 const Header = ({ modules }) => {
   const menuInfo = {
-    desktopMenuInfo: {
+    desktop: {
       top: {
         items: [
           {
@@ -67,12 +67,14 @@ const Header = ({ modules }) => {
         ],
       },
     },
-    mobileMenuInfo: {
+    mobile: {
       top: {
-        items: [],
+        left: [],
+        right: [],
       },
       bottom: {
-        items: [],
+        left: [],
+        right: [],
       },
     },
   };

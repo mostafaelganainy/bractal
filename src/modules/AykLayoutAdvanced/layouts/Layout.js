@@ -1,10 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import PageContent from './PageContent';
+import Theme from './Theme';
 
 const AykMainContainer = styled.div`
   background: #f8f7f7 !important;
+
+  &&& .container {
+    width: 1366px;
+  }
   
   /* '' */
   @font-face {
@@ -40,10 +45,12 @@ const AykMainContainer = styled.div`
 `;
 
 const Layout = () => (
-  <AykMainContainer>
-    <Header />
-    <PageContent />
-  </AykMainContainer>
+  <ThemeProvider theme={Theme}>
+    <AykMainContainer>
+      <Header />
+      <PageContent />
+    </AykMainContainer>
+  </ThemeProvider>
 );
 
 export default Layout;

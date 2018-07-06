@@ -5140,9 +5140,7 @@
         "alpha2Code": "DO",
         "alpha3Code": "DOM",
         "callingCodes": [
-            "1809",
-            "1829",
-            "1849"
+            "1809"
         ],
         "capital": "Santo Domingo",
         "altSpellings": [
@@ -9192,8 +9190,7 @@
         "alpha2Code": "KZ",
         "alpha3Code": "KAZ",
         "callingCodes": [
-            "76",
-            "77"
+            "76"
         ],
         "capital": "Astana",
         "altSpellings": [
@@ -14075,8 +14072,7 @@
         "alpha2Code": "PR",
         "alpha3Code": "PRI",
         "callingCodes": [
-            "1787",
-            "1939"
+            "1787"
         ],
         "capital": "San Juan",
         "altSpellings": [

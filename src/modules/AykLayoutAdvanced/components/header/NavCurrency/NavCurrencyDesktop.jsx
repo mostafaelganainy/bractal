@@ -13,7 +13,9 @@ const NavCurrencyDesktop = props => (
       <Dropdown.Item active className="selected">
         {props.currency[0].text}
       </Dropdown.Item>
-      <Dropdown.Item>{props.currency[1].text}</Dropdown.Item>
+      <Dropdown.Item>
+        {props.currency[1].text}
+      </Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
 );

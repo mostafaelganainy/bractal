@@ -1,77 +1,154 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Image, Menu } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
+
+import TwoLevelsHeader from '~/modules/core/layouts/advancedTwoLevels';
 
 import HomePageLogo from '../components/header/HomePageLogo';
-import TwoLevelsHeader from '../../core/layouts/headers/TwoLevelsHeader';
-import { withModules } from '../../core/utils/modulesLoader';
+import DropDownBurger from '../components/header/DropDownBurger';
+import DepartmentsTab from '../components/header/departments/DepartmentsTab';
+import NavProductsItems from '../components/header/headerActions/NavProductsItems';
+import NavWishList from '../components/header/headerActions/NavWishList';
+import NavUserProfile from '../components/header/headerActions/NavUserProfile';
+import NavNotification from '../components/header/headerActions/NavNotification';
+import NavLanguage from '../components/header/headerActions/NavLanguage';
+// import NavCurrency from '../components/header/headerActions/NavCurrency';
+
 import {
   desktopTopHeaderStyles,
   desktopBottomHeaderStyles,
 } from './Header.styles';
+import { TabLabel } from '../../ecommerceCoreUI/components/basic/Labels';
 
 const SocialMediaItemRenderer = (src, url) => (
-  <Menu.Item style={{ padding: '0 3px' }} >
-    <a href={url}>
-      <Image style={{ width: '25px', height: '25px' }} src={src} />
-    </a>
-  </Menu.Item>
+  <a href={url}>
+    <Image style={{ width: '25px', height: '25px' }} src={src} />
+  </a>
 );
 
-const Header = ({ modules }) => {
+const Header = () => {
   const menuInfo = {
-    desktopMenuInfo: {
+    desktop: {
       top: {
-        items: [
+        left: [
           {
-            iconRenderer: <HomePageLogo />,
+            itemRenderer: <HomePageLogo />,
             targetURL: '/',
+          },
+        ],
+        right: [
+          {
+            itemRenderer: <NavProductsItems />,
+            targetURL: '/path1',
+          },
+          {
+            verticalSeparator: true,
+          },
+          {
+            itemRenderer: <NavWishList />,
+            targetURL: '/path2',
+          },
+          {
+            verticalSeparator: true,
+          },
+          {
+            itemRenderer: <NavUserProfile />,
+            targetURL: '/path3',
+          },
+          {
+            verticalSeparator: true,
+          },
+          {
+            itemRenderer: <NavNotification />,
+            targetURL: '/path4',
+          },
+          {
+            verticalSeparator: true,
+          },
+          {
+            itemRenderer: <NavLanguage />,
+            targetURL: '/path5',
+          },
+          {
+            verticalSeparator: true,
+          },
+          {
+            itemRenderer: <span>Hi</span>,
+            dropdownContent: <div style={{ width: '10px', height: '10px' }} />,
           },
         ],
       },
       bottom: {
-        items: [
+        left: [
           {
-            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/fb-lg.png', 'http://facebook.com'),
+            itemRenderer: <DropDownBurger />,
+            dropdownContent: <DepartmentsTab />,
+          },
+          {
+            horizontalSpacer: true,
+          },
+          {
+            itemRenderer: <TabLabel>Department 0</TabLabel>,
+            targetURL: 'http://www.google.com',
+          },
+          {
+            horizontalSpacer: true,
+          },
+          {
+            itemRenderer: <TabLabel>Department 1</TabLabel>,
+            targetURL: 'http://www.facebook.com',
+          },
+        ],
+        right: [
+          {
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/fb-lg.png', 'http://facebook.com'),
             targetURL: 'http://facebook.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/tr-lg.png', 'http://facebook.com'),
+            horizontalSpacer: true,
+            spacerWidth: 'medium',
+          },
+          {
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/tr-lg.png', 'http://facebook.com'),
             targetURL: 'http://twitter.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/yb-lg.png', 'http://facebook.com'),
+            horizontalSpacer: true,
+            spacerWidth: 'medium',
+          },
+          {
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/yb-lg.png', 'http://facebook.com'),
             targetURL: 'http://youtube.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/inst-lg.png', 'http://facebook.com'),
+            horizontalSpacer: true,
+            spacerWidth: 'medium',
+          },
+          {
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/inst-lg.png', 'http://facebook.com'),
             targetURL: 'http://instagram.com',
             position: 'right',
           },
           {
-            spacerWithWidth: 10,
-            position: 'right',
+            horizontalSpacer: true,
+            spacerWidth: 'medium',
           },
         ],
       },
     },
-    mobileMenuInfo: {
+    mobile: {
       top: {
-        items: [],
+        left: [],
+        right: [],
       },
       bottom: {
-        items: [],
+        left: [],
+        right: [],
       },
     },
   };
-
-  modules.forEach(module => menuInfo.desktopMenuInfo.bottom.items.push({
-    targetURL: module.homePath,
-    label: module.menuItemTitle,
-  }));
 
   return (
     <div className="main-header">
@@ -84,8 +161,4 @@ const Header = ({ modules }) => {
   );
 };
 
-Header.propTypes = PropTypes.shape({
-  moduels: PropTypes.any.isRequired,
-}).isRequired;
-
-export default withModules(Header);
+export default Header;

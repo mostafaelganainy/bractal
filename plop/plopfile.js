@@ -232,17 +232,17 @@ module.exports = (plop) => {
       {
         type: 'add',
         path: '../src/modules/{{moduleName}}/index.js',
-        templateFile: 'templates/module_generator_simple/sampleModule/index.js.hbr',
+        templateFile: 'templates/module_generator_simple/index.js.hbr',
         abortOnFail: true,
       }, {
         type: 'add',
         path: '../src/modules/{{moduleName}}/locales/index.js',
-        templateFile: 'templates/module_generator_simple/sampleModule/locales/index.js.hbr',
+        templateFile: 'templates/module_generator_simple/locales/index.js.hbr',
         abortOnFail: true,
       }, {
         type: 'add',
         path: '../src/modules/{{moduleName}}/containers/Home.js',
-        templateFile: 'templates/module_generator_simple/sampleModule/containers/Home.js.hbr',
+        templateFile: 'templates/module_generator_simple/containers/Home.js.hbr',
         abortOnFail: true,
       },
     ],
