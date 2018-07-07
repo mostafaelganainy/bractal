@@ -11,7 +11,7 @@ import NavWishList from '~/modules/ecommerceCoreUI/components/header/headerActio
 import NavUserProfile from '~/modules/ecommerceCoreUI/components/header/headerActions/NavUserProfile';
 import NavNotification from '~/modules/ecommerceCoreUI/components/header/headerActions/NavNotification';
 import NavLanguage from '~/modules/ecommerceCoreUI/components/header/headerActions/NavLanguage';
-// import NavCurrency from '../components/header/headerActions/NavCurrency';
+import NavCurrency from '~/modules/ecommerceCoreUI/components/header/headerActions/NavCurrency';
 
 import {
   desktopTopHeaderStyles,
@@ -72,7 +72,7 @@ const Header = () => {
             verticalSeparator: true,
           },
           {
-            itemRenderer: <span>Hi</span>,
+            itemRenderer: <NavCurrency />,
             dropdownContent: <div style={{ width: '10px', height: '10px' }} />,
           },
         ],

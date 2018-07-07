@@ -6,7 +6,7 @@ export default class NavWishList extends Component {
   state = {};
   render() {
     return (
-      <IconOnlyButton primary iconName="icon-heart-1" />
+      <IconOnlyButton primary iconName="icon-heart-1" size={28} />
     );
   }
 }

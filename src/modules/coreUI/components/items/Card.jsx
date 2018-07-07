@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import LeftAlignedColumn from '~/modules/core/components/layouts/LeftAlignedColumn';
+import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 
 
 const CardHeader = styled.div`

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { Spacer } from './Spacers';
 
 const lengths = {
-  short: '30%',
+  small: '30%',
   normal: '40%',
-  long: '70%',
+  large: '70%',
   full: '100%',
 };
 

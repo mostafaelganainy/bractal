@@ -4,7 +4,7 @@ import {
   graphql,
 } from 'react-relay';
 import PropTypes from 'prop-types';
-import ProductCard from '../components/productCard/ProductCard';
+import ProductCard from '../components/products/ProductCard';
 
 const Product = ({ productInfo }) => (
   <ProductCard productInfo={productInfo} />

@@ -1,7 +1,9 @@
-import AykHome from '~/modules/aykHome';
+import eCommerceCore from '~/modules/ecommerceCore';
+import eCommerceCoreUI from '~/modules/ecommerceCoreUI';
 
 const modules = [
-  AykHome,
+  eCommerceCore,
+  eCommerceCoreUI,
 ];
 
 export default modules;

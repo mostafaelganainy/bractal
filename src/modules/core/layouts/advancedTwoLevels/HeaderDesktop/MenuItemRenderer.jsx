@@ -48,7 +48,7 @@ const renderMenuItem = (itemInfo) => {
 const renderVerticalSeparator = itemInfo => (
   <VerticalSeparator
     spacerWidth={itemInfo.spacerWidth}
-    separatorLength={itemInfo.separatorLength}
+    separatorLength={itemInfo.separatorLength || 'large'}
     separatorWeight={itemInfo.separatorWeight}
   />
 );

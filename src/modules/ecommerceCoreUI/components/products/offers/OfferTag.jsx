@@ -4,7 +4,7 @@ import PropType from 'prop-types';
 
 import { Label } from 'semantic-ui-react';
 
-import { OfferTagLabel } from './ProductLabels';
+import { OfferTagLabel } from '../basic/ProductLabels';
 
 const colors = {
   hotOffer: '#fd464b',

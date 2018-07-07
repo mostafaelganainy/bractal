@@ -2,21 +2,30 @@ import React, { Component } from 'react';
 import { Trans, translate } from 'react-i18next';
 
 import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
+import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import {
+  ImportantMinorDetailsLabel,
+  MinorDetailsLabel,
+} from '~/modules/ecommerceCoreUI/components/basic/Labels';
+import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 class NavProductsItems extends Component {
   state = {};
   render() {
     return (
-      <div className="products-items">
-        <IconOnlyButton primary iconName="icon-shopping-sad" />
-        <div className="products-items-details">
-          <span className="products-items-count">
+      <CenterAlignedRow>
+        <IconOnlyButton primary iconName="icon-shopping-sad" size={28} />
+        <Spacer />
+        <LeftAlignedColumn>
+          <ImportantMinorDetailsLabel uppercase>
             <Trans i18nKey="HeaderProductItems" />
-          </span>
-          <span className="products-items-price">00.00 QAR</span>
-          <span className="items-count">0</span>
-        </div>
-      </div>
+          </ImportantMinorDetailsLabel>
+          <MinorDetailsLabel>
+            00.00 QAR
+          </MinorDetailsLabel>
+        </LeftAlignedColumn>
+      </CenterAlignedRow>
     );
   }
 }

@@ -5,8 +5,8 @@ import {
   // XLargeLabel,
   LargeLabel,
   MediumLabel,
-  SmallLabel,
-  // XSmallLabel,
+  // SmallLabel,
+  XSmallLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
 export const SectionHeader = styled(XXLargeLabel)`
@@ -22,10 +22,10 @@ export const TabLabel = styled(MediumLabel)`
   color: ${props => props.theme.colors.labels.normal};
 `;
 
-export const MinorDetailsLabel = styled(SmallLabel)`
+export const MinorDetailsLabel = styled(XSmallLabel)`
   color: ${props => props.theme.colors.labels.subtle};
 `;
 
-export const ImportantMinorDetailsLabel = styled(SmallLabel)`
-  color: ${props => props.theme.colors.labels.importnat};
+export const ImportantMinorDetailsLabel = styled(XSmallLabel)`
+  color: ${props => props.theme.colors.labels.important};
 `;

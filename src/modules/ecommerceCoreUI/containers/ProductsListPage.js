@@ -7,7 +7,7 @@ import {
 } from 'react-relay';
 
 import { withRelayEnvironment } from '../../core/utils/relayInitializer';
-import Loader from '../components/common/Loader';
+import Loader from '../components/basic/Loader';
 
 import ProductsList from './ProductsList';
 

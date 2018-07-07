@@ -6,12 +6,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Card from '~/modules/coreUI/components/items/Card';
-import Spacer from '~/modules/coreUI/components/layouts/helpers/Spacer';
+import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 import RoundIconButton from '~/modules/AykCore/components/buttons/RoundIconButton';
+import {
+  OldPriceLabel,
+  CurrentPriceLabel,
+  ProductCardOfferHintLabel,
+} from './basic/ProductLabels';
+
 import Rating from './basic/Rating';
-import { OldPriceLabel, CurrentPriceLabel, ProductCardOfferHintLabel } from '../basic/Labels';
-import OfferTag from './basic/OfferTag';
+import OfferTag from './offers/OfferTag';
 
 // import CountDown from '~/modules/productsCore/components/common/CountDown';
 

@@ -38,7 +38,7 @@ export default class NavUserProfile extends Component {
       userImage = <Image src="images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <IconOnlyButton primary iconName="icon-user" onClick={this.show('blurring')} />
+        <IconOnlyButton primary iconName="icon-user" size={28} onClick={this.show('blurring')} />
       );
     }
     return (

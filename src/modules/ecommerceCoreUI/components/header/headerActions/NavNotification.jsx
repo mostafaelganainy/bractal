@@ -6,7 +6,7 @@ export default class NavNotification extends Component {
   state = {};
   render() {
     return (
-      <IconOnlyButton primary iconName="icon-bell" />
+      <IconOnlyButton primary iconName="icon-bell" size={28} />
     );
   }
 }

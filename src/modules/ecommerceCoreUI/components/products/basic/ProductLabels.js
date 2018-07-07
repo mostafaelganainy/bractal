@@ -30,7 +30,6 @@ export const ProductCardOfferHintLabel = MinorDetailsLabel;
 
 export const OfferTagLabel = styled(SmallLabel)`
   color: ${props => props.theme.colors.named.white};
-
 `;
 
 // ------------------- RATINGS ---------------------//

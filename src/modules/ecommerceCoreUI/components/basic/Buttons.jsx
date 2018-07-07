@@ -3,9 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const PrimaryStyleIconButton = styled.i`
-  font-size: ${props => props.theme.fonts.sizes.xLarge}px;
+const SizedIcon = styled.i`
+  font-size: ${props => props.size || props.theme.fonts.sizes.xLarge}px;
+`;
 
+const PrimaryStyleIconButton = styled(SizedIcon)`
   color: ${props => props.theme.colors.primary};
   &:hover {
     color: ${props => props.theme.colors.secondary}
@@ -16,9 +18,7 @@ const PrimaryStyleIconButton = styled.i`
   }
 `;
 
-const SecondaryStyleIconButton = styled.i`
-  font-size: ${props => props.theme.fonts.sizes.xLarge}px;
-
+const SecondaryStyleIconButton = styled(SizedIcon)`
   color: ${props => props.theme.colors.secondary};
   &:hover {
     color: ${props => props.theme.colors.primary}
@@ -36,6 +36,7 @@ export const IconOnlyButton = (props) => {
 
   return (
     <ButtonElement
+      size={props.size}
       className={props.iconName}
     />
   );
@@ -43,4 +44,5 @@ export const IconOnlyButton = (props) => {
 
 IconOnlyButton.propTypes = PropTypes.shape({
   iconName: PropTypes.string.isRequired,
+  size: PropTypes.number,
 }).isRequired;
