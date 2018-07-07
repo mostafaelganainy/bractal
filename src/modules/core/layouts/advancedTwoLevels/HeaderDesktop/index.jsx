@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
 
+import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+
 import TopNav from './TopNav';
 import BottomNav from './BottomNav';
 
@@ -20,6 +22,7 @@ const HeaderDesktop = ({ menuInfo, topHeaderStyles, bottomHeaderStyles }) => (
     <PositionedDiv>
       <TopNav menuInfo={menuInfo.top} customHeaderStyles={topHeaderStyles} />
     </PositionedDiv>
+    <Spacer />
     <PositionedDiv>
       <BottomNav menuInfo={menuInfo.bottom} customHeaderStyles={bottomHeaderStyles} />
     </PositionedDiv>

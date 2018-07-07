@@ -32,7 +32,7 @@ export const XXXLargeSpacer = styled.div`
   height: ${props => props.size || props.theme.paddings.xxxLarge}px;
 `;
 
-export const Spacer = ({ spacerSize }) => {
+export const Spacer = ({ spacerSize, customSize }) => {
   const RENDERERS = {
     small: SmallSpacer,
     medium: MediumSpacer,
@@ -44,9 +44,10 @@ export const Spacer = ({ spacerSize }) => {
 
   const Renderer = RENDERERS[spacerSize || 'medium'];
 
-  return <Renderer />;
+  return <Renderer size={customSize} />;
 };
 
 Spacer.propTypes = PropTypes.shape({
   spacerSize: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']).isRequired,
+  customSize: PropTypes.number,
 }).isRequired;

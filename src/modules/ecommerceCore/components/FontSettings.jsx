@@ -20,11 +20,7 @@ export default styled.div`
   optgroup,
   select,
   textarea,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
+  span {
     font-family: Panton, sans-serif; 
   }
 

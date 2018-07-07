@@ -9,6 +9,7 @@ import {
   XSmallLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
+// --------------- COMMON ---------------- //
 export const SectionHeader = styled(XXLargeLabel)`
   color: ${props => props.theme.colors.primary};
   font-weight: bold;
@@ -26,6 +27,18 @@ export const MinorDetailsLabel = styled(XSmallLabel)`
   color: ${props => props.theme.colors.labels.subtle};
 `;
 
+export const EmphasizedMinorDetailsLabel = styled(MinorDetailsLabel)`
+  font-weight: bold;
+`;
+
 export const ImportantMinorDetailsLabel = styled(XSmallLabel)`
   color: ${props => props.theme.colors.labels.important};
 `;
+
+export const EmphasizedImportantMinorDetailsLabel = styled(ImportantMinorDetailsLabel)`
+  font-weight: bold;
+`;
+
+// --------------- HEADER ---------------- //
+
+// --------------- HOME PAGE ------------ //

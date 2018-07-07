@@ -5,8 +5,8 @@ import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Butto
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import {
-  ImportantMinorDetailsLabel,
-  MinorDetailsLabel,
+  EmphasizedImportantMinorDetailsLabel,
+  EmphasizedMinorDetailsLabel,
 } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
@@ -18,12 +18,13 @@ class NavProductsItems extends Component {
         <IconOnlyButton primary iconName="icon-shopping-sad" size={28} />
         <Spacer />
         <LeftAlignedColumn>
-          <ImportantMinorDetailsLabel uppercase>
+          <Spacer spacerSize="small" />
+          <EmphasizedImportantMinorDetailsLabel uppercase>
             <Trans i18nKey="HeaderProductItems" />
-          </ImportantMinorDetailsLabel>
-          <MinorDetailsLabel>
+          </EmphasizedImportantMinorDetailsLabel>
+          <EmphasizedMinorDetailsLabel>
             00.00 QAR
-          </MinorDetailsLabel>
+          </EmphasizedMinorDetailsLabel>
         </LeftAlignedColumn>
       </CenterAlignedRow>
     );

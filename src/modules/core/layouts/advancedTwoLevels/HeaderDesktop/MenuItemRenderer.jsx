@@ -67,9 +67,6 @@ const MenuItemRenderer = ({ itemInfo }) =>
           'linkLabelText', 'iconImageSrc', 'itemRenderer', 'targetURL', 'dropdownContent',
         ])
       .and_if_hasAnyOf(['linkLabelText', 'iconImageSrc', 'itemRenderer'])
-        .thenRequireOneOf([
-          'targetURL', 'dropdownContent',
-        ])
         .andProhibitAllOf([
           'spacerSize', 'separatorWeight', 'separatorLength',
         ])

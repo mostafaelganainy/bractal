@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import NavCurrencyDesktop from '../NavCurrency/NavCurrencyDesktop';
-import NavCurrencyMobile from '../NavCurrency/NavCurrencyMobile';
+import NavCurrencyDesktop from './NavCurrency/NavCurrencyDesktop';
+import NavCurrencyMobile from './NavCurrency/NavCurrencyMobile';
 
 export default class NavCurrency extends Component {
   state = {
     width: window.innerWidth,
     currencies: [
-      { text: 'QAR' },
-      { text: 'USD' },
+      {
+        text: 'QAR',
+        value: 'qar',
+      },
+      {
+        text: 'USD',
+        value: 'usd',
+      },
     ],
   };
   componentWillMount() {
@@ -33,7 +39,7 @@ export default class NavCurrency extends Component {
     if (isMobile) {
       currencyView = <NavCurrencyMobile currency={this.state.currencies} />;
     } else {
-      currencyView = <NavCurrencyDesktop currency={this.state.currencies} />;
+      currencyView = <NavCurrencyDesktop options={this.state.currencies} />;
     }
 
     return <div>{currencyView}</div>;

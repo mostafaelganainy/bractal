@@ -4,7 +4,7 @@ import { Image } from 'semantic-ui-react';
 import TwoLevelsHeader from '~/modules/core/layouts/advancedTwoLevels';
 
 import HomePageLogo from '~/modules/ecommerceCoreUI/components/header/HomePageLogo';
-import DropDownBurger from '~/modules/ecommerceCoreUI/components/header/DropDownBurger';
+import DropDownBurger from '~/modules/ecommerceCoreUI/components/header/departments/DropDownBurger';
 import DepartmentsTab from '~/modules/ecommerceCoreUI/components/header/departments/DepartmentsTab';
 import NavProductsItems from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsItems';
 import NavWishList from '~/modules/ecommerceCoreUI/components/header/headerActions/NavWishList';
@@ -38,42 +38,36 @@ const Header = () => {
         right: [
           {
             itemRenderer: <NavProductsItems />,
-            targetURL: '/path1',
           },
           {
             verticalSeparator: true,
           },
           {
             itemRenderer: <NavWishList />,
-            targetURL: '/path2',
           },
           {
             verticalSeparator: true,
           },
           {
             itemRenderer: <NavUserProfile />,
-            targetURL: '/path3',
           },
           {
             verticalSeparator: true,
           },
           {
             itemRenderer: <NavNotification />,
-            targetURL: '/path4',
           },
           {
             verticalSeparator: true,
           },
           {
             itemRenderer: <NavLanguage />,
-            targetURL: '/path5',
           },
           {
             verticalSeparator: true,
           },
           {
             itemRenderer: <NavCurrency />,
-            dropdownContent: <div style={{ width: '10px', height: '10px' }} />,
           },
         ],
       },

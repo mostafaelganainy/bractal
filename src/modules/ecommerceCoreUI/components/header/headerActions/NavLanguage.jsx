@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavLanguageMobile from '../NavLanguage/NavLanguageMobile';
-import NavLanguageDesktop from '../NavLanguage/NavLanguageDesktop';
+import NavLanguageMobile from './NavLanguage/NavLanguageMobile';
+import NavLanguageDesktop from './NavLanguage/NavLanguageDesktop';
 
 export default class NavLanguage extends Component {
   state = {
