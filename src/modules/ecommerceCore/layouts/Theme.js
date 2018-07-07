@@ -33,13 +33,13 @@ export default {
     xxxLarge: 30,
   },
   borders: {
-    thin: {
+    light: {
       size: 1,
     },
     normal: {
       size: 2,
     },
-    thick: {
+    bold: {
       size: 3,
     },
   },

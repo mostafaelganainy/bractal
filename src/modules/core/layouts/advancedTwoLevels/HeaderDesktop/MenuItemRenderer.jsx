@@ -73,6 +73,10 @@ const MenuItemRenderer = ({ itemInfo }) =>
         .andProhibitAllOf([
           'spacerSize', 'separatorWeight', 'separatorLength',
         ])
+      .and_if_hasAnyOf(['horizontalSpacer'])
+        .thenProhibitAllOf([
+          'separatorWeight', 'separatorLength',
+        ])
     .then()
       .if_has('verticalSeparator')
         .resolveWith(renderVerticalSeparator(itemInfo))
