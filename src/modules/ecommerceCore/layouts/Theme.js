@@ -1,7 +1,9 @@
 export default {
   colors: {
     primary: '#33a8ff',
+    primaryDark: '#2c8bd2',
     secondary: '#fb9410',
+    secondaryDark: '#cc790e',
     labels: {
       important: '#000000',
       normal: 'rgba(0, 0, 0, 0.7)',

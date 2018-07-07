@@ -1,33 +1,19 @@
 /* eslint-disable no-else-return, indent */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, Image, Label } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import ValidateAndResolve from '~/modules/core/utils/jsHelpers/ValidateAndResolve';
 import VerticalSeparator from '~/modules/coreUI/components/layouts/helpers/VerticalSeparator';
 import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 import DropdownContentTracker from './DropdownContentTracker';
 
-const StyledMenuItem = styled(Menu.Item)`
-  &&& {
-    padding: 0px;
-
-    &:before {
-      position: relative;
-      background: rgba(0,0,0,0);
-    }
-  }
-`;
-
 const renderMenuItem = (itemInfo) => {
   const {
     targetURL, linkLabelText, itemRenderer, iconImageSrc, dropdownContent,
   } = itemInfo;
 
-  const renderAs = targetURL ? NavLink : Label;
-  const path = targetURL || '/';
   let content = null;
 
   if (linkLabelText) {
@@ -38,14 +24,14 @@ const renderMenuItem = (itemInfo) => {
     content = itemRenderer;
   }
 
-  const menuItem = (
-    <StyledMenuItem
-      as={renderAs}
-      to={path}
-    >
-      { content }
-    </StyledMenuItem>
-  );
+  let menuItem = null;
+
+  if (targetURL) {
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    menuItem = <Link to={targetURL}> { content } </Link>;
+  } else {
+    menuItem = <div> { content } </div>;
+  }
 
   if (dropdownContent) {
     return (

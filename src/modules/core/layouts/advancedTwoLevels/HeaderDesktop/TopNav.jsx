@@ -1,14 +1,20 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import MenuItemRenderer from './MenuItemRenderer';
 
-const BorderLessHeader = styled(Menu)`  
+const SubMenuContainer = styled.div` 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const BorderLessHeader = styled.div`  
   &&& {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     
     border: none;
     box-shadow: none;
@@ -25,14 +31,16 @@ const BorderLessHeader = styled(Menu)`
 
 const TopNav = ({ menuInfo, customHeaderStyles }) => (
   <BorderLessHeader custom-header-styles={customHeaderStyles}>
-    {menuInfo.left.map(item => (
-      <MenuItemRenderer key={item.key} itemInfo={item} />
-    ))}
-    <Menu.Menu position="right">
+    <SubMenuContainer>
+      {menuInfo.left.map(item => (
+        <MenuItemRenderer key={item.key} itemInfo={item} />
+      ))}
+    </SubMenuContainer>
+    <SubMenuContainer>
       {menuInfo.right.map(item => (
         <MenuItemRenderer key={item.key} itemInfo={item} />
       ))}
-    </Menu.Menu>
+    </SubMenuContainer>
   </BorderLessHeader>
 );
 

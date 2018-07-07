@@ -1,6 +1,9 @@
 
 import React, { Component } from 'react';
 import { Image } from 'semantic-ui-react';
+
+import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
+
 import LoginContainer from '../../../../accountManagement/containers/LoginContainer';
 import userAuthurization from '../../../../accountManagement/utilities/AccountManagement';
 
@@ -35,10 +38,7 @@ export default class NavUserProfile extends Component {
       userImage = <Image src="images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        // eslint-disable-next-line
-        /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-        <i className="icon-user" onClick={this.show('blurring')} />
-
+        <IconOnlyButton primary iconName="icon-user" onClick={this.show('blurring')} />
       );
     }
     return (

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
+import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
+
 export default class NavWishList extends Component {
   state = {};
   render() {
     return (
-      <div className="products-wishlist">
-        <i className="icon-heart-1" />
-      </div>
+      <IconOnlyButton primary iconName="icon-heart-1" />
     );
   }
 }

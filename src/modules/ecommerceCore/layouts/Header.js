@@ -3,14 +3,14 @@ import { Image } from 'semantic-ui-react';
 
 import TwoLevelsHeader from '~/modules/core/layouts/advancedTwoLevels';
 
-import HomePageLogo from '../components/header/HomePageLogo';
-import DropDownBurger from '../components/header/DropDownBurger';
-import DepartmentsTab from '../components/header/departments/DepartmentsTab';
-import NavProductsItems from '../components/header/headerActions/NavProductsItems';
-import NavWishList from '../components/header/headerActions/NavWishList';
-import NavUserProfile from '../components/header/headerActions/NavUserProfile';
-import NavNotification from '../components/header/headerActions/NavNotification';
-import NavLanguage from '../components/header/headerActions/NavLanguage';
+import HomePageLogo from '~/modules/ecommerceCoreUI/components/header/HomePageLogo';
+import DropDownBurger from '~/modules/ecommerceCoreUI/components/header/DropDownBurger';
+import DepartmentsTab from '~/modules/ecommerceCoreUI/components/header/departments/DepartmentsTab';
+import NavProductsItems from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsItems';
+import NavWishList from '~/modules/ecommerceCoreUI/components/header/headerActions/NavWishList';
+import NavUserProfile from '~/modules/ecommerceCoreUI/components/header/headerActions/NavUserProfile';
+import NavNotification from '~/modules/ecommerceCoreUI/components/header/headerActions/NavNotification';
+import NavLanguage from '~/modules/ecommerceCoreUI/components/header/headerActions/NavLanguage';
 // import NavCurrency from '../components/header/headerActions/NavCurrency';
 
 import {
@@ -133,7 +133,7 @@ const Header = () => {
           },
           {
             horizontalSpacer: true,
-            spacerWidth: 'medium',
+            spacerWidth: 'large',
           },
         ],
       },
