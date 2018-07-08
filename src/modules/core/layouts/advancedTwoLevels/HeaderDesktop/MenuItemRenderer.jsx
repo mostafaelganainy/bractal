@@ -69,7 +69,7 @@ const MenuItemRenderer = ({ itemInfo }) =>
         ])
       .and_if_hasAnyOf(['linkLabelText', 'iconImageSrc', 'itemRenderer'])
         .andProhibitAllOf([
-          'spacerSize', 'separatorWeight', 'separatorLength',
+          'spacerSize', 'separatorWeight', 'separatorLength', 'separatorColorTone',
         ])
       .and_if_hasAnyOf(['horizontalSpacer'])
         .thenProhibitAllOf([
@@ -95,7 +95,6 @@ MenuItemRenderer.ItemInfoPropTypes = {
   itemRenderer: PropTypes.element,
   targetURL: PropTypes.string,
   dropdownContent: PropTypes.element,
-  position: PropTypes.oneOf(['right', 'left']),
   styleClass: PropTypes.string,
   spacerWidth: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
   separatorWeight: PropTypes.oneOf(['thin', 'normal', 'thick']),

@@ -10,6 +10,12 @@ const Theme = {
       subtle: 'rgba(0, 0, 0, 0.5)',
       hint: 'rgba(0, 0, 0, 0.3)',
     },
+    invertedLabels: {
+      important: 'white',
+      normal: 'rgba(255, 255, 255, 0.7)',
+      subtle: 'rgba(255, 255, 255, 0.5)',
+      hint: 'rgba(255, 255, 255, 0.3)',
+    },
     named: {
       white: '#FFFFFF',
     },
@@ -25,6 +31,7 @@ const Theme = {
     },
   },
   paddings: {
+    xsmall: 2,
     small: 5,
     medium: 10,
     large: 15,

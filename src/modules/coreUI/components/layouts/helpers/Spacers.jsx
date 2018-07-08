@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+export const XSmallSpacer = styled.div`
+  width: ${props => props.size || props.theme.paddings.xSmall}px;
+  height: ${props => props.size || props.theme.paddings.xSmall}px;
+`;
+
 export const SmallSpacer = styled.div`
   width: ${props => props.size || props.theme.paddings.small}px;
   height: ${props => props.size || props.theme.paddings.small}px;
@@ -34,6 +39,7 @@ export const XXXLargeSpacer = styled.div`
 
 export const Spacer = ({ spacerSize, customSize }) => {
   const RENDERERS = {
+    xSmall: XSmallSpacer,
     small: SmallSpacer,
     medium: MediumSpacer,
     large: LargeSpacer,
@@ -48,6 +54,6 @@ export const Spacer = ({ spacerSize, customSize }) => {
 };
 
 Spacer.propTypes = PropTypes.shape({
-  spacerSize: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']).isRequired,
+  spacerSize: PropTypes.oneOf(['xSmall', 'small', 'medium', 'large', 'xLarge', 'xxLarge']).isRequired,
   customSize: PropTypes.number,
 }).isRequired;
