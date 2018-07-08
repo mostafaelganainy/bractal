@@ -12,6 +12,7 @@ import NavUserProfile from '~/modules/ecommerceCoreUI/components/header/headerAc
 import NavNotification from '~/modules/ecommerceCoreUI/components/header/headerActions/NavNotification';
 import NavLanguage from '~/modules/ecommerceCoreUI/components/header/headerActions/NavLanguage';
 import NavCurrency from '~/modules/ecommerceCoreUI/components/header/headerActions/NavCurrency';
+import NavProductsSearch from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsSearch';
 
 import {
   desktopTopHeaderStyles,
@@ -35,36 +36,46 @@ const Header = () => {
             targetURL: '/',
           },
         ],
+        center: [
+          {
+            itemRenderer: <NavProductsSearch />,
+          },
+        ],
         right: [
           {
             itemRenderer: <NavProductsItems />,
           },
           {
             verticalSeparator: true,
+            separatorColorTone: 'normal',
           },
           {
             itemRenderer: <NavWishList />,
           },
           {
             verticalSeparator: true,
+            separatorColorTone: 'normal',
           },
           {
             itemRenderer: <NavUserProfile />,
           },
           {
             verticalSeparator: true,
+            separatorColorTone: 'normal',
           },
           {
             itemRenderer: <NavNotification />,
           },
           {
             verticalSeparator: true,
+            separatorColorTone: 'normal',
           },
           {
             itemRenderer: <NavLanguage />,
           },
           {
             verticalSeparator: true,
+            separatorColorTone: 'normal',
           },
           {
             itemRenderer: <NavCurrency />,

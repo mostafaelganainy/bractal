@@ -3,15 +3,16 @@ import { PropTypes } from 'prop-types';
 import Dropdown from '~/modules/coreUI/components/basic/Dropdown';
 
 import {
-  customTriggerLabelStyles,
+  SimpleDropdownTriggerStyles,
   StyledHeaderDropdownContainer,
 } from '../CustomHeaderComponentsStyles';
 
 const NavCurrencyDesktop = ({ options }) => (
   <StyledHeaderDropdownContainer>
     <Dropdown
+      pointing="top right"
       options={options}
-      customTriggerLabelStyles={customTriggerLabelStyles}
+      customTriggerLabelStyles={SimpleDropdownTriggerStyles}
       onChange={this.onChange}
     />
   </StyledHeaderDropdownContainer>

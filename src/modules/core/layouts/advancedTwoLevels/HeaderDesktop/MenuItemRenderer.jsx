@@ -48,6 +48,7 @@ const renderMenuItem = (itemInfo) => {
 const renderVerticalSeparator = itemInfo => (
   <VerticalSeparator
     spacerWidth={itemInfo.spacerWidth}
+    separatorColorTone={itemInfo.separatorColorTone}
     separatorLength={itemInfo.separatorLength || 'large'}
     separatorWeight={itemInfo.separatorWeight}
   />
@@ -72,7 +73,7 @@ const MenuItemRenderer = ({ itemInfo }) =>
         ])
       .and_if_hasAnyOf(['horizontalSpacer'])
         .thenProhibitAllOf([
-          'separatorWeight', 'separatorLength',
+          'separatorWeight', 'separatorLength', 'separatorColorTone',
         ])
     .then()
       .if_has('verticalSeparator')
@@ -99,6 +100,7 @@ MenuItemRenderer.ItemInfoPropTypes = {
   spacerWidth: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
   separatorWeight: PropTypes.oneOf(['thin', 'normal', 'thick']),
   separatorLength: PropTypes.oneOf(['shorn', 'normal', 'full']),
+  separatorColorTone: PropTypes.oneOf(['light', 'normal', 'dark']),
 };
 
 MenuItemRenderer.propTypes = PropTypes.shape({

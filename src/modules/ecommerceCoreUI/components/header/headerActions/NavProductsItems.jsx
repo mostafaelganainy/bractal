@@ -18,7 +18,6 @@ class NavProductsItems extends Component {
         <IconOnlyButton primary iconName="icon-shopping-sad" size={28} />
         <Spacer />
         <LeftAlignedColumn>
-          <Spacer spacerSize="small" />
           <EmphasizedImportantMinorDetailsLabel uppercase>
             <Trans i18nKey="HeaderProductItems" />
           </EmphasizedImportantMinorDetailsLabel>

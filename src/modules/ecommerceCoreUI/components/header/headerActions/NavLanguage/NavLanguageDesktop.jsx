@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import Dropdown from '~/modules/coreUI/components/basic/Dropdown';
 
 import {
-  customTriggerLabelStyles,
+  SimpleDropdownTriggerStyles,
   StyledHeaderDropdownContainer,
 } from '../CustomHeaderComponentsStyles';
 
@@ -42,8 +42,9 @@ export default class NavLanguageDesktop extends React.Component {
       <StyledHeaderDropdownContainer>
         <Dropdown
           options={options}
+          pointing="top right"
           selectedValue={currentLanguage}
-          customTriggerLabelStyles={customTriggerLabelStyles}
+          customTriggerLabelStyles={SimpleDropdownTriggerStyles}
           onChange={this.onChange}
         />
       </StyledHeaderDropdownContainer>

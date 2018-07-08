@@ -10,6 +10,10 @@ const SubMenuContainer = styled.div`
   align-items: center;
 `;
 
+const CenteredSubMenuContainer = styled(SubMenuContainer)`
+  justify-content: space-around;
+`;
+
 const BorderLessHeader = styled.div`  
   &&& {
     display: flex;
@@ -36,6 +40,11 @@ const TopNav = ({ menuInfo, customHeaderStyles }) => (
         <MenuItemRenderer key={item.key} itemInfo={item} />
       ))}
     </SubMenuContainer>
+    <CenteredSubMenuContainer>
+      {menuInfo.center.map(item => (
+        <MenuItemRenderer key={item.key} itemInfo={item} />
+      ))}
+    </CenteredSubMenuContainer>
     <SubMenuContainer>
       {menuInfo.right.map(item => (
         <MenuItemRenderer key={item.key} itemInfo={item} />

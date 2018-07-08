@@ -33,14 +33,20 @@ export default {
     xxxLarge: 30,
   },
   borders: {
-    light: {
-      size: 1,
+    size: {
+      thin: 1,
+      normal: 2,
+      bold: 3,
     },
-    normal: {
-      size: 2,
+    color: {
+      light: 'rgba(0,0,0,0.1)',
+      normal: 'rgba(0,0,0,0.3)',
+      dark: 'rgba(0,0,0,0.5)',
     },
-    bold: {
-      size: 3,
+    radius: {
+      small: 2,
+      normal: 5,
+      large: 10,
     },
   },
 };

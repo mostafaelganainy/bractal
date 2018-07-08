@@ -107,7 +107,7 @@ class Dropdown extends React.Component {
       <div>
         <StyledSemanticDropdown
           trigger={this.triggerInternal(trigger, options, customTriggerLabelStyles)}
-          pointing={pointing || 'top right'}
+          pointing={pointing || 'top center'}
           icon={icon || 'chevron down'}
           options={options}
           value={selectedValueInternal}

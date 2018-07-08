@@ -26,7 +26,16 @@ const getWeight = (props) => {
     weight = props.separatorWeight;
   }
 
-  return props.theme.borders[weight].size;
+  return props.theme.borders.size[weight];
+};
+
+const getColor = (props) => {
+  let color = 'light';
+  if (props.separatorColorTone) {
+    color = props.separatorColorTone;
+  }
+
+  return props.theme.borders.color[color];
 };
 
 const VerticalSeparatorContainer = styled.div`
@@ -39,7 +48,7 @@ const VerticalSeparatorContainer = styled.div`
 const SeparatorRenderer = styled.div`
   height: ${props => getLength(props) || '50%'};
   width: ${props => getWeight(props) || 1}px;
-  background-color: ${props => props.color || '#a6a5a5'};
+  background-color: ${props => getColor(props) || props.theme.borders.color.light};
   opacity: ${props => props.opacity || 0.4};
 `;
 
@@ -56,6 +65,7 @@ VerticalSeparator.propTypes = PropTypes.shape({
   spacerWidth: PropTypes.oneOf(['small', 'medium', 'large', 'xLarge', 'xxLarge']),
   separatorWeight: PropTypes.oneOf(['light', 'normal', 'bold']),
   separatorLength: PropTypes.oneOf(['short', 'normal', 'long', 'full']),
+  separatorColorTone: PropTypes.oneOf(['light', 'normal', 'dark']),
 }).isRequired;
 
 export default VerticalSeparator;
