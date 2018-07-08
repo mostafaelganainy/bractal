@@ -91,8 +91,8 @@
     width: 98%;
     text-align: center;
     margin: 0 auto;
-    height: 93px;
-    max-height: 93px; }
+    height: 136px;
+    max-height: 136px; }
   .AllContnt .createAccount .creatAccBtn {
     width: 100%;
     background-color: #309de0;
@@ -185,8 +185,11 @@
     width: 100%; } }
 @-moz-document url-prefix() {
   .AllContnt .createAccount .RegisterTxt {
-    height: 91px;
-    max-height: 91px; } }
+    height: 136px;
+    max-height: 136px; }
+
+  .AllContnt .LoginCont .Loginsec .LoginContnt .LognBtn {
+    margin: 0px; } }
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -338,7 +341,7 @@
   background-repeat: no-repeat !important; }
 
 .AllRegCont {
-  padding: 20px 20px 4px 5px; }
+  padding: 20px 5px 4px 5px; }
   .AllRegCont .RegisterHdrCont {
     padding-bottom: 80px; }
     .AllRegCont .RegisterHdrCont .bkBtn {
@@ -565,6 +568,9 @@
           margin-left: 13px;
           margin-top: 45px;
           text-align: left; }
+          .AllRegCont .TwoSides #borderrBtom #SecondSide .chlBxCont label {
+            font-size: 14px;
+            font-weight: bold; }
         .AllRegCont .TwoSides #borderrBtom #SecondSide h3 {
           margin: 0;
           margin-top: 11px;

@@ -74,21 +74,8 @@ body {
   position: relative;
   cursor: pointer;
   border-radius: 4px; }
-.modal input[type="checkbox"]:after {
-  content: "";
-  vertical-align: middle;
-  text-align: center;
-  line-height: 15px;
-  position: absolute;
-  cursor: pointer;
-  height: 17px;
-  width: 17px;
-  left: 0;
-  top: 0;
-  font-size: 18px;
-  border-radius: 3px;
-  background-color: #fff;
-  border: solid 1px #b7b7b7; }
+.modal .ui.checkbox .box:before, .modal .ui.checkbox label:before, .modal .ui.checkbox .box:after, .modal .ui.checkbox label:after {
+  top: -1px !important; }
 .modal .ui.checkbox input:checked ~ .box::after, .modal .ui.checkbox input:checked ~ label::after {
   color: #f89101; }
 .modal input[type="checkbox"]:focus {
@@ -154,10 +141,10 @@ body {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200) {
   .ui.modal {
     min-height: 526.5px; } }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1199px) {
   .closePopup {
     display: none !important; }
 
@@ -1122,8 +1109,8 @@ h5 {
     width: 98%;
     text-align: center;
     margin: 0 auto;
-    height: 93px;
-    max-height: 93px; }
+    height: 136px;
+    max-height: 136px; }
   .AllContnt .createAccount .creatAccBtn {
     width: 100%;
     background-color: #309de0;
@@ -1216,8 +1203,11 @@ h5 {
     width: 100%; } }
 @-moz-document url-prefix() {
   .AllContnt .createAccount .RegisterTxt {
-    height: 91px;
-    max-height: 91px; } }
+    height: 136px;
+    max-height: 136px; }
+
+  .AllContnt .LoginCont .Loginsec .LoginContnt .LognBtn {
+    margin: 0px; } }
 .allSocialMedia {
   height: 63px;
   justify-content: center !important; }
@@ -1369,7 +1359,7 @@ h5 {
   background-repeat: no-repeat !important; }
 
 .AllRegCont {
-  padding: 20px 20px 4px 5px; }
+  padding: 20px 5px 4px 5px; }
   .AllRegCont .RegisterHdrCont {
     padding-bottom: 80px; }
     .AllRegCont .RegisterHdrCont .bkBtn {
@@ -1596,6 +1586,9 @@ h5 {
           margin-left: 13px;
           margin-top: 45px;
           text-align: left; }
+          .AllRegCont .TwoSides #borderrBtom #SecondSide .chlBxCont label {
+            font-size: 14px;
+            font-weight: bold; }
         .AllRegCont .TwoSides #borderrBtom #SecondSide h3 {
           margin: 0;
           margin-top: 11px;

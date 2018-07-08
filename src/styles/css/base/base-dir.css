@@ -73,21 +73,8 @@ body {
   position: relative;
   cursor: pointer;
   border-radius: 4px; }
-.modal input[type="checkbox"]:after {
-  content: "";
-  vertical-align: middle;
-  text-align: center;
-  line-height: 15px;
-  position: absolute;
-  cursor: pointer;
-  height: 17px;
-  width: 17px;
-  left: 0;
-  top: 0;
-  font-size: 18px;
-  border-radius: 3px;
-  background-color: #fff;
-  border: solid 1px #b7b7b7; }
+.modal .ui.checkbox .box:before, .modal .ui.checkbox label:before, .modal .ui.checkbox .box:after, .modal .ui.checkbox label:after {
+  top: -1px !important; }
 .modal .ui.checkbox input:checked ~ .box::after, .modal .ui.checkbox input:checked ~ label::after {
   color: #f89101; }
 .modal input[type="checkbox"]:focus {
@@ -153,10 +140,10 @@ body {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200) {
   .ui.modal {
     min-height: 526.5px; } }
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1199px) {
   .closePopup {
     display: none !important; }
 

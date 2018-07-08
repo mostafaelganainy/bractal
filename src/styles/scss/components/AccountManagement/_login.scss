@@ -131,8 +131,8 @@
             width: 98%;
             text-align: center;
             margin: 0 auto;
-            height: 93px;
-            max-height: 93px;
+            height: 136px;
+            max-height: 136px;
         }
 
         .creatAccBtn {
@@ -254,7 +254,10 @@
 
 @-moz-document url-prefix() {
     .AllContnt .createAccount .RegisterTxt {
-        height: 91px;
-        max-height: 91px;
+        height: 136px;
+        max-height: 136px;
+    }
+    .AllContnt .LoginCont .Loginsec .LoginContnt .LognBtn{
+        margin: 0px;
     }
 }

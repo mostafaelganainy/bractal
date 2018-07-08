@@ -30,7 +30,7 @@
 }
 
 .AllRegCont {
-    padding: 20px 20px 4px 5px;
+    padding: 20px 5px 4px 5px;
 
     .RegisterHdrCont {
         padding-bottom: 80px;
@@ -335,6 +335,10 @@
                     margin-left: 13px;
                     margin-top: 45px;
                     text-align: left;
+                    label{
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
                 }
 
                 h3 {
