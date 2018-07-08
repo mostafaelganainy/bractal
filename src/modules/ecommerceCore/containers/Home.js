@@ -1,26 +1,12 @@
 import React from 'react';
-import { translate, Trans } from 'react-i18next';
-import { Header, Container } from 'semantic-ui-react';
-
-import AykLayout from '../layouts/Layout';
+import { translate } from 'react-i18next';
+import ProductsListPage from '~/modules/ecommerceCoreUI/containers/ProductsListPage';
 
 const HomePage = () =>
   (
     <React.Fragment>
-      <Container>
-        <br />
-        <Header size="huge">
-          <Trans i18nKey="metadata.displayName" />
-        </Header>
-        <Header.Subheader>
-          <Trans i18nKey="metadata.description" />
-        </Header.Subheader>
-        <br />
-        <br />
-        <br />
-      </Container>
-
-      <AykLayout content={<h1>Koky</h1>} />
+      <ProductsListPage MainHeader="most popular" SubHeader="Enjoy our popular products" />
+      <ProductsListPage MainHeader="new arrivals" SubHeader="Check our New Arrival Products" />
     </React.Fragment>
   );
 

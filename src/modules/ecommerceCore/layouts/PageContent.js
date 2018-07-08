@@ -3,14 +3,14 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import AykHomePage from '~/modules/aykHome/containers/Home';
+import HomePage from '../containers/Home';
 
 import { withModules } from '../../core/utils/modulesLoader';
 
 const routes = [
   {
     path: '/',
-    component: AykHomePage,
+    component: HomePage,
   },
 ];
 
