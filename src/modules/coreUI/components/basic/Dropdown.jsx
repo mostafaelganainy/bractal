@@ -13,7 +13,7 @@ const DropdownImage = styled.img`
 `;
 
 const TriggerLabel = styled(SmallLabel)`
-  ${props => props.customStyles(props)};
+  ${props => props.customStyles && props.customStyles(props)};
 `;
 
 const StyledSemanticDropdown = styled(SemanticDropdown)`

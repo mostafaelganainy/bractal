@@ -1,4 +1,4 @@
-export default {
+const Theme = {
   colors: {
     primary: '#33a8ff',
     primaryDark: '#2c8bd2',
@@ -50,3 +50,5 @@ export default {
     },
   },
 };
+
+module.exports = Theme;

@@ -71,7 +71,7 @@
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:css && npm run lint:es",
     "refetch-schema": "graphql-fetch-schema https://eu1.prisma.sh/mostafa-elganainy-2630c3/demo_3/dev",
-    "compile-relay": "relay-compiler  --verbose --src ./src/modules/postsCore --schema ./schema.graphql",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules/ecommerceCore --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",
     "lint:es": "eslint ./src ",
     "start": "npm run lint:css && npm run start-internal"
@@ -93,6 +93,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "graphql": "^0.13.2",
+    "react-styleguidist": "^7.0.20",
     "stylelint": "^9.3.0",
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-config-styled-components": "^0.1.1",
