@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 71587bc25a0614236f12c45ce530d05d
+ * @relayHash a3fff0b1d64c93bdde8380d8679ac4fc
  */
 
 /* eslint-disable */
@@ -23,7 +23,7 @@ query ProductsListPageQuery {
 }
 
 fragment ProductsList_query on Query {
-  list_products(taxon_id: 99) {
+  featured_products(taxon_id: 99) {
     ...Product_productInfo
     id
   }
@@ -41,7 +41,7 @@ const node/*: ConcreteRequest*/ = {
   "operationKind": "query",
   "name": "ProductsListPageQuery",
   "id": null,
-  "text": "query ProductsListPageQuery {\n  ...ProductsList_query\n}\n\nfragment ProductsList_query on Query {\n  list_products(taxon_id: 99) {\n    ...Product_productInfo\n    id\n  }\n}\n\nfragment Product_productInfo on Product {\n  id\n  name\n  price\n}\n",
+  "text": "query ProductsListPageQuery {\n  ...ProductsList_query\n}\n\nfragment ProductsList_query on Query {\n  featured_products(taxon_id: 99) {\n    ...Product_productInfo\n    id\n  }\n}\n\nfragment Product_productInfo on Product {\n  id\n  name\n  price\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -65,14 +65,14 @@ const node/*: ConcreteRequest*/ = {
       {
         "kind": "LinkedField",
         "alias": null,
-        "name": "list_products",
-        "storageKey": "list_products(taxon_id:99)",
+        "name": "featured_products",
+        "storageKey": "featured_products(taxon_id:99)",
         "args": [
           {
             "kind": "Literal",
             "name": "taxon_id",
             "value": 99,
-            "type": "Int"
+            "type": "ID"
           }
         ],
         "concreteType": "Product",

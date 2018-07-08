@@ -63,14 +63,14 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3003 node scripts/start.js",
+    "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:css && npm run lint:es",
     "refetch-schema": "graphql-fetch-schema http://ayk-test.badrit.com/graphql",
-    "compile-relay": "relay-compiler  --verbose --src ./src/modules --schema ./schema.graphql",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules/productsCore --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",
     "lint:es": "eslint ./src ",
     "start": "npm run lint:css && npm run start-internal"

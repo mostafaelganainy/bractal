@@ -170,7 +170,7 @@ ProductsList.propTypes = {
 
 export default createFragmentContainer(ProductsList, graphql`
   fragment ProductsList_query on Query {    
-    list_products(taxon_id: 99) {
+    featured_products(taxon_id: 99) {
       ...Product_productInfo
     }
   }

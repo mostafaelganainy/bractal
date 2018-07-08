@@ -7,7 +7,7 @@ import {
 } from 'react-relay';
 
 import { withRelayEnvironment } from '../../core/utils/relayInitializer';
-import Loader from '../components/common/Loader';
+// import Loader from '../components/common/Loader';
 
 import ProductsList from './ProductsList';
 
@@ -28,7 +28,8 @@ const ProductsListPage = ({ environment, MainHeader, SubHeader }) => (
       } else if (props) {
           return <ProductsList MainHeader={MainHeader} SubHeader={SubHeader} query={props} />;
       }
-      return <Loader />;
+      return <ProductsList MainHeader={MainHeader} SubHeader={SubHeader} />;
+      // return <Loader />;
     }}
   />
 );
