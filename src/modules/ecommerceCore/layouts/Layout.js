@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { translate } from 'react-i18next';
 import Header from './Header';
+import Footer from './Footer';
 import PageContent from './PageContent';
 import Theme from '../Theme';
 import EcommerceMainContainer from '../components/EcommerceMainContainer';
@@ -11,6 +12,7 @@ const Layout = () => (
     <EcommerceMainContainer>
       <Header />
       <PageContent />
+      <Footer />
     </EcommerceMainContainer>
   </ThemeProvider>
 );
