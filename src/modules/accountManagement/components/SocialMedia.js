@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grid, Container } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { Trans } from 'react-i18next';
 
 export default function SocialMedia() {
   return (
-    <Container>
+    <div>
       <div className="SocialMediaCont">
         <h5 className="TextCenter connectWith">
           <Trans i18nKey="CONNECTWITH" />
@@ -48,6 +48,6 @@ export default function SocialMedia() {
           </Grid.Row>
         </Grid>
       </div>
-    </Container>
+    </div>
   );
 }
