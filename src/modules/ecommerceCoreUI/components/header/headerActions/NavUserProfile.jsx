@@ -1,14 +1,19 @@
 
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React, { Component } from 'react';
 import { Image } from 'semantic-ui-react';
+import { PropTypes } from 'prop-types';
 
 import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
+import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
+import ModalLink from '~/modules/core/components/Modal/ModalLink';
 
 import userAuthurization from '../../../../accountManagement/utilities/AccountManagement';
-
 import RecoverPassword from '../../../../accountManagement/containers/forgetPassword/RecoverPassword';
 
-export default class NavUserProfile extends Component {
+
+class NavUserProfile extends Component {
   componentWillMount() {
     const expiryDate = parseFloat(localStorage.getItem('expiryDate'));
     if (
@@ -31,21 +36,26 @@ export default class NavUserProfile extends Component {
     let userImage = '';
     // eslint-disable-next-line
     if (Token !== false) {
-      userImage = <Image src="images/Header/userloggedIn.png" />;
+      userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <IconOnlyButton primary iconName="icon-user" size={28} onClick={() => this.popup.show()} />
+        <ModalLink to="/accountManagement/recoverPassword">
+          <IconOnlyButton primary iconName="icon-user" size={28} />
+        </ModalLink>
       );
     }
     return (
       <div className="user-profile">
         {userImage}
-
-        <RecoverPassword
-          ref={(ref) => { this.popup = ref; }}
-        />
+        <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
       </div>
     );
   }
 }
+
+NavUserProfile.propTypes = PropTypes.shape({
+  location: PropTypes.string.isRequired,
+}).isRequired;
+
+export default NavUserProfile;
 

@@ -34,7 +34,7 @@ export default class NavUserProfile extends Component {
     let userImage = '';
 
     if (Token !== false) {
-      userImage = <Image src="images/Header/userloggedIn.png" />;
+      userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
         // eslint-disable-next-line

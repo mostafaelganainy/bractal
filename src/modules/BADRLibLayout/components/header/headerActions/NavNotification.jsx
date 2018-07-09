@@ -7,9 +7,9 @@ export default class NavNotification extends Component {
     return (
       <div className="notification">
         <Image
-          src="images/Header/bell.png"
-          srcSet="images/Header/bell@2x.png 2x,
-     images/bell@3x.png 3x"
+          src="/images/Header/bell.png"
+          srcSet="/images/Header/bell@2x.png 2x,
+     /images/bell@3x.png 3x"
         />
       </div>
     );

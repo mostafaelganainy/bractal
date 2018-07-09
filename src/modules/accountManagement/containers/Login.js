@@ -171,7 +171,7 @@ export default class LoginPage extends Component {
                       </p>
                     </div>
                     <div className="mobLoginLogo">
-                      <img src="images/AccountManagement/logo@2x.png" alt="Ayk Logo" />
+                      <img src="/images/AccountManagement/logo@2x.png" alt="Ayk Logo" />
                     </div>
                     <form autoComplete="off" className="LoginContnt">
                       <div className="FixedHeight">

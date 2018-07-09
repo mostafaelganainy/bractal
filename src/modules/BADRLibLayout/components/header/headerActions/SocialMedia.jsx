@@ -12,7 +12,7 @@ export default class NavSocialMedia extends Component {
           <Link to="http://www.google.com" target="_self ">
             <Image
               verticalAlign="middle"
-              src="images/SocialMedia/fb-lg.png"
+              src="/images/SocialMedia/fb-lg.png"
               alt=""
             />
           </Link>
@@ -21,7 +21,7 @@ export default class NavSocialMedia extends Component {
           <a href="">
             <Image
               verticalAlign="middle"
-              src="images/SocialMedia/tr-lg.png"
+              src="/images/SocialMedia/tr-lg.png"
               alt=""
             />
           </a>
@@ -30,7 +30,7 @@ export default class NavSocialMedia extends Component {
           <a href="">
             <Image
               verticalAlign="middle"
-              src="images/SocialMedia/yb-lg.png"
+              src="/images/SocialMedia/yb-lg.png"
               alt=""
             />
           </a>
@@ -39,7 +39,7 @@ export default class NavSocialMedia extends Component {
           <a href="">
             <Image
               verticalAlign="middle"
-              src="images/SocialMedia/inst-lg.png"
+              src="/images/SocialMedia/inst-lg.png"
               alt=""
             />
           </a>

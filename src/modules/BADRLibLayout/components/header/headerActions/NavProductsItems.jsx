@@ -8,9 +8,9 @@ class NavProductsItems extends Component {
     return (
       <div className="products-items">
         <Image
-          src="images/Header/shopping-sad.png"
-          srcSet="images/Header/shopping-sad@2x.png 2x,
-             images/Header/shopping-sad@3x.png 3x"
+          src="/images/Header/shopping-sad.png"
+          srcSet="/images/Header/shopping-sad@2x.png 2x,
+             /images/Header/shopping-sad@3x.png 3x"
           inline
           centered
           alt=""

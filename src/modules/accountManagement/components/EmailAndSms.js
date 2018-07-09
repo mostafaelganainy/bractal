@@ -19,7 +19,7 @@ export default class EmailAndSms extends Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column>
-                  <img src="images/AccountManagement/logo.png" alt="Email" />
+                  <img src="/images/AccountManagement/logo.png" alt="Email" />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>

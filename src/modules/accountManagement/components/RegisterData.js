@@ -25,7 +25,7 @@ export default class RegisterData extends Component {
               <Grid.Column className="TextCenter">
                 <div className="FixedHeight">
                   <div className="AYKMailLogo">
-                    <img src="images/AccountManagement/logo.png" alt="Ayk Logo" />
+                    <img src="/images/AccountManagement/logo.png" alt="Ayk Logo" />
                   </div>
                   <p className="TextCenter RegisterTxt">
                     <Trans i18nKey="Login_Lorem" />

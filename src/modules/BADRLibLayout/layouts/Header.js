@@ -41,22 +41,22 @@ const Header = ({ modules }) => {
             spacerWithWidth: 10,
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/fb-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/fb-lg.png', 'http://facebook.com'),
             targetURL: 'http://facebook.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/tr-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/tr-lg.png', 'http://facebook.com'),
             targetURL: 'http://twitter.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/yb-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/yb-lg.png', 'http://facebook.com'),
             targetURL: 'http://youtube.com',
             position: 'right',
           },
           {
-            iconRenderer: SocialMediaItemRenderer('images/SocialMedia/inst-lg.png', 'http://facebook.com'),
+            iconRenderer: SocialMediaItemRenderer('/images/SocialMedia/inst-lg.png', 'http://facebook.com'),
             targetURL: 'http://instagram.com',
             position: 'right',
           },

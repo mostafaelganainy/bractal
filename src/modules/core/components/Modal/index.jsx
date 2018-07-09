@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 const customStyles = {
   content: {
@@ -45,29 +46,39 @@ class Modal extends React.Component {
     this.setState({ modalIsOpen: true });
   }
 
-  closeModal = () => {
+  closeModal = (history) => {
     this.setState({ modalIsOpen: false });
+    history.goBack();
   }
 
-  render = () => (
-    <div>
-      <ReactModal
-        isOpen={this.state.modalIsOpen}
-        onRequestClose={this.closeModal}
-        style={customStyles}
-      >
-        <ModalContainer>
-          {this.props.children}
-        </ModalContainer>
-      </ReactModal>
-    </div>
-  )
+  clickedOutsite = (e, history) => {
+    history.goBack();
+  }
+
+  render = () => {
+    const { history } = this.props;
+
+    return (
+      <div>
+        <ReactModal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={() => this.closeModal(history)}
+          style={customStyles}
+        >
+          <ModalContainer onClick={e => this.clickedOutsite(e, history)}>
+            {this.props.children}
+          </ModalContainer>
+        </ReactModal>
+      </div>
+    );
+  }
 }
 
 
 Modal.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  history: PropTypes.string.isRequired,
 }.isRequired;
 
 
-export default Modal;
+export default withRouter(Modal);

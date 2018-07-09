@@ -117,7 +117,7 @@ class LoginContainer extends Component {
           <Modal.Description>
             <i aria-hidden="true" className="close big icon closePopup" onClick={this.close} />
             <button className="closeSvg" onClick={this.close}>
-              <img src="images/AccountManagement/close-copy.png" alt="close Popup" />
+              <img src="/images/AccountManagement/close-copy.png" alt="close Popup" />
             </button>
             <div>
               {ALlContentLogin}
