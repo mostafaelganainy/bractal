@@ -19,7 +19,8 @@ const HomePage = () =>
         <br />
         <br />
       </Container>
-      <ProductsListPage />
+
+      <ProductsListPage headerTitle="Recommended Products" headerSubtitle="A collection of the best things" />
     </React.Fragment>
   );
 

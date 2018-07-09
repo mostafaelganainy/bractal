@@ -1,7 +1,9 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+import styled from 'styled-components';
 
 import TwoLevelsHeader from '~/modules/core/layouts/advancedTwoLevels';
+import { XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 import HomePageLogo from '~/modules/ecommerceCoreUI/components/header/HomePageLogo';
 import DropDownBurger from '~/modules/ecommerceCoreUI/components/header/departments/DropDownBurger';
@@ -25,6 +27,10 @@ const SocialMediaItemRenderer = (src, url) => (
     <Image style={{ width: '25px', height: '25px' }} src={src} />
   </a>
 );
+
+const MainHeader = styled.div`
+  background: #f8f7f7 !important;
+`;
 
 const Header = () => {
   const menuInfo = {
@@ -156,13 +162,15 @@ const Header = () => {
   };
 
   return (
-    <div className="main-header">
+    <MainHeader>
       <TwoLevelsHeader
         desktopTopHeaderStyles={desktopTopHeaderStyles}
         desktopBottomHeaderStyles={desktopBottomHeaderStyles}
         menuInfo={menuInfo}
       />
-    </div>
+      <XLargeSpacer />
+      <XLargeSpacer />
+    </MainHeader>
   );
 };
 

@@ -11,7 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import i18nextLoader from './i18n'; // initialized i18next instance
 import ModulesLoader from './modules/core/utils/modulesLoader';
-import RelayInitializer from './modules/core/utils/relayInitializer';
+import RelayInitializer from './modules/core/utils/relayHelpers/RelayInitializer';
 import modulesConfig from './modulesConfig';
 
 let i18next = null;

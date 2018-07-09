@@ -1,42 +1,43 @@
 import React from 'react';
-import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
-  QueryRenderer,
   graphql,
 } from 'react-relay';
 
-import { withRelayEnvironment } from '../../core/utils/relayInitializer';
-import Loader from '../components/basic/Loader';
+import withRootQuery from '~/modules/core/utils/relayHelpers/withRootQuery';
+import {
+  SectionHeader,
+  SectionHeaderSubtitle,
+} from '~/modules/ecommerceCoreUI/components/basic/Labels';
+
+import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 import ProductsList from './ProductsList';
 
-const AllProductsQuery = graphql`
-    query ProductsListPageQuery {    
-        ...ProductsList_query
-    }
-`;
-
-const ProductsListPage = ({ environment, MainHeader, SubHeader }) => (
-  <QueryRenderer
-    environment={environment}
-    query={AllProductsQuery}
-    render={({ error, props }) => {
-      if (error) {
-        return <ProductsList MainHeader={MainHeader} SubHeader={SubHeader} />;
-        // return <div>{error.message}</div>;
-      } else if (props) {
-          return <ProductsList MainHeader={MainHeader} SubHeader={SubHeader} query={props} />;
-      }
-      return <Loader />;
-    }}
-  />
+const ProductsListPage = ({ headerTitle, headerSubtitle, queryResult }) => (
+  <CenterAlignedColumn>
+    <XLargeSpacer />
+    <XLargeSpacer />
+    <SectionHeader>{headerTitle}</SectionHeader>
+    <SectionHeaderSubtitle>{headerSubtitle}</SectionHeaderSubtitle>
+    <XXLargeSpacer />
+    <ProductsList query={queryResult} />
+  </CenterAlignedColumn>
 );
 
 ProductsListPage.propTypes = {
-  environment: PropTypes.shape({}).isRequired,
-  MainHeader: PropTypes.string.isRequired,
-  SubHeader: PropTypes.string.isRequired,
+  queryResult: PropTypes.shape({}).isRequired,
+  headerTitle: PropTypes.string.isRequired,
+  headerSubtitle: PropTypes.string.isRequired,
 };
 
-export default translate('core')(withRelayEnvironment(ProductsListPage));
+/* eslint-disable function-paren-newline */
+export default withRootQuery(
+  ProductsListPage,
+  graphql`
+    query ProductsListPageQuery {    
+        ...ProductsList_query
+    }
+  `,
+);

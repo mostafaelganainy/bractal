@@ -5,7 +5,7 @@ import {
 import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
-import { Container, Header } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import Product from './Product';
@@ -77,50 +77,11 @@ const settings = {
   ],
 };
 
-const Heading = styled.div`
-  h2.ui.header,
-  h3.ui.header{
-    text-align:center;
-    margin: 0;
-  }
-  h2.ui.header {
-    font-size: 36px;
-    text-transform: uppercase;
-    color: #33a8ff;
-    padding-top: 39px;
-  }
-  h3.ui.header{
-    font-size:18px;
-    color:#a7a9ac;
-    font-weight:300;
-  }
-  @media (max-width:1024px){
-    h2.ui.header {
-      font-size: 30px;
-    }
-    h3.ui.header {
-      font-size: 15px;
-    }
-  }
-`;
 const SliderWrapper = styled.div`
   background-color: #fff;
 `;
 
-const ProductsList = ({ query, MainHeader, SubHeader }) => (
-  <SliderWrapper>
-    <Container>
-      <Heading>
-        <Header as="h2">{MainHeader}</Header>
-        <Header as="h3">{SubHeader}</Header>
-      </Heading>
-      <Slider {...settings} style={styles.container}>
-        {
-          query ?
-            /* query.list_products.map(entry => (
-              // eslint-disable-next-line no-underscore-dangle
-              <Product key={entry.__id} productInfo={entry} />
-            )) */
+/*
             [{ id: '1', name: 'product name', price: '20' },
             { id: '13', name: 'product name', price: '20' },
             { id: '2', name: 'product name', price: '30' },
@@ -153,7 +114,23 @@ const ProductsList = ({ query, MainHeader, SubHeader }) => (
             { id: '12', name: 'product name', price: '40' }].map(entry => (
               // eslint-disable-next-line no-underscore-dangle
               <Product key={entry.__id} productInfo={entry} />
+
             ))
+            */
+
+const ProductsList = ({ query }) => (
+  <SliderWrapper>
+    <Container>
+      <Slider {...settings} style={styles.container}>
+        {
+          query
+          ?
+            query.list_products.map(entry => (
+              // eslint-disable-next-line no-underscore-dangle
+              <Product key={entry.__id} productInfo={entry} />
+            ))
+          :
+            ''
           }
       </Slider>
     </Container>
@@ -162,10 +139,8 @@ const ProductsList = ({ query, MainHeader, SubHeader }) => (
 
 ProductsList.propTypes = {
   query: PropTypes.shape({
-    products: PropTypes.arrayOf(PropTypes.object).isRequired,
+    list_products: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
-  MainHeader: PropTypes.string.isRequired,
-  SubHeader: PropTypes.string.isRequired,
 };
 
 export default createFragmentContainer(ProductsList, graphql`

@@ -15,7 +15,7 @@ export const SectionHeader = styled(XXLargeLabel)`
   font-weight: bold;
 `;
 
-export const SectionHeaderSubline = styled(LargeLabel)`
+export const SectionHeaderSubtitle = styled(LargeLabel)`
   color: ${props => props.theme.colors.labels.subtle};
 `;
 

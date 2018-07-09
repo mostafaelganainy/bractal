@@ -5,8 +5,7 @@ import ProductsListPage from '~/modules/ecommerceCoreUI/containers/ProductsListP
 const HomePage = () =>
   (
     <React.Fragment>
-      <ProductsListPage MainHeader="most popular" SubHeader="Enjoy our popular products" />
-      <ProductsListPage MainHeader="new arrivals" SubHeader="Check our New Arrival Products" />
+      <ProductsListPage headerTitle="Most Popular" headerSubtitle="Enjoy our popular products" />
     </React.Fragment>
   );
 

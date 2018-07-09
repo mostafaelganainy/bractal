@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import FontSettings from './FontSettings';
 
 export default styled.div`  
   &&& {    
@@ -16,9 +15,5 @@ export default styled.div`
       width: 1366px;
       background: blue;
     }
-
-    background: #f8f7f7 !important;
-
-    ${FontSettings}
   } 
 `;

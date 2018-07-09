@@ -38,6 +38,7 @@ const Theme = {
     xLarge: 20,
     xxLarge: 25,
     xxxLarge: 30,
+    xxxxLarge: 35,
   },
   borders: {
     size: {
