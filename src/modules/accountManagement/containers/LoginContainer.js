@@ -86,13 +86,6 @@ class LoginContainer extends Component {
   };
   render() {
     let ALlContentLogin = '';
-    const inlineStyle = {
-      modal: {
-        marginTop: '0px !important',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-    };
 
     if (this.state.showLoginCont) {
       ALlContentLogin = (
@@ -119,8 +112,8 @@ class LoginContainer extends Component {
       );
     }
     return (
-      <Modal dimmer={this.props.dimmer} open={this.props.open} style={inlineStyle.modal} >
-        <Modal.Content>
+      <div open={this.props.open}>
+        <div>
           <Modal.Description>
             <i aria-hidden="true" className="close big icon closePopup" onClick={this.close} />
             <button className="closeSvg" onClick={this.close}>
@@ -130,7 +123,7 @@ class LoginContainer extends Component {
               {ALlContentLogin}
             </div>
           </Modal.Description>
-        </Modal.Content>
+        </div>
         {!this.state.showLoginCont
           ?
             <Modal.Actions>
@@ -141,7 +134,7 @@ class LoginContainer extends Component {
                 </label>
               </p>
             </Modal.Actions> : ''}
-      </Modal>
+      </div>
     );
   }
 }

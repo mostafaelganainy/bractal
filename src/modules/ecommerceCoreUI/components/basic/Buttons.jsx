@@ -36,8 +36,8 @@ export const IconOnlyButton = (props) => {
 
   return (
     <ButtonElement
-      size={props.size}
       className={props.iconName}
+      {...props}
     />
   );
 };

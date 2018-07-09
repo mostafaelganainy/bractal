@@ -9,7 +9,6 @@ import Card from '~/modules/coreUI/components/items/Card';
 import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 import RoundIconButton from '~/modules/AykCore/components/buttons/RoundIconButton';
-<<<<<<< HEAD:src/modules/ecommerceCoreUI/components/products/ProductCard.js
 import {
   OldPriceLabel,
   CurrentPriceLabel,
@@ -19,14 +18,6 @@ import {
 import Rating from './basic/Rating';
 import OfferTag from './offers/OfferTag';
 
-=======
-import { Spacer } from '~/modules/core/components/layouts/helpers';
-import AykRating from '~/modules/productsCore/components/common/AykRating';
-import PriceLabelStriked from '~/modules/productsCore/components/common/PriceLabelStriked';
-import PriceLabel from '~/modules/productsCore/components/common/PriceLabel';
-import ProductTag from '~/modules/productsCore/components/common/ProductTag';
-import OfferLabel from '~/modules/productsCore/components/common/OfferLabel';
->>>>>>> merged-ayk-frontend-with-Hadeer:src/modules/productsCore/components/productCard/ProductCard.js
 // import CountDown from '~/modules/productsCore/components/common/CountDown';
 
 import dummyData from '../dummyProductData';
@@ -60,15 +51,9 @@ const renderProductTag = (dummyProps) => {
   if (!doesHaveDiscount) return <div />;
 
   return (
-<<<<<<< HEAD:src/modules/ecommerceCoreUI/components/products/ProductCard.js
     <OfferTag offerType={offerType}>
       <span>discount {Math.floor(dummyProps.discount * 100)}</span>%
     </OfferTag>
-=======
-    <ProductTag offerType={offerType}>
-      <span>discount {Math.floor(dummyProps.discount * 100)}</span>%
-    </ProductTag>
->>>>>>> merged-ayk-frontend-with-Hadeer:src/modules/productsCore/components/productCard/ProductCard.js
   );
 };
 
@@ -120,11 +105,7 @@ const ProductCard = ({ productInfo }) => {
             text="Free Shipping"
             offer={<img src="https://images-na.ssl-images-amazon.com/images/I/41nWLrWJRrL.__AC_SY400_.jpg" alt="" />}
             /> */}
-<<<<<<< HEAD:src/modules/ecommerceCoreUI/components/products/ProductCard.js
             <ProductCardOfferHintLabel
-=======
-            <OfferLabel
->>>>>>> merged-ayk-frontend-with-Hadeer:src/modules/productsCore/components/productCard/ProductCard.js
               text="Free Shipping"
               offer="buy 2x"
             />

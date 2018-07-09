@@ -183,16 +183,6 @@ body {
     text-align: right;
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 @media screen and (min-width: 1200) {
     .ui.modal {
         min-height: 526.5px;

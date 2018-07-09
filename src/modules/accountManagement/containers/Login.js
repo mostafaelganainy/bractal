@@ -21,7 +21,6 @@ export default class LoginPage extends Component {
     this.handleChangeRem = this.handleChangeRem.bind(this);
   }
   componentDidMount() {
-    document.getElementsByClassName('dimmer')[0].scrollTop = 0;
     this.hydrateStateWithLocalStorage();
     window.addEventListener(
       'beforeunload',

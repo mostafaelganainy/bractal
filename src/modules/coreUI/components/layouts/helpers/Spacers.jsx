@@ -37,6 +37,16 @@ export const XXXLargeSpacer = styled.div`
   height: ${props => props.size || props.theme.paddings.xxxLarge}px;
 `;
 
+export const XXXXLargeSpacer = styled.div`
+  width: ${props => props.size || props.theme.paddings.xxxxLarge}px;
+  height: ${props => props.size || props.theme.paddings.xxxxLarge}px;
+`;
+
+export const XXXXXLargeSpacer = styled.div`
+  width: ${props => props.size || props.theme.paddings.xxxxxLarge}px;
+  height: ${props => props.size || props.theme.paddings.xxxxxLarge}px;
+`;
+
 export const Spacer = ({ spacerSize, customSize }) => {
   const RENDERERS = {
     xSmall: XSmallSpacer,
@@ -46,6 +56,8 @@ export const Spacer = ({ spacerSize, customSize }) => {
     xLarge: XLargeSpacer,
     xxLarge: XXLargeSpacer,
     xxxLarge: XXXLargeSpacer,
+    xxxxLarge: XXXXLargeSpacer,
+    xxxxxLarge: XXXXXLargeSpacer,
   };
 
   const Renderer = RENDERERS[spacerSize || 'medium'];
@@ -54,6 +66,6 @@ export const Spacer = ({ spacerSize, customSize }) => {
 };
 
 Spacer.propTypes = PropTypes.shape({
-  spacerSize: PropTypes.oneOf(['xSmall', 'small', 'medium', 'large', 'xLarge', 'xxLarge']).isRequired,
+  spacerSize: PropTypes.oneOf(['xSmall', 'small', 'medium', 'large', 'xLarge', 'xxLarge', 'xxxLarge', 'xxxxLarge', 'xxxxxLarge']).isRequired,
   customSize: PropTypes.number,
 }).isRequired;

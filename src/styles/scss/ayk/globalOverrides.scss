@@ -1,3 +1,12 @@
 span {
   padding-top: 4px; // because of the choosen font, it leaves small space at bottom, and appears ugly with tiny fonts
 }
+
+.ReactModal__Body--open {
+  overflow: hidden; 
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+}

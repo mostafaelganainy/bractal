@@ -50,7 +50,6 @@ export default class CreateAccount extends Component {
   }
 
   componentDidMount() {
-    document.getElementsByClassName('dimmer')[0].scrollTop = 0;
     this.hydrateStateWithLocalStorage();
     window.addEventListener(
       'beforeunload',
