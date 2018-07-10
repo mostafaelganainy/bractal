@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { closeCurrentModal } from '../../utils/modalHelpers';
 
 
 const customStyles = {
@@ -39,48 +40,34 @@ const ModalContainer = styled.div`
 `;
 
 class Modal extends React.Component {
-  constructor() {
-    super();
-    this.modalContainer = React.createRef();
-    this.state = {
-      modalIsOpen: true,
-    };
-  }
-
-  show = () => {
-    this.setState({ modalIsOpen: true });
-  }
-
-  closeModal = (history) => {
+  closeModal = (location, history) => {
     // eslint-disable-next-line
-    this.setState({ modalIsOpen: false });
-    history.goBack();
+    closeCurrentModal(location, history);
   }
 
-  clickedOutsite = (e, history) => {
+  clickedOutsite = (e, location, history) => {
     // eslint-disable-next-line
-    const domNode = ReactDOM.findDOMNode(this.modalContainer.current);
+    const domNode = ReactDOM.findDOMNode(this.modalContainer);
     if (domNode === e.target) {
-      this.setState({ modalIsOpen: false });
-      history.goBack();
+      this.closeModal(location, history);
     }
   }
-  // onRequestClose={() => this.closeModal(history)}
+
   render = () => {
-    const { history } = this.props;
+    const { location, history } = this.props;
 
     return (
       <div>
         <ReactModal
-          isOpen={this.state.modalIsOpen}
+          isOpen
           style={customStyles}
         >
           <ModalContainer
-            ref={this.modalContainer}
-            onClick={e => this.clickedOutsite(e, history)}
+            ref={(ref) => { this.modalContainer = ref; }}
+            onClick={e => this.clickedOutsite(e, location, history)}
           >
             <RightAlignedColumn>
-              <Icon className="close icon closePopup" onClick={() => this.closeModal(history)} />
+              <Icon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
               {this.props.children}
             </RightAlignedColumn>
           </ModalContainer>

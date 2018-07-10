@@ -1,6 +1,12 @@
-
-
 const modalMarker = '/__modal';
+
+export const isLocationModal = (location) => {
+  const modalMarkerIndex = location.pathname.search(modalMarker);
+  if (modalMarkerIndex >= 0) {
+    return true;
+  }
+  return false;
+};
 
 export const extractModalPartFromLocation = (location) => {
   const currentPath = location.pathname;
@@ -28,17 +34,29 @@ export const removeModalPartFromLocation = (location) => {
   };
 };
 
-export const makeModalFullPath = ({ pathname }, path) => {
+export const makeModalFullPath = (location, path) => {
   // TODO: Generalize more, by double checking on the path's
   //      format (removing extra '/' or adding missing ones)
-  let checkedPathname = pathname;
+  const cleanedLocation = removeModalPartFromLocation(location, path);
+  let { pathname } = cleanedLocation;
   const lastChar = pathname.charAt(pathname.length - 1);
   if (lastChar === '/') {
-    checkedPathname = checkedPathname.substring(0, checkedPathname.length - 1);
+    pathname = pathname.substring(0, pathname.length - 1);
   }
 
-  const res = `${checkedPathname}${modalMarker}${path}`;
+  const res = `${pathname}${modalMarker}${path}`;
   return res;
+};
+
+export const closeCurrentModal = (location, history) => {
+  const isModal = isLocationModal(location);
+  if (!isModal) {
+    return;
+  }
+
+  const cleanedLocation = removeModalPartFromLocation(location);
+
+  history.replace(cleanedLocation.pathname);
 };
 
 export const makeModalPath = path => (
