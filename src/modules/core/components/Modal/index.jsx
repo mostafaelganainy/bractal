@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
@@ -37,6 +38,7 @@ const ModalContainer = styled.div`
 class Modal extends React.Component {
   constructor() {
     super();
+    this.modalContainer = React.createRef();
     this.state = {
       modalIsOpen: true,
     };
@@ -52,7 +54,11 @@ class Modal extends React.Component {
   }
 
   clickedOutsite = (e, history) => {
-    history.goBack();
+    // eslint-disable-next-line
+    const domNode = ReactDOM.findDOMNode(this.modalContainer.current);
+    if (domNode === e.target) {
+      history.goBack();
+    }
   }
 
   render = () => {
@@ -65,7 +71,10 @@ class Modal extends React.Component {
           onRequestClose={() => this.closeModal(history)}
           style={customStyles}
         >
-          <ModalContainer onClick={e => this.clickedOutsite(e, history)}>
+          <ModalContainer
+            ref={this.modalContainer}
+            onClick={e => this.clickedOutsite(e, history)}
+          >
             {this.props.children}
           </ModalContainer>
         </ReactModal>
