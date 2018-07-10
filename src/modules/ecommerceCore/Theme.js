@@ -6,9 +6,9 @@ const Theme = {
     secondaryDark: '#cc790e',
     labels: {
       important: '#000000',
-      normal: 'rgba(0, 0, 0, 0.7)',
-      subtle: 'rgba(0, 0, 0, 0.5)',
-      hint: 'rgba(0, 0, 0, 0.3)',
+      normal: 'rgba(0, 0, 0, 0.5)',
+      subtle: 'rgba(0, 0, 0, 0.35)',
+      hint: 'rgba(0, 0, 0, 0.22)',
     },
     invertedLabels: {
       important: 'white',

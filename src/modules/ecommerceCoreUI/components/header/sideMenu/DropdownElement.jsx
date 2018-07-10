@@ -25,10 +25,21 @@ const AccordionList = styled.div`
 `;
 const AccordionMainList = styled.div`
 
-  .ui.accordion:not(.styled) .accordion .title ~ .content:not(.ui),
-  .ui.accordion:not(.styled) .title ~ .content:not(.ui) {
-    padding: 0;
-  }
+  .ui.accordion {    
+    &:not(.styled) {
+      .title ~ .content:not(.ui) {
+        padding: 0;
+      }
+
+      .accordion .title ~ .content:not(.ui) {
+        padding: 0;
+      }      
+    }
+    .accordion{
+      margin:0;
+    }
+  }  
+  
   .accordion.ui.inverted {
     .title {
       padding: 11px 27px;
@@ -86,9 +97,6 @@ const AccordionMainList = styled.div`
       background: #045fa2;
       padding: 7px 57px;
     }
-  }
-  .ui.accordion .accordion{
-    margin:0;
   }
 `;
 // Account
