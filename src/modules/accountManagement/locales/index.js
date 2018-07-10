@@ -3,6 +3,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import SocialMedia from './SocialMedia';
 import Verification from './Verfication';
+import RecoverPassword from './RecoverPassword';
 
 const loadLocales = () => {
   i18next.addResourceBundle('en', 'accountManagement', {
@@ -18,6 +19,7 @@ const loadLocales = () => {
     ...SignUp.En,
     ...SocialMedia.En,
     ...Verification.En,
+    ...RecoverPassword.En,
   }, true, true);
 
   i18next.addResourceBundle('ar', 'accountManagement', {
@@ -33,6 +35,7 @@ const loadLocales = () => {
     ...SignUp.Ar,
     ...SocialMedia.Ar,
     ...Verification.Ar,
+    ...RecoverPassword.Ar,
   }, true, true);
 
   i18next.loadNamespaces('accountManagement');

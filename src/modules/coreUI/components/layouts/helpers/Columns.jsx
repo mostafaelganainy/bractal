@@ -15,3 +15,9 @@ export const CenterAlignedColumn = styled.div`
   align-items: center;
   text-align: left;
 `;
+export const RightAlignedColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  text-align: right;
+`;

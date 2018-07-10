@@ -124,7 +124,8 @@ span {
   bottom: 0;
   left: 0; }
 
-input {
-  border-radius: 20px; }
+fieldset {
+  border: 0;
+  padding: 0px; }
 
 /*# sourceMappingURL=App.css.map */
