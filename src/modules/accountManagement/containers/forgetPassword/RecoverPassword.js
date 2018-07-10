@@ -6,7 +6,7 @@ import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
-import Input from '~/modules/coreUI/components/basic/Input';
+import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
@@ -46,7 +46,22 @@ const RecoverPasswords = () => (
           <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
         </ParagraphPanelContent>
         <MediumSpacer />
-        <Input placeholder="Email/Mobile" type="text" border_Radius="20px" />
+        <RelayForm
+          options={[
+            {
+              name: 'username',
+              placeholder: 'Email/ Mobile Number',
+              input_type: 'textbox',
+              tcomb_type: 'String',
+            },
+            {
+              name: 'password',
+              placeholder: 'Password',
+              input_type: 'textbox',
+              tcomb_type: 'String',
+            },
+          ]}
+        />
         <MediumSpacer />
         <BasicButton> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
         <MediumSpacer />
