@@ -51,6 +51,7 @@ export const ReviewsCountLabel = styled(XSmallLabel)`
 
 export const OldPriceLabel = styled(MediumLabel)`
   color: ${props => props.theme.colors.labels.subtle};
+  text-decoration: line-through;
 `;
 
 export const CurrentPriceLabel = styled(LargeLabel)`

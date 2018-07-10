@@ -6,7 +6,7 @@ import SideMenu from '~/modules/ecommerceCoreUI/components/header/sideMenu/SideM
 const HomePage = () =>
   (
     <React.Fragment>
-      <div style={{ width: '300px' }}>
+      <div style={{ width: '300px', position: 'absolute' }}>
         <SideMenu />
       </div>
       <ProductsListPage headerTitle="Most Popular" headerSubtitle="Enjoy our popular products" />

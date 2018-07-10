@@ -23,11 +23,19 @@ const StyledTag = styled(Label)`
     margin-left: 0;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    margin-top: 7px;
-    text-transform: capitalize;
+    margin-top: 4px;
+    padding-left: 1em;
+    padding-right: 1em;
+    span{
+      text-transform: capitalize; 
+    }
 
     &:after {
       box-shadow: none;
+      right: -3px;
+    left: auto;
+    width: 5px;
+    height: 5px;
     }
 
     &:before {
