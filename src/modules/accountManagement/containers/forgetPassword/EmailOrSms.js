@@ -19,11 +19,7 @@ const RecoverPasswordImage = styled(Image)`
 `;
 
 const ModalLinkBtn = styled(ModalLink)`
-  &&&& {
-    a {
-      color:white;
-    }
-  }
+  width:50%;
 `;
 
 const IMAGE_PATH = '/images/AccountManagement';
@@ -40,7 +36,7 @@ const EmailOrSMS = () => (
   <Modal>
     <div>
       <CenterAlignedColumn style={{
-         width: '500px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
+         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
     }}>
         <PanelTitle uppercase>
           <Trans i18nKey="headerTitle" />
@@ -65,13 +61,17 @@ const EmailOrSMS = () => (
         </ParagraphPanelContent>
         <MediumSpacer />
         <Row fullWidth spaceBetween>
-          <BasicButton width="50%">
-            <ModalLinkBtn to="/accountManagement/VerficationCode">
+          <ModalLinkBtn to="/accountManagement/VerficationCodeEmail">
+            <BasicButton width="100%">
               Verify by E-mail
-            </ModalLinkBtn>
-          </BasicButton>
+            </BasicButton>
+          </ModalLinkBtn>
           <MediumSpacer />
-          <BasicButton width="50%"> Verify by SMS </BasicButton>
+          <ModalLinkBtn to="/accountManagement/VerficationCodeSMS">
+            <BasicButton width="100%">
+             Verify by SMS
+            </BasicButton>
+          </ModalLinkBtn>
         </Row>
         <MediumSpacer />
         <LeftAlignedColumn>
@@ -82,7 +82,7 @@ const EmailOrSMS = () => (
           <CenterAlignedRow>
             Back to
             <SmallSpacer />
-            <ModalLink to="/accountManagement/VerficationCode">
+            <ModalLink to="/accountManagement/login">
               Login
             </ModalLink>
           </CenterAlignedRow>

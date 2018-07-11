@@ -4,7 +4,6 @@ import { PanelTitle, PanelSubtitle, ParagraphFooterContent, SecondTitle, Centere
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
-// import EmailContent from '~/modules/accountManagement/containers/forgetPassword/EmailVerify';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
@@ -19,11 +18,11 @@ const RecoverPasswordImage = styled(Image)`
   max-height: 80px;
 `;
 
-const VerficationCode = () => (
+const VerficationCodeSMS = () => (
   <Modal>
     <div>
       <CenterAlignedColumn style={{
-         width: '300px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
+         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
     }}>
         <PanelTitle uppercase>
           <Trans i18nKey="headerTitle" />
@@ -33,18 +32,18 @@ const VerficationCode = () => (
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
-          src={`${IMAGE_PATH}/SMSImages.png`}
-          srcset={`${IMAGE_PATH}/SMSImages.png 2x,
-          ${IMAGE_PATH}/SMSImages.png 3x`}
+          src={`${IMAGE_PATH}/sms.png`}
+          srcset={`${IMAGE_PATH}/sms.png 2x,
+          ${IMAGE_PATH}/sms.png 3x`}
         />
         <XXXXXLargeSpacer />
         <SecondTitle>
-        EMAIL SENT
+          SMS SENT
         </SecondTitle>
-        <XLargeSpacer />
+        <MediumSpacer />
         <CenteredParagraphPanelContent>
-      The Verification code has been sent
-      to your email address check your inbox
+        The Verification code has been sent
+        to your number address check your inbox
         </CenteredParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
@@ -70,4 +69,5 @@ const VerficationCode = () => (
   </Modal>
 );
 
-export default translate('accountManagement')(VerficationCode);
+export default translate('accountManagement')(VerficationCodeSMS);
+

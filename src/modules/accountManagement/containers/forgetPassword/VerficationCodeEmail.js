@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { PanelTitle, PanelSubtitle, CenteredParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { PanelTitle, PanelSubtitle, ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
-import Image from '~/modules/coreUI/components/basic/Image';
+// import EmailContent from '~/modules/accountManagement/containers/forgetPassword/EmailVerify';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
+import Image from '~/modules/coreUI/components/basic/Image';
+
+const IMAGE_PATH = '/images/AccountManagement';
 
 const RecoverPasswordImage = styled(Image)`
   height: unset;
@@ -17,9 +19,7 @@ const RecoverPasswordImage = styled(Image)`
   max-height: 80px;
 `;
 
-const IMAGE_PATH = '/images/accountManagement/forgetPassword/renewPassword';
-
-const RecoverPasswords = () => (
+const VerficationCodeEmail = () => (
   <Modal>
     <div>
       <CenterAlignedColumn style={{
@@ -29,42 +29,40 @@ const RecoverPasswords = () => (
           <Trans i18nKey="headerTitle" />
         </PanelTitle>
         <PanelSubtitle>
-          Create your new password
+          <Trans i18nKey="Followthestepstoresetyourpassword" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
-          src={`${IMAGE_PATH}/finger.png`}
-          srcset={`${IMAGE_PATH}/finger@2x.png 2x,
-          ${IMAGE_PATH}/finger@3x.png 3x`}
+          src={`${IMAGE_PATH}/SMSImages.png`}
+          srcset={`${IMAGE_PATH}/SMSImages.png 2x,
+          ${IMAGE_PATH}/SMSImages.png 3x`}
         />
         <XXXXXLargeSpacer />
+        <SecondTitle>
+        EMAIL SENT
+        </SecondTitle>
+        <XLargeSpacer />
         <CenteredParagraphPanelContent>
-        Type a new password and be noticed
-        that you didnt use this one before.
+      The Verification code has been sent
+      to your email address check your inbox
         </CenteredParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
           options={[
             {
-              name: 'Add Password',
-              placeholder: 'Add Password',
-              input_type: 'textbox',
-              tcomb_type: 'String',
-            },
-            {
-              name: 'Confirm Password',
-              placeholder: 'Confirm Password',
+              name: 'code',
+              placeholder: 'Add Code Here',
               input_type: 'textbox',
               tcomb_type: 'String',
             },
           ]}
         />
-        <MediumSpacer />
-        <BasicButton width="90%"> Renew your password </BasicButton>
-        <XXXXXLargeSpacer />
+        <XLargeSpacer />
+        <BasicButton width="90%"> Reset your password </BasicButton>
+        <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            Copyright © 2018, aykmall.com. All Rights Reserved.
+           Copyright © 2018, aykmall.com. All Rights Reserved.
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
@@ -72,4 +70,4 @@ const RecoverPasswords = () => (
   </Modal>
 );
 
-export default translate('accountManagement')(RecoverPasswords);
+export default translate('accountManagement')(VerficationCodeEmail);
