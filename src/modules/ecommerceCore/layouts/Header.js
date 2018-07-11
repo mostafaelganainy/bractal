@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import TwoLevelsHeader from '~/modules/core/layouts/advancedTwoLevels';
 import { XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
-import HomePageLogo from '~/modules/ecommerceCoreUI/components/header/HomePageLogo';
+import HomePageLogo from '~/modules/coreUI/components/projects/HomePageLogo';
 import DropDownBurger from '~/modules/ecommerceCoreUI/components/header/departments/DropDownBurger';
 import DepartmentsTab from '~/modules/ecommerceCoreUI/components/header/departments/DepartmentsTab';
 import NavProductsItems from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsItems';

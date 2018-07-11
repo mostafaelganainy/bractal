@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import {
   LargeLabel,
   XSmallLabel,
+  SmallLabel,
   XLargeLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
 export const PanelTitle = styled(LargeLabel)`
   color:${props => props.theme.colors.labels.important};
   font-weight: bold;
+  font-family: 'Panton', sans-serif;
 `;
 export const SecondTitle = styled(XLargeLabel)`
   color:${props => props.theme.colors.labels.normal};
@@ -16,23 +18,29 @@ export const SecondTitle = styled(XLargeLabel)`
 `;
 export const PanelSubtitle = styled(XSmallLabel)`
   color: ${props => props.theme.colors.labels.normal};
+  font-family: 'Panton', sans-serif;
 `;
 
-export const PanelContent = styled(XSmallLabel)`
+export const PanelContentLabel = styled(SmallLabel)`
+  color: ${props => props.theme.colors.labels.normal};
+`;
+
+export const PanelContentMinorLabel = styled(XSmallLabel)`
   color: ${props => props.theme.colors.labels.subtle};
 `;
 
-export const ParagraphPanelContent = styled(PanelContent)`
+export const ParagraphPanelContent = styled(PanelContentMinorLabel)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
   width: 80%;
 
 `;
-export const CenteredParagraphPanelContent = styled(PanelContent)`
+export const CenteredParagraphPanelContent = styled(PanelContentLabel)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
   width: 80%;
   text-align:center;
 `;
-export const ParagraphFooterContent = styled(PanelContent)`
+
+export const ParagraphFooterContent = styled(PanelContentLabel)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
   width: 100%;
   background-color: #faf9f9;
