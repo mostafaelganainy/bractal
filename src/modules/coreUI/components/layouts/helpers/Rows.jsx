@@ -6,6 +6,8 @@ const getJustifyContent = (props) => {
     return 'space-around';
   } else if (props.spaceBetween) {
     return 'space-between';
+  } else if (props.justifyCenter) {
+    return 'center';
   }
 
   return null;
@@ -14,6 +16,8 @@ const getJustifyContent = (props) => {
 const getAlignItems = (props) => {
   if (props.stretchAlign) {
     return 'stretch';
+  } else if (props.centerAlign) {
+    return 'center';
   }
 
   return null;

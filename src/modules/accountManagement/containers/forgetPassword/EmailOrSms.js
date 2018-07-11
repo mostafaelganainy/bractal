@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
@@ -17,14 +17,13 @@ const RecoverPasswordImage = styled(Image)`
   width: unset;
   max-height: 80px;
 `;
-const ButtonsCont = styled(CenterAlignedRow)`
-  width:95%;
-`;
 
 const ModalLinkBtn = styled(ModalLink)`
- a{
-   color:white;
- }
+  &&&& {
+    a {
+      color:white;
+    }
+  }
 `;
 
 const IMAGE_PATH = '/images/AccountManagement';
@@ -65,15 +64,15 @@ const EmailOrSMS = () => (
           </CenterAlignedRow>
         </ParagraphPanelContent>
         <MediumSpacer />
-        <ButtonsCont>
+        <Row fullWidth spaceBetween>
           <BasicButton width="50%">
             <ModalLinkBtn to="/accountManagement/VerficationCode">
-            Verify by E-mail
+              Verify by E-mail
             </ModalLinkBtn>
           </BasicButton>
           <MediumSpacer />
           <BasicButton width="50%"> Verify by SMS </BasicButton>
-        </ButtonsCont>
+        </Row>
         <MediumSpacer />
         <LeftAlignedColumn>
           <List TxtList={verifyByTypes} />
