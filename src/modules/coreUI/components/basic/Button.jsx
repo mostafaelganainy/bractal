@@ -10,7 +10,7 @@ const PrimaryStyle = styled.div`
   color: ${props => props.theme.colors.named.white};
   border-radius:5px;
   cursor: pointer;
-  padding: 8px 50px;
+  padding: 8px 0px;
   line-height: 2.0;
   font-weight: bold;
   text-align: center;

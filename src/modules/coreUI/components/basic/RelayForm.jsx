@@ -21,7 +21,7 @@ const InputElem = styled.input`
 `;
 
 const FormLayout = locals => (
-  <div className="InputLayout" style={{ width: '80%' }}>
+  <div className="InputLayout" style={{ width: '90%' }}>
     {Object.keys(locals.inputs).map(fieldName => (
       <div>{locals.inputs[fieldName]}</div>
     ))}

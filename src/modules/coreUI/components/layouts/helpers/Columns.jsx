@@ -13,11 +13,11 @@ export const CenterAlignedColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: left;
+  text-align: center;
 `;
 export const RightAlignedColumn = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: right;
+  align-items: center;
   text-align: right;
 `;

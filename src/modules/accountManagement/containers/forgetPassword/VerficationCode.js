@@ -1,13 +1,23 @@
 import React from 'react';
-import { PanelTitle, PanelSubtitle, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import styled from 'styled-components';
+import { PanelTitle, PanelSubtitle, ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
-import EmailContent from '~/modules/accountManagement/containers/forgetPassword/EmailVerify';
+// import EmailContent from '~/modules/accountManagement/containers/forgetPassword/EmailVerify';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
+import Image from '~/modules/coreUI/components/basic/Image';
+
+const IMAGE_PATH = '/images/AccountManagement';
+
+const RecoverPasswordImage = styled(Image)`
+  height: unset;
+  width: unset;
+  max-height: 80px;
+`;
 
 const VerficationCode = () => (
   <Modal>
@@ -22,7 +32,20 @@ const VerficationCode = () => (
           <Trans i18nKey="Followthestepstoresetyourpassword" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
-        <EmailContent />
+        <RecoverPasswordImage
+          src={`${IMAGE_PATH}/SMSImages.png`}
+          srcset={`${IMAGE_PATH}/SMSImages.png 2x,
+          ${IMAGE_PATH}/SMSImages.png 3x`}
+        />
+        <XXXXXLargeSpacer />
+        <SecondTitle>
+        EMAIL SENT
+        </SecondTitle>
+        <XLargeSpacer />
+        <CenteredParagraphPanelContent>
+      The Verification code has been sent
+      to your email address check your inbox
+        </CenteredParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
           options={[
@@ -34,9 +57,9 @@ const VerficationCode = () => (
             },
           ]}
         />
-        <MediumSpacer />
+        <XLargeSpacer />
         <BasicButton width="90%"> Reset your password </BasicButton>
-        <XXXXXLargeSpacer />
+        <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
            Copyright © 2018, aykmall.com. All Rights Reserved.

@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallSpacer, MediumSpacer, XLargeSpacer, XXLargeSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 
 const RecoverPasswordImage = styled(Image)`
@@ -39,11 +39,13 @@ const RecoverPasswords = () => (
         />
         <XXXXXLargeSpacer />
         <ParagraphPanelContent>
-          <Trans i18nKey="Enteryourusernameemailaddress" />
-          <br />
-          <Trans i18nKey="CheckyourinboxforverificationCode" />
-          <br />
-          <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
+          <LeftAlignedColumn>
+            <Trans i18nKey="Enteryourusernameemailaddress" />
+            <br />
+            <Trans i18nKey="CheckyourinboxforverificationCode" />
+            <br />
+            <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
+          </LeftAlignedColumn>
         </ParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
@@ -56,17 +58,20 @@ const RecoverPasswords = () => (
             },
           ]}
         />
-        <MediumSpacer />
-        <BasicButton> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
-        <MediumSpacer />
-        <MediumSpacer />
-        <CenterAlignedRow style={{ backgroundColor: '#faf9f9' }}>
-          Back to
-          <SmallSpacer />
-          <ModalLink to="/accountManagement/login">
-            Login
-          </ModalLink>
-        </CenterAlignedRow>
+        <XLargeSpacer />
+        <BasicButton width="90%">
+          <Trans i18nKey="Requestpasswordrecovery" />
+        </BasicButton>
+        <XXLargeSpacer />
+        <ParagraphFooterContent>
+          <CenterAlignedRow>
+            Back to
+            <SmallSpacer />
+            <ModalLink to="/accountManagement/EmailOrSms">
+              Login
+            </ModalLink>
+          </CenterAlignedRow>
+        </ParagraphFooterContent>
       </CenterAlignedColumn>
     </div>
   </Modal>

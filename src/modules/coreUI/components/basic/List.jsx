@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ListElm = styled.ul`
-  width:85%;
+  width:90%;
 `;
 const List = props => (
   <ListElm>

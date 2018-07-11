@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { CenteredParagraphPanelContent, SecondTitle } from '~/modules/accountManagement/components/basic/Labels';
 
 import Image from '~/modules/coreUI/components/basic/Image';
 import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
@@ -17,22 +17,24 @@ const RecoverPasswordImage = styled(Image)`
 const IMAGE_PATH = '/images/AccountManagement';
 
 
-const EmailContent = () => (
+const SMSContent = () => (
   <div>
-    <XXXXXLargeSpacer />
     <RecoverPasswordImage
-      src={`${IMAGE_PATH}/logo.png`}
-      srcset={`${IMAGE_PATH}/logo@2x.png 2x,
-      ${IMAGE_PATH}/logo@2x.png 3x`}
+      src={`${IMAGE_PATH}/SMSImages.png`}
+      srcset={`${IMAGE_PATH}/SMSImages.png 2x,
+      ${IMAGE_PATH}/SMSImages.png 3x`}
     />
     <XXXXXLargeSpacer />
-    <CenteredParagraphPanelContent>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </CenteredParagraphPanelContent>
+    <SecondTitle>
+      SMS SENT
+    </SecondTitle>
     <MediumSpacer />
+    <CenteredParagraphPanelContent>
+    The Verification code has been sent
+    to your number address check your inbox
+    </CenteredParagraphPanelContent>
   </div>
 
 );
 
-export default translate('accountManagement')(EmailContent);
+export default translate('accountManagement')(SMSContent);
