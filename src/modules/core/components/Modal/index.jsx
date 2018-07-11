@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { closeCurrentModal } from '../../utils/modalHelpers';
-
+import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
+import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 const customStyles = {
   content: {
@@ -20,6 +20,8 @@ const customStyles = {
     justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
     padding: '0px',
+    borderRadius: '0px',
+    border: 'none',
   },
 };
 
@@ -34,9 +36,9 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media only screen and (max-width: 1024px) {
+  ${cssMediaMax.mobile`
     background-color: white;
-  }
+  `}
 `;
 
 class Modal extends React.Component {

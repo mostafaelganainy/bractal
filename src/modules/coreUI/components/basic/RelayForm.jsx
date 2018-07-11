@@ -4,28 +4,38 @@ import t from 'tcomb-form';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { XXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+
 const { Form } = { Form: t.form.Form };
 
 const InputElem = styled.input`
   width: ${props => (props.width ? props.width : '100%')};
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  /* border-radius: ${props => (props.border_Radius ? props.border_Radius : '0px')}; */
-  border-radius:20px;
-  box-sizing: border-box;
+  padding: ${props => props.theme.inputs.padding};
+  border: ${props => props.theme.inputs.borderWidth}px solid;
+  border-color: ${props => props.theme.inputs.borderColor};
+  border-radius: ${props => props.theme.inputs.radius}px;
   outline: none;
   &&:focus{
     outline: none;
   }
+  ::placeholder {
+    color: ${props => props.theme.inputs.placeholderColor};
+  }
+`;
+
+const InputLayout = styled.div`
+  width: 100%;
 `;
 
 const FormLayout = locals => (
-  <div className="InputLayout" style={{ width: '90%' }}>
+  <InputLayout>
     {Object.keys(locals.inputs).map(fieldName => (
-      <div>{locals.inputs[fieldName]}</div>
+      <React.Fragment>
+        <div>{locals.inputs[fieldName]}</div>
+        <XXXLargeSpacer />
+      </React.Fragment>
     ))}
-  </div>
+  </InputLayout>
 );
 
 const Templates = {
