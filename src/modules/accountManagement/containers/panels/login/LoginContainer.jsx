@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { PanelTitle, PanelSubtitle } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -18,28 +18,18 @@ const RecoverPasswordImage = styled(Image)`
   max-height: 80px;
 `;
 
-
-// const ModalContainer = styled(CenterAlignedColumn)`
-//   width: '300px';
-//   background-color: 'white';
-//   margin: '0 auto';
-//   border-radius:10px;
-// `;
-
 const IMAGE_PATH = '/images/accountManagement/forgetPassword/recoverPassword';
 
 
 const Login = () => (
   <Modal>
     <div>
-      <CenterAlignedColumn style={{
-         width: '300px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
-    }}>
+      <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
         <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
+          LOGIN
         </PanelTitle>
         <PanelSubtitle>
-          <Trans i18nKey="Followthestepstoresetyourpassword" />
+          Login to your account
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
@@ -48,36 +38,34 @@ const Login = () => (
           ${IMAGE_PATH}/image@3x.png 3x`}
         />
         <XXXXXLargeSpacer />
-        <ParagraphPanelContent>
-          <Trans i18nKey="Enteryourusernameemailaddress" />
-          <br />
-          <Trans i18nKey="CheckyourinboxforverificationCode" />
-          <br />
-          <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
-        </ParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
           options={[
             {
-              name: 'Email',
+              name: 'username',
               placeholder: 'Email/ Mobile Number',
+              input_type: 'textbox',
+              tcomb_type: 'String',
+            },
+            {
+              name: 'password',
+              placeholder: 'Password',
               input_type: 'textbox',
               tcomb_type: 'String',
             },
           ]}
         />
         <MediumSpacer />
-        <BasicButton width="90%"> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
-        <XXXXXLargeSpacer />
-        <ParagraphFooterContent>
-          <CenterAlignedRow>
-            Back to
-            <SmallSpacer />
-            <ModalLink to="/accountManagement/recoverPassword">
-              Login
-            </ModalLink>
-          </CenterAlignedRow>
-        </ParagraphFooterContent>
+        <BasicButton> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
+        <MediumSpacer />
+        <MediumSpacer />
+        <CenterAlignedRow style={{ backgroundColor: '#faf9f9' }}>
+          Forgot your password ?
+          <SmallSpacer />
+          <ModalLink to="/accountManagement/recoverPassword">
+            Recover
+          </ModalLink>
+        </CenterAlignedRow>
       </CenterAlignedColumn>
     </div>
   </Modal>
