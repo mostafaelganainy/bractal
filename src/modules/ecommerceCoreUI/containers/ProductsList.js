@@ -118,6 +118,10 @@ const SliderWrapper = styled.div`
             ))
             */
 
+const isValidEntry = productInfo => (
+  productInfo.price
+);
+
 const ProductsList = ({ query }) => (
   <SliderWrapper>
     <Container>
@@ -125,7 +129,7 @@ const ProductsList = ({ query }) => (
         {
           query
           ?
-            query.list_products.map(entry => (
+            query.list_products.filter(entry => isValidEntry(entry)).map(entry => (
               // eslint-disable-next-line no-underscore-dangle
               <Product key={entry.__id} productInfo={entry} />
             ))
@@ -146,7 +150,8 @@ ProductsList.propTypes = {
 export default createFragmentContainer(ProductsList, graphql`
   fragment ProductsList_query on Query {    
     list_products(search: {taxon_ids: [99], hot_deals: true}) {
-      ...Product_productInfo
+      ...Product_productInfo,
+      price,
     }
   }
 `);

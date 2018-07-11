@@ -73,7 +73,7 @@
     "build-storybook": "build-storybook -s public",
     "lint": "npm run lint:css && npm run lint:es",
     "refetch-schema": "graphql-fetch-schema http://ayk-test.badrit.com/graphql",
-    "compile-relay": "relay-compiler  --verbose --src ./src/modules/productsCore --schema ./schema.graphql",
+    "compile-relay": "relay-compiler  --verbose --src ./src/modules/ --schema ./schema.graphql",
     "lint:css": "stylelint './src/**/*.js*'",
     "lint:es": "eslint ./src ",
     "start": "npm run lint:css && npm run start-internal"

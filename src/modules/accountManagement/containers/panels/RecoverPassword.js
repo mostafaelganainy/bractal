@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { PanelTitle, PanelSubtitle, ParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -18,23 +18,13 @@ const RecoverPasswordImage = styled(Image)`
   max-height: 80px;
 `;
 
-
-// const ModalContainer = styled(CenterAlignedColumn)`
-//   width: '300px';
-//   background-color: 'white';
-//   margin: '0 auto';
-//   border-radius:10px;
-// `;
-
 const IMAGE_PATH = '/images/accountManagement/forgetPassword/recoverPassword';
 
 
 const RecoverPasswords = () => (
   <Modal>
     <div>
-      <CenterAlignedColumn style={{
-         width: '300px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
-    }}>
+      <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
         <PanelTitle uppercase>
           <Trans i18nKey="headerTitle" />
         </PanelTitle>
@@ -59,7 +49,7 @@ const RecoverPasswords = () => (
         <RelayForm
           options={[
             {
-              name: 'Email',
+              name: 'email',
               placeholder: 'Email/ Mobile Number',
               input_type: 'textbox',
               tcomb_type: 'String',
@@ -67,17 +57,16 @@ const RecoverPasswords = () => (
           ]}
         />
         <MediumSpacer />
-        <BasicButton width="90%"> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
-        <XXXXXLargeSpacer />
-        <ParagraphFooterContent>
-          <CenterAlignedRow>
-            Back to
-            <SmallSpacer />
-            <ModalLink to="/accountManagement/recoverPassword">
-              Login
-            </ModalLink>
-          </CenterAlignedRow>
-        </ParagraphFooterContent>
+        <BasicButton> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
+        <MediumSpacer />
+        <MediumSpacer />
+        <CenterAlignedRow style={{ backgroundColor: '#faf9f9' }}>
+          Back to
+          <SmallSpacer />
+          <ModalLink to="/accountManagement/login">
+            Login
+          </ModalLink>
+        </CenterAlignedRow>
       </CenterAlignedColumn>
     </div>
   </Modal>
