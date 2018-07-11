@@ -13,6 +13,8 @@ const PrimaryStyle = styled.div`
   padding: 8px 50px;
   line-height: 2.0;
   font-weight: bold;
+  text-align: center;
+  width: ${props => (props.width ? props.width : '100%')};
   &:hover {
     background-color: ${props => props.theme.colors.secondary}
   }  
@@ -23,8 +25,7 @@ const PrimaryStyle = styled.div`
 `;
 export const BasicButton = props => (
   <PrimaryStyle
-    size={props.size}
-    className={props.iconName}
+    width={props.width}
   >
     {props.children}
   </PrimaryStyle>

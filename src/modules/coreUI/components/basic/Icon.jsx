@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 const CloseIcon = styled.i`
-    font-size: 17px;
+    font-size: 17px !important;
     color: white;
     cursor: pointer;
     z-index: 1;
