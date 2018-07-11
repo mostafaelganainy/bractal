@@ -11,23 +11,35 @@ const getJustifyContent = (props) => {
   return null;
 };
 
-const JustifiedDiv = styled.div`
-  justify-content: ${props => getJustifyContent(props) || 'space-around'}
+const getAlignItems = (props) => {
+  if (props.stretchAlign) {
+    return 'stretch';
+  }
+
+  return null;
+};
+
+export const Row = styled.div`
+  width: ${props => (props.fullWidth ? '100%' : null)};
+  display: flex;
+  flex-direction: row;
+  justify-content: ${props => getJustifyContent(props) || 'space-around'};
+  align-items: ${props => getAlignItems(props) || 'center'};  
 `;
 
-export const CenterAlignedRow = styled(JustifiedDiv)`
+export const CenterAlignedRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 
-export const TopAlignedRow = styled(JustifiedDiv)`
+export const TopAlignedRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 `;
 
-export const BottomAlignedRow = styled(JustifiedDiv)`
+export const BottomAlignedRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;

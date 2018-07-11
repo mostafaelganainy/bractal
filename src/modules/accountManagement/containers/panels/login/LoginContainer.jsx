@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import { translate } from 'react-i18next';
 
@@ -9,10 +9,10 @@ import SignupPromptPanel from './SignupPromptPanel';
 
 const Login = () => (
   <Modal>
-    <TopAlignedRow>
+    <Row stretchAlign>
       <LoginFormPanel />
       <SignupPromptPanel />
-    </TopAlignedRow>
+    </Row>
   </Modal>
 );
 

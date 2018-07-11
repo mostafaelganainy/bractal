@@ -1,22 +1,23 @@
 import React from 'react';
 
 import { PanelTitle, PanelSubtitle, PanelContentLabel, PanelContentMinorLabel } from '~/modules/accountManagement/components/basic/Labels';
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Column, CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import { Trans } from 'react-i18next';
+import { SmallSpacer, LargeSpacer, MediumSpacer, XXXLargeSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 const LoginFormPanel = () => (
-  <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
-    <PanelTitle uppercase>
-      LOGIN
-    </PanelTitle>
-    <PanelSubtitle>
-      Login to your account
-    </PanelSubtitle>
+  <Column spaceBetween style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
+    <CenterAlignedColumn>
+      <PanelTitle uppercase>
+        LOGIN
+      </PanelTitle>
+      <PanelSubtitle>
+        Login to your account
+      </PanelSubtitle>
+    </CenterAlignedColumn>
     <XXXXXLargeSpacer />
     <MediumSpacer />
     <RelayForm
@@ -35,8 +36,8 @@ const LoginFormPanel = () => (
         },
       ]}
     />
-    <MediumSpacer />
-    <CenterAlignedRow spaceBetween>
+    <XXXLargeSpacer />
+    <Row spaceBetween centerAlign fullWidth>
       <PanelContentLabel>
         Remember Me
       </PanelContentLabel>
@@ -45,10 +46,11 @@ const LoginFormPanel = () => (
           Lost Your Password
         </ModalLink>
       </PanelContentLabel>
-    </CenterAlignedRow>
-    <SmallSpacer />
-    <BasicButton> <Trans i18nKey="Requestpasswordrecovery" /> </BasicButton>
-    <MediumSpacer />
+    </Row>
+    <LargeSpacer />
+    <BasicButton>
+      Login
+    </BasicButton>
     <MediumSpacer />
     <PanelContentMinorLabel>
       <CenterAlignedRow>
@@ -59,7 +61,7 @@ const LoginFormPanel = () => (
         </ModalLink>
       </CenterAlignedRow>
     </PanelContentMinorLabel>
-  </CenterAlignedColumn>
+  </Column>
 );
 
 export default LoginFormPanel;
