@@ -13,7 +13,6 @@ const PrimaryStyle = styled.div`
   padding: 8px 50px;
   line-height: 2.0;
   font-weight: bold;
-  margin-right:10px; 
   text-align: center;
   width: ${props => (props.width ? props.width : '100%')};
   &:hover {

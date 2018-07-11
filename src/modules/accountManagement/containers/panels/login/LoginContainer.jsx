@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { PanelTitle, PanelSubtitle } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
