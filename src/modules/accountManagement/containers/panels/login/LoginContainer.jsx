@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { PanelTitle, PanelSubtitle } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -26,10 +26,10 @@ const Login = () => (
     <div>
       <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
         <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
+          LOGIN
         </PanelTitle>
         <PanelSubtitle>
-          <Trans i18nKey="Followthestepstoresetyourpassword" />
+          Login to your account
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
@@ -38,13 +38,6 @@ const Login = () => (
           ${IMAGE_PATH}/image@3x.png 3x`}
         />
         <XXXXXLargeSpacer />
-        <ParagraphPanelContent>
-          <Trans i18nKey="Enteryourusernameemailaddress" />
-          <br />
-          <Trans i18nKey="CheckyourinboxforverificationCode" />
-          <br />
-          <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
-        </ParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
           options={[
@@ -67,10 +60,10 @@ const Login = () => (
         <MediumSpacer />
         <MediumSpacer />
         <CenterAlignedRow style={{ backgroundColor: '#faf9f9' }}>
-          Back to
+          Forgot your password ?
           <SmallSpacer />
           <ModalLink to="/accountManagement/recoverPassword">
-            Login
+            Recover
           </ModalLink>
         </CenterAlignedRow>
       </CenterAlignedColumn>

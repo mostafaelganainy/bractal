@@ -37,7 +37,7 @@ class NavUserProfile extends Component {
       userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <ModalLink to="/accountManagement/recoverPassword">
+        <ModalLink to="/accountManagement/login">
           <IconOnlyButton primary iconName="icon-user" size={28} />
         </ModalLink>
       );

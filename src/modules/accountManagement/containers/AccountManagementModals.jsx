@@ -2,7 +2,7 @@ import React from 'react';
 
 import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
 
-import Login from './panels/login';
+import Login from './panels/login/LoginContainer';
 import RecoverPassword from './panels/RecoverPassword';
 
 export default () => (
