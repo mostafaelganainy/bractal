@@ -3,7 +3,7 @@ import { PanelTitle, PanelSubtitle, ParagraphFooterContent } from '~/modules/acc
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
-// import EmailContent from '~/modules/accountManagement/containers/forgetPassword/EmailVerify';
+import EmailContent from '~/modules/accountManagement/containers/forgetPassword/EmailVerify';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
@@ -22,7 +22,7 @@ const VerficationCode = () => (
           <Trans i18nKey="Followthestepstoresetyourpassword" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
-        {/* <EmailContent /> */}
+        <EmailContent />
         <MediumSpacer />
         <RelayForm
           options={[

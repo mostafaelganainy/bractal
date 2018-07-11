@@ -6,7 +6,7 @@ import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
-import { Button } from '~/modules/accountManagement/components/basic/Buttons';
+import { Button } from '~/modules/coreUI/components/basic/Button';
 import List from '~/modules/coreUI/components/basic/List';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
