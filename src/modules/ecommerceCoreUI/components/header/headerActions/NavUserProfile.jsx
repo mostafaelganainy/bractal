@@ -10,7 +10,7 @@ import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 
 import userAuthurization from '../../../../accountManagement/utilities/AccountManagement';
-import RecoverPassword from '../../../../accountManagement/containers/forgetPassword/RecoverPassword';
+import VerficationCode from '../../../../accountManagement/containers/forgetPassword/VerficationCode';
 
 
 class NavUserProfile extends Component {
@@ -39,7 +39,7 @@ class NavUserProfile extends Component {
       userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <ModalLink to="/accountManagement/recoverPassword">
+        <ModalLink to="/accountManagement/VerficationCode">
           <IconOnlyButton primary iconName="icon-user" size={28} />
         </ModalLink>
       );
@@ -47,7 +47,7 @@ class NavUserProfile extends Component {
     return (
       <div className="user-profile">
         {userImage}
-        <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
+        <ModalRoute path="/accountManagement/VerficationCode" component={VerficationCode} />
       </div>
     );
   }
