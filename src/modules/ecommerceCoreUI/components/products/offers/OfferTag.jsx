@@ -17,7 +17,7 @@ const StyledTag = styled(Label)`
     height: 30px;
     line-height: 17px;
     display: inline-block;
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.backgroundcolor};
     
     border-radius: 0;
     margin-left: 0;
@@ -49,7 +49,7 @@ const StyledTag = styled(Label)`
 `;
 
 const ProductTag = ({ offerType, children }) => (
-  <StyledTag backgroundColor={colors[offerType]} tag>
+  <StyledTag backgroundcolor={colors[offerType]} tag>
     <OfferTagLabel>
       {children}
     </OfferTagLabel>

@@ -21,7 +21,7 @@ const RecoverPasswordImage = styled(Image)`
 const IMAGE_PATH = '/images/accountManagement/forgetPassword/recoverPassword';
 
 
-const RecoverPasswords = () => (
+const Login = () => (
   <Modal>
     <div>
       <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
@@ -78,4 +78,4 @@ const RecoverPasswords = () => (
   </Modal>
 );
 
-export default translate('accountManagement')(RecoverPasswords);
+export default translate('accountManagement')(Login);

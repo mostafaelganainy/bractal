@@ -14,27 +14,9 @@ import HomePage from '../containers/Home';
 
 import { withModules } from '../../core/utils/modulesLoader';
 
-const routes = [
-  {
-    path: '/',
-    component: HomePage,
-  },
-  {
-    path: '/path5',
-    component: () => <h1> Hello</h1>,
-  },
-];
-
 const PageContent = ({ location }) => (
   <Switch location={removeModalPartFromLocation(location)}>
-    { routes.map(route => (
-      <Route
-        key={route.path}
-        exact={route.path === '/'}
-        path={route.path}
-        component={route.component}
-      />
-    )) }
+    <Route exact path="/" component={HomePage} />
   </Switch>
 );
 

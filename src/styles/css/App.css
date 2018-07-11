@@ -108,13 +108,10 @@ optgroup,
 select,
 textarea,
 span {
-  font-family: Panton; }
+  font-family: 'HelveticaNeue'; }
 
 .ar {
   font-family: Frutiger; }
-
-span {
-  padding-top: 4px; }
 
 .ReactModal__Body--open {
   overflow: hidden;
@@ -122,10 +119,8 @@ span {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0; }
-
-fieldset {
-  border: 0;
-  padding: 0px; }
+  left: 0;
+  border: none;
+  border-radius: 0px; }
 
 /*# sourceMappingURL=App.css.map */

@@ -13,6 +13,7 @@ import {
 export const SectionHeader = styled(XXLargeLabel)`
   color: ${props => props.theme.colors.primary};
   font-weight: bold;
+  font-family: 'Panton', sans-serif;
 `;
 
 export const SectionHeaderSubtitle = styled(LargeLabel)`
