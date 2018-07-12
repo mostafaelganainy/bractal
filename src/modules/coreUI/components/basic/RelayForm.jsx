@@ -46,6 +46,13 @@ const Templates = {
     renderInput: locals => (
       <InputElem {...locals.attrs} value={locals.value} placeholder={locals.attrs.placeholder} />
     ),
+    renderError: locals => (
+      (locals.hasError && locals.error ? (
+        <div style={{ color: 'red' }}> {locals.error} </div>
+      ) : (
+        <div style={{ height: '0px' }}> {locals.error} </div>
+      ))
+    ),
   }),
 };
 
@@ -70,11 +77,23 @@ const getTcombOptionsFromRawOptions = (rawOptions) => {
   return tcombOptions;
 };
 
+const Age = t.refinement(t.Number, n => n >= 18);
+
+// if you define a getValidationErrorMessage function, it will be called on validation errors
+Age.getValidationErrorMessage = (value, path, context) => {
+  if (context && context.serverErrors && context.serverErrors[path[0]]) {
+    return context.serverErrors[path[0]];
+  }
+
+  return 'I hate you';
+};
+
+
 const getTcombTypesFromRawOptions = (rawOptions) => {
   const tcombTypesObject = {};
 
   rawOptions.forEach((option) => {
-    tcombTypesObject[option.name] = t[option.tcomb_type];
+    tcombTypesObject[option.name] = Age; // t[option.tcomb_type];
   });
 
   return t.struct(tcombTypesObject);
@@ -113,6 +132,11 @@ export default class RelayForm extends Component {
           type={tcombTypes}
           value={this.state.value}
           onChange={this.onChange}
+          context={{
+            serverErrors: {
+              username: "That's a huge issue out there",
+            },
+          }}
         />
       </React.Fragment>
     );

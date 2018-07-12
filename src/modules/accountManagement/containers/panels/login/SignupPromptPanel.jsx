@@ -62,7 +62,7 @@ const renderOnMobile = () => (
   </React.Fragment>
 );
 
-const LoginFormPanel = props => (
+const SignUpFormPanel = props => (
   <Media query={mediaQueryMin('desktop')}>
     {matched => (matched ? (
       renderOnDesktop(props)
@@ -72,8 +72,8 @@ const LoginFormPanel = props => (
   </Media>
 );
 
-LoginFormPanel.propTypes = PropTypes.shape({
+SignUpFormPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
 }).isRequired;
 
-export default LoginFormPanel;
+export default SignUpFormPanel;
