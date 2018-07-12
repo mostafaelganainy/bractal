@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
-const FooterLinksItems = styled.ul`
-  padding-left: 0;
-  margin: 0 0 13px;
-  li {
-    list-style-type: none;
+
+const FooterLinksItems = styled.div`
+  div {
     color: ${props => props.theme.colors.labels.normal};
     font-size: ${props => props.theme.fonts.sizes.small}px;
-    margin-bottom: 12px;
   }
 `;
 
 const FooterLinks = ({ links }) => (
   <FooterLinksItems>
-    {links.map(link => (<li key={link.id} >{link.name}</li>)) }
+    {links.map(link => (
+      <div key={link.id} >{link.name} <Spacer size={12} /> </div>
+    ))}
+    <Spacer size={13} />
   </FooterLinksItems>
 );
 
