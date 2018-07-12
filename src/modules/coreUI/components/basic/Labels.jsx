@@ -39,3 +39,9 @@ export const XXSmallLabel = styled(Label)`
   font-size: ${props => props.theme.fonts.sizes.xxSmall}px;
   line-height: ${props => props.theme.fonts.sizes.xxSmall}px;
 `;
+
+export const ErrorLabel = styled.div`
+  font-size: ${props => props.theme.fonts.sizes.xxSmall}px;
+  line-height: ${props => props.theme.fonts.sizes.xxSmall}px;
+  color: ${props => props.theme.colors.error};
+`;
