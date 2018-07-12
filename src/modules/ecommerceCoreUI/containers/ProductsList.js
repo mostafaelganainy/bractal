@@ -46,9 +46,9 @@ import Product from './Product';
             ))
             */
 
-const isValidEntry = productInfo => (
-  productInfo.price
-);
+// const isValidEntry = productInfo => (
+//   productInfo.price
+// );
 
 const ProductsList = ({ query }) => (
   <ProductsSlider>
