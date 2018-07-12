@@ -30,7 +30,7 @@
 }
 
 .AllRegCont {
-    padding: 20px 20px 4px 5px;
+    padding: 20px 5px 4px 5px;
 
     .RegisterHdrCont {
         padding-bottom: 80px;
@@ -335,6 +335,10 @@
                     margin-left: 13px;
                     margin-top: 45px;
                     text-align: left;
+                    label{
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
                 }
 
                 h3 {
@@ -393,7 +397,7 @@ li:first-child:hover {
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1200px) {
     .bkBtn {
         display: inline-block;
     }
@@ -403,6 +407,11 @@ li:first-child:hover {
         background-position: right;
         background-repeat: no-repeat;
         background-size: contain;
+    }
+
+    .TwoSides {
+        height: 280px;
+        max-height: 280px;
     }
 
     #firstSide {
@@ -430,7 +439,7 @@ li:first-child:hover {
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1199px) {
     .CreateAccContainer {
         padding: 17px;
         padding-bottom: 0px;
@@ -457,7 +466,7 @@ li:first-child:hover {
 
             .TwoSides {
                 padding: 0 !important;
-                width: 92%;
+                width: 85%;
                 margin: 0 auto !important;
 
                 #firstSide {
@@ -540,12 +549,20 @@ li:first-child:hover {
     }
 }
 
-@media screen and (min-width: 426px) and (max-width: 1024px) {
+@media screen and (min-width: 426px) and (max-width: 1199px) {
     .mobPadd0 {
         padding: 0px !important;
     }
 }
 
+
+@media screen and (max-width: 768px) {
+    .CreateAccContainer {
+        .TwoSides {
+            width: 100% !important;
+        }
+    }
+}
 
 @media screen and (max-width: 425px) {
     .CreateAccContainer {
@@ -598,13 +615,5 @@ li:first-child:hover {
 
     .mobPadd0 {
         padding: 0px 6px !important;
-    }
-}
-
-@media screen and (max-width: 991px) and (min-width: 770px) {
-    .CreateAccContainer {
-        .TwoSides {
-            width: 95% !important;
-        }
     }
 }

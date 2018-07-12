@@ -11,8 +11,8 @@ class NavLanguageMobile extends Component {
           <Trans i18nKey="HeaderSubMenuLanguage" />
         </Header>
 
-        <Menu.Item className="selected"><Image src="images/Header/uk.png" avatar />English</Menu.Item>
-        <Menu.Item className="ar"><Image src="images/Header/qr.png" avatar />اللغة العربية</Menu.Item>
+        <Menu.Item className="selected"><Image src="/images/Header/uk.png" avatar />English</Menu.Item>
+        <Menu.Item className="ar"><Image src="/images/Header/qr.png" avatar />اللغة العربية</Menu.Item>
       </div>
     );
   }

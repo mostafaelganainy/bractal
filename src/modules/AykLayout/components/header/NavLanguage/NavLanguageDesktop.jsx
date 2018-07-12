@@ -7,7 +7,7 @@ export default class NavLanguageDesktop extends Component {
   render() {
     const trigger = (
       <span>
-        <Image avatar src="images/Header/uk.png" /> EN
+        <Image avatar src="/images/Header/uk.png" /> EN
       </span>
     );
 
@@ -25,10 +25,10 @@ export default class NavLanguageDesktop extends Component {
                 active
                 onClick={() => i18n.changeLanguage('en')}
               >
-                <Image src="images/Header/en.png" /> EN
+                <Image src="/images/Header/en.png" /> EN
               </Dropdown.Item>
               <Dropdown.Item onClick={() => i18n.changeLanguage('ar')}>
-                <Image src="images/Header/ar.png" /> AR
+                <Image src="/images/Header/ar.png" /> AR
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

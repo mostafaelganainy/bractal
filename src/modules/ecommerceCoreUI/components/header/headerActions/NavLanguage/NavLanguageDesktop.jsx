@@ -11,12 +11,12 @@ const options = [
   {
     text: 'EN',
     value: 'en',
-    image: { src: 'images/Header/uk.png' },
+    image: { src: '/images/Header/uk.png' },
   },
   {
     text: 'AR',
     value: 'ar',
-    image: { src: 'images/Header/ar.png' },
+    image: { src: '/images/Header/ar.png' },
   },
 ];
 

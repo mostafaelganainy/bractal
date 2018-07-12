@@ -44,7 +44,7 @@ export default class Departments extends Component {
 
               {featuredDepartmentsList.length > 5 && (
                 <Menu.Item className="more">
-                  <Image src="images/Header/more.png" />
+                  <Image src="/images/Header/more.png" />
                 </Menu.Item>
               )}
             </Menu.Menu>

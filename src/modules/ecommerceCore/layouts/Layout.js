@@ -6,14 +6,18 @@ import Footer from './Footer';
 import PageContent from './PageContent';
 import Theme from '../Theme';
 import EcommerceMainContainer from '../components/EcommerceMainContainer';
+import AccountManagementModals from '../../accountManagement/containers/AccountManagementModals';
 
 const Layout = () => (
   <ThemeProvider theme={Theme}>
-    <EcommerceMainContainer>
-      <Header />
-      <PageContent />
-      <Footer />
-    </EcommerceMainContainer>
+    <React.Fragment>
+      <EcommerceMainContainer>
+        <Header />
+        <PageContent />
+        <Footer />
+      </EcommerceMainContainer>
+      <AccountManagementModals />
+    </React.Fragment>
   </ThemeProvider>
 );
 

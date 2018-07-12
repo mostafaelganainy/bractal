@@ -21,7 +21,6 @@ export default class LoginPage extends Component {
     this.handleChangeRem = this.handleChangeRem.bind(this);
   }
   componentDidMount() {
-    window.scrollTo(0, 0);
     this.hydrateStateWithLocalStorage();
     window.addEventListener(
       'beforeunload',
@@ -172,65 +171,68 @@ export default class LoginPage extends Component {
                       </p>
                     </div>
                     <div className="mobLoginLogo">
-                      <img src="images/AccountManagement/logo@2x.png" alt="Ayk Logo" />
+                      <img src="/images/AccountManagement/logo@2x.png" alt="Ayk Logo" />
                     </div>
                     <form autoComplete="off" className="LoginContnt">
-                      <div className="ErrorMsg">
-                        {this.state.globalErrorMsg}
+                      <div className="FixedHeight">
+                        <Grid.Row>
+                          <input
+                            type="text"
+                            placeholder={i18next.t('accountManagement:EmailMobileNumber')}
+                            id="email"
+                            autoComplete="off"
+                            onChange={this.handleChange}
+                            required
+                            value={this.state.email || ''}
+                          />
+                        </Grid.Row>
+                        <p className="ErrorMsg">
+                          {this.state.EmailErrorMessage}
+                        </p>
+                        <Grid.Row>
+                          <input
+                            type="password"
+                            placeholder={i18next.t('accountManagement:password')}
+                            id="password"
+                            autoComplete="off"
+                            onChange={this.handleChange}
+                            required
+                            value={this.state.password || ''}
+                          />
+                        </Grid.Row>
+                        <p className="ErrorMsg">
+                          {this.state.PassErrorMessage}
+                        </p>
+                        <Grid columns={2}>
+                          <Grid.Row className="RmmberLost">
+                            <Grid.Column>
+
+                              <Checkbox
+                                label={i18next.t('accountManagement:RememberMe')}
+                                checked={this.state.rememberMe}
+                                onChange={this.handleChangeRem}
+                              />
+
+                            </Grid.Column>
+                            <Grid.Column>
+                              <span className="fontSize11 LostPass">
+                                <Trans i18nKey="LostYourPassword" />
+                              </span>
+                            </Grid.Column>
+                          </Grid.Row>
+                        </Grid>
                       </div>
                       <Grid.Row>
-                        <input
-                          type="text"
-                          placeholder={i18next.t('accountManagement:EmailMobileNumber')}
-                          id="email"
-                          autoComplete="off"
-                          onChange={this.handleChange}
-                          required
-                          value={this.state.email || ''}
-                        />
+                        <Grid.Column>
+                          <button
+                            className="LognBtn"
+                            onClick={this.handleSubmit}
+                          >
+                            <Trans i18nKey="Login" />
+
+                          </button>
+                        </Grid.Column>
                       </Grid.Row>
-                      <p className="ErrorMsg">
-                        {this.state.EmailErrorMessage}
-                      </p>
-                      <Grid.Row>
-                        <input
-                          type="password"
-                          placeholder={i18next.t('accountManagement:password')}
-                          id="password"
-                          autoComplete="off"
-                          onChange={this.handleChange}
-                          required
-                          value={this.state.password || ''}
-                        />
-                      </Grid.Row>
-                      <p className="ErrorMsg">
-                        {this.state.PassErrorMessage}
-                      </p>
-                      <Grid columns={2}>
-                        <Grid.Row className="RmmberLost">
-                          <Grid.Column>
-
-                            <Checkbox
-                              label={i18next.t('accountManagement:RememberMe')}
-                              checked={this.state.rememberMe}
-                              onChange={this.handleChangeRem}
-                            />
-
-                          </Grid.Column>
-                          <Grid.Column>
-                            <span className="fontSize11 LostPass">
-                              <Trans i18nKey="LostYourPassword" />
-                            </span>
-                          </Grid.Column>
-                        </Grid.Row>
-                      </Grid>
-                      <button
-                        className="LognBtn"
-                        onClick={this.handleSubmit}
-                      >
-                        <Trans i18nKey="Login" />
-
-                      </button>
                       <div className="TextCenter fontSize11 Bylogin">
                         <p className="TextCenter fontSize11 Bylogin">
                           <Trans i18nKey="Byloginyouagreetoour" />

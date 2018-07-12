@@ -25,9 +25,9 @@ export default class TopNav extends Component {
           <Menu>
             <Menu.Item>
               <Image
-                src="images/Header/logo-header.png"
-                srcSet="images/Header/logo-header@2x.png 2x,
-             images/Header/logo-header@3x.png 3x"
+                src="/images/Header/logo-header.png"
+                srcSet="/images/Header/logo-header@2x.png 2x,
+             /images/Header/logo-header@3x.png 3x"
               />
             </Menu.Item>
             <Menu.Item className="products-search">

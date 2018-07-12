@@ -10,15 +10,15 @@ export default class Gender extends Component {
   };
 
   render() {
-    let MaleImage = <img src="images/AccountManagement/male-copy.png" alt="Male" />;
-    let FemaleImage = <img src="images/AccountManagement/female.png" alt="Female" />;
+    let MaleImage = <img src="/images/AccountManagement/male-copy.png" alt="Male" />;
+    let FemaleImage = <img src="/images/AccountManagement/female.png" alt="Female" />;
     if (this.props.MaleIsactive !== '') {
       if (this.props.MaleIsactive) {
-        MaleImage = <img src="images/AccountManagement/male.png" alt="Male" />;
-        FemaleImage = <img src="images/AccountManagement/female.png" alt="Female" />;
+        MaleImage = <img src="/images/AccountManagement/male.png" alt="Male" />;
+        FemaleImage = <img src="/images/AccountManagement/female.png" alt="Female" />;
       } else {
-        FemaleImage = <img src="images/AccountManagement/female-copy.png" alt="Female" />;
-        MaleImage = <img src="images/AccountManagement/male-copy.png" alt="Male" />;
+        FemaleImage = <img src="/images/AccountManagement/female-copy.png" alt="Female" />;
+        MaleImage = <img src="/images/AccountManagement/male-copy.png" alt="Male" />;
       }
     }
     return (

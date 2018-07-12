@@ -22,10 +22,10 @@ export default class EmailOrSms extends Component {
         <div className="SmsOrEmailVerify">
           <div>
             {this.props.toggleEmail
-                  ? <div><img src="images/AccountManagement/SMSImages.png" alt="Email" /></div>
+                  ? <div><img src="/images/AccountManagement/SMSImages.png" alt="Email" /></div>
                   : ''}
             {this.props.toggleSms
-                  ? <div> <img src="images/AccountManagement/sms.png" alt="Mobile" /></div>
+                  ? <div> <img src="/images/AccountManagement/sms.png" alt="Mobile" /></div>
                   : ''}
             <p>
               <Trans i18nKey="VerfySMSOrEmail_Lorem" />

@@ -28,11 +28,13 @@ export default class NavUserProfile extends Component {
   show = dimmer => () => this.setState({ dimmer, open: true });
   close = () => this.setState({ open: false });
   render() {
+    // eslint-disable-next-line
+    debugger;
     const Token = userAuthurization();
     let userImage = '';
 
     if (Token !== false) {
-      userImage = <Image src="images/Header/userloggedIn.png" />;
+      userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
         // eslint-disable-next-line

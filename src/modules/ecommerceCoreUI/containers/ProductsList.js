@@ -46,6 +46,10 @@ import Product from './Product';
             ))
             */
 
+const isValidEntry = productInfo => (
+  productInfo.price
+);
+
 const ProductsList = ({ query }) => (
   <ProductsSlider>
     {
@@ -70,7 +74,8 @@ ProductsList.propTypes = {
 export default createFragmentContainer(ProductsList, graphql`
   fragment ProductsList_query on Query {    
     list_products(search: {taxon_ids: [99], hot_deals: true}) {
-      ...Product_productInfo
+      ...Product_productInfo,
+      price,
     }
   }
 `);

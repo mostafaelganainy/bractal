@@ -1,19 +1,17 @@
 
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React, { Component } from 'react';
 import { Image } from 'semantic-ui-react';
+import { PropTypes } from 'prop-types';
 
 import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
+import ModalLink from '~/modules/core/components/Modal/ModalLink';
 
-import LoginContainer from '../../../../accountManagement/containers/LoginContainer';
 import userAuthurization from '../../../../accountManagement/utilities/AccountManagement';
 
-export default class NavUserProfile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-  }
+
+class NavUserProfile extends Component {
   componentWillMount() {
     const expiryDate = parseFloat(localStorage.getItem('expiryDate'));
     if (
@@ -28,25 +26,33 @@ export default class NavUserProfile extends Component {
       localStorage.removeItem('client');
     }
   }
-  show = dimmer => () => this.setState({ dimmer, open: true });
-  close = () => this.setState({ open: false });
+
+  // show = dimmer => () => this.setState({ dimmer, open: true });
+  // close = () => this.setState({ open: false });
   render() {
     const Token = userAuthurization();
     let userImage = '';
-
+    // eslint-disable-next-line
     if (Token !== false) {
-      userImage = <Image src="images/Header/userloggedIn.png" />;
+      userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <IconOnlyButton primary iconName="icon-user" size={28} onClick={this.show('blurring')} />
+        <ModalLink to="/accountManagement/login">
+          <IconOnlyButton primary iconName="icon-user" size={28} />
+        </ModalLink>
       );
     }
     return (
       <div className="user-profile">
         {userImage}
-        <LoginContainer open={this.state.open} dimmer={this.state.dimmer} close={this.close} />
       </div>
     );
   }
 }
+
+NavUserProfile.propTypes = PropTypes.shape({
+  location: PropTypes.string.isRequired,
+}).isRequired;
+
+export default NavUserProfile;
 

@@ -2,30 +2,27 @@ import React from 'react';
 import {
   Route,
   Switch,
+  withRouter,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import {
+  removeModalPartFromLocation,
+} from '~/modules/core/utils/modalHelpers';
+
 import HomePage from '../containers/Home';
 
 import { withModules } from '../../core/utils/modulesLoader';
 
-const routes = [
-  {
-    path: '/',
-    component: HomePage,
-  },
-];
-
-const PageContent = () => (
-  <Switch>
-    { routes.map(route => (
-      <Route
-        key={route.path}
-        exact={route.path === '/'}
-        path={route.path}
-        component={route.component}
-      />
-    )) }
+const PageContent = ({ location }) => (
+  <Switch location={removeModalPartFromLocation(location)}>
+    <Route exact path="/" component={HomePage} />
   </Switch>
 );
 
-export default withModules(PageContent);
+PageContent.propTypes = PropTypes.shape({
+  location: PropTypes.shape({}).isRequired,
+}).isRequired;
+
+export default withModules(withRouter(PageContent));
 
