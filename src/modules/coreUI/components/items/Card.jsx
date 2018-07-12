@@ -43,7 +43,6 @@ const ContentContainer = styled(LeftAlignedColumn)`
 const StyledCard = styled(Segment)`
   margin: '1em';
   box-shadow: none !important;
-  }
 `;
 
 const Card = ({
