@@ -12,6 +12,7 @@ export const PanelTitle = styled(LargeLabel)`
   color:${props => props.theme.colors.primary};
   font-weight: bold;
   font-family: 'Panton', sans-serif;
+  text-transform: capitalize;
 `;
 export const SecondTitle = styled(XLargeLabel)`
   color:${props => props.theme.colors.labels.normal};
