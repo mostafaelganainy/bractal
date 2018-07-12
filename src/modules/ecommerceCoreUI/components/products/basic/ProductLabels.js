@@ -56,6 +56,7 @@ export const OldPriceLabel = styled(MediumLabel)`
 `;
 
 export const CurrentPriceLabel = styled(LargeLabel)`
-  font-size: ${props => props.theme.fonts.sizes.large * 1.15};
+  font-size: ${props => props.theme.fonts.sizes.large};
   color: ${props => props.theme.colors.primary};
+  margin-top:5px;
 `;
