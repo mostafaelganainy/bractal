@@ -60,6 +60,7 @@ const settings = {
 };
 const SliderWrapper = styled.div`
   background: #fff;
+  width: 100%;
   .slick-slider {
     text-align: center;
     .slick-track {
@@ -97,7 +98,7 @@ const SliderWrapper = styled.div`
       color: #7f7f7f;
       background-color: #fff;
       z-index: 1;
-      top: 48%;
+      top: 47.4%;
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
       &:before {
         font-size: 47px;
