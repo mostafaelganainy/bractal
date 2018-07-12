@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -11,6 +11,7 @@ import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XLargeSpacer, XXLargeSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
 
 const RecoverPasswordImage = styled(Image)`
   height: unset;
@@ -23,14 +24,8 @@ const IMAGE_PATH = '/images/accountManagement/forgetPassword/recoverPassword';
 
 const RecoverPasswords = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
-        <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
-        </PanelTitle>
-        <PanelSubtitle>
-          <Trans i18nKey="Followthestepstoresetyourpassword" />
-        </PanelSubtitle>
+    <Panel title="RECOVER YOUR PASSWORD" subTitle="Follow the steps to reset your password">
+      <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
           src={`${IMAGE_PATH}/image.png`}
@@ -40,11 +35,11 @@ const RecoverPasswords = () => (
         <XXXXXLargeSpacer />
         <ParagraphPanelContent>
           <LeftAlignedColumn>
-            <Trans i18nKey="Enteryourusernameemailaddress" />
+            <Trans i18nKey="recoverPassword.Enteryourusernameemailaddress" />
             <br />
-            <Trans i18nKey="CheckyourinboxforverificationCode" />
+            <Trans i18nKey="recoverPassword.CheckyourinboxforverificationCode" />
             <br />
-            <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
+            <Trans i18nKey="recoverPassword.Useyourcodetoverifyyouraccountandcreateanewpassword" />
           </LeftAlignedColumn>
         </ParagraphPanelContent>
         <MediumSpacer />
@@ -59,21 +54,21 @@ const RecoverPasswords = () => (
           ]}
         />
         <XLargeSpacer />
-        <BasicButton width="90%">
-          <Trans i18nKey="Requestpasswordrecovery" />
+        <BasicButton>
+          <Trans i18nKey="recoverPassword.Requestpasswordrecovery" />
         </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            Back to
+            <Trans i18nKey="recoverPassword.footer_BackTo" />
             <SmallSpacer />
             <ModalLink to="/accountManagement/EmailOrSms">
-              Login
+              <Trans i18nKey="recoverPassword.footer_Link" />
             </ModalLink>
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </Panel>
   </Modal>
 );
 

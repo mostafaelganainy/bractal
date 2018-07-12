@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphFooterContent, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { Trans, translate } from 'react-i18next';
 import Image from '~/modules/coreUI/components/basic/Image';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
@@ -19,23 +20,23 @@ const RecoverPasswordImage = styled(Image)`
   max-height: 80px;
 `;
 
-const VerficationCodeSMS = () => (
+const VerficationCodeEmail = () => (
   <Modal>
-    <Panel title="RECOVER YOUR PASSWORD" subTitle="Follow the steps to reset your password" >
-      <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
+    <Panel
+      title="VERIFY YOUR ACCOUNT"
+      subTitle="Necessary Step to active your account"
+    >
+      <CenterAlignedColumn>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
-          src={`${IMAGE_PATH}/sms.png`}
-          srcset={`${IMAGE_PATH}/sms.png 2x,
-          ${IMAGE_PATH}/sms.png 3x`}
+          src={`${IMAGE_PATH}/SMSImages.png`}
+          srcset={`${IMAGE_PATH}/SMSImages.png 2x,
+          ${IMAGE_PATH}/SMSImages.png 3x`}
         />
         <XXXXXLargeSpacer />
-        <SecondTitle>
-          <Trans i18nKey="forgetPassVerifyEmailSMS.SMSSecondTitle" />
-        </SecondTitle>
-        <MediumSpacer />
+        <XLargeSpacer />
         <CenteredParagraphPanelContent>
-          <Trans i18nKey="forgetPassVerifyEmailSMS.SMSParagraph" />
+          <Trans i18nKey="verifyAccount.EmailTxt" />
         </CenteredParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
@@ -49,11 +50,15 @@ const VerficationCodeSMS = () => (
           ]}
         />
         <XLargeSpacer />
-        <BasicButton> <Trans i18nKey="forgetPassVerifyEmailSMS.Button" /> </BasicButton>
+        <BasicButton> <Trans i18nKey="verifyAccount.ButtonCreateAccount" /> </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            <Trans i18nKey="forgetPassVerifyEmailSMS.Footer" />
+            <Trans i18nKey="verifyAccount.footerTxt" />
+            <SmallSpacer />
+            <ModalLink to="/accountManagement/login">
+              <Trans i18nKey="verifyAccount.footerLink" />
+            </ModalLink>
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
@@ -61,5 +66,4 @@ const VerficationCodeSMS = () => (
   </Modal>
 );
 
-export default translate('accountManagement')(VerficationCodeSMS);
-
+export default translate('accountManagement')(VerficationCodeEmail);

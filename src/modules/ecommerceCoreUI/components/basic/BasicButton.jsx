@@ -43,6 +43,7 @@ export const BasicButton = (props) => {
 
   return (
     <ButtonElement
+      {...props}
       size={props.size}
       className={props.iconName}
     >
