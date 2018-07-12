@@ -34,3 +34,8 @@ export const XSmallLabel = styled(Label)`
   font-size: ${props => props.theme.fonts.sizes.xSmall}px;
   line-height: ${props => props.theme.fonts.sizes.xSmall}px;
 `;
+
+export const XXSmallLabel = styled(Label)`
+  font-size: ${props => props.theme.fonts.sizes.xxSmall}px;
+  line-height: ${props => props.theme.fonts.sizes.xxSmall}px;
+`;

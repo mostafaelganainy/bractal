@@ -32,6 +32,7 @@ const Theme = {
       medium: 16,
       small: 14,
       xSmall: 12,
+      xxSmall: 11,
     },
   },
   paddings: {
@@ -72,7 +73,7 @@ const Theme = {
   },
   buttons: {
     radius: 5,
-    fontSize: 14,
+    fontSize: 16,
     padding: 15,
     border: 1, // Only applicable in the inverted state
   },

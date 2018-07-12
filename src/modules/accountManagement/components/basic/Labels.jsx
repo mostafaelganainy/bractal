@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import {
   LargeLabel,
   XSmallLabel,
+  XXSmallLabel,
   SmallLabel,
   XLargeLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
 export const PanelTitle = styled(LargeLabel)`
-  color:${props => props.theme.colors.labels.important};
+  color:${props => props.theme.colors.primary};
   font-weight: bold;
   font-family: 'Panton', sans-serif;
 `;
@@ -25,8 +26,8 @@ export const PanelContentLabel = styled(SmallLabel)`
   color: ${props => props.theme.colors.labels.normal};
 `;
 
-export const PanelContentMinorLabel = styled(XSmallLabel)`
-  color: ${props => props.theme.colors.labels.subtle};
+export const PanelContentMinorLabel = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.labels.normal};
 `;
 
 export const ParagraphPanelContent = styled(PanelContentMinorLabel)`

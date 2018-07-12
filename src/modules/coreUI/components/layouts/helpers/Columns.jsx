@@ -18,7 +18,7 @@ const getJustifyContent = (props) => {
 };
 
 const getAlignItems = (props) => {
-  if (props.alignCenter) {
+  if (props.centerAligned) {
     return 'center';
   } else if (props.stretchAlign) {
     return 'stretch';

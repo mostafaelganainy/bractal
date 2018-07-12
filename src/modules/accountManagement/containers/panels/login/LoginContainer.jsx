@@ -1,15 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+import { translate } from 'react-i18next';
+import Media from 'react-media';
 
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
-import { translate } from 'react-i18next';
-import Media from 'react-media';
-import { mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
-import styled from 'styled-components';
+
+import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { mediaQueryMax, cssMediaMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import LoginFormPanel from './LoginFormPanel';
 import SignupPromptPanel from './SignupPromptPanel';
-import { CenterAlignedColumn } from '../../../../coreUI/components/layouts/helpers/Columns';
 
 const DesktopContainer = styled(Row)`
   width: 900px;
@@ -22,8 +23,13 @@ const DesktopContainer = styled(Row)`
 `;
 
 // eslint-disable-next-line react/prop-types
-const PanelContent = ({ children }) =>
-  <CenterAlignedColumn style={{ height: '275px', width: '100%', justifyContent: 'flex-end' }}>{ children }</CenterAlignedColumn>;
+const PanelContent = styled(CenterAlignedColumn)`
+  ${cssMediaMin.desktop`
+    height: 275px;
+  `}
+  width: 100%;
+  justify-content: flex-end;
+`;
 
 const renderForDesktop = () => (
   <DesktopContainer stretchAlign>
