@@ -18,8 +18,6 @@ import {
 import Rating from './basic/Rating';
 import OfferTag from './offers/OfferTag';
 
-// import CountDown from '~/modules/productsCore/components/common/CountDown';
-
 import dummyData from '../dummyProductData';
 
 const CardActionsContainer = styled.div`
@@ -65,7 +63,6 @@ const ProductCard = ({ productInfo }) => {
 
   return (
     <div>
-      {/* <CountDown /> */}
       <Card
         productInfo={productInfo}
         headerLeftRenderer={
@@ -90,14 +87,14 @@ const ProductCard = ({ productInfo }) => {
           </React.Fragment>
         }
         footerLeftRenderer={
-          <div>
+          <React.Fragment>
             <OldPriceLabel>
               { originalPrice }
             </OldPriceLabel>
             <CurrentPriceLabel>
               { currentPrice }
             </CurrentPriceLabel>
-          </div>
+          </React.Fragment>
         }
         footerRightRenderer={
           <React.Fragment>

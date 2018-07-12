@@ -7,12 +7,12 @@ const RoundIcon = styled.div`
   width: 37px;
   height: 37px;
   color: ${props => props.color};
-  line-height: 41px;
-  text-align: center;
   border: 1px solid ${props => props.color};
   border-radius: 50%;
   font-size: 19px;  
-
+  display: flex;
+  justify-content: center;
+  align-items:center;
   .icon-heart-1 {
     padding-top: 1px;
     padding-left: 1px;
