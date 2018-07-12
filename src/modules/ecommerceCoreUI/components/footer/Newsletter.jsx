@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
 import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { SectionHeader } from '~/modules/ecommerceCoreUI/components/basic/Labels';
-
+import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 const NewsletterWrapper = styled.div`
   .InputLayout{
@@ -11,8 +11,6 @@ const NewsletterWrapper = styled.div`
   }
   .form-group.form-group-depth-1.form-group-Enter.Your.Email{
     position: relative;
-    margin-top: 9px;
-    margin-bottom: 32px;
     width: 50%;
     :after {
       content: '\\E803';
@@ -29,6 +27,7 @@ const Newsletter = () => (
   <NewsletterWrapper>
     <Container>
       <SectionHeader>Join Our Newsletter</SectionHeader>
+      <Spacer size={9} />
       <RelayForm
         options={[
               {
@@ -39,6 +38,7 @@ const Newsletter = () => (
               },
             ]}
       />
+      <Spacer size={32} />
     </Container>
   </NewsletterWrapper>
 );
