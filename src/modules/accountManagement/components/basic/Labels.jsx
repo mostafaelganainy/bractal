@@ -47,6 +47,4 @@ export const ParagraphFooterContent = styled(PanelContentLabel)`
   display: flex;
   padding: 11px;
   justify-content: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
 `;

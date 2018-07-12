@@ -26,10 +26,10 @@ const RecoverPasswords = () => (
     <div>
       <CenterAlignedColumn style={{ width: '300px', backgroundColor: 'white', margin: '0 auto' }}>
         <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
+          <Trans i18nKey="recoverPassword.headerTitle" />
         </PanelTitle>
         <PanelSubtitle>
-          <Trans i18nKey="Followthestepstoresetyourpassword" />
+          <Trans i18nKey="recoverPassword.SubTitle" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
@@ -40,11 +40,11 @@ const RecoverPasswords = () => (
         <XXXXXLargeSpacer />
         <ParagraphPanelContent>
           <LeftAlignedColumn>
-            <Trans i18nKey="Enteryourusernameemailaddress" />
+            <Trans i18nKey="recoverPassword.Enteryourusernameemailaddress" />
             <br />
-            <Trans i18nKey="CheckyourinboxforverificationCode" />
+            <Trans i18nKey="recoverPassword.CheckyourinboxforverificationCode" />
             <br />
-            <Trans i18nKey="Useyourcodetoverifyyouraccountandcreateanewpassword" />
+            <Trans i18nKey="recoverPassword.Useyourcodetoverifyyouraccountandcreateanewpassword" />
           </LeftAlignedColumn>
         </ParagraphPanelContent>
         <MediumSpacer />
@@ -60,15 +60,15 @@ const RecoverPasswords = () => (
         />
         <XLargeSpacer />
         <BasicButton width="90%">
-          <Trans i18nKey="Requestpasswordrecovery" />
+          <Trans i18nKey="recoverPassword.Requestpasswordrecovery" />
         </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            Back to
+            <Trans i18nKey="recoverPassword.footer_BackTo" />
             <SmallSpacer />
-            <ModalLink to="/accountManagement/EmailOrSms">
-              Login
+            <ModalLink to="/accountManagement/login">
+              <Trans i18nKey="recoverPassword.footer_Link" />
             </ModalLink>
           </CenterAlignedRow>
         </ParagraphFooterContent>

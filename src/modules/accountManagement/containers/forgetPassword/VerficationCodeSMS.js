@@ -22,13 +22,13 @@ const VerficationCodeSMS = () => (
   <Modal>
     <div>
       <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
+         width: '400px', backgroundColor: 'white', margin: '0 auto',
     }}>
         <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
+          <Trans i18nKey="recoverPassword.headerTitle" />
         </PanelTitle>
         <PanelSubtitle>
-          <Trans i18nKey="Followthestepstoresetyourpassword" />
+          <Trans i18nKey="recoverPassword.SubTitle" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
@@ -38,12 +38,11 @@ const VerficationCodeSMS = () => (
         />
         <XXXXXLargeSpacer />
         <SecondTitle>
-          SMS SENT
+          <Trans i18nKey="forgetPassVerifyEmailSMS.SMSSecondTitle" />
         </SecondTitle>
         <MediumSpacer />
         <CenteredParagraphPanelContent>
-        The Verification code has been sent
-        to your number address check your inbox
+          <Trans i18nKey="forgetPassVerifyEmailSMS.SMSParagraph" />
         </CenteredParagraphPanelContent>
         <MediumSpacer />
         <RelayForm
@@ -57,11 +56,11 @@ const VerficationCodeSMS = () => (
           ]}
         />
         <XLargeSpacer />
-        <BasicButton width="90%"> Reset your password </BasicButton>
+        <BasicButton width="90%"> <Trans i18nKey="forgetPassVerifyEmailSMS.Button" /> </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-           Copyright © 2018, aykmall.com. All Rights Reserved.
+            <Trans i18nKey="forgetPassVerifyEmailSMS.Footer" />
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>

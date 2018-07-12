@@ -26,10 +26,10 @@ const RecoverPasswords = () => (
          width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
     }}>
         <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
+          <Trans i18nKey="recoverPassword.headerTitle" />
         </PanelTitle>
         <PanelSubtitle>
-          Create your new password
+          <Trans i18nKey="recoverPassword.subTitle" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage

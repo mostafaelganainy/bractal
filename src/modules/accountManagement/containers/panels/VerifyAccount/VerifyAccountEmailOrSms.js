@@ -12,7 +12,7 @@ import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 
-const RecoverPasswordImage = styled(Image)`
+const verifyAccountImage = styled(Image)`
   height: unset;
   width: unset;
   max-height: 80px;
@@ -24,9 +24,9 @@ const ModalLinkBtn = styled(ModalLink)`
 
 const IMAGE_PATH = '/images/AccountManagement';
 const verifyByTypes = [
-  <span><b><Trans i18nKey="forgetPassEmailOrSMS.EmailTxt" /> </b><Trans i18nKey="forgetPassEmailOrSMS.VerifyEmailTxt" />
+  <span><b> <Trans i18nKey="verifyAccount.VerifyByMail" /> </b>  <Trans i18nKey="verifyAccount.VerifyEmailTxt" />
   </span>,
-  <span><b> <Trans i18nKey="forgetPassEmailOrSMS.SMSTxt" /> </b> <Trans i18nKey="forgetPassEmailOrSMS.VerifySMSTxt" />
+  <span><b> <Trans i18nKey="verifyAccount.VerifyBySMS" /> </b> <Trans i18nKey="verifyAccount.VerifySMSTxt" />
   </span>];
 
 
@@ -34,39 +34,39 @@ const EmailOrSMS = () => (
   <Modal>
     <div>
       <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto',
+         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
     }}>
         <PanelTitle uppercase>
-          <Trans i18nKey="recoverPassword.headerTitle" />
+          <Trans i18nKey="verifyAccount.HeaderTitle" />
         </PanelTitle>
         <PanelSubtitle>
-          <Trans i18nKey="recoverPassword.SubTitle" />
+          <Trans i18nKey="verifyAccount.SubTitle" />
         </PanelSubtitle>
         <XXXXXLargeSpacer />
-        <RecoverPasswordImage
+        <verifyAccountImage
           src={`${IMAGE_PATH}/logo.png`}
-          srcset={`${IMAGE_PATH}/logo@2x.png 2x,
+          srcSet={`${IMAGE_PATH}/logo@2x.png 2x,
           ${IMAGE_PATH}/logo@2x.png 3x`}
         />
         <XXXXXLargeSpacer />
         <ParagraphPanelContent>
           <CenterAlignedRow>
             <CenterAlignedColumn>
-              <Trans i18nKey="forgetPassEmailOrSMS.VerifyParagraph" />
+              <Trans i18nKey="verifyAccount.verifyParagraph" />
             </CenterAlignedColumn>
           </CenterAlignedRow>
         </ParagraphPanelContent>
         <MediumSpacer />
         <Row fullWidth spaceBetween>
-          <ModalLinkBtn to="/accountManagement/VerficationCodeEmail">
+          <ModalLinkBtn to="/accountManagement/VerifyByEmail">
             <BasicButton width="100%">
-              <Trans i18nKey="forgetPassEmailOrSMS.EmailTxt" />
+              <Trans i18nKey="verifyAccount.VerifyByMail" />
             </BasicButton>
           </ModalLinkBtn>
           <MediumSpacer />
-          <ModalLinkBtn to="/accountManagement/VerficationCodeSMS">
+          <ModalLinkBtn to="/accountManagement/VerifyBySMS">
             <BasicButton width="100%">
-              <Trans i18nKey="forgetPassEmailOrSMS.SMSTxt" />
+              <Trans i18nKey="verifyAccount.VerifyBySMS" />
             </BasicButton>
           </ModalLinkBtn>
         </Row>
@@ -77,10 +77,10 @@ const EmailOrSMS = () => (
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            <Trans i18nKey="recoverPassword.footer_BackTo" />
+            <Trans i18nKey="verifyAccount.footerTxt" />
             <SmallSpacer />
             <ModalLink to="/accountManagement/login">
-              <Trans i18nKey="recoverPassword.footer_Link" />
+              <Trans i18nKey="verifyAccount.footerLink" />
             </ModalLink>
           </CenterAlignedRow>
         </ParagraphFooterContent>
