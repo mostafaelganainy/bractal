@@ -12,6 +12,9 @@ const RatingContainer = styled.div`
   .ui.small.rating{
     font-size: 16px;
   }
+  i:focus {
+    outline : none;
+  }
 `;
 
 const AykRating = ({ rating, ratingCount }) => (
