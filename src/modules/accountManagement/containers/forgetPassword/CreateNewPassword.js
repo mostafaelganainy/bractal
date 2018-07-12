@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, CenteredParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { CenteredParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -10,6 +10,8 @@ import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
+
 
 const RecoverPasswordImage = styled(Image)`
   height: unset;
@@ -21,16 +23,11 @@ const IMAGE_PATH = '/images/accountManagement/forgetPassword/renewPassword';
 
 const RecoverPasswords = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
-    }}>
-        <PanelTitle uppercase>
-          <Trans i18nKey="headerTitle" />
-        </PanelTitle>
-        <PanelSubtitle>
-          Create your new password
-        </PanelSubtitle>
+    <Panel
+      title="VERIFY YOUR ACCOUNT"
+      subTitle="Necessary Step to active your account"
+    >
+      <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
           src={`${IMAGE_PATH}/finger.png`}
@@ -64,11 +61,11 @@ const RecoverPasswords = () => (
         <XXXXXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            Copyright © 2018, aykmall.com. All Rights Reserved.
+            <Trans i18nKey="forgetPassVerifyEmailSMS.Footer" />
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </Panel>
   </Modal>
 );
 

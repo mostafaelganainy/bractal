@@ -13,56 +13,60 @@ import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/mo
 import { Trans, translate } from 'react-i18next';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 
-const RecoverPasswordImage = styled(Image)`
+
+const verifyAccountImage = styled(Image)`
   height: unset;
   width: unset;
   max-height: 80px;
-`;
-const PanelCont = styled(Panel)`
-    width:500px;
 `;
 
 const ModalLinkBtn = styled(ModalLink)`
   width:50%;
 `;
+const PanelCont = styled(Panel)`
+      width:500px;
+`;
 
 const IMAGE_PATH = '/images/AccountManagement';
 const verifyByTypes = [
-  <span><b><Trans i18nKey="forgetPassEmailOrSMS.EmailTxt" /> </b><Trans i18nKey="forgetPassEmailOrSMS.VerifyEmailTxt" />
+  <span><b> <Trans i18nKey="verifyAccount.VerifyByMail" /> </b>  <Trans i18nKey="verifyAccount.VerifyEmailTxt" />
   </span>,
-  <span><b> <Trans i18nKey="forgetPassEmailOrSMS.SMSTxt" /> </b> <Trans i18nKey="forgetPassEmailOrSMS.VerifySMSTxt" />
+  <span><b> <Trans i18nKey="verifyAccount.VerifyBySMS" /> </b> <Trans i18nKey="verifyAccount.VerifySMSTxt" />
   </span>];
 
 
 const EmailOrSMS = () => (
   <Modal>
-    <PanelCont title="RECOVER YOUR PASSWORD" subTitle="Follow the steps to reset your password" >
-      <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
+    <PanelCont
+      title="VERIFY YOUR ACCOUNT"
+      subTitle="Necessary Step to active your account"
+    >
+      <CenterAlignedColumn>
         <XXXXXLargeSpacer />
-        <RecoverPasswordImage
+        <verifyAccountImage
           src={`${IMAGE_PATH}/logo.png`}
-          srcset={`${IMAGE_PATH}/logo@2x.png 2x,
-          ${IMAGE_PATH}/logo@2x.png 3x`}
+          srcSet={`${IMAGE_PATH}/logo@2x.png 2x,
+                ${IMAGE_PATH}/logo@2x.png 3x`}
         />
         <XXXXXLargeSpacer />
         <ParagraphPanelContent>
           <CenterAlignedRow>
             <CenterAlignedColumn>
-              <Trans i18nKey="forgetPassEmailOrSMS.VerifyParagraph" />
+              <Trans i18nKey="verifyAccount.verifyParagraph" />
             </CenterAlignedColumn>
           </CenterAlignedRow>
         </ParagraphPanelContent>
         <MediumSpacer />
         <Row fullWidth spaceBetween>
-          <ModalLinkBtn to="/accountManagement/VerficationCodeEmail">
+          <ModalLinkBtn to="/accountManagement/VerifyByEmail">
             <BasicButton width="100%">
-              <Trans i18nKey="forgetPassEmailOrSMS.EmailTxt" />
+              <Trans i18nKey="verifyAccount.VerifyByMail" />
             </BasicButton>
           </ModalLinkBtn>
           <MediumSpacer />
-          <ModalLinkBtn to="/accountManagement/VerficationCodeSMS">
+          <ModalLinkBtn to="/accountManagement/VerifyBySMS">
             <BasicButton width="100%">
-              <Trans i18nKey="forgetPassEmailOrSMS.SMSTxt" />
+              <Trans i18nKey="verifyAccount.VerifyBySMS" />
             </BasicButton>
           </ModalLinkBtn>
         </Row>
@@ -73,10 +77,10 @@ const EmailOrSMS = () => (
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
-            <Trans i18nKey="recoverPassword.footer_BackTo" />
+            <Trans i18nKey="verifyAccount.footerTxt" />
             <SmallSpacer />
             <ModalLink to="/accountManagement/login">
-              <Trans i18nKey="recoverPassword.footer_Link" />
+              <Trans i18nKey="verifyAccount.footerLink" />
             </ModalLink>
           </CenterAlignedRow>
         </ParagraphFooterContent>
