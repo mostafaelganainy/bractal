@@ -1,7 +1,7 @@
 import React from 'react';
 import RelayInitializer from './RelayInitializer';
 
-export default function withModules(WrappedComponent) {
+export default function withRelayEnvironment(WrappedComponent) {
   return function render(props) {
     return (
       <RelayInitializer.Context.Consumer>

@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
 import {
@@ -7,14 +8,17 @@ import {
   getTcombTypesFromRawOptions,
 } from '~/modules/coreUI/components/forms/TcombHelpers';
 
+import LoginUserMutation from './LoginUserMutation';
+
 const { Form } = { Form: t.form.Form };
 
 export default class RelayForm extends Component {
   state = {
     value: {
-      username: 'Giulio',
+      email: 'Giulio',
       password: 'Canti',
     },
+    serverErrors: {},
   };
 
   onChange = (value, path) => {
@@ -31,7 +35,16 @@ export default class RelayForm extends Component {
   }
 
   render = () => {
-    const { options } = this.props;
+    const {
+      options,
+      environment,
+      email,
+      password,
+      rememberMe,
+    } = this.props;
+
+    const { serverErrors } = this.state;
+
     const tcombOptions = getTcombOptionsFromRawOptions(options);
     const tcombTypes = getTcombTypesFromRawOptions(options);
     return (
@@ -43,11 +56,34 @@ export default class RelayForm extends Component {
           value={this.state.value}
           onChange={this.onChange}
           context={{
-            serverErrors: {
-              username: "That's a huge issue out there",
-            },
+            serverErrors,
           }}
         />
+        <button
+          onClick={() => LoginUserMutation(
+            environment,
+            email,
+            password,
+            rememberMe,
+            (errors) => {
+              if (errors) {
+                const newErrors = {};
+                errors.forEach((error) => {
+                  [newErrors[error.field]] = error.messages;
+                });
+                this.setState({
+                  serverErrors: newErrors,
+                });
+              } else {
+                this.setState({
+                  serverErrors: {},
+                });
+              }
+            },
+          )}
+        >
+          Go
+        </button>
       </React.Fragment>
     );
   }

@@ -4,7 +4,7 @@ import { ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } fr
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
-import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
+import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';

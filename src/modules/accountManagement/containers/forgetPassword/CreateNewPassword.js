@@ -6,7 +6,7 @@ import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
-import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
+import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';

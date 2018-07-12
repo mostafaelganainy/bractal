@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import { PanelContentMinorLabel } from '~/modules/accountManagement/components/basic/Labels';
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
-import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
+import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, LargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
+import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 
-const LoginFormPanel = ({ panelContentContainer }) => {
+const LoginFormPanel = ({ panelContentContainer, environment }) => {
   const ContentContainer = panelContentContainer;
 
   return (
@@ -19,9 +20,13 @@ const LoginFormPanel = ({ panelContentContainer }) => {
     >
       <ContentContainer>
         <RelayForm
+          environment={environment}
+          email="m@a.com"
+          password="1234567"
+          rememberMe
           options={[
             {
-              name: 'username',
+              name: 'email',
               placeholder: 'Email/ Mobile Number',
               input_type: 'textbox',
               tcomb_type: 'Number',
@@ -68,4 +73,4 @@ LoginFormPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
 }).isRequired;
 
-export default LoginFormPanel;
+export default withRelayEnvironment(LoginFormPanel);

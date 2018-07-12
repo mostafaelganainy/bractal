@@ -1,7 +1,9 @@
-
 import t from 'tcomb-form';
+import changeCase from 'change-case';
+
 import FormLayout from './FormLayout';
 import Templates from './Template';
+
 
 const Age = t.refinement(t.Number, n => n >= 18);
 
@@ -10,7 +12,7 @@ Age.getValidationErrorMessage = (value, path, context) => {
   if (context && context.serverErrors && context.serverErrors[path[0]]) {
     return context.serverErrors[path[0]];
   } else if (!value) {
-    return `${path[0]} can't be empty`;
+    return `${changeCase.titleCase(path[0])} shouldn't be blank`;
   }
   return null;
 };
