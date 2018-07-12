@@ -10,6 +10,7 @@ import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer, SmallSpace
 import { Trans, translate } from 'react-i18next';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import Image from '~/modules/coreUI/components/basic/Image';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
 
 const IMAGE_PATH = '/images/AccountManagement';
 
@@ -21,10 +22,11 @@ const RecoverPasswordImage = styled(Image)`
 
 const VerficationCodeSMS = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
-    }}>
+    <Panel
+      title="VERIFY YOUR ACCOUNT"
+      subTitle="Necessary Step to active your account"
+    >
+      <CenterAlignedColumn>
         <PanelTitle uppercase>
           <Trans i18nKey="verifyAccount.HeaderTitle" />
         </PanelTitle>
@@ -54,7 +56,7 @@ const VerficationCodeSMS = () => (
           ]}
         />
         <XLargeSpacer />
-        <BasicButton width="90%"> <Trans i18nKey="verifyAccount.ButtonCreateAccount" /> </BasicButton>
+        <BasicButton> <Trans i18nKey="verifyAccount.ButtonCreateAccount" /> </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
@@ -66,7 +68,7 @@ const VerficationCodeSMS = () => (
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </Panel>
   </Modal>
 );
 

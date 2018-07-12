@@ -12,23 +12,26 @@ export const PanelRoot = styled(Column)`
   width: 248px;
 `;
 
-const Panel = ({ title, subTitle, children }) => (
-  <PanelRoot topAligned topJustified>
-    <CenterAlignedColumn>
-      <PanelTitle uppercase>
-        {title}
-      </PanelTitle>
-      <SmallSpacer />
-      <PanelSubtitle>
-        {subTitle}
-      </PanelSubtitle>
-    </CenterAlignedColumn>
-    <XXXXXLargeSpacer />
-    <Column fullWidth centerAligned centerJustified grow>
-      { children }
-    </Column>
-  </PanelRoot>
-);
+const Panel = (props) => {
+  const { title, subTitle, children } = props;
+  return (
+    <PanelRoot {...props} topAligned topJustified>
+      <CenterAlignedColumn>
+        <PanelTitle uppercase>
+          {title}
+        </PanelTitle>
+        <SmallSpacer />
+        <PanelSubtitle>
+          {subTitle}
+        </PanelSubtitle>
+      </CenterAlignedColumn>
+      <XXXXXLargeSpacer />
+      <Column fullWidth centerAligned centerJustified grow>
+        { children }
+      </Column>
+    </PanelRoot>
+  );
+};
 
 Panel.propTypes = PropTypes.shape({
   title: PropTypes.string.isRequired,

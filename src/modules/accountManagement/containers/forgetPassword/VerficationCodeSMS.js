@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PanelTitle, PanelSubtitle, ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -9,6 +9,7 @@ import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 import Image from '~/modules/coreUI/components/basic/Image';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
 
 const IMAGE_PATH = '/images/AccountManagement';
 
@@ -20,16 +21,8 @@ const RecoverPasswordImage = styled(Image)`
 
 const VerficationCodeSMS = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto',
-    }}>
-        <PanelTitle uppercase>
-          <Trans i18nKey="recoverPassword.headerTitle" />
-        </PanelTitle>
-        <PanelSubtitle>
-          <Trans i18nKey="recoverPassword.SubTitle" />
-        </PanelSubtitle>
+    <Panel title="RECOVER YOUR PASSWORD" subTitle="Follow the steps to reset your password" >
+      <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
           src={`${IMAGE_PATH}/sms.png`}
@@ -56,7 +49,7 @@ const VerficationCodeSMS = () => (
           ]}
         />
         <XLargeSpacer />
-        <BasicButton width="90%"> <Trans i18nKey="forgetPassVerifyEmailSMS.Button" /> </BasicButton>
+        <BasicButton> <Trans i18nKey="forgetPassVerifyEmailSMS.Button" /> </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
@@ -64,7 +57,7 @@ const VerficationCodeSMS = () => (
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </Panel>
   </Modal>
 );
 

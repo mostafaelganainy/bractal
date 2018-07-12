@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -11,6 +11,8 @@ import List from '~/modules/coreUI/components/basic/List';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
+
 
 const verifyAccountImage = styled(Image)`
   height: unset;
@@ -20,6 +22,9 @@ const verifyAccountImage = styled(Image)`
 
 const ModalLinkBtn = styled(ModalLink)`
   width:50%;
+`;
+const PanelCont = styled(Panel)`
+      width:500px;
 `;
 
 const IMAGE_PATH = '/images/AccountManagement';
@@ -32,21 +37,16 @@ const verifyByTypes = [
 
 const EmailOrSMS = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
-    }}>
-        <PanelTitle uppercase>
-          <Trans i18nKey="verifyAccount.HeaderTitle" />
-        </PanelTitle>
-        <PanelSubtitle>
-          <Trans i18nKey="verifyAccount.SubTitle" />
-        </PanelSubtitle>
+    <PanelCont
+      title="VERIFY YOUR ACCOUNT"
+      subTitle="Necessary Step to active your account"
+    >
+      <CenterAlignedColumn>
         <XXXXXLargeSpacer />
         <verifyAccountImage
           src={`${IMAGE_PATH}/logo.png`}
           srcSet={`${IMAGE_PATH}/logo@2x.png 2x,
-          ${IMAGE_PATH}/logo@2x.png 3x`}
+                ${IMAGE_PATH}/logo@2x.png 3x`}
         />
         <XXXXXLargeSpacer />
         <ParagraphPanelContent>
@@ -85,7 +85,7 @@ const EmailOrSMS = () => (
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </PanelCont>
   </Modal>
 );
 

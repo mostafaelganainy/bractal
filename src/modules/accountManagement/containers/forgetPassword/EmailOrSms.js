@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { PanelTitle, PanelSubtitle, ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -11,11 +11,15 @@ import List from '~/modules/coreUI/components/basic/List';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
 
 const RecoverPasswordImage = styled(Image)`
   height: unset;
   width: unset;
   max-height: 80px;
+`;
+const PanelCont = styled(Panel)`
+    width:500px;
 `;
 
 const ModalLinkBtn = styled(ModalLink)`
@@ -32,16 +36,8 @@ const verifyByTypes = [
 
 const EmailOrSMS = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto',
-    }}>
-        <PanelTitle uppercase>
-          <Trans i18nKey="recoverPassword.headerTitle" />
-        </PanelTitle>
-        <PanelSubtitle>
-          <Trans i18nKey="recoverPassword.SubTitle" />
-        </PanelSubtitle>
+    <PanelCont title="RECOVER YOUR PASSWORD" subTitle="Follow the steps to reset your password" >
+      <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
           src={`${IMAGE_PATH}/logo.png`}
@@ -85,7 +81,7 @@ const EmailOrSMS = () => (
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </PanelCont>
   </Modal>
 );
 

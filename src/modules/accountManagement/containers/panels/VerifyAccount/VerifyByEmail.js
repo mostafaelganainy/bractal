@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PanelTitle, PanelSubtitle, ParagraphFooterContent, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphFooterContent, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
@@ -10,6 +10,7 @@ import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer, SmallSpace
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { Trans, translate } from 'react-i18next';
 import Image from '~/modules/coreUI/components/basic/Image';
+import Panel from '~/modules/accountManagement/components/basic/Panel';
 
 const IMAGE_PATH = '/images/AccountManagement';
 
@@ -21,16 +22,11 @@ const RecoverPasswordImage = styled(Image)`
 
 const VerficationCodeEmail = () => (
   <Modal>
-    <div>
-      <CenterAlignedColumn style={{
-         width: '400px', backgroundColor: 'white', margin: '0 auto', borderRadius: '10px',
-    }}>
-        <PanelTitle uppercase>
-          <Trans i18nKey="verifyAccount.HeaderTitle" />
-        </PanelTitle>
-        <PanelSubtitle>
-          <Trans i18nKey="verifyAccount.SubTitle" />
-        </PanelSubtitle>
+    <Panel
+      title="VERIFY YOUR ACCOUNT"
+      subTitle="Necessary Step to active your account"
+    >
+      <CenterAlignedColumn>
         <XXXXXLargeSpacer />
         <RecoverPasswordImage
           src={`${IMAGE_PATH}/SMSImages.png`}
@@ -54,7 +50,7 @@ const VerficationCodeEmail = () => (
           ]}
         />
         <XLargeSpacer />
-        <BasicButton width="90%"> <Trans i18nKey="verifyAccount.ButtonCreateAccount" /> </BasicButton>
+        <BasicButton> <Trans i18nKey="verifyAccount.ButtonCreateAccount" /> </BasicButton>
         <XXLargeSpacer />
         <ParagraphFooterContent>
           <CenterAlignedRow>
@@ -66,7 +62,7 @@ const VerficationCodeEmail = () => (
           </CenterAlignedRow>
         </ParagraphFooterContent>
       </CenterAlignedColumn>
-    </div>
+    </Panel>
   </Modal>
 );
 
