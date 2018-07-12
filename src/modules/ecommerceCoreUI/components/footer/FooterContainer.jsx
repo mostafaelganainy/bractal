@@ -62,7 +62,10 @@ const FooterDetails = styled.div`
   
 `;
 const DownloadAppItem = styled(DownloadApp)`
-  width: 25%;
+  width: 35%;
+`;
+const SocialMediaItems = styled(SocialMedia)`
+  width: 33.3%;
 `;
 const FooterContainer = () => (
   <FooterWrapper>
@@ -74,7 +77,7 @@ const FooterContainer = () => (
           <FooterLinks links={linkList3} />
         </FooterLinksWrapper>
         <FooterAssets>
-          <SocialMedia />
+          <SocialMediaItems />
           <Payment />
         </FooterAssets>
       </FooterDetails>

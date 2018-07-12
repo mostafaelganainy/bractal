@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 
 const FooterLinksItems = styled.div`
@@ -14,9 +14,9 @@ const FooterLinksItems = styled.div`
 const FooterLinks = ({ links }) => (
   <FooterLinksItems>
     {links.map(link => (
-      <div key={link.id} >{link.name} <Spacer size={12} /> </div>
+      <div key={link.id} >{link.name} <LargeSpacer size={12} /> </div>
     ))}
-    <Spacer size={13} />
+    <LargeSpacer />
   </FooterLinksItems>
 );
 

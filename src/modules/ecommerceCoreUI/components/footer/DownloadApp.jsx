@@ -12,6 +12,8 @@ const DownloadAppWrapper = styled.div`
     font-size: ${props => props.theme.fonts.sizes.xSmall}px;
     color: ${props => props.theme.colors.labels.subtle};
     font-weight: 300;
+    width:50%;
+    margin: auto;
   }
 `;
 const TabLabelItem = styled(TabLabel)`
