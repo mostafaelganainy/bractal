@@ -4,34 +4,47 @@ import t from 'tcomb-form';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { XXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+
+
 const { Form } = { Form: t.form.Form };
 
 const InputElem = styled.input`
   width: ${props => (props.width ? props.width : '100%')};
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  /* border-radius: ${props => (props.border_Radius ? props.border_Radius : '0px')}; */
-  border-radius:20px;
-  box-sizing: border-box;
+  padding: ${props => props.theme.inputs.padding};
+
+  border: ${props => props.theme.inputs.borderWidth}px solid;
+  border-color: ${props => props.theme.inputs.borderColor};
+  border-radius: ${props => props.theme.inputs.radius}px;
+
   outline: none;
   &&:focus{
     outline: none;
   }
+  ::placeholder {
+    color: ${props => props.theme.inputs.placeholderColor};
+  }
+`;
+
+const InputLayout = styled.div`
+  width: 100%;
 `;
 
 const FormLayout = locals => (
-  <div className="InputLayout" style={{ width: '90%' }}>
-    {Object.keys(locals.inputs).map(fieldName => (
-      <div>{locals.inputs[fieldName]}</div>
-    ))}
-  </div>
+  <InputLayout>
+    {Object.keys(locals.inputs).map(((fieldName, index) => (
+      <React.Fragment>
+        <div>{locals.inputs[fieldName]}</div>
+        {index < Object.keys(locals.inputs).length - 1 ? <XXXLargeSpacer /> : null }
+      </React.Fragment>
+    )))}
+  </InputLayout>
 );
 
 const Templates = {
   textbox: t.form.Form.templates.textbox.clone({
     renderInput: locals => (
-      <InputElem value={locals.value} placeholder={locals.attrs.placeholder} />
+      <InputElem {...locals.attrs} value={locals.value} placeholder={locals.attrs.placeholder} />
     ),
   }),
 };
@@ -40,6 +53,8 @@ const getTcombOptionsFromRawOptions = (rawOptions) => {
   const tcombOptions = {
     template: FormLayout,
     auto: 'placeholders',
+    error: (value, path, context) => { console.log(value, path, context); return 'ERROR'; },
+    help: 'I like you all',
     fields: {},
   };
 
@@ -66,17 +81,40 @@ const getTcombTypesFromRawOptions = (rawOptions) => {
 };
 
 export default class RelayForm extends Component {
-  render() {
+  state = {
+    value: {
+      username: 'Giulio',
+      password: 'Canti',
+    },
+  };
+
+  onChange = (value, path) => {
+    this.setState({ value });
+    this.Form.getComponent(path).validate();
+  }
+
+  save = () => {
+    const value = this.Form.getValue();
+    this.Form.validate();
+    if (value) {
+      console.log(value);
+    }
+  }
+
+  render = () => {
     const { options } = this.props;
     const tcombOptions = getTcombOptionsFromRawOptions(options);
     const tcombTypes = getTcombTypesFromRawOptions(options);
     return (
-      <Form
-        ref={(ref) => { this.Form = ref; }}
-        options={tcombOptions}
-        type={tcombTypes}
-        onChange={this.props.onChange}
-      />
+      <React.Fragment>
+        <Form
+          ref={(ref) => { this.Form = ref; }}
+          options={tcombOptions}
+          type={tcombTypes}
+          value={this.state.value}
+          onChange={this.onChange}
+        />
+      </React.Fragment>
     );
   }
 }
