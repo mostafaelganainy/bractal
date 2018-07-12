@@ -13,7 +13,6 @@ const DownloadAppWrapper = styled.div`
     color: ${props => props.theme.colors.labels.subtle};
     font-weight: 300;
     width:50%;
-    margin: auto;
   }
 `;
 const TabLabelItem = styled(TabLabel)`
