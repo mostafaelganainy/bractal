@@ -14,6 +14,7 @@ const DepartmentsTabContent = styled.div`
     display: inline-block;
     width: 20%;
     float: left;
+  border-radius: 7px;    
     border-top-right-radius: 0;
     height: 432px;
     border-bottom-right-radius: 0;
