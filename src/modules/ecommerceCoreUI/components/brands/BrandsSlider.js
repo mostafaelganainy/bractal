@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+
 
 const settings = {
   infinite: true,
@@ -33,6 +35,7 @@ const BrandsSlider = ({ children }) => (
   <SliderWrapper>
     <Container>
       <Slider {...settings}>{children}</Slider>
+      <XXLargeSpacer />
     </Container>
   </SliderWrapper>
 );
