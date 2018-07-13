@@ -11,10 +11,8 @@ import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
-import Select from '~/modules/accountManagement/components/basic/Select';
 import HomePageLogo from '~/modules/coreUI/components/projects/HomePageLogo';
-// import { mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
-// import Media from 'react-media';
+
 
 const MediumLogo = styled(HomePageLogo)`
   height: unset;
@@ -55,7 +53,6 @@ const EmailOrSMS = () => (
         <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
           <XXXXXLargeSpacer />
           <MediumLogo />
-          <Select />
           <XXXXXLargeSpacer />
           <ParagraphPanelContent>
             <CenterAlignedRow>

@@ -11,27 +11,20 @@ const Select = t.struct({
   car: Car,
 });
 
+const myTemplate = t.form.Form.templates.select.clone({
+  renderSelect: () => (
+    <ul>
+      <li> <img src="/images/Accountmanagement/male.png" alt="alt" /> <span>002</span> <span>Egypt</span></li>
+      <li> <img src="/images/Accountmanagement/male.png" alt="alt" /> <span>002</span> <span>Egypt</span></li>
+    </ul>
+  ),
+});
+
+
 const options = {
   fields: {
     car: {
-      options: [
-        { value: 'Audi', text: 'Audi' }, // an option
-        {
-          label: 'US',
-          options: [ // a group of options
-            { value: 'Chrysler', text: 'Chrysler' },
-            { value: 'Ford', text: 'Ford' },
-          ],
-        },
-        {
-          label: 'France',
-          options: [ // another group of options
-            { value: 'Renault', text: 'Renault' },
-            { value: 'Peugeot', text: 'Peugeot' },
-          ],
-          disabled: true,
-        }, // use `disabled: true` to disable an optgroup
-      ],
+      templates: myTemplate,
     },
   },
 };

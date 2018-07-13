@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
-import RelayForm from '~/modules/coreUI/components/basic/RelayForm';
+import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { SectionHeader } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 import { XXXXLargeSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
