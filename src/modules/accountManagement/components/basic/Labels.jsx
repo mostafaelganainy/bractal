@@ -32,7 +32,6 @@ export const PanelContentMinorLabel = styled(XXSmallLabel)`
 
 export const ParagraphPanelContent = styled(PanelContentMinorLabel)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
-  width: 80%;
 
 `;
 export const CenteredParagraphPanelContent = styled(PanelContentLabel)`
