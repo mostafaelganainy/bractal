@@ -1,6 +1,5 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import styled from 'styled-components';
 import Dropdown from '~/modules/coreUI/components/basic/Dropdown';
 
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
@@ -10,12 +9,8 @@ import {
   StyledProductSearchDropdownContainer,
 } from '../CustomHeaderComponentsStyles';
 
-const DepartmentDropdownContent = styled(StyledProductSearchDropdownContainer)`
-background-color: red;
-`;
 const DepartmentDropdown = ({ departments }) => (
-  
-  <DepartmentDropdownContent>
+  <StyledProductSearchDropdownContainer>
     <CenterAlignedColumn>
       <Dropdown
         options={departments}
@@ -24,7 +19,7 @@ const DepartmentDropdown = ({ departments }) => (
         onChange={this.onChange}
       />
     </CenterAlignedColumn>
-  </DepartmentDropdownContent>
+  </StyledProductSearchDropdownContainer>
 );
 
 
