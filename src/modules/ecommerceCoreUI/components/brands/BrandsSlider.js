@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-
+import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 const settings = {
   infinite: true,
@@ -23,6 +23,10 @@ const SliderWrapper = styled.div`
     border-radius: ${props => props.theme.borders.radius.normal}px;
     height: 178px;
     padding: 50px 60px;
+    ${cssMediaMax.mobile`
+    height: 123px;
+    padding:35px 20px;
+  `}
     .slick-list{
       max-height: 100%;
     }
