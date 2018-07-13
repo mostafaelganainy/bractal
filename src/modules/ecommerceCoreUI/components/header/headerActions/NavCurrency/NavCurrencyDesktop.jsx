@@ -15,9 +15,6 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
     position: relative;
     top: 2px;
   }
-  .ui.top.right.pointing.dropdown div span {
-    color: red !important;
-  }
   .ui.top.right.pointing.dropdown>.menu{
     width:79px;
     padding: 0 15px;
