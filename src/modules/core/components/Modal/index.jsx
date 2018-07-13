@@ -7,7 +7,9 @@ import { withRouter } from 'react-router-dom';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
-import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMax, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import Image from '~/modules/coreUI/components/basic/Image';
+import Media from 'react-media';
 
 const customStyles = {
   content: {
@@ -27,6 +29,13 @@ const customStyles = {
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 ReactModal.setAppElement('#root');
+
+const CloseIconImg = styled(Image)`
+    max-width: 15px;
+    @media (max-width: 1024px) {
+      margin-right: 15px;
+  }
+`;
 
 const ModalContainer = styled.div`
   width: 100%;
@@ -69,7 +78,16 @@ class Modal extends React.Component {
             onClick={e => this.clickedOutsite(e, location, history)}
           >
             <RightAlignedColumn>
-              <Icon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
+              <Media query={mediaQueryMax('mobile')}>
+                {matches => (
+        matches ? (
+          <CloseIconImg src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
+
+        ) : (
+          <Icon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
+        )
+      )}
+              </Media>
               {this.props.children}
             </RightAlignedColumn>
           </ModalContainer>

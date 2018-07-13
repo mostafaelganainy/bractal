@@ -129,4 +129,8 @@ span {
   border: none;
   border-radius: 0px; }
 
+fieldset {
+  border: none;
+  padding: 0px; }
+
 /*# sourceMappingURL=App.css.map */

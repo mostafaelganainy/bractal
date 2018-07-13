@@ -1,39 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
 import t from 'tcomb-form';
 import styled from 'styled-components';
 
 const { Form } = { Form: t.form.Form };
-// const Country = t.enums.of(['IT', 'US'], 'Country');
-
-const RadioElm = styled.div`
-input{
-  /* display:none; */
+const RadioElm = styled.span`
+span{
+  position: relative;
+    top: -14px;
+    margin-right: 12px;
 }
+  label{
+    margin-right:10px;
+      input{
+      display:none;
+      }
+     img{
+      cursor:pointer;
+    }
+  }
 `;
-const Country = t.enums.of([<img src="jjj.png" alt="alt" />, 'UL'], 'Country');
 
-const Select = t.struct({
-  country: Country,
+const Gender = t.enums({
+  M: 'Male',
+  F: 'Female',
 });
+
+const Person = t.struct({
+  gender: Gender, // enum
+});
+
 const myTemplate = t.form.Form.templates.radio.clone({
-  renderRadios: () => <RadioElm><input type="radio" /><img src="jjj.png" alt="alt" /></RadioElm>,
+  renderVertical: locals => (
+    <RadioElm>
+      <span>Gender</span>
+      <label htmlFor="female"><input type="radio" name="gender" value="0" id="female" />{locals.isChecked === true ? <img src="/images/AccountManagement/female-copy.png" alt="female" /> : <img src="/images/AccountManagement/female.png" alt="female" />}</label>
+      <label htmlFor="male"><input type="radio" name="gender" value="1" id="male" />{locals.isChecked === false ? <img src="/images/AccountManagement/male-copy.png" alt="male" /> : <img src="/images/AccountManagement/male.png" alt="male" />}</label>
+    </RadioElm>
+  ),
 });
 
 const options = {
   fields: {
-    country: {
-      // factory: t.form.Radio,
+    gender: {
       template: myTemplate,
     },
   },
 };
 
-const Radio = () => (
-  <React.Fragment>
-    <Form
-      options={options}
-      type={Select}
-    />
-  </React.Fragment>
-);
-export default Radio;
+
+export default class Radio extends Component {
+  render() {
+    return (
+      <div>
+        <React.Fragment>
+          <Form
+            options={options}
+            type={Person}
+            onChange={this.onChange}
+          />
+        </React.Fragment>
+      </div>
+    );
+  }
+}

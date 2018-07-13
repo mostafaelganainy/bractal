@@ -8,6 +8,7 @@ const Theme = {
     secondaryHover: '#fba420',
     secondaryClicked: '#fc9430',
     secondaryDark: '#cc790e',
+    error: '#D32f2f',
     labels: {
       important: '#000000',
       normal: 'rgba(0, 0, 0, 0.5)',
