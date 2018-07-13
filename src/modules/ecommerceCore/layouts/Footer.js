@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from 'semantic-ui-react';
+import Newsletter from '../../ecommerceCoreUI/components/footer/Newsletter';
+import FooterContainer from '../../ecommerceCoreUI/components/footer/FooterContainer';
+import Copyright from '../../ecommerceCoreUI/components/footer/Copyright';
 
 const FooterConatiner = styled.div`
-  background: ${props => props.theme.colors.primary}
+background: #fff;
 `;
 const Footer = () => (
   <FooterConatiner>
-    <Container>
-        Footer
-    </Container>
+    <Newsletter />
+    <FooterContainer />
+    <Copyright />
   </FooterConatiner>
 );
 
