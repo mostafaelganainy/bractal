@@ -37,9 +37,7 @@ const DepartmentsTabContent = styled.div`
       }
     }
   }
-  .ui.vertical.menu .active.item {
-    color: #309de0;
-  }
+
   .ui.attached + .ui.attached.menu:not(.top) {
     padding: 15px 0;
   }
@@ -70,18 +68,15 @@ const DepartmentsTabContent = styled.div`
     }
   }
   .ui.menu .active.item,
-  .ui.menu .active.item:hover,
-  .ui.link.menu .item:hover,
-  .ui.menu .dropdown.item:hover,
-  .ui.menu .link.item:hover,
-  .ui.menu a.item:hover {
+  .ui.menu a.item:hover{
     color: #309de0;
     font-weight: bold;
     background-color: transparent;
     i {
       color: #309de0;
     }
-  } 
+  }
+
 `;
 export default class DepartmentsTab extends Component {
   state = {};

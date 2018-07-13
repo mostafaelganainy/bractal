@@ -5,50 +5,48 @@ import { Tab, List, Grid, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const TabContent = styled(Tab.Pane)`      
-      background-color: #e1e1e1;
-      .ui.header {
-        color: #636363;
-        font-size: 14px;
-      }
-      a {
-        text-transform: capitalize;
-        color: rgba(0, 158, 255, 0.8);
-        text-decoration: underline;
-        font-size: 12px;
-      }
-      .ui.grid > .column:not(.row),
-      .ui.grid > .row > .column {
-        padding-left: 3rem;
-        padding-right: 3rem;
-      }
-      .list .item {
-        text-transform: capitalize;
-        font-size: 12px;
-        color: #a8a8a8;
-      }
-      .ui.bulleted.list .list > .item,
-      .ui.bulleted.list > .item,
-      ul.ui.list li {
-        color: #636363;
-        font-size: 12px;
-        font-weight: 300;
-        text-transform: capitalize;
-      }
-      .ui.grid > .row {
-        padding-top: 27px;
-        padding-bottom: 27px;
-      }
-    }
-    &.ui.tab.active,
-    &.ui.tab.open {
-      display: inline-block;
-      width: 80%;
-      border-top: 1px solid;
-      height: 432px;
-      border-top-right-radius: 7px;
-      border-top: 1px solid #e1e1e1;
-      background-color: #fafafa;
-    }
+  background-color: #e1e1e1;
+  .ui.header {
+    color: #636363;
+    font-size: 14px;
+  }
+  a {
+    text-transform: capitalize;
+    color: rgba(0, 158, 255, 0.8);
+    text-decoration: underline;
+    font-size: 12px;
+  }
+  .ui.grid > .column:not(.row),
+  .ui.grid > .row > .column {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .list .item {
+    text-transform: capitalize;
+    font-size: 12px;
+    color: #a8a8a8;
+  }
+  .ui.bulleted.list > .item,  
+  .ui.bulleted.list .list > .item,
+  ul.ui.list li {
+    color: #636363;
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: capitalize;
+  }
+  .ui.grid > .row {
+    padding-top: 27px;
+    padding-bottom: 27px;
+  }
+  &.ui.tab.active,
+  &.ui.tab.open {
+    display: inline-block;
+    width: 80%;
+    height: 432px;
+    border-top-right-radius: 7px;
+    border-top: 1px solid #e1e1e1;
+    background-color: #fafafa;
+  }
 `;
 const TabPanContent = () => (
   <TabContent className="tab-content">

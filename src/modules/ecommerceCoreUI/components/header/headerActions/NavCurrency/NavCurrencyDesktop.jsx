@@ -10,12 +10,12 @@ import {
 } from '../CustomHeaderComponentsStyles';
 
 const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
-  .item span{
+  .item span {
     font-size: 11px;
     position: relative;
-    top: 2px;    
+    top: 2px;
   }
-  ui.top.right.pointing.dropdown div span {
+  .ui.top.right.pointing.dropdown div span {
     color: red !important;
   }
   .ui.top.right.pointing.dropdown>.menu{
@@ -37,7 +37,6 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
   .ui.top.pointing.dropdown>.left.menu:after, .ui.top.right.pointing.dropdown>.menu:after{
     right: 45% !important;
   }
-
   .ui.dropdown .menu .selected.item, .ui.dropdown.selected{
     background: transparent;
     color: #34a8ff;
@@ -46,13 +45,14 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
     position: relative;
     &:after {
       content: "\\F058";
-      font-family: Icons;
+      font-family: Icons, sans-serif;
       position: absolute;
       right:0;
       top: 11px;
       color: #34a8ff;
       font-size: 14px;
     }
+  }
 `;
 
 const NavCurrencyDesktop = ({ options }) => (
