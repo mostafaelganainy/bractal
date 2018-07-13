@@ -18,6 +18,7 @@ const SliderWrapper = styled.div`
   background: #fff;
   width: 100%;
   .slick-slider {
+    padding-bottom: 50px;
     .slick-list{
       max-height: 100%;
     }
@@ -25,6 +26,8 @@ const SliderWrapper = styled.div`
       width:100%;
     }
     .slick-dots {
+      margin: 20px 0;
+      bottom: 0;
       li {
         margin: 0;
         button:before {
