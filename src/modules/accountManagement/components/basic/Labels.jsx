@@ -12,6 +12,7 @@ export const PanelTitle = styled(LargeLabel)`
   color:${props => props.theme.colors.primary};
   font-weight: bold;
   font-family: 'Panton', sans-serif;
+  text-transform: capitalize;
 `;
 export const SecondTitle = styled(XLargeLabel)`
   color:${props => props.theme.colors.labels.normal};
@@ -36,7 +37,6 @@ export const PanelContentSmallLabel = styled(XSmallLabel)`
 
 export const ParagraphPanelContent = styled(PanelContentMinorLabel)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
-  width: 80%;
 
 `;
 export const CenteredParagraphPanelContent = styled(PanelContentLabel)`

@@ -4,82 +4,10 @@ import {
 } from 'react-relay';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Slider from 'react-slick';
-import { Container } from 'semantic-ui-react';
-import styled from 'styled-components';
+import ProductsSlider from '../components/products/ProductsSlider';
 
 import Product from './Product';
 
-const styles = {
-  container: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    alignItems: 'flex-start',
-    alignContent: 'flex-start',
-    justifyContent: 'center',
-  },
-};
-const settings = {
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  rows: 2,
-  responsive: [
-    {
-      breakpoint: 1370,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        rows: 2,
-      },
-    },
-    {
-      breakpoint: 1100,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        rows: 1,
-        arrows: false,
-      },
-    },
-    {
-      breakpoint: 1000,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        rows: 1,
-        arrows: false,
-      },
-    },
-    {
-      breakpoint: 500,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        rows: 1,
-        // centerMode: true,
-        // centerPadding: '20px',
-        arrows: false,
-      },
-    },
-    {
-      breakpoint: 420,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        rows: 1,
-        // centerMode: false,
-        arrows: false,
-      },
-    },
-  ],
-};
-
-const SliderWrapper = styled.div`
-  background-color: #fff;
-`;
 
 /*
             [{ id: '1', name: 'product name', price: '20' },
@@ -118,27 +46,23 @@ const SliderWrapper = styled.div`
             ))
             */
 
-const isValidEntry = productInfo => (
-  productInfo.price
-);
+// const isValidEntry = productInfo => (
+//   productInfo.price
+// );
 
 const ProductsList = ({ query }) => (
-  <SliderWrapper>
-    <Container>
-      <Slider {...settings} style={styles.container}>
-        {
-          query
-          ?
-            query.list_products.filter(entry => isValidEntry(entry)).map(entry => (
-              // eslint-disable-next-line no-underscore-dangle
-              <Product key={entry.__id} productInfo={entry} />
-            ))
-          :
-            ''
-          }
-      </Slider>
-    </Container>
-  </SliderWrapper>
+  <ProductsSlider>
+    {
+      query
+      ?
+        query.list_products.map(entry => (
+          // eslint-disable-next-line no-underscore-dangle
+          <Product key={entry.__id} productInfo={entry} />
+        ))
+      :
+        ''
+      }
+  </ProductsSlider>
 );
 
 ProductsList.propTypes = {
