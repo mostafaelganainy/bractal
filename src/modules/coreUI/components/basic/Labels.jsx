@@ -1,8 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
-const Label = styled.span`
+export const Label = styled.span`
   text-transform: ${props => (props.uppercase ? 'uppercase' : 'none')};
+
+  a {
+    color: ${props => props.theme.colors.link};
+    border-bottom: solid 1px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+  }
 `;
 
 export const XXLargeLabel = styled(Label)`

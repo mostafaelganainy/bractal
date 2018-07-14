@@ -78,15 +78,26 @@ const Button = styled(Row)`
   }
 `;
 
+const HiddenActualButton = styled.button`
+  opacity: 0;
+
+  &:focus + div {
+    background: ${props => (props.primary ? props.theme.colors.primaryHover : props.theme.colors.secondaryHover)};
+  }
+`;
+
 export const BasicButton = props => (
-  <Button
-    {...props}
-    centerAlign
-    centerJustify
-    width={props.width}
-  >
-    {props.children}
-  </Button>
+  <React.Fragment>
+    <HiddenActualButton {...props} />
+    <Button
+      {...props}
+      centerAlign
+      centerJustify
+      width={props.width}
+    >
+      {props.children}
+    </Button>
+  </React.Fragment>
 );
 
 

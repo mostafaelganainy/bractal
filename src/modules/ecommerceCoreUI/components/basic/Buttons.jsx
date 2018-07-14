@@ -25,7 +25,7 @@ const SecondaryStyleIconButton = styled(SizedIcon)`
   }  
 
   &:active {
-    color: ${props => props.theme.colors.primaryDark}
+    color: ${props => props.theme.colors.primaryClicked}
   }
 `;
 

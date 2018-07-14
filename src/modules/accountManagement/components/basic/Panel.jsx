@@ -4,28 +4,51 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 import { Column, CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { PanelTitle, PanelSubtitle } from '~/modules/accountManagement/components/basic/Labels';
-import { SmallSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 export const PanelRoot = styled(Column)`
   width: 248px;
 `;
 
+
+const PanelHeaderSpacing = styled(CenterAlignedColumn)`
+  width: ${props => (props.width ? props.width : '100%')};  
+  height: ${props => props.theme.paddings.xxxxxLarge}px;
+`;
+
 const Panel = (props) => {
-  const { title, subTitle, children } = props;
+  const {
+    title,
+    subTitle,
+    titleLabel,
+    subTitleLabel,
+    showHeader,
+    error,
+    children,
+  } = props;
+
   return (
     <PanelRoot {...props} topAligned topJustified>
-      <CenterAlignedColumn>
-        <PanelTitle uppercase>
-          {title}
-        </PanelTitle>
-        <SmallSpacer />
-        <PanelSubtitle>
-          {subTitle}
-        </PanelSubtitle>
-      </CenterAlignedColumn>
-      <XXXXXLargeSpacer />
+      {showHeader && (
+        <CenterAlignedColumn>
+          <PanelTitle uppercase>
+            {title || titleLabel}
+          </PanelTitle>
+          <MediumSpacer />
+          <PanelSubtitle>
+            {subTitle || subTitleLabel}
+          </PanelSubtitle>
+        </CenterAlignedColumn>
+      )}
+      <PanelHeaderSpacing>
+        <LargeSpacer />
+        <ErrorLabel>
+          {error}
+        </ErrorLabel>
+      </PanelHeaderSpacing>
       <Column fullWidth centerAligned centerJustified grow>
         { children }
       </Column>
@@ -36,7 +59,16 @@ const Panel = (props) => {
 Panel.propTypes = PropTypes.shape({
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string.isRequired,
+  titleLabel: PropTypes.string.isRequired,
+  subTitleLabel: PropTypes.string.isRequired,
+  showHeader: PropTypes.bool,
+  error: PropTypes.string.isRequired,
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
 }).isRequired;
+
+Panel.defaultProps = {
+  showHeader: true,
+};
+
 
 export default Panel;

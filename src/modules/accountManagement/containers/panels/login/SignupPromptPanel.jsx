@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { PanelContentLabel, PanelContentMinorLabel } from '~/modules/accountManagement/components/basic/Labels';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import { MediumSpacer, XLargeSpacer, XXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 
@@ -41,36 +41,22 @@ const renderContent = () => (
   </React.Fragment>
 );
 
-const renderOnDesktop = (props) => {
-  // eslint-disable-next-line react/prop-types
+const SignUpFormPanel = (props) => {
   const ContentContainer = props.panelContentContainer;
 
   return (
-    <Panel title="Register" subTitle="Join our community">
-      <ContentContainer>
-        <PanelImage />
-        {renderContent(props)}
-      </ContentContainer>
-    </Panel>
+    <Media query={mediaQueryMin('desktop')}>
+      {matched => (
+        <Panel showHeader={matched} titleLabel="Register" subTitleLabel="Join our community">
+          <ContentContainer>
+            {matched && <PanelImage />}
+            {renderContent(props)}
+          </ContentContainer>
+        </Panel>
+      )}
+    </Media>
   );
 };
-
-const renderOnMobile = () => (
-  <React.Fragment>
-    <XXXXLargeSpacer />
-    {renderContent()}
-  </React.Fragment>
-);
-
-const SignUpFormPanel = props => (
-  <Media query={mediaQueryMin('desktop')}>
-    {matched => (matched ? (
-      renderOnDesktop(props)
-    ) : (
-      renderOnMobile()
-    ))}
-  </Media>
-);
 
 SignUpFormPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,

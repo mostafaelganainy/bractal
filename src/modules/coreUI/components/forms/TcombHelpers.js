@@ -1,35 +1,54 @@
-import t from 'tcomb-form';
+import t, { maybe } from 'tcomb-form';
 import changeCase from 'change-case';
 
 import FormLayout from './FormLayout';
 import Templates from './Template';
 
+t.String.getValidationErrorMessage = (value, path) =>
+  `${changeCase.sentenceCase(path[0])} value is invalid`;
 
-const Age = t.refinement(t.Number, n => n >= 18);
+const defineSubtype = (type, predicate, getValidationErrorMessage, name) => {
+  const Subtype = t.refinement(
+    type,
+    predicate,
+    name,
+  );
+  Subtype.getValidationErrorMessage = getValidationErrorMessage;
+  return Subtype;
+};
 
-// if you define a getValidationErrorMessage function, it will be called on validation errors
-Age.getValidationErrorMessage = (value, path, context) => {
-  if (context && context.serverErrors && context.serverErrors[path[0]]) {
-    return context.serverErrors[path[0]];
-  } else if (!value) {
-    return `${changeCase.titleCase(path[0])} shouldn't be blank`;
-  }
-  return null;
+const RequiredString = defineSubtype(
+  maybe(t.String),
+  val => val && val.trim().length > 0,
+  (val, path) => {
+    const field = path && path.length > 0 && path[0];
+    if (!val || val.trim().length === 0) {
+      return `${changeCase.sentenceCase(field)} should't be left blank`;
+    }
+    return null;
+  },
+  'Required',
+);
+
+const Types = {
+  RequiredString,
+  Boolean: t.Boolean,
 };
 
 
 export const getTcombOptionsFromRawOptions = (rawOptions) => {
   const tcombOptions = {
-    template: FormLayout,
+    template: rawOptions.customLayout || FormLayout,
     auto: 'placeholders',
     fields: {},
   };
 
-  rawOptions.forEach((option) => {
+  rawOptions.fields.forEach((option) => {
     tcombOptions.fields[option.name] = {
       template: Templates[option.input_type],
       attrs: {
         placeholder: option.placeholder,
+        label: option.label,
       },
     };
   });
@@ -40,8 +59,8 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
 export const getTcombTypesFromRawOptions = (rawOptions) => {
   const tcombTypesObject = {};
 
-  rawOptions.forEach((option) => {
-    tcombTypesObject[option.name] = Age; // t[option.tcomb_type];
+  rawOptions.fields.forEach((option) => {
+    tcombTypesObject[option.name] = Types[option.type];
   });
 
   return t.struct(tcombTypesObject);

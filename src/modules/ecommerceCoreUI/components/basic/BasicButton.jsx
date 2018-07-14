@@ -31,7 +31,7 @@ const SecondaryStyle = styled.div`
   }  
 
   &:active {
-    background-color: ${props => props.theme.colors.primaryDark}
+    background-color: ${props => props.theme.colors.primaryClicked}
   }
 `;
 

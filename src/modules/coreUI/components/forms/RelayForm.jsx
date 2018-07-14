@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { commitMutation } from 'react-relay';
 
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
@@ -8,22 +9,25 @@ import {
   getTcombTypesFromRawOptions,
 } from '~/modules/coreUI/components/forms/TcombHelpers';
 
-import LoginUserMutation from './LoginUserMutation';
+import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 
 const { Form } = { Form: t.form.Form };
 
-export default class RelayForm extends Component {
+class RelayForm extends Component {
   state = {
-    value: {
-      email: 'Giulio',
-      password: 'Canti',
-    },
+    value: {},
     serverErrors: {},
+    localValidationErrors: {},
   };
+
+  componentDidMount = () => {
+    this.props.onRef(this);
+  }
 
   onChange = (value, path) => {
     this.setState({ value });
     this.Form.getComponent(path).validate();
+    console.log('hi');
   }
 
   save = () => {
@@ -34,22 +38,90 @@ export default class RelayForm extends Component {
     }
   }
 
+  commitFormMutation = (environment, mutation, resultCallback) => {
+    // Apply local validations first
+    const localErrors = this.Form.validate();
+    const value = this.Form.getValue();
+
+    if (!value) {
+      const localValidationErrors = {};
+      const errors = (localErrors && localErrors.errors) || [];
+
+      errors.forEach((error) => {
+        if (error.path && error.path.length > 0) {
+          localValidationErrors[error.path[0]] = error.message;
+        } else {
+          localValidationErrors.global = error.message;
+        }
+      });
+
+      this.setState({ localValidationErrors });
+
+      return;
+    }
+
+    commitMutation(
+      environment,
+      {
+        mutation,
+        variables: {
+          ...value,
+        },
+        onCompleted: (response, errors) => {
+          const serverErrors = {
+            global: null,
+          };
+          const globalError = errors && errors.length > 0 && errors[0];
+
+          if (globalError) {
+            serverErrors.global = globalError.message;
+          }
+          if (response && response.signin_user && response.signin_user.errors) {
+            response.signin_user.errors.forEach((error) => {
+              [serverErrors[error.field]] = error.messages;
+            });
+          }
+
+          resultCallback(serverErrors);
+        },
+        onError: err => console.error(err),
+      },
+    );
+  };
+
+  submitForm = () => {
+    const {
+      formErrorCallBack,
+      environment,
+      mutation,
+    } = this.props;
+
+    this.commitFormMutation(
+      environment,
+      mutation,
+      (errors) => {
+        this.setState({
+          serverErrors: errors,
+        });
+
+        formErrorCallBack(errors.global);
+      },
+    );
+  }
+
   render = () => {
     const {
       options,
-      environment,
-      email,
-      password,
-      rememberMe,
     } = this.props;
 
-    const { serverErrors } = this.state;
+    const { serverErrors, localValidationErrors } = this.state;
 
     const tcombOptions = getTcombOptionsFromRawOptions(options);
     const tcombTypes = getTcombTypesFromRawOptions(options);
     return (
       <React.Fragment>
         <Form
+          tabIndex="0"
           ref={(ref) => { this.Form = ref; }}
           options={tcombOptions}
           type={tcombTypes}
@@ -57,33 +129,14 @@ export default class RelayForm extends Component {
           onChange={this.onChange}
           context={{
             serverErrors,
-          }}
-        />
-        <button
-          onClick={() => LoginUserMutation(
-            environment,
-            email,
-            password,
-            rememberMe,
-            (errors) => {
-              if (errors) {
-                const newErrors = {};
-                errors.forEach((error) => {
-                  [newErrors[error.field]] = error.messages;
-                });
-                this.setState({
-                  serverErrors: newErrors,
-                });
-              } else {
-                this.setState({
-                  serverErrors: {},
-                });
+            localValidationErrors,
+            onKeyUp: (event) => {
+              if (event.keyCode === 13) {
+                this.submitForm();
               }
             },
-          )}
-        >
-          Go
-        </button>
+          }}
+        />
       </React.Fragment>
     );
   }
@@ -91,10 +144,17 @@ export default class RelayForm extends Component {
 
 RelayForm.propTypes = PropTypes.shape({
   options: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    input_type: PropTypes.string.isRequired,
-    tcomb_type: PropTypes.string.isRequired,
+    fields: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      input_type: PropTypes.string.isRequired,
+      tcomb_type: PropTypes.string.isRequired,
+      placeholder: PropTypes.string,
+      label: PropTypes.string,
+    })),
+    customLayout: PropTypes.func,
   }).isRequired,
-  placeholder: PropTypes.string,
+  formErrorCallBack: PropTypes.func.isRequired,
   onChange: PropTypes.func,
 }).isRequired;
+
+export default withRelayEnvironment(RelayForm);

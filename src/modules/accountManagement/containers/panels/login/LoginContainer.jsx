@@ -1,25 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 import { translate } from 'react-i18next';
-import Media from 'react-media';
 
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { mediaQueryMax, cssMediaMin } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
-import LoginFormPanel from './LoginFormPanel';
+import LoginFormPanel from './LoginPanel';
 import SignupPromptPanel from './SignupPromptPanel';
 
 const DesktopContainer = styled(Row)`
-  width: 900px;
-  height: 530px;
-  padding: 40px;
+  ${cssMediaMin.desktop`
+    width: 900px;
+    height: 530px;
+    padding: 40px;
+  `}
+
+  background-color: ${props => props.theme.colors.named.white};
+
   border: 1px solid;
   border-radius: 7px;
-  border-color: white;
-  background-color: ${props => props.theme.colors.named.white};
+  border-color: white;  
+
+  ${cssMediaMax.mobile`
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
 
 // eslint-disable-next-line react/prop-types
@@ -31,31 +39,12 @@ const PanelContent = styled(CenterAlignedColumn)`
   justify-content: flex-end;
 `;
 
-const renderForDesktop = () => (
-  <DesktopContainer stretchAlign>
-    <LoginFormPanel panelContentContainer={PanelContent} />
-    <SignupPromptPanel panelContentContainer={PanelContent} />
-  </DesktopContainer>
-);
-
-const renderForMobile = () => (
-  <CenterAlignedColumn>
-    <LoginFormPanel panelContentContainer={PanelContent} />
-    <SignupPromptPanel panelContentContainer={PanelContent} />
-  </CenterAlignedColumn>
-);
-
 const Login = () => (
   <Modal>
-    <Media query={mediaQueryMax('mobile')}>
-      {matches => (
-        matches ? (
-          renderForMobile()
-        ) : (
-          renderForDesktop()
-        )
-      )}
-    </Media>
+    <DesktopContainer stretchAlign>
+      <LoginFormPanel panelContentContainer={PanelContent} />
+      <SignupPromptPanel panelContentContainer={PanelContent} />
+    </DesktopContainer>
   </Modal>
 );
 

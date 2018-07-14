@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import t from 'tcomb-form';
 import React from 'react';
+import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
 
-import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
-import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
-import { SmallSpacer, LargeSpacer, XLargeSpacer } from '../layouts/helpers/Spacers';
+import renderError from './Errors';
 
 const InputElem = styled.input`
   width: ${props => (props.width ? props.width : '100%')};
@@ -16,38 +14,41 @@ const InputElem = styled.input`
   border-radius: ${props => props.theme.inputs.radius}px;
 
   outline: none;
+
   &&:focus{
     outline: none;
+    border-color: ${props => props.theme.inputs.borderColorActive};
   }
   ::placeholder {
     color: ${props => props.theme.inputs.placeholderColor};
   }
-  `;
-
-const InputsIntraSpace = styled(LeftAlignedColumn)`
-  width: ${props => (props.width ? props.width : '100%')};  
 `;
+
+
+const getGlobalAttrs = locals => ({
+  onKeyUp: locals.context.onKeyUp,
+});
 
 export default {
   textbox: t.form.Form.templates.textbox.clone({
     renderInput: locals => (
-      <InputElem {...locals.attrs} value={locals.value} placeholder={locals.attrs.placeholder} />
+      <InputElem
+        {...getGlobalAttrs(locals)}
+        {...locals.attrs}
+        value={locals.value}
+        placeholder={locals.attrs.placeholder}
+      />
     ),
-    renderError: locals => (
-      <CenterAlignedRow>
-        <XLargeSpacer />
-        <InputsIntraSpace>
-          <SmallSpacer />
-          <ErrorLabel>
-            {(locals.hasError && locals.error ? (
-              locals.error
-            ) : (
-              <span>&nbsp;</span>
-            ))}
-          </ErrorLabel>
-          <LargeSpacer />
-        </InputsIntraSpace>
-      </CenterAlignedRow>
-    ),
+    renderError: locals => renderError(locals),
+  }),
+  checkbox: t.form.Form.templates.checkbox.clone({
+    renderCheckbox: (locals) => {
+      const attrs = t.form.Form.templates.checkbox.getAttrs(locals);
+
+      return (
+        <Checkbox elemID={attrs.id} {...attrs} label={attrs.label} />
+      );
+    },
+    renderError: locals => renderError(locals),
   }),
 };
