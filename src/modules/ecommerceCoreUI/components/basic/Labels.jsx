@@ -40,6 +40,14 @@ export const EmphasizedImportantMinorDetailsLabel = styled(ImportantMinorDetails
   font-weight: bold;
 `;
 
+export const SmallTitle = styled.div`
+  color: ${props => props.theme.colors.labels.important};
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: Panton ,sans-serif;
+  letter-spacing: -0.5px;
+`;
+
 // --------------- HEADER ---------------- //
 
 // --------------- HOME PAGE ------------ //

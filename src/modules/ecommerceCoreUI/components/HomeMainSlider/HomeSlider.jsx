@@ -13,6 +13,14 @@ const settings = {
   autoplaySpeed: 2000,
   centerMode: true,
   dots: true,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        centerMode: false,
+      },
+    },
+  ],
 };
 const SliderWrapper = styled.div`
   background: #fff;

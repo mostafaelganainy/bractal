@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import HomeSlider from './HomeSlider';
 
 const View = styled.img`
@@ -17,6 +18,9 @@ const ViewDetails = styled.div`
   justify-content: center;
   text-align: left;
   width: 50%;
+  ${cssMediaMax.mobile`
+    left: 20px;
+  `};
 `;
 const Item = styled.div`
   position: relative;
@@ -31,12 +35,18 @@ const Header = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.1;
+  ${cssMediaMax.mobile`
+    font-size: 29px;
+  `};
 `;
 const SubHeader = styled.div`
   color: ${props => props.theme.colors.named.white};
   font-size: 36px;
   letter-spacing: -0.4px;
   line-height: 1.1;
+  ${cssMediaMax.mobile`
+    font-size: 21.5px;
+  `};
 `;
 const Button = styled.button`
   background-color: ${props => props.theme.colors.named.white};

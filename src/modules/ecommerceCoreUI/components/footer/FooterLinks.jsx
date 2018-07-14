@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallTitle } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 
 
 const FooterLinksItems = styled.div`
@@ -11,8 +12,15 @@ const FooterLinksItems = styled.div`
   }
 `;
 
-const FooterLinks = ({ links }) => (
+const FooterLinks = ({ links, title }) => (
   <FooterLinksItems>
+    {title ?
+      <React.Fragment>
+        <SmallTitle>{title}</SmallTitle>
+        <LargeSpacer size={12} />
+      </React.Fragment>
+      :
+      ' ' }
     {links.map(link => (
       <div key={link.id} >{link.name} <LargeSpacer size={12} /> </div>
     ))}
@@ -23,5 +31,10 @@ const FooterLinks = ({ links }) => (
 export default FooterLinks;
 
 FooterLinks.propTypes = {
+  title: PropTypes.string,
   links: PropTypes.node.isRequired,
+};
+
+FooterLinks.defaultProps = {
+  title: ' ',
 };
