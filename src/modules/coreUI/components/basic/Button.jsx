@@ -80,6 +80,7 @@ const Button = styled(Row)`
 
 const HiddenActualButton = styled.button`
   opacity: 0;
+  position: absolute;
 
   &:focus + div {
     background: ${props => (props.primary ? props.theme.colors.primaryHover : props.theme.colors.secondaryHover)};

@@ -21,7 +21,9 @@ class RelayForm extends Component {
   };
 
   componentDidMount = () => {
-    this.props.onRef(this);
+    if (this.props.onRef) {
+      this.props.onRef(this);
+    }
   }
 
   onChange = (value, path) => {
@@ -104,7 +106,9 @@ class RelayForm extends Component {
           serverErrors: errors,
         });
 
-        formErrorCallBack(errors.global);
+        if (formErrorCallBack) {
+          formErrorCallBack(errors.global);
+        }
       },
     );
   }
@@ -147,7 +151,7 @@ RelayForm.propTypes = PropTypes.shape({
     fields: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
       input_type: PropTypes.string.isRequired,
-      tcomb_type: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
       placeholder: PropTypes.string,
       label: PropTypes.string,
     })),

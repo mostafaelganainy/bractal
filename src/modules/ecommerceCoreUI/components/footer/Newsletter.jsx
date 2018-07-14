@@ -9,7 +9,7 @@ const NewsletterWrapper = styled.div`
   .InputLayout{
     width:100% !important;
   }
-  .form-group.form-group-depth-1.form-group-Enter.Your.Email{
+  .form-group.form-group-depth-1.form-group-email {
     position: relative;
     width: 50%;
     input {
@@ -32,14 +32,16 @@ const Newsletter = () => (
       <SectionHeader>Join Our Newsletter</SectionHeader>
       <LargeSpacer />
       <RelayForm
-        options={[
-              {
-                name: 'Enter Your Email',
-                placeholder: 'Enter Your Email',
-                input_type: 'textbox',
-                tcomb_type: 'String',
-              },
-            ]}
+        options={{
+          fields: [
+            {
+              name: 'email',
+              placeholder: 'Enter Your Email',
+              input_type: 'textbox',
+              type: 'RequiredString',
+            },
+          ],
+        }}
       />
       <XXXXLargeSpacer />
     </Container>

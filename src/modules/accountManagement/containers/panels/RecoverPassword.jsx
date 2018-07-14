@@ -56,14 +56,16 @@ const RecoverPasswords = () => (
             </ParagraphPanelContent>
             <MediumSpacer />
             <RelayForm
-              options={[
-                {
-                  name: 'email',
-                  placeholder: 'Email/ Mobile Number',
-                  input_type: 'textbox',
-                  tcomb_type: 'String',
-                },
-              ]}
+              options={{
+                fields: [
+                  {
+                    name: 'email',
+                    placeholder: 'Email/ Mobile Number',
+                    input_type: 'textbox',
+                    type: 'RequiredString',
+                  },
+                ],
+              }}
             />
             <XLargeSpacer />
             <BasicButton>

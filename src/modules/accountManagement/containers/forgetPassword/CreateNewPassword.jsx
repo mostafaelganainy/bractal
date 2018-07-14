@@ -52,20 +52,22 @@ const RecoverPasswords = () => (
           </CenteredParagraphPanelContent>
           <MediumSpacer />
           <RelayForm
-            options={[
-              {
-                name: 'Add Password',
-                placeholder: 'Add Password',
-                input_type: 'textbox',
-                tcomb_type: 'String',
-              },
-              {
-                name: 'Confirm Password',
-                placeholder: 'Confirm Password',
-                input_type: 'textbox',
-                tcomb_type: 'String',
-              },
-            ]}
+            options={{
+              fields: [
+                {
+                  name: 'Add Password',
+                  placeholder: 'Add Password',
+                  input_type: 'textbox',
+                  type: 'RequiredString',
+                },
+                {
+                  name: 'Confirm Password',
+                  placeholder: 'Confirm Password',
+                  input_type: 'textbox',
+                  type: 'RequiredString',
+                },
+              ],
+            }}
           />
           <MediumSpacer />
           <BasicButton width="90%"> Renew your password </BasicButton>

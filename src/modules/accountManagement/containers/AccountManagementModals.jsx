@@ -14,8 +14,8 @@ import VerifyBySMS from '../containers/panels/VerifyAccount/VerifyBySMS';
 
 export default () => (
   <React.Fragment>
-    <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
     <ModalRoute path="/accountManagement/login" component={Login} />
+    <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
     <ModalRoute path="/accountManagement/CreateNewPassword" component={CreateNewPassword} />
     <ModalRoute path="/accountManagement/EmailOrSms" component={EmailOrSms} />
     <ModalRoute path="/accountManagement/VerficationCodeEmail" component={VerficationCodeEmail} />
