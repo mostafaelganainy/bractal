@@ -8,11 +8,15 @@ import { SmallTitle } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 
 
 const SocialMediaWrapper = styled.div`
-  display: flex;
-  font-size: 25px;
+  i{
+    font-size: 25px;
+  }
   a {
     color: ${props => props.theme.colors.primary};
   }
+`;
+const SocialMediaItem = styled.div`
+  display: flex;
 `;
 const NavSocialMedia = props => (
   <SocialMediaWrapper {...props} >
@@ -23,29 +27,31 @@ const NavSocialMedia = props => (
       </React.Fragment>
       :
       ' ' }
-    <ExternalLink url="http://www.google.com">
-      <i
-        className="icon-fb"
-      />
-    </ExternalLink>
-    <Spacer />
-    <ExternalLink url="http://www.google.com">
-      <i
-        className="icon-twitter"
-      />
-    </ExternalLink>
-    <Spacer />
-    <ExternalLink url="http://www.google.com">
-      <i
-        className="icon-shape-26"
-      />
-    </ExternalLink>
-    <Spacer />
-    <ExternalLink url="http://www.google.com">
-      <i
-        className="icon-instagrame"
-      />
-    </ExternalLink>
+    <SocialMediaItem>
+      <ExternalLink url="http://www.google.com">
+        <i
+          className="icon-fb"
+        />
+      </ExternalLink>
+      <Spacer />
+      <ExternalLink url="http://www.google.com">
+        <i
+          className="icon-twitter"
+        />
+      </ExternalLink>
+      <Spacer />
+      <ExternalLink url="http://www.google.com">
+        <i
+          className="icon-shape-26"
+        />
+      </ExternalLink>
+      <Spacer />
+      <ExternalLink url="http://www.google.com">
+        <i
+          className="icon-instagrame"
+        />
+      </ExternalLink>
+    </SocialMediaItem>
   </SocialMediaWrapper>
 );
 export default NavSocialMedia;

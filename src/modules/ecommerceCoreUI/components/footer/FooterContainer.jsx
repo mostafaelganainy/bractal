@@ -91,6 +91,9 @@ const SocialMediaItems = styled(SocialMedia)`
   width: 33.3%;
   ${cssMediaMax.mobile`
       width: 100%;
+      i {
+        font-size: 28px;
+      }
     `}
 `;
 const PaymentContent = styled(Payment)`

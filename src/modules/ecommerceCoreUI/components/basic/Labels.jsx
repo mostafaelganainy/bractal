@@ -5,9 +5,10 @@ import {
   // XLargeLabel,
   LargeLabel,
   MediumLabel,
-  // SmallLabel,
+  SmallLabel,
   XSmallLabel,
 } from '~/modules/coreUI/components/basic/Labels';
+import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 // --------------- COMMON ---------------- //
 export const SectionHeader = styled(XXLargeLabel)`
@@ -40,12 +41,15 @@ export const EmphasizedImportantMinorDetailsLabel = styled(ImportantMinorDetails
   font-weight: bold;
 `;
 
-export const SmallTitle = styled.div`
+export const SmallTitle = styled(SmallLabel)`
   color: ${props => props.theme.colors.labels.important};
   font-weight: bold;
   text-transform: uppercase;
   font-family: Panton ,sans-serif;
   letter-spacing: -0.5px;
+  ${cssMediaMax.mobile`
+    font-size: ${props => props.theme.fonts.sizes.large}px;
+  `}
 `;
 
 // --------------- HEADER ---------------- //

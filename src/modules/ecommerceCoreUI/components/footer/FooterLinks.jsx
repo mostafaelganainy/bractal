@@ -6,7 +6,7 @@ import { SmallTitle } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 
 
 const FooterLinksItems = styled.div`
-  div {
+  .link-item {
     color: ${props => props.theme.colors.labels.normal};
     font-size: ${props => props.theme.fonts.sizes.small}px;
   }
@@ -22,7 +22,7 @@ const FooterLinks = ({ links, title }) => (
       :
       ' ' }
     {links.map(link => (
-      <div key={link.id} >{link.name} <LargeSpacer size={12} /> </div>
+      <div className="link-item" key={link.id} >{link.name} <LargeSpacer size={12} /> </div>
     ))}
     <LargeSpacer />
   </FooterLinksItems>
