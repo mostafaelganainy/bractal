@@ -32,12 +32,19 @@ class LoginForm extends React.Component {
   }
 
   render = () => {
-    const { customLayout, formErrorCallBack } = this.props;
+    const {
+      customLayout,
+      onFormError,
+      onFormSuccess,
+      onFormLoading,
+    } = this.props;
 
     return (
       <RelayForm
         onRef={(ref) => { this.form = ref; }}
-        formErrorCallBack={formErrorCallBack}
+        onFormError={onFormError}
+        onFormSuccess={onFormSuccess}
+        onFormLoading={onFormLoading}
         options={{
           customLayout,
           fields: [
@@ -68,7 +75,9 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = PropTypes.shape({
-  formErrorCallBack: PropTypes.func.isRequired,
+  onFormError: PropTypes.func.isRequired,
+  onFormSuccess: PropTypes.func.isRequired,
+  onFormLoading: PropTypes.func.isRequired,
 }).isRequired;
 
 export default LoginForm;

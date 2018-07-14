@@ -84,30 +84,50 @@ class RelayForm extends Component {
             });
           }
 
-          resultCallback(serverErrors);
+          resultCallback(response, serverErrors);
         },
-        onError: err => console.error(err),
+        onError: (err) => {
+          resultCallback(null, err.toString());
+        },
       },
     );
   };
 
   submitForm = () => {
     const {
-      formErrorCallBack,
+      onFormError,
+      onFormSuccess,
+      onFormLoading,
       environment,
       mutation,
     } = this.props;
 
+    onFormLoading(true);
+
     this.commitFormMutation(
       environment,
       mutation,
-      (errors) => {
+      (response, errors) => {
+        onFormLoading(false);
+
         this.setState({
           serverErrors: errors,
         });
 
-        if (formErrorCallBack) {
-          formErrorCallBack(errors.global);
+        if (onFormError) {
+          if (response && errors.global) {
+            onFormError(errors.global);
+          } else if (typeof (errors) === 'string') {
+            onFormError(errors);
+          } else {
+            onFormError(null);
+          }
+        }
+
+        const errorsExist = errors && errors.length > 0;
+
+        if (onFormSuccess && !errorsExist) {
+          onFormSuccess(response);
         }
       },
     );
@@ -157,7 +177,9 @@ RelayForm.propTypes = PropTypes.shape({
     })),
     customLayout: PropTypes.func,
   }).isRequired,
-  formErrorCallBack: PropTypes.func.isRequired,
+  onFormError: PropTypes.func.isRequired,
+  onFormSuccess: PropTypes.func.isRequired,
+  onFormLoading: PropTypes.func.isRequired,
   onChange: PropTypes.func,
 }).isRequired;
 

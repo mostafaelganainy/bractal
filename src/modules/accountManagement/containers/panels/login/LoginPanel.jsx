@@ -37,27 +37,39 @@ const CustomFormLayout = locals => (
 class LoginFormPanel extends React.Component {
   state = {
     panelError: null,
+    isLoading: false,
   };
 
-  updatePanelError = error => this.setState({ panelError: error });
+  onSuccess = (response) => {
+    console.log(response);
+  }
+
+  onError = error => this.setState({ panelError: error });
+
+  setLoadingState = (isLoading) => {
+    this.setState({ isLoading });
+  }
 
   render = () => {
     const { panelContentContainer } = this.props;
+    const { isLoading, panelError } = this.state;
     const ContentContainer = panelContentContainer;
 
     return (
       <Panel
         titleLabel="Login"
         subTitleLabel="Get in, and discover your daily gift"
-        error={this.state.panelError}
+        error={panelError}
       >
         <ContentContainer>
           <LoginForm
             ref={(ref) => { this.form = ref; }}
             customLayout={CustomFormLayout}
-            formErrorCallBack={error => this.updatePanelError(error)}
+            onFormError={error => this.onError(error)}
+            onFormSuccess={response => this.onSuccess(response)}
+            onFormLoading={loading => this.setLoadingState(loading)}
           />
-          <BasicButton secondary onClick={() => this.form.submitForm()}>
+          <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
             Login
           </BasicButton>
           <LargeSpacer />
