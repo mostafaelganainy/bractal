@@ -15,5 +15,5 @@ export default styled.div`
       width: 1366px;
       background: blue;
     }
-  } 
+  }
 `;

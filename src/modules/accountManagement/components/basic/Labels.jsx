@@ -3,14 +3,16 @@ import styled from 'styled-components';
 import {
   LargeLabel,
   XSmallLabel,
+  XXSmallLabel,
   SmallLabel,
   XLargeLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
 export const PanelTitle = styled(LargeLabel)`
-  color:${props => props.theme.colors.labels.important};
+  color:${props => props.theme.colors.primary};
   font-weight: bold;
   font-family: 'Panton', sans-serif;
+  text-transform: capitalize;
 `;
 export const SecondTitle = styled(XLargeLabel)`
   color:${props => props.theme.colors.labels.normal};
@@ -25,13 +27,16 @@ export const PanelContentLabel = styled(SmallLabel)`
   color: ${props => props.theme.colors.labels.normal};
 `;
 
-export const PanelContentMinorLabel = styled(XSmallLabel)`
-  color: ${props => props.theme.colors.labels.subtle};
+export const PanelContentMinorLabel = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.labels.normal};
+`;
+
+export const PanelContentSmallLabel = styled(XSmallLabel)`
+  color: ${props => props.theme.colors.labels.normal};
 `;
 
 export const ParagraphPanelContent = styled(PanelContentMinorLabel)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
-  width: 80%;
 
 `;
 export const CenteredParagraphPanelContent = styled(PanelContentLabel)`
@@ -47,6 +52,4 @@ export const ParagraphFooterContent = styled(PanelContentLabel)`
   display: flex;
   padding: 11px;
   justify-content: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
 `;

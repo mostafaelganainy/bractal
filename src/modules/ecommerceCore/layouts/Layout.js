@@ -1,12 +1,15 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { translate } from 'react-i18next';
+
+import EcommerceMainContainer from '~/modules/ecommerceCore/components/EcommerceMainContainer';
+import AccountManagementModals from '~/modules/accountManagement/containers/AccountManagementModals';
+import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
+
 import Header from './Header';
 import Footer from './Footer';
 import PageContent from './PageContent';
 import Theme from '../Theme';
-import EcommerceMainContainer from '../components/EcommerceMainContainer';
-import AccountManagementModals from '../../accountManagement/containers/AccountManagementModals';
 
 const Layout = () => (
   <ThemeProvider theme={Theme}>
@@ -16,7 +19,7 @@ const Layout = () => (
         <PageContent />
         <Footer />
       </EcommerceMainContainer>
-      <AccountManagementModals />
+      <ModalRoute path="/accountManagement/" component={AccountManagementModals} />
     </React.Fragment>
   </ThemeProvider>
 );

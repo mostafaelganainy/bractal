@@ -31,27 +31,38 @@ const SecondaryStyle = styled.div`
   }  
 
   &:active {
-    background-color: ${props => props.theme.colors.primaryDark}
+    background-color: ${props => props.theme.colors.primaryClicked}
   }
 `;
 
 
 export const BasicButton = (props) => {
-  const ButtonElement = props.primary
+  const {
+    primary,
+    size,
+    iconName,
+    children,
+    loading,
+  } = props;
+
+  const ButtonElement = primary
     ? PrimaryStyle
     : SecondaryStyle;
 
   return (
     <ButtonElement
-      size={props.size}
-      className={props.iconName}
+      {...props}
+      size={size}
+      className={iconName}
     >
-      {props.children}
+      {children}
+      {loading &&
+        <i className="fa fa-spinner fa-spin" />
+      }
     </ButtonElement>
   );
 };
 
 BasicButton.propTypes = PropTypes.shape({
   iconName: PropTypes.string.isRequired,
-  size: PropTypes.number,
 }).isRequired;

@@ -4,6 +4,9 @@ import SignUp from './SignUp';
 import SocialMedia from './SocialMedia';
 import Verification from './Verfication';
 import RecoverPassword from './RecoverPassword';
+import EmailOrSms from './forgetPass_EmailOrSms';
+import VerfyCodeEmailSMS from './forgetPass_VerfyCodeEmailAndSMS';
+import CreateNewPassword from './forgetPass_CreatenewPassword';
 
 const loadLocales = () => {
   i18next.addResourceBundle('en', 'accountManagement', {
@@ -18,8 +21,21 @@ const loadLocales = () => {
     ...Login.En,
     ...SignUp.En,
     ...SocialMedia.En,
-    ...Verification.En,
-    ...RecoverPassword.En,
+    verifyAccount: {
+      ...Verification.En,
+    },
+    recoverPassword: {
+      ...RecoverPassword.En,
+    },
+    forgetPassEmailOrSMS: {
+      ...EmailOrSms.En,
+    },
+    forgetPassVerifyEmailSMS: {
+      ...VerfyCodeEmailSMS.En,
+    },
+    CreateNewPassword: {
+      ...CreateNewPassword.En,
+    },
   }, true, true);
 
   i18next.addResourceBundle('ar', 'accountManagement', {
@@ -34,8 +50,21 @@ const loadLocales = () => {
     ...Login.Ar,
     ...SignUp.Ar,
     ...SocialMedia.Ar,
-    ...Verification.Ar,
-    ...RecoverPassword.Ar,
+    verifyAccount: {
+      ...Verification.Ar,
+    },
+    recoverPassword: {
+      ...RecoverPassword.Ar,
+    },
+    forgetPassEmailOrSMS: {
+      ...EmailOrSms.Ar,
+    },
+    forgetPassVerifyEmailSMS: {
+      ...VerfyCodeEmailSMS.Ar,
+    },
+    CreateNewPassword: {
+      ...CreateNewPassword.Ar,
+    },
   }, true, true);
 
   i18next.loadNamespaces('accountManagement');

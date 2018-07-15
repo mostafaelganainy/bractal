@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 
 import { makeModalFullPath } from '~/modules/core/utils/modalHelpers';
 
-const ModalLink = ({ to, location, children }) => (
-  <Link to={makeModalFullPath(location, to)}>
-    {children}
-  </Link>
-);
+const ModalLink = (props) => {
+  const { to, location, children } = props;
+  return (
+    <Link {...props} to={makeModalFullPath(location, to)}>
+      {children}
+    </Link>
+  );
+};
 
 ModalLink.propTypes = PropTypes.shape({
   to: PropTypes.string.isRequired,

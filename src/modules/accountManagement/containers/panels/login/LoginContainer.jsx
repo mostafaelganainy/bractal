@@ -1,19 +1,27 @@
 import React from 'react';
-
-import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
-import Modal from '~/modules/core/components/Modal/index';
+import styled from 'styled-components';
 import { translate } from 'react-i18next';
 
-import LoginFormPanel from './LoginFormPanel';
+import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { cssMediaMin } from '~/modules/core/utils/cssHelpers/cssMedia';
+
+import LoginFormPanel from './LoginPanel';
 import SignupPromptPanel from './SignupPromptPanel';
 
+// eslint-disable-next-line react/prop-types
+const PanelContent = styled(CenterAlignedColumn)`
+  ${cssMediaMin.desktop`
+    height: 275px;
+  `}
+  width: 100%;
+  justify-content: flex-end;
+`;
+
 const Login = () => (
-  <Modal>
-    <Row stretchAlign>
-      <LoginFormPanel />
-      <SignupPromptPanel />
-    </Row>
-  </Modal>
+  <React.Fragment>
+    <LoginFormPanel panelContentContainer={PanelContent} />
+    <SignupPromptPanel panelContentContainer={PanelContent} />
+  </React.Fragment>
 );
 
 export default translate('accountManagement')(Login);

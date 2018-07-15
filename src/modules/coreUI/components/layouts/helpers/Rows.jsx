@@ -18,6 +18,8 @@ const getAlignItems = (props) => {
     return 'stretch';
   } else if (props.centerAlign) {
     return 'center';
+  } else if (props.topAligned) {
+    return 'flex-start';
   }
 
   return null;

@@ -1,9 +1,15 @@
 const Theme = {
   colors: {
     primary: '#33a8ff',
+    primaryHover: '#63b8ff',
+    primaryClicked: '#73c8ff',
     primaryDark: '#2c8bd2',
     secondary: '#fb9410',
+    secondaryHover: '#fba420',
+    secondaryClicked: '#fc9430',
     secondaryDark: '#cc790e',
+    error: '#D32f2f',
+    link: '#309de0',
     labels: {
       important: '#000000',
       normal: 'rgba(0, 0, 0, 0.5)',
@@ -28,10 +34,13 @@ const Theme = {
       medium: 16,
       small: 14,
       xSmall: 12,
+      xxSmall: 11,
     },
   },
   paddings: {
-    xsmall: 2,
+    xxSmall: 1,
+    xSmall: 2,
+    xsmall: 2, // for backward compatibility (Some usages are using this form)
     small: 5,
     medium: 10,
     large: 15,
@@ -57,6 +66,21 @@ const Theme = {
       normal: 5,
       large: 10,
     },
+  },
+  inputs: {
+    radius: 25,
+    placeholderColor: 'rgba(0,0,0,0.22)',
+    borderColor: 'rgba(0,0,0,0.22)',
+    borderColorActive: '#33a8ff',
+    color: 'rgba(0, 0, 0, 0.5)',
+    padding: '12px 15px',
+    borderWidth: 1,
+  },
+  buttons: {
+    radius: 5,
+    fontSize: 16,
+    padding: 15,
+    border: 1, // Only applicable in the inverted state
   },
 };
 

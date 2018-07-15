@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+export const XXSmallSpacer = styled.div`
+  width: ${props => props.size || props.theme.paddings.xxSmall}px;
+  height: ${props => props.size || props.theme.paddings.xxSmall}px;
+`;
+
 export const XSmallSpacer = styled.div`
   width: ${props => props.size || props.theme.paddings.xSmall}px;
   height: ${props => props.size || props.theme.paddings.xSmall}px;
