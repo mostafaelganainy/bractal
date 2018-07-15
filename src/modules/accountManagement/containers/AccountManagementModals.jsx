@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { translate } from 'react-i18next';
 
 import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
@@ -49,7 +50,7 @@ const FooterContainer = styled.div`
   height: 40px;
 `;
 
-export default () => (
+const AccountManagementModals = () => (
   <Modal>
     <ModalContent>
       <PanelsContainer>
@@ -70,3 +71,5 @@ export default () => (
     </ModalContent>
   </Modal>
 );
+
+export default translate('accountManagement')(AccountManagementModals);

@@ -103,7 +103,7 @@
   src: url("../../assets/fonts/FrutigerLTArabic/FrutigerLTArabic-55Roman.ttf"); }
 @font-face {
   font-family: HelveticaNeue;
-  src: url("../../assets/fonts/HelveticaNeue/HelveticaNeueLTPro-Md.otf"); }
+  src: url("../../assets/fonts/HelveticaNeue/HelveticaNeueLTPro-Roman.otf"); }
 html {
   font-size: 16px !important; }
 
@@ -146,4 +146,3 @@ fieldset {
   padding: 0px; }
 
 /*# sourceMappingURL=App.css.map */
-

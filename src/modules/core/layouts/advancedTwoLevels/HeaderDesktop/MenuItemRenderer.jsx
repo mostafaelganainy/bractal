@@ -35,7 +35,7 @@ const renderMenuItem = (itemInfo) => {
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     menuItem = <FlexLink to={targetURL}> { content } </FlexLink>;
   } else {
-    menuItem = <div> { content } </div>;
+    menuItem = content;
   }
 
   if (dropdownContent) {
