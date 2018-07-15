@@ -45,7 +45,7 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     background-color: white;
   `}
 `;
@@ -78,7 +78,7 @@ class Modal extends React.Component {
             onClick={e => this.clickedOutsite(e, location, history)}
           >
             <RightAlignedColumn>
-              <Media query={mediaQueryMax('mobile')}>
+              <Media query={mediaQueryMax('tablet')}>
                 {matches => (
                   matches ? (
                     <CloseIconImg src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />

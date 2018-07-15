@@ -18,7 +18,7 @@ const ViewDetails = styled.div`
   justify-content: center;
   text-align: left;
   width: 50%;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     left: 20px;
   `};
 `;
@@ -35,7 +35,7 @@ const Header = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.1;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     font-size: 29px;
   `};
 `;
@@ -44,7 +44,7 @@ const SubHeader = styled.div`
   font-size: 36px;
   letter-spacing: -0.4px;
   line-height: 1.1;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     font-size: 21.5px;
   `};
 `;

@@ -13,7 +13,7 @@ const NewsletterWrapper = styled.div`
   .form-group.form-group-depth-1.form-group-email {
     position: relative;
     width: 50%;
-    ${cssMediaMax.mobile`
+    ${cssMediaMax.tablet`
       width:100%;
     `}
     input {
@@ -31,7 +31,7 @@ const NewsletterWrapper = styled.div`
   }
 `;
 const SectionHeaderContent = styled(SectionHeader)`
-${cssMediaMax.mobile`
+${cssMediaMax.tablet`
       display: block;
       text-align: center;
       font-size: 24px;

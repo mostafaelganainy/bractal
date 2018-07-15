@@ -39,13 +39,13 @@ const linkList3 = [
 const FooterWrapper = styled.div`
   background: #faf9f9;
   padding: 50px 0;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     padding: 20px 0;
   `}
   .container{
     position: relative;
     display: flex;
-    ${cssMediaMax.mobile`
+    ${cssMediaMax.tablet`
       flex-direction: column;
     `}
   }
@@ -75,13 +75,13 @@ const FooterDetails = styled.div`
 `;
 const DownloadAppItem = styled(DownloadApp)`
   width: 35%;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     align-items: flex-start;
     width: 100%;
   `}
   p {
     width:50%;
-    ${cssMediaMax.mobile`
+    ${cssMediaMax.tablet`
       width: 100%;
       text-align: left;
     `}
@@ -89,7 +89,7 @@ const DownloadAppItem = styled(DownloadApp)`
 `;
 const SocialMediaItems = styled(SocialMedia)`
   width: 33.3%;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
       width: 100%;
       i {
         font-size: 28px;
@@ -139,7 +139,7 @@ const renderForMobile = () => (
 );
 
 const FooterContainer = () => (
-  <Media query={mediaQueryMax('mobile')}>
+  <Media query={mediaQueryMax('tablet')}>
     {matches => (
       matches ? (
         renderForMobile()
