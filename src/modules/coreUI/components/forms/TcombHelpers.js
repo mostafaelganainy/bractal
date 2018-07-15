@@ -49,6 +49,8 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
       attrs: {
         placeholder: option.placeholder,
         label: option.label,
+        checkboxNote: option.checkboxNote,
+        importantLabel: option.importantLabel,
       },
     };
   });

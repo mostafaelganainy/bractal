@@ -45,6 +45,7 @@ class LoginForm extends React.Component {
         onFormError={onFormError}
         onFormSuccess={onFormSuccess}
         onFormLoading={onFormLoading}
+        mutationRoot="signin_user"
         options={{
           customLayout,
           fields: [

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Media from 'react-media';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import { PanelContentLabel, PanelContentMinorLabel } from '~/modules/accountManagement/components/basic/Labels';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
@@ -9,6 +10,7 @@ import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 
 import HomePageLogo from '~/modules/coreUI/components/projects/HomePageLogo';
 
@@ -24,25 +26,9 @@ const PanelImage = () => (
   </Column>
 );
 
-const renderContent = () => (
-  <React.Fragment>
-    <PanelContentLabel >
-      {"Don't have an account ?"}
-    </PanelContentLabel>
-    <XLargeSpacer />
-    <BasicButton primary inverted>
-      Create an account
-    </BasicButton>
-    <MediumSpacer />
-    <PanelContentMinorLabel>
-      {/* Placeholder to justify the Registeration to be similar to the login */}
-      &nbsp;
-    </PanelContentMinorLabel>
-  </React.Fragment>
-);
-
 const SignUpFormPanel = (props) => {
   const ContentContainer = props.panelContentContainer;
+  const { history, location } = props;
 
   return (
     <Media query={mediaQueryMin('desktop')}>
@@ -50,7 +36,22 @@ const SignUpFormPanel = (props) => {
         <Panel showHeader={matched} titleLabel="Register" subTitleLabel="Join our community">
           <ContentContainer>
             {matched && <PanelImage />}
-            {renderContent(props)}
+            <PanelContentLabel >
+              {"Don't have an account ?"}
+            </PanelContentLabel>
+            <XLargeSpacer />
+            <BasicButton
+              primary
+              inverted
+              onClick={() => navigateToModal(location, history, '/accountManagement/singup')}
+            >
+              Create an account
+            </BasicButton>
+            <MediumSpacer />
+            <PanelContentMinorLabel>
+              {/* Placeholder to justify the Registeration to be similar to the login */}
+              &nbsp;
+            </PanelContentMinorLabel>
           </ContentContainer>
         </Panel>
       )}
@@ -62,4 +63,4 @@ SignUpFormPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
 }).isRequired;
 
-export default SignUpFormPanel;
+export default withRouter(SignUpFormPanel);

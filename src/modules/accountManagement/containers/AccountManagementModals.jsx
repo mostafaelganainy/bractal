@@ -8,6 +8,7 @@ import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import Login from '~/modules/accountManagement/containers/panels/login/LoginContainer';
+import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
 import RecoverPassword from '~/modules/accountManagement/containers/panels/RecoverPassword';
 import CreateNewPassword from '~/modules/accountManagement/containers/forgetPassword/CreateNewPassword';
 import EmailOrSms from '~/modules/accountManagement/containers/forgetPassword/EmailOrSms';
@@ -46,6 +47,7 @@ export default () => (
     <ModalContent>
       <PanelsContainer>
         <ModalRoute path="/accountManagement/login" component={Login} />
+        <ModalRoute path="/accountManagement/singup" component={Signup} />
         <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
         <ModalRoute path="/accountManagement/CreateNewPassword" component={CreateNewPassword} />
         <ModalRoute path="/accountManagement/EmailOrSms" component={EmailOrSms} />

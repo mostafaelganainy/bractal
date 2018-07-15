@@ -10,7 +10,6 @@ import { XXSmallSpacer, SmallSpacer, LargeSpacer } from '~/modules/coreUI/compon
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-
 import LoginForm from './LoginForm';
 
 const InputLayout = styled.div`

@@ -80,13 +80,13 @@ class Modal extends React.Component {
             <RightAlignedColumn>
               <Media query={mediaQueryMax('mobile')}>
                 {matches => (
-        matches ? (
-          <CloseIconImg src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
+                  matches ? (
+                    <CloseIconImg src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
 
-        ) : (
-          <Icon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
-        )
-      )}
+                  ) : (
+                    <Icon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
+                  )
+                )}
               </Media>
               {this.props.children}
             </RightAlignedColumn>

@@ -48,6 +48,13 @@ export const makeModalFullPath = (location, path) => {
   return res;
 };
 
+export const navigateToModal = (location, history, path) => {
+  // TODO: Generalize more, by double checking on the path's
+  //      format (removing extra '/' or adding missing ones)
+  const fullpath = makeModalFullPath(location, path);
+  history.replace(fullpath);
+};
+
 export const closeCurrentModal = (location, history) => {
   const isModal = isLocationModal(location);
   if (!isModal) {

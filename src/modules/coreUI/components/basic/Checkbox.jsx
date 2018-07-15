@@ -52,7 +52,7 @@ const Checkbox = props => (
   <CenterAlignedRow>
     <StylableCheckbox type="checkbox" id={props.elemID} {...props} />
     <label htmlFor={props.elemID}>
-      <SmallLabel>
+      <SmallLabel bold={props.bold}>
         {props.label}
       </SmallLabel>
     </label>
