@@ -2,12 +2,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'semantic-ui-react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ValidateAndResolve from '~/modules/core/utils/jsHelpers/ValidateAndResolve';
 import VerticalSeparator from '~/modules/coreUI/components/layouts/helpers/VerticalSeparator';
 import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 import DropdownContentTracker from './DropdownContentTracker';
+
+const FlexLink = styled(Link)`
+  display: flex;
+`;
 
 const renderMenuItem = (itemInfo) => {
   const {
@@ -28,7 +33,7 @@ const renderMenuItem = (itemInfo) => {
 
   if (targetURL) {
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    menuItem = <Link to={targetURL}> { content } </Link>;
+    menuItem = <FlexLink to={targetURL}> { content } </FlexLink>;
   } else {
     menuItem = <div> { content } </div>;
   }

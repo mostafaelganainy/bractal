@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const SizedIcon = styled.i`
   font-size: ${props => props.size || props.theme.fonts.sizes.xLarge}px;
+  ${props => props.customIconStyle}
 `;
 
 const PrimaryStyleIconButton = styled(SizedIcon)`
@@ -36,6 +37,7 @@ export const IconOnlyButton = (props) => {
 
   return (
     <ButtonElement
+      customIconStyle={props.customIconStyle}
       className={props.iconName}
       {...props}
     />
