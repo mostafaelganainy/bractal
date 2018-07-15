@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { SectionHeader } from '~/modules/ecommerceCoreUI/components/basic/Labels';
 import { XXXXLargeSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 const NewsletterWrapper = styled.div`
   .InputLayout{
@@ -12,6 +13,9 @@ const NewsletterWrapper = styled.div`
   .form-group.form-group-depth-1.form-group-email {
     position: relative;
     width: 50%;
+    ${cssMediaMax.mobile`
+      width:100%;
+    `}
     input {
       padding-right: 50px;
     }
@@ -26,10 +30,17 @@ const NewsletterWrapper = styled.div`
     }
   }
 `;
+const SectionHeaderContent = styled(SectionHeader)`
+${cssMediaMax.mobile`
+      display: block;
+      text-align: center;
+      font-size: 24px;
+    `}
+`;
 const Newsletter = () => (
   <NewsletterWrapper>
     <Container>
-      <SectionHeader>Join Our Newsletter</SectionHeader>
+      <SectionHeaderContent>Join Our Newsletter</SectionHeaderContent>
       <LargeSpacer />
       <RelayForm
         options={{

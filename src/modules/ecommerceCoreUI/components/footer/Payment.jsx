@@ -4,13 +4,12 @@ import ExternalLink from '~/modules/coreUI/components/basic/ExternalLink';
 
 
 const PaymentWrapper = styled.div`
-  margin-left: 60px;
   img {
     margin-right:10px;
   }
 `;
-const Payment = () => (
-  <PaymentWrapper>
+const Payment = props => (
+  <PaymentWrapper {...props} >
     <ExternalLink url="#">
       <img src="images/Footer/visa.png" alt="" />
     </ExternalLink>
