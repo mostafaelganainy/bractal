@@ -6,7 +6,7 @@ import { PanelContentMinorLabel, PanelContentSmallLabel } from '~/modules/accoun
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { XXSmallSpacer, SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
@@ -23,7 +23,6 @@ const CustomFormLayout = locals => (
       <div>{locals.inputs.remember_me}</div>
       <PanelContentSmallLabel>
         <RightAlignedColumn>
-          <XXSmallSpacer />
           <ModalLink to="/accountManagement/recoverPassword">
             Lost Your Password
           </ModalLink>
