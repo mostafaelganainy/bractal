@@ -1,5 +1,6 @@
 import React from 'react';
 import i18next from 'i18next';
+import styled from 'styled-components';
 
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import DepartmentsDropdown from './DepartmentsDropdown';
@@ -17,16 +18,32 @@ const departments = [
   },
 ];
 
+const FlexSpacer = styled.div`
+  flex-grow: 1;
+`;
+
+const CenterContent = styled(CenterAlignedRow)`
+  flex-grow: 6;
+`;
+
+const MainContent = styled(CenterAlignedRow)`
+  flex-grow: 1;
+`;
+
 const NavProductsSearch = () => (
-  <StyledProductsSearch>
-    <CenterAlignedRow>
-      <DepartmentsDropdown departments={departments} />
-      <StyledProductsSearchInput
-        action={{ icon: { className: 'icon-lens' } }}
-        placeholder={i18next.t('aykLayout:header.search')}
-      />
-    </CenterAlignedRow>
-  </StyledProductsSearch>
+  <MainContent>
+    <FlexSpacer />
+    <CenterContent>
+      <StyledProductsSearch>
+        <DepartmentsDropdown departments={departments} />
+        <StyledProductsSearchInput
+          action={{ icon: { className: 'icon-lens' } }}
+          placeholder={i18next.t('aykLayout:header.search')}
+        />
+      </StyledProductsSearch>
+    </CenterContent>
+    <FlexSpacer />
+  </MainContent>
 );
 
 export default NavProductsSearch;

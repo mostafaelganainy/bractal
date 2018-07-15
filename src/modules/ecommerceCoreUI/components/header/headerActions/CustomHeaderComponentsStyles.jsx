@@ -2,6 +2,8 @@
 import styled, { css } from 'styled-components';
 import { Input } from 'semantic-ui-react';
 
+import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+
 export const SimpleDropdownTriggerStyles = props => (css`
   font-size: ${props.theme.fonts.sizes.xSmall}px;
   line-height: ${props.theme.fonts.sizes.xSmall}px;
@@ -23,9 +25,10 @@ export const StyledHeaderDropdownContainer = styled.div`
 `;
 
 export const StyledProductSearchDropdownContainer = styled.div`
-  .dropdown {
-    width: 150px;  
-    height: 40px;   
+  flex-grow: 1;
+
+  .dropdown {     
+    height: 40px;       
 
     background: white;
 
@@ -45,7 +48,9 @@ export const StyledProductSearchDropdownContainer = styled.div`
   }
 `;
 
-export const StyledProductsSearch = styled.div`
+export const StyledProductsSearch = styled(Row)`
+  flex-grow: 1;
+
   border: solid;
   border-radius: ${props => props.theme.borders.radius.normal}px;
   border-width: ${props => props.theme.borders.size.thin}px;
@@ -53,9 +58,9 @@ export const StyledProductsSearch = styled.div`
 `;
 
 export const StyledProductsSearchInput = styled(Input)`
-  &&&&& {
-    height: 40px;
-    width: 340px;
+  &&&&& {    
+    height: 40px;    
+    flex-grow: 4;
 
     input {
       line-height: 12px;
