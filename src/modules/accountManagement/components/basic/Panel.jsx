@@ -7,10 +7,10 @@ import styled from 'styled-components';
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 import { Column, CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { PanelTitle, PanelSubtitle } from '~/modules/accountManagement/components/basic/Labels';
-import { MediumSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 export const PanelRoot = styled(Column)`
-  width: 248px;
+  width: ${props => props.panelWidth || '248px'};
 `;
 
 
@@ -37,7 +37,7 @@ const Panel = (props) => {
           <PanelTitle uppercase>
             {title || titleLabel}
           </PanelTitle>
-          <MediumSpacer />
+          <SmallSpacer />
           <PanelSubtitle>
             {subTitle || subTitleLabel}
           </PanelSubtitle>

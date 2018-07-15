@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import t from 'tcomb-form';
 import React from 'react';
 import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
-
+import { XSmallLabel } from '~/modules/coreUI/components/basic/Labels';
+import { XSmallSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import renderError from './Errors';
 
 const InputElem = styled.input`
@@ -46,7 +48,25 @@ export default {
       const attrs = t.form.Form.templates.checkbox.getAttrs(locals);
 
       return (
-        <Checkbox elemID={attrs.id} {...attrs} label={attrs.label} />
+        <React.Fragment>
+          <Checkbox
+            elemID={attrs.id}
+            bold={attrs.importantLabel}
+            label={attrs.label}
+            {...attrs}
+          />
+          {attrs.checkboxNote &&
+            <React.Fragment>
+              <SmallSpacer />
+              <TopAlignedRow>
+                <XSmallSpacer />
+                <XSmallLabel color="subtle">
+                  {attrs.checkboxNote}
+                </XSmallLabel>
+              </TopAlignedRow>
+            </React.Fragment>
+          }
+        </React.Fragment>
       );
     },
     renderError: locals => renderError(locals),

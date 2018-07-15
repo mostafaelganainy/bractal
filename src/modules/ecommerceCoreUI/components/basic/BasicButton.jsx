@@ -37,22 +37,32 @@ const SecondaryStyle = styled.div`
 
 
 export const BasicButton = (props) => {
-  const ButtonElement = props.primary
+  const {
+    primary,
+    size,
+    iconName,
+    children,
+    loading,
+  } = props;
+
+  const ButtonElement = primary
     ? PrimaryStyle
     : SecondaryStyle;
 
   return (
     <ButtonElement
       {...props}
-      size={props.size}
-      className={props.iconName}
+      size={size}
+      className={iconName}
     >
-      {props.children}
+      {children}
+      {loading &&
+        <i className="fa fa-spinner fa-spin" />
+      }
     </ButtonElement>
   );
 };
 
 BasicButton.propTypes = PropTypes.shape({
   iconName: PropTypes.string.isRequired,
-  size: PropTypes.number,
 }).isRequired;

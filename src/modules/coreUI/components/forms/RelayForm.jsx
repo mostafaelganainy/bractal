@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import { commitMutation } from 'react-relay';
+import changeCase from 'change-case';
+
 
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
@@ -26,21 +28,25 @@ class RelayForm extends Component {
     }
   }
 
+  onLoading = (isLoading) => {
+    this.setState({ isLoading });
+
+    const { onFormLoading } = this.props;
+    onFormLoading(isLoading);
+  }
+
   onChange = (value, path) => {
     this.setState({ value });
     this.Form.getComponent(path).validate();
-    console.log('hi');
   }
 
   save = () => {
     const value = this.Form.getValue();
     this.Form.validate();
-    if (value) {
-      console.log(value);
-    }
+    console.log(value);
   }
 
-  commitFormMutation = (environment, mutation, resultCallback) => {
+  commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
     // Apply local validations first
     const localErrors = this.Form.validate();
     const value = this.Form.getValue();
@@ -62,6 +68,8 @@ class RelayForm extends Component {
       return;
     }
 
+    this.onLoading(true);
+
     commitMutation(
       environment,
       {
@@ -70,6 +78,7 @@ class RelayForm extends Component {
           ...value,
         },
         onCompleted: (response, errors) => {
+          this.onLoading(false);
           const serverErrors = {
             global: null,
           };
@@ -78,22 +87,27 @@ class RelayForm extends Component {
           if (globalError) {
             serverErrors.global = globalError.message;
           }
-          if (response && response.signin_user && response.signin_user.errors) {
-            response.signin_user.errors.forEach((error) => {
-              [serverErrors[error.field]] = error.messages;
+          if (response && response[mutationRoot] && response[mutationRoot].errors) {
+            response[mutationRoot].errors.forEach((error) => {
+              serverErrors[error.field] = `${changeCase.sentenceCase(error.field)} ${error.messages[0]}`;
             });
           }
 
-          resultCallback(serverErrors);
+          resultCallback(response, serverErrors);
         },
-        onError: err => console.error(err),
+        onError: (err) => {
+          this.onLoading(false);
+          resultCallback(null, err.message || err.toString());
+        },
       },
     );
   };
 
   submitForm = () => {
     const {
-      formErrorCallBack,
+      onFormError,
+      onFormSuccess,
+      mutationRoot,
       environment,
       mutation,
     } = this.props;
@@ -101,13 +115,26 @@ class RelayForm extends Component {
     this.commitFormMutation(
       environment,
       mutation,
-      (errors) => {
+      mutationRoot,
+      (response, errors) => {
         this.setState({
           serverErrors: errors,
         });
 
-        if (formErrorCallBack) {
-          formErrorCallBack(errors.global);
+        if (onFormError) {
+          if (response && errors.global) {
+            onFormError(errors.global);
+          } else if (typeof (errors) === 'string') {
+            onFormError(errors);
+          } else {
+            onFormError(null);
+          }
+        }
+
+        const errorsExist = errors && errors.length > 0;
+
+        if (onFormSuccess && !errorsExist) {
+          onFormSuccess(response);
         }
       },
     );
@@ -118,7 +145,7 @@ class RelayForm extends Component {
       options,
     } = this.props;
 
-    const { serverErrors, localValidationErrors } = this.state;
+    const { serverErrors, localValidationErrors, isLoading } = this.state;
 
     const tcombOptions = getTcombOptionsFromRawOptions(options);
     const tcombTypes = getTcombTypesFromRawOptions(options);
@@ -134,6 +161,8 @@ class RelayForm extends Component {
           context={{
             serverErrors,
             localValidationErrors,
+            isLoading,
+            onSubmit: this.submitForm,
             onKeyUp: (event) => {
               if (event.keyCode === 13) {
                 this.submitForm();
@@ -157,7 +186,9 @@ RelayForm.propTypes = PropTypes.shape({
     })),
     customLayout: PropTypes.func,
   }).isRequired,
-  formErrorCallBack: PropTypes.func.isRequired,
+  onFormError: PropTypes.func.isRequired,
+  onFormSuccess: PropTypes.func.isRequired,
+  onFormLoading: PropTypes.func.isRequired,
   onChange: PropTypes.func,
 }).isRequired;
 

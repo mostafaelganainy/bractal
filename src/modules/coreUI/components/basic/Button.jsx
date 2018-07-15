@@ -2,6 +2,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 
@@ -54,6 +56,7 @@ const getClickedBackgorundColor = (props) => {
 };
 
 const Button = styled(Row)`
+  position: relative;
   font-size: ${props => props.theme.buttons.fontSize}px;
 
   width: ${props => (props.width ? props.width : '100%')};
@@ -87,6 +90,12 @@ const HiddenActualButton = styled.button`
   }
 `;
 
+const ButtonLoadingIcon = styled(FontAwesomeIcon)`
+  position: absolute;
+  left: ${props => props.theme.buttons.padding}px;
+  height: 100%;
+`;
+
 export const BasicButton = props => (
   <React.Fragment>
     <HiddenActualButton {...props} />
@@ -96,6 +105,9 @@ export const BasicButton = props => (
       centerJustify
       width={props.width}
     >
+      {props.loading &&
+        <ButtonLoadingIcon icon={faSpinner} spin />
+      }
       {props.children}
     </Button>
   </React.Fragment>
