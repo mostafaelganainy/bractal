@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { mediaSizesMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 const settings = {
   dots: true,
@@ -13,7 +14,7 @@ const settings = {
   rows: 2,
   responsive: [
     {
-      breakpoint: 1370,
+      breakpoint: mediaSizesMax.desktop,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -21,7 +22,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 1100,
+      breakpoint: mediaSizesMax.tablet,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -30,7 +31,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 1000,
+      breakpoint: mediaSizesMax.mobile,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
@@ -39,16 +40,7 @@ const settings = {
       },
     },
     {
-      breakpoint: 500,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        rows: 1,
-        arrows: false,
-      },
-    },
-    {
-      breakpoint: 420,
+      breakpoint: mediaSizesMax.xsmall,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,

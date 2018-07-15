@@ -47,7 +47,7 @@ export const SmallTitle = styled(SmallLabel)`
   text-transform: uppercase;
   font-family: Panton ,sans-serif;
   letter-spacing: -0.5px;
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     font-size: ${props => props.theme.fonts.sizes.large}px;
   `}
 `;

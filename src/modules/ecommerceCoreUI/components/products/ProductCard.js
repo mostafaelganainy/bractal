@@ -58,7 +58,7 @@ const renderProductTag = (dummyProps) => {
 const ProductCard = ({ productInfo }) => {
   const dummyProps = generateDummyProps();
   dummyProps.oldPrice = (parseFloat(productInfo.price) / (1 - dummyProps.discount)).toFixed(2);
-  const originalPrice = dummyProps.doesHaveDiscount ? `${dummyProps.oldPrice} QAR` : ' ';
+  const originalPrice = dummyProps.doesHaveDiscount ? `${dummyProps.oldPrice} QAR` : <span>&nbsp;</span>;
   const currentPrice = `${productInfo.price} QAR`;
 
   return (
@@ -88,7 +88,7 @@ const ProductCard = ({ productInfo }) => {
         }
         footerLeftRenderer={
           <React.Fragment>
-            <OldPriceLabel>
+            <OldPriceLabel showDash={dummyProps.doesHaveDiscount}>
               { originalPrice }
             </OldPriceLabel>
             <CurrentPriceLabel>

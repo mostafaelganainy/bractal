@@ -2,20 +2,26 @@
 import { css } from 'styled-components';
 
 const supportedSizes = [
+  'largeDesktop',
   'desktop',
+  'tablet',
   'mobile',
   'xsmall',
 ];
 
-const mediaSizesMax = {
-  desktop: 10240,
-  mobile: 1024,
-  xsmall: 320,
+export const mediaSizesMax = {
+  largeDesktop: 10240,
+  desktop: 1370,
+  tablet: 1100,
+  mobile: 800,
+  xsmall: 500,
 };
 
-const mediaSizesMin = {
-  desktop: 1024,
-  mobile: 400,
+export const mediaSizesMin = {
+  largeDesktop: 1370,
+  desktop: 1100,
+  tablet: 800,
+  mobile: 500,
   xsmall: 250,
 };
 

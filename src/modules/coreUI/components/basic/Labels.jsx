@@ -40,26 +40,26 @@ export const LargeLabel = styled(Label)`
 
 export const MediumLabel = styled(Label)`
   font-size: ${props => props.theme.fonts.sizes.medium}px;
-  line-height: ${props => props.theme.fonts.sizes.medium + 6}px;
+  line-height: ${props => props.theme.fonts.sizes.medium}px;
 `;
 
 export const SmallLabel = styled(Label)`
   font-size: ${props => props.theme.fonts.sizes.small}px;
-  line-height: ${props => props.theme.fonts.sizes.small + 4}px;
+  line-height: ${props => props.theme.fonts.sizes.small}px;
 `;
 
 export const XSmallLabel = styled(Label)`
   font-size: ${props => props.theme.fonts.sizes.xSmall}px;
-  line-height: ${props => props.theme.fonts.sizes.xSmall + 4}px;
+  line-height: ${props => props.theme.fonts.sizes.xSmall}px;
 `;
 
 export const XXSmallLabel = styled(Label)`
   font-size: ${props => props.theme.fonts.sizes.xxSmall}px;
-  line-height: ${props => props.theme.fonts.sizes.xxSmall + 4}px;
+  line-height: ${props => props.theme.fonts.sizes.xxSmall}px;
 `;
 
 export const ErrorLabel = styled.div`
   font-size: ${props => props.theme.fonts.sizes.xxSmall}px;
-  line-height: ${props => props.theme.fonts.sizes.xxSmall + 4}px;
+  line-height: ${props => props.theme.fonts.sizes.xxSmall}px;
   color: ${props => props.theme.colors.error};
 `;

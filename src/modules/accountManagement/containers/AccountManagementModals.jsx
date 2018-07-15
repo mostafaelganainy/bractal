@@ -8,6 +8,8 @@ import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import Login from '~/modules/accountManagement/containers/panels/login/LoginContainer';
+import SocialMedia from '~/modules/accountManagement/components/SocialMedia';
+
 import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
 import RecoverPassword from '~/modules/accountManagement/containers/panels/RecoverPassword';
 import CreateNewPassword from '~/modules/accountManagement/containers/forgetPassword/CreateNewPassword';
@@ -19,7 +21,7 @@ import VerifyByEmail from '~/modules/accountManagement/containers/panels/VerifyA
 import VerifyBySMS from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyBySMS';
 
 const PanelsContainer = styled(Row)` 
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     flex-direction: column;
     align-items: center;
   `}
@@ -42,6 +44,11 @@ const ModalContent = styled(Column)`
   border-color: white; 
 `;
 
+const FooterContainer = styled.div`
+  width: 100%;
+  height: 40px;
+`;
+
 export default () => (
   <Modal>
     <ModalContent>
@@ -57,6 +64,9 @@ export default () => (
         <ModalRoute path="/accountManagement/VerifyByEmail" component={VerifyByEmail} />
         <ModalRoute path="/accountManagement/VerifyBySMS" component={VerifyBySMS} />
       </PanelsContainer>
+      <FooterContainer>
+        <ModalRoute path="/accountManagement/login" component={SocialMedia} />
+      </FooterContainer>
     </ModalContent>
   </Modal>
 );

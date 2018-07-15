@@ -51,7 +51,7 @@ export const ReviewsCountLabel = styled(XSmallLabel)`
 
 export const OldPriceLabel = styled(MediumLabel)`
   color: ${props => props.theme.colors.labels.subtle};
-  text-decoration: line-through;
+  text-decoration: ${props => (!props.showDash ? 'none' : 'line-through')};
   margin-top: 15px;
 `;
 
