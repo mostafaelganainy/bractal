@@ -36,7 +36,7 @@ const RecoverPasswords = () => (
     <DesktopContainer>
       <Panel
         title="VERIFY YOUR ACCOUNT"
-        subTitle="Necessary Step to active your account"
+        subTitle="Follow the steps to reset your password"
       >
         <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
           <XXXXXLargeSpacer />
@@ -47,8 +47,7 @@ const RecoverPasswords = () => (
           />
           <XXXXXLargeSpacer />
           <CenteredParagraphPanelContent>
-          Type a new password and be noticed
-          that you didnt use this one before.
+            <Trans i18nKey="CreateNewPassword.CreateNewPassParagraph" />
           </CenteredParagraphPanelContent>
           <MediumSpacer />
           <RelayForm
@@ -70,7 +69,7 @@ const RecoverPasswords = () => (
             }}
           />
           <MediumSpacer />
-          <BasicButton width="90%"> Renew your password </BasicButton>
+          <BasicButton> <Trans i18nKey="CreateNewPassword.Button" /> </BasicButton>
           <XXXXXLargeSpacer />
           <ParagraphFooterContent>
             <CenterAlignedRow>

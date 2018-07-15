@@ -60,7 +60,7 @@ const Button = styled(Row)`
   font-size: ${props => props.theme.buttons.fontSize}px;
 
   width: ${props => (props.width ? props.width : '100%')};
-  padding: ${props => props.theme.buttons.padding}px;
+  padding: ${props => props.theme.buttons.padding}px 0px;
 
   color: ${props => getColor(props)};
   background-color: ${props => getBackgroundColor(props)};

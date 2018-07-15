@@ -6,6 +6,7 @@ import {
   XXSmallLabel,
   SmallLabel,
   XLargeLabel,
+  XXXSmallLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
 export const PanelTitle = styled(LargeLabel)`
@@ -52,4 +53,28 @@ export const ParagraphFooterContent = styled(PanelContentLabel)`
   display: flex;
   padding: 11px;
   justify-content: center;
+`;
+
+export const XSmallTitle = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.labels.important};
+  font-weight:bold;
+`;
+export const XXSmallTitle = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.labels.important};
+  font-weight:bold;
+`;
+
+export const XXXSmallTitle = styled(XXXSmallLabel)`
+  color: ${props => props.theme.colors.labels.important};
+  font-weight:bold;
+`;
+
+export const WhiteXSmallTitle = styled(XSmallLabel)`
+  color: ${props => props.theme.colors.invertedLabels.important};
+  font-weight:bold;
+`;
+
+export const WhiteXXXSmallTitle = styled(XXXSmallLabel)`
+  color: ${props => props.theme.colors.invertedLabels.important};
+  font-weight:bold;
 `;

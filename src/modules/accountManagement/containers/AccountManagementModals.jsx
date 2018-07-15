@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { translate } from 'react-i18next';
 
 import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
@@ -8,7 +9,7 @@ import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import Login from '~/modules/accountManagement/containers/panels/login/LoginContainer';
-import SocialMedia from '~/modules/accountManagement/components/SocialMedia';
+import SocialMedia from '~/modules/accountManagement/containers/panels/socialMedia/SocialMedia';
 
 import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
 import RecoverPassword from '~/modules/accountManagement/containers/panels/RecoverPassword';
@@ -49,7 +50,7 @@ const FooterContainer = styled.div`
   height: 40px;
 `;
 
-export default () => (
+const AccountManagementModals = () => (
   <Modal>
     <ModalContent>
       <PanelsContainer>
@@ -70,3 +71,5 @@ export default () => (
     </ModalContent>
   </Modal>
 );
+
+export default translate('accountManagement')(AccountManagementModals);
