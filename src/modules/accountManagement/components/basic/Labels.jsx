@@ -68,3 +68,13 @@ export const XXXSmallTitle = styled(XXXSmallLabel)`
   color: ${props => props.theme.colors.labels.important};
   font-weight:bold;
 `;
+
+export const WhiteXSmallTitle = styled(XSmallLabel)`
+  color: ${props => props.theme.colors.invertedLabels.important};
+  font-weight:bold;
+`;
+
+export const WhiteXXXSmallTitle = styled(XXXSmallLabel)`
+  color: ${props => props.theme.colors.invertedLabels.important};
+  font-weight:bold;
+`;
