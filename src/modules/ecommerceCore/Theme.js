@@ -35,6 +35,7 @@ const Theme = {
       small: 14,
       xSmall: 12,
       xxSmall: 11,
+      xxxSmall: 9.5,
     },
   },
   paddings: {
