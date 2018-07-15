@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
+import Media from 'react-media';
 import AppImage from '~/modules/ecommerceCoreUI/components/footer/AppImage';
 import FooterLinks from '~/modules/ecommerceCoreUI/components/footer/FooterLinks';
 import SocialMedia from '~/modules/ecommerceCoreUI/components/header/headerActions/SocialMedia';
+import { mediaQueryMax, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+
+
 import DownloadApp from './DownloadApp';
 import Payment from './Payment';
 
@@ -34,10 +39,17 @@ const linkList3 = [
 const FooterWrapper = styled.div`
   background: #faf9f9;
   padding: 50px 0;
+  ${cssMediaMax.mobile`
+    padding: 20px 0;
+  `}
   .container{
     position: relative;
     display: flex;
+    ${cssMediaMax.mobile`
+      flex-direction: column;
+    `}
   }
+  
 `;
 const ImageWrapper = styled(AppImage)`
   position: absolute;
@@ -51,6 +63,7 @@ const FooterLinksWrapper = styled.div`
   ul {
     width:33.3%;
   }
+
 `;
 const FooterAssets = styled.div`
   display: flex;
@@ -59,15 +72,35 @@ const FooterDetails = styled.div`
   display:flex;
   flex-direction: column;
   width: 50%;
-  
 `;
 const DownloadAppItem = styled(DownloadApp)`
   width: 35%;
+  ${cssMediaMax.mobile`
+    align-items: flex-start;
+    width: 100%;
+  `}
+  p {
+    width:50%;
+    ${cssMediaMax.mobile`
+      width: 100%;
+      text-align: left;
+    `}
+  }
 `;
 const SocialMediaItems = styled(SocialMedia)`
   width: 33.3%;
+  ${cssMediaMax.mobile`
+      width: 100%;
+      i {
+        font-size: 28px;
+      }
+    `}
 `;
-const FooterContainer = () => (
+const PaymentContent = styled(Payment)`
+  margin-left: 55px;
+`;
+
+const renderForDesktop = () => (
   <FooterWrapper>
     <Container>
       <FooterDetails>
@@ -78,7 +111,7 @@ const FooterContainer = () => (
         </FooterLinksWrapper>
         <FooterAssets>
           <SocialMediaItems />
-          <Payment />
+          <PaymentContent />
         </FooterAssets>
       </FooterDetails>
       <DownloadAppItem />
@@ -87,4 +120,33 @@ const FooterContainer = () => (
   </FooterWrapper>
 );
 
+const renderForMobile = () => (
+  <FooterWrapper>
+    <Container>
+      <SocialMediaItems title="Follow Us" />
+      <XXLargeSpacer />
+      <DownloadAppItem />
+      <XXLargeSpacer />
+      <FooterDetails>
+        <FooterLinksWrapper>
+          <FooterLinks title="title" links={linkList1} />
+          <FooterLinks title="title" links={linkList2} />
+        </FooterLinksWrapper>
+        <Payment />
+      </FooterDetails>
+    </Container>
+  </FooterWrapper>
+);
+
+const FooterContainer = () => (
+  <Media query={mediaQueryMax('mobile')}>
+    {matches => (
+      matches ? (
+        renderForMobile()
+      ) : (
+        renderForDesktop()
+      )
+    )}
+  </Media>
+);
 export default FooterContainer;

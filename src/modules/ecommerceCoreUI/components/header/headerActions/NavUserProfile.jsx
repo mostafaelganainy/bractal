@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React, { Component } from 'react';
-import { Image } from 'semantic-ui-react';
+import { Image, Dropdown } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 
 import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
@@ -32,19 +32,52 @@ class NavUserProfile extends Component {
   render() {
     const Token = userAuthurization();
     let userImage = '';
+    let DropdownContent = '';
     // eslint-disable-next-line
     if (Token !== false) {
       userImage = <Image src="/images/Header/userloggedIn.png" />;
     } else {
       userImage = (
-        <ModalLink to="/accountManagement/login">
-          <IconOnlyButton primary iconName="icon-user" size={28} />
-        </ModalLink>
+        <IconOnlyButton primary iconName="icon-user" size={28} />
+      );
+      DropdownContent = (
+        <Dropdown
+          trigger={userImage}
+          pointing
+          className="set-currency"
+          icon={null}
+        >
+          <Dropdown.Menu>
+            <Dropdown.Item>
+              <ModalLink to="/accountManagement/login">
+                Log in / Sign up
+              </ModalLink>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <i className="icon-heart" /> Shopping cart
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <i className="icon-heart" /> Recent viewed
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <i className="icon-heart" /> Wishlist
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <i className="icon-heart" /> Following
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <i className="icon-heart" /> Settings
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <i className="icon-heart" /> Customer service
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       );
     }
     return (
       <div className="user-profile">
-        {userImage}
+        {DropdownContent}
       </div>
     );
   }
