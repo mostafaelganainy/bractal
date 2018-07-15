@@ -50,14 +50,16 @@ const VerficationCodeSMS = () => (
           </CenteredParagraphPanelContent>
           <MediumSpacer />
           <RelayForm
-            options={[
-              {
-                name: 'code',
-                placeholder: 'Add Code Here',
-                input_type: 'textbox',
-                tcomb_type: 'String',
-              },
-            ]}
+            options={{
+              fields: [
+                {
+                  name: 'code',
+                  placeholder: 'Add Code Here',
+                  input_type: 'textbox',
+                  type: 'RequiredString',
+                },
+              ],
+            }}
           />
           <XLargeSpacer />
           <BasicButton> <Trans i18nKey="forgetPassVerifyEmailSMS.Button" /> </BasicButton>

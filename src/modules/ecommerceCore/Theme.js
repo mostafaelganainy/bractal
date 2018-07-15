@@ -9,6 +9,7 @@ const Theme = {
     secondaryClicked: '#fc9430',
     secondaryDark: '#cc790e',
     error: '#D32f2f',
+    link: '#309de0',
     labels: {
       important: '#000000',
       normal: 'rgba(0, 0, 0, 0.5)',
@@ -37,7 +38,9 @@ const Theme = {
     },
   },
   paddings: {
-    xsmall: 2,
+    xxSmall: 1,
+    xSmall: 2,
+    xsmall: 2, // for backward compatibility (Some usages are using this form)
     small: 5,
     medium: 10,
     large: 15,
@@ -68,6 +71,7 @@ const Theme = {
     radius: 25,
     placeholderColor: 'rgba(0,0,0,0.22)',
     borderColor: 'rgba(0,0,0,0.22)',
+    borderColorActive: '#33a8ff',
     color: 'rgba(0, 0, 0, 0.5)',
     padding: '12px 15px',
     borderWidth: 1,
