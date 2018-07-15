@@ -21,7 +21,7 @@ import VerifyByEmail from '~/modules/accountManagement/containers/panels/VerifyA
 import VerifyBySMS from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyBySMS';
 
 const PanelsContainer = styled(Row)` 
-  ${cssMediaMax.mobile`
+  ${cssMediaMax.tablet`
     flex-direction: column;
     align-items: center;
   `}

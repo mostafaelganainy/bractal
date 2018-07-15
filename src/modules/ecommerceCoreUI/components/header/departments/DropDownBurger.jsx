@@ -9,10 +9,6 @@ const style = {
   cursor: 'pointer',
   borderTopLeftRadius: '7px',
   borderBottomLeftRadius: '7px',
-  // Draw outside the border slightly
-  marginTop: '-1px',
-  marginBottom: '-1px',
-  marginLeft: '-1px',
   // Center content, horizontal/vertical
   display: 'flex',
   alignItems: 'center',

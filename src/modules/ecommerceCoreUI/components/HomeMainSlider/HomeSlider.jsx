@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import styled from 'styled-components';
+import { mediaSizesMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 const settings = {
   infinite: true,
@@ -16,7 +17,7 @@ const settings = {
   arrows: false,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: mediaSizesMax.mobile,
       settings: {
         centerMode: false,
       },

@@ -1,3 +1,7 @@
+span {
+  padding-top: 2px; // Workaround for Helvetica Neue & Panton fonts issues (Vertical align)
+}
+
 .ReactModal__Body--open {
   overflow: hidden; 
   position: fixed; 
