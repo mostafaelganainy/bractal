@@ -25,14 +25,14 @@ const DropdownLanguageItems = styled.div`
     color: rgba(0, 0, 0, 0.5);
     font-size: 12px;
   }
-  .menu > .item > img {
-    margin-right: 8px;
-  }
   img{
     width: 20px;
     height: 20px;
     margin-right: 5px;
     vertical-align: middle !important;    
+  }
+  .menu > .item > img {
+    margin-right: 8px;
   }
   .visible.menu.transition {
     padding: 8px;
@@ -50,23 +50,21 @@ const DropdownLanguageItems = styled.div`
         position: absolute;
         right: 0;
         color: ${props => props.theme.colors.primary};
-      }
-    }
-    .item{
-      border-bottom: 1px solid rgba(235, 235, 235,0.6);
-      &:hover{
-      background-color: transparent !important;
+        font-size: ${props => props.theme.fonts.sizes.small}px;
       }
     }
   }
 
-  &.ui.dropdown .menu > .item {
+  .ui.dropdown .menu > .item {
     padding: 8px 3px !important;
     border-bottom: 1px solid #ebebeb;
     font-size: 11px !important;
     &:last-child {
       border-bottom: none;
       padding-bottom: 0 !important;
+    }
+    &:hover{
+      background-color: transparent !important;
     }
   }
 `;

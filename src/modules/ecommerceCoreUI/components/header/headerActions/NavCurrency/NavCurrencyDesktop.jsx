@@ -13,15 +13,15 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
   .item span {
     font-size: 11px;
     position: relative;
-    top: 2px;
+    top: 4px;
   }
   .ui.top.right.pointing.dropdown>.menu{
-    width:79px;
-    padding: 0 15px;
+    width: 79px;
+    padding: 0 15px 7px;
     box-shadow:none;
   }
   .ui.dropdown .menu>.item{
-    padding: 10px 0 !important;
+    padding: 8px 0 !important;
     border-bottom: 1px solid rgba(235, 235, 235,0.6);
     color:rgba(0, 0, 0, 0.5);
     &:hover{
@@ -36,7 +36,7 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
   }
   .ui.dropdown .menu .selected.item, .ui.dropdown.selected{
     background: transparent;
-    color: #34a8ff;
+    color: ${props => props.theme.colors.primary};
   }
   .selected {
     position: relative;
@@ -46,8 +46,8 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
       position: absolute;
       right:0;
       top: 11px;
-      color: #34a8ff;
-      font-size: 14px;
+      color: ${props => props.theme.colors.primary};
+      font-size: ${props => props.theme.fonts.sizes.small}px;
     }
   }
 `;
