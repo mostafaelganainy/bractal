@@ -9,9 +9,9 @@ import EllipsisWithTooltip from '~/modules/coreUI/components/basic/EllipsisWithT
 const InputsIntraSpace = styled(LeftAlignedColumn)`
   width:  100%; 
   height: ${props => props.theme.paddings.xxxLarge}px;
-  padding-left: ${props => props.theme.buttons.padding}px;
-  padding-right: ${props => props.theme.buttons.padding}px;
-  padding-top: ${props => props.theme.paddings.small}px;
+  padding-left: ${props => props.theme.inputs.padding.left}px;
+  padding-right: ${props => props.theme.inputs.padding.right}px;
+  padding-top: ${props => props.theme.paddings.xSmall}px;
 `;
 
 const FullWidthErrorLabel = styled(ErrorLabel)`

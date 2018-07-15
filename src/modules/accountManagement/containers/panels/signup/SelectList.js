@@ -7,45 +7,35 @@ import styled from 'styled-components';
 
 
 const List = styled.ul`
-      visibility: visible;
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    -webkit-transform: scaleY(1);
-    -ms-transform: scaleY(1);
-    transform: scaleY(1);
-    color: #333;
-    height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 100;
-    -webkit-transform-origin: top;
-    -ms-transform-origin: top;
-    transform-origin: top;
-    padding: 0;
-    list-style: none;
-    background-color: white;
-    -webkit-box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
-    position: absolute;
-    margin-top: 0px;
-    /* top: 100%; */
-    width: 200px;
-    left:34%;
+  visibility: visible;
+  transition: all 0.3s ease;
+  transform: scaleY(1);
+  color: #333;
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+  transform-origin: top;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  margin-top: 0px;
+  /* top: 100%; */
+  width: 200px;
+  left:34%;
 `;
 const Option = styled.li`
-    background: #fff;
-    padding: 8px 5px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    cursor: pointer;
-    -webkit-transition: background 0.2s ease;
-    -o-transition: background 0.2s ease;
-    transition: background 0.2s ease;
-    position: relative;
-    font-size: 13px;
-    border-bottom: 1px solid #f5f5f5;
-    min-height: 40px;
+  background: #fff;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  position: relative;
+  font-size: 13px;
+  border-bottom: 1px solid #f5f5f5;
+  min-height: 40px;
 `;
 export default class countriesList extends Component {
   componentDidMount() {

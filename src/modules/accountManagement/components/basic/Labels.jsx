@@ -4,16 +4,15 @@ import {
   LargeLabel,
   XSmallLabel,
   XXSmallLabel,
+  XXXSmallLabel,
   SmallLabel,
   XLargeLabel,
-  XXXSmallLabel,
 } from '~/modules/coreUI/components/basic/Labels';
 
 export const PanelTitle = styled(LargeLabel)`
   color:${props => props.theme.colors.primary};
   font-weight: bold;
   font-family: 'Panton', sans-serif;
-  text-transform: capitalize;
 `;
 export const SecondTitle = styled(XLargeLabel)`
   color:${props => props.theme.colors.labels.normal};
@@ -55,26 +54,16 @@ export const ParagraphFooterContent = styled(PanelContentLabel)`
   justify-content: center;
 `;
 
-export const XSmallTitle = styled(XXSmallLabel)`
-  color: ${props => props.theme.colors.labels.important};
-  font-weight:bold;
-`;
-export const XXSmallTitle = styled(XXSmallLabel)`
+export const SocialMediaSectionTitle = styled(XXSmallLabel)`
   color: ${props => props.theme.colors.labels.important};
   font-weight:bold;
 `;
 
-export const XXXSmallTitle = styled(XXXSmallLabel)`
-  color: ${props => props.theme.colors.labels.important};
+export const SocialMediaNameLabel = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.named.white};
   font-weight:bold;
 `;
 
-export const WhiteXSmallTitle = styled(XSmallLabel)`
-  color: ${props => props.theme.colors.invertedLabels.important};
-  font-weight:bold;
-`;
-
-export const WhiteXXXSmallTitle = styled(XXXSmallLabel)`
-  color: ${props => props.theme.colors.invertedLabels.important};
-  font-weight:bold;
+export const SocialMediaPromptLabel = styled(XXXSmallLabel)`
+  color: ${props => props.theme.colors.named.white};
 `;
