@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 import { ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 
@@ -16,6 +17,16 @@ const RecoverPasswordImage = styled(Image)`
   height: unset;
   width: unset;
   max-height: 120px;
+`;
+const DesktopContainer = styled(Row)` 
+  padding: 40px; 
+  border: 1px solid; 
+  border-radius: 7px; 
+  border-color: white; 
+  background-color: ${props => props.theme.colors.named.white}; 
+  @media (max-width: 425px) { 
+    padding: 20px; 
+  } 
 `;
 
 const IMAGE_PATH = '/images/accountManagement/forgetPassword/recoverPassword';

@@ -10,7 +10,6 @@ import { XXSmallSpacer, SmallSpacer, LargeSpacer } from '~/modules/coreUI/compon
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import SocialMedia from '~/modules/accountManagement/containers/socialMedia/SocialMedia';
 
 import LoginForm from './LoginForm';
 
@@ -83,7 +82,6 @@ class LoginFormPanel extends React.Component {
               </ModalLink>
             </CenterAlignedRow>
           </PanelContentMinorLabel>
-          <SocialMedia />
         </ContentContainer>
       </Panel>
     );
