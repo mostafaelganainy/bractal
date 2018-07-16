@@ -11,7 +11,6 @@ const FormMutation = graphql`
     $first_name: String!
     $last_name: String!
     $nationality: String!
-    $country_code: String!
     $mobile_number: String!
     $gender: String!
   ) {
@@ -21,7 +20,6 @@ const FormMutation = graphql`
       first_name: $first_name
       last_name: $last_name
       nationality: $nationality
-      country_code: $country_code
       mobile_number: $mobile_number
       gender: $gender
     ) {
@@ -87,12 +85,6 @@ class SignupForm extends React.Component {
             {
               name: 'nationality',
               placeholder: 'Nationality',
-              input_type: 'textbox',
-              type: 'RequiredString',
-            },
-            {
-              name: 'country_code',
-              placeholder: 'Country Code',
               input_type: 'textbox',
               type: 'RequiredString',
             },

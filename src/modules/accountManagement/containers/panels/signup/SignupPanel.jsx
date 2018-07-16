@@ -32,7 +32,6 @@ const CustomFormLayout = locals => (
       <InputLayout>
         <div>{locals.inputs.nationality}</div>
         <div>{locals.inputs.gender}</div>
-        <div>{locals.inputs.country_code}</div>
         <div>{locals.inputs.password}</div>
       </InputLayout>
     </CenterAlignedColumn>
