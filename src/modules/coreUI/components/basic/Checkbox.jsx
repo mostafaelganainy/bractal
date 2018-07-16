@@ -25,8 +25,8 @@ const StylableCheckbox = styled.input`
   & + label::before {
     cursor: pointer;
     content: "";
-    height: 17px;
-    width: 17px;
+    height: 16px;
+    width: 16px;
     background-color: white;
     border: 1px solid;
     border-color: ${props => props.theme.inputs.borderColor};

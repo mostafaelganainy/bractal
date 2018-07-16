@@ -11,6 +11,8 @@ const EllipsisContainer = styled.div`
   white-space: nowrap;
   word-break: break-all;
 
+  line-height: 1;
+
   border-bottom: ${props => (props.overflow ? 'dotted 1px' : null)};
 
   &:hover .tooltip {

@@ -31,23 +31,18 @@ const PanelsContainer = styled(Row)`
 const ModalContent = styled(Column)`
   ${cssMediaMin.desktop`
     width: 900px;
-    height: 530px;
+    height: 575px;
     padding: 40px;
   `}
 
   align-items: stretch;
-  justify-content: stretch;
+  justify-content: space-between;
 
   background-color: ${props => props.theme.colors.named.white};
 
   border: 1px solid;
   border-radius: 7px;
   border-color: white; 
-`;
-
-const FooterContainer = styled.div`
-  width: 100%;
-  height: 40px;
 `;
 
 const AccountManagementModals = () => (
@@ -65,9 +60,10 @@ const AccountManagementModals = () => (
         <ModalRoute path="/accountManagement/VerifyByEmail" component={VerifyByEmail} />
         <ModalRoute path="/accountManagement/VerifyBySMS" component={VerifyBySMS} />
       </PanelsContainer>
-      <FooterContainer>
+      <Column>
         <ModalRoute path="/accountManagement/login" component={SocialMedia} />
-      </FooterContainer>
+        <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
+      </Column>
     </ModalContent>
   </Modal>
 );

@@ -9,7 +9,10 @@ import renderError from './Errors';
 
 const InputElem = styled.input`
   width: ${props => (props.width ? props.width : '100%')};
-  padding: ${props => props.theme.inputs.padding};
+  padding-left: ${props => props.theme.inputs.padding.left}px;
+  padding-right: ${props => props.theme.inputs.padding.right}px;
+  padding-top: ${props => props.theme.inputs.padding.top}px;
+  padding-bottom: ${props => props.theme.inputs.padding.bottom}px;
 
   border: ${props => props.theme.inputs.borderWidth}px solid;
   border-color: ${props => props.theme.inputs.borderColor};
@@ -53,6 +56,7 @@ export default {
             elemID={attrs.id}
             bold={attrs.importantLabel}
             label={attrs.label}
+            fontSize={attrs.fontSize}
             {...attrs}
           />
           {attrs.checkboxNote &&
@@ -60,7 +64,7 @@ export default {
               <SmallSpacer />
               <TopAlignedRow>
                 <XSmallSpacer />
-                <XSmallLabel color="subtle">
+                <XSmallLabel color="subtle" paragraph>
                   {attrs.checkboxNote}
                 </XSmallLabel>
               </TopAlignedRow>
