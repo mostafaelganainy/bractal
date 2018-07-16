@@ -9,7 +9,6 @@ import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers
 import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
 import { cssMediaMin, cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Image from '~/modules/coreUI/components/basic/Image';
-import { cssMediaMax, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Media from 'react-media';
 
 const customStyles = {
@@ -146,23 +145,6 @@ class Modal extends React.Component {
               </ModalContainer>
             )}
           </Media>
-          <ModalContainer
-            ref={(ref) => { this.modalContainer = ref; }}
-            onClick={e => this.clickedOutsite(e, location, history)}
-          >
-            <RightAlignedColumn>
-              <Media query={mediaQueryMax('tablet')}>
-                {matches => (
-                  matches ? (
-                    <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
-        ) : (
-          <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
-        )
-      )}
-              </Media>
-              {this.props.children}
-            </RightAlignedColumn>
-          </ModalContainer>
         </ReactModal>
       </div>
     );
