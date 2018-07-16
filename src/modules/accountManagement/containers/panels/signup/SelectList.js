@@ -21,10 +21,9 @@ const List = styled.ul`
   background-color: white;
   box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
-  margin-top: 0px;
-  /* top: 100%; */
-  width: 200px;
-  left:34%;
+  width: 100%;
+  margin-top: 29px;
+  left: 0%;
 `;
 const Option = styled.li`
   background: #fff;
@@ -36,6 +35,47 @@ const Option = styled.li`
   font-size: 13px;
   border-bottom: 1px solid #f5f5f5;
   min-height: 40px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  &&:hover{
+    background: #f6f6f6;
+    transition: background 0.2s ease;
+  }
+  img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    margin-right:10px;
+  }
+`;
+const Input = styled.input`
+    border-radius: 0px;
+    margin: 7px;
+    width: 93%;
+    padding: 7px;
+    border: 1px solid;
+    border-color: rgba(0,0,0,0.22);
+    outline: none;
+`;
+const Arrow = styled.div`
+    content: "";
+    height: 11px;
+    width: 11px;
+    background: white;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    transform: rotate(134deg);
+    border-left: 1px solid #d4d4d5bd;
+    border-bottom: 1px solid #d4d4d5bd;
+    z-index: 1000;
+`;
+const ItemName = styled.div`
+text-align:left;
 `;
 export default class countriesList extends Component {
   componentDidMount() {
@@ -65,24 +105,24 @@ export default class countriesList extends Component {
         className="Item"
         onClick={() => this.props.GetSelectedOpt(Item)}
       >
-        {Item.flag}{
+        {this.props.hasFlag ?
           <div className="imgCountry">
             <img src={Item.flag} alt={Item.name} className={Item.name} />
-          </div>
+          </div> : ''}{
       }
-        {Item.callingCodes}{
+
+        <ItemName className="ItemName">{Item.name}</ItemName>
+        {this.props.hasFlag ?
           <div className="codeLbl">
             +{Item.callingCodes}
-          </div>
-        }
-        <div className="ItemName">{Item.name}</div>
+          </div> : ''}
       </Option>
     ));
     return (
       <div>
-        <div className="Arrowul" />
+        <Arrow />
         <List className="dropdown-selection" id="ListItems">
-          <li><input type="text" className="searchInp" id="input" onKeyUp={this.SearchInp} /></li>
+          <li><Input type="text" className="searchInp" id="input" onKeyUp={this.SearchInp} /></li>
           {option}
         </List>
       </div>
@@ -94,4 +134,5 @@ export default class countriesList extends Component {
 countriesList.propTypes = {
   ListItems: PropTypes.arrayOf(PropTypes.any).isRequired,
   GetSelectedOpt: PropTypes.func.isRequired,
+  hasFlag: PropTypes.bool.isRequired,
 };

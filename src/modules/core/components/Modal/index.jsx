@@ -8,7 +8,6 @@ import Icon from '~/modules/coreUI/components/basic/Icon';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
 import { cssMediaMax, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
-import Image from '~/modules/coreUI/components/basic/Image';
 import Media from 'react-media';
 
 const customStyles = {
@@ -30,17 +29,14 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 ReactModal.setAppElement('#root');
 
-const CloseIconImg = styled(Image)`
-    max-width: 15px;
-    @media (max-width: 1024px) {
-      margin-right: 15px;
-  }
-`;
 const CloseIcon = styled(Icon)`
 font-size: 17px !important;
 color: white;
 cursor: pointer;
 z-index: 1;
+@media (max-width: 1024px) {
+      color: black;
+  }
 `;
 
 
@@ -88,8 +84,7 @@ class Modal extends React.Component {
               <Media query={mediaQueryMax('tablet')}>
                 {matches => (
                   matches ? (
-                    <CloseIconImg src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
-
+                    <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
         ) : (
           <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
         )

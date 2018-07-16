@@ -6,32 +6,23 @@ import { PanelContentMinorLabel, PanelContentSmallLabel } from '~/modules/accoun
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import LoginForm from './LoginForm';
+import InputSelect from '../signup/InputSelect';
+import AllCountries from '../../../containers/AllCountries.json';
 
 const InputLayout = styled.div`
   width: 100%;
 `;
-
-const RememberMeCheckbox = styled.div`
-  &&& {
-    span {
-      font-size: ${props => props.theme.fonts.sizes.xSmall}px;
-    }
-  }
-`;
-
 const CustomFormLayout = locals => (
   <InputLayout>
     <div>{locals.inputs.email}</div>
     <div>{locals.inputs.password}</div>
     <Row spaceBetween topAligned fullWidth>
-      <RememberMeCheckbox>
-        {locals.inputs.remember_me}
-      </RememberMeCheckbox>
+      <div>{locals.inputs.remember_me}</div>
       <PanelContentSmallLabel>
         <RightAlignedColumn>
           <ModalLink to="/accountManagement/recoverPassword">
@@ -47,7 +38,13 @@ class LoginFormPanel extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
+    showInput: false,
+    hasFlag: true,
+    CountriesData: [],
   };
+  componentWillMount() {
+    this.setState({ CountriesData: AllCountries });
+  }
 
   onSuccess = (response) => {
     console.log(response);
@@ -59,6 +56,12 @@ class LoginFormPanel extends React.Component {
     this.setState({ isLoading });
   }
 
+  showDropdown =() => {
+    this.setState({ DropdownIsShown: !this.state.DropdownIsShown });
+  };
+  GetSelectedOpt =() => {
+    // alert("vv");
+  };
   render = () => {
     const { panelContentContainer } = this.props;
     const { isLoading, panelError } = this.state;
@@ -81,7 +84,7 @@ class LoginFormPanel extends React.Component {
           <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
             Login
           </BasicButton>
-          <MediumSpacer />
+          <LargeSpacer />
           <PanelContentMinorLabel>
             <CenterAlignedRow>
               By login you agree to our
@@ -91,6 +94,14 @@ class LoginFormPanel extends React.Component {
               </ModalLink>
             </CenterAlignedRow>
           </PanelContentMinorLabel>
+          <InputSelect
+            showInput={!this.state.showInput}
+            GetSelectedOpt={this.GetSelectedOpt}
+            showDropdown={this.showDropdown}
+            CountriesData={this.state.CountriesData}
+            hasFlag={!this.state.hasFlag}
+            width="40%"
+          />
         </ContentContainer>
       </Panel>
     );
