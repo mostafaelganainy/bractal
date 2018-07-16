@@ -12,13 +12,12 @@ import {
 const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
   .item span {
     font-size: 11px;
-    position: relative;
-    top: 4px;
   }
   .ui.top.right.pointing.dropdown>.menu{
     width: 79px;
     padding: 0 15px 7px;
     box-shadow:none;
+    right: -14px;
   }
   .ui.dropdown .menu>.item{
     padding: 8px 0 !important;
@@ -37,8 +36,7 @@ const DropdownCurrencyItems = styled(StyledHeaderDropdownContainer)`
   .ui.dropdown .menu .selected.item, .ui.dropdown.selected{
     background: transparent;
     color: ${props => props.theme.colors.primary};
-  }
-  .selected {
+    font-weight:900;
     position: relative;
     &:after {
       content: "\\F058";

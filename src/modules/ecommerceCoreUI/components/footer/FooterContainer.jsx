@@ -68,6 +68,9 @@ const FooterDetails = styled.div`
   display:flex;
   flex-direction: column;
   width: 50%;
+  ${cssMediaMax.xsmall`
+    width: 100%;
+  `}
 `;
 const DownloadAppItem = styled(DownloadApp)`
   width: 35%;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ExternalLink from '~/modules/coreUI/components/basic/ExternalLink';
+import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
 
 const PaymentWrapper = styled.div`
@@ -10,6 +11,7 @@ const PaymentWrapper = styled.div`
 `;
 const Payment = props => (
   <PaymentWrapper {...props} >
+    <LargeSpacer size={12} />
     <ExternalLink url="#">
       <img src="images/Footer/visa.png" alt="" />
     </ExternalLink>

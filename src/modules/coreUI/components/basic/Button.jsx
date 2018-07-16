@@ -78,7 +78,7 @@ const getClickedBackgorundColor = (props) => {
 };
 
 const ButtonLabelStyle = css`
-  font-size: ${props => props.theme.buttons.fontSize}px;
+  font-size: ${props => props.fontSize || props.theme.buttons.fontSize}px;
 
   color: ${props => getColor(props)};
 
@@ -100,7 +100,7 @@ const Button = styled(Column)`
   
   border: ${props => (props.inverted ? props.theme.buttons.border : 0)}px solid;
   border-color: ${props => getColor(props)};
-  border-radius: ${props => props.theme.buttons.radius}px;
+  border-radius: ${props => props.radius || props.theme.buttons.radius}px;
   
   cursor: pointer;
   
@@ -139,8 +139,8 @@ const ButtonLoadingIcon = styled(FontAwesomeIcon)`
 `;
 
 const PaddingSpacer = styled.div`
-  width: ${props => props.theme.buttons.padding}px;
-  height: ${props => props.theme.buttons.padding}px;
+  width: ${props => props.padding || props.theme.buttons.padding}px;
+  height: ${props => props.padding || props.theme.buttons.padding}px;
 `;
 
 export class BasicButton extends React.Component {
@@ -163,11 +163,11 @@ export class BasicButton extends React.Component {
         {this.props.loading &&
           <ButtonLoadingIcon icon={faSpinner} spin />
         }
-        <PaddingSpacer />
+        <PaddingSpacer padding={this.props.padding} />
         <MediumLabel {...this.props} customStyle={ButtonLabelStyle}>
           {this.props.children}
         </MediumLabel>
-        <PaddingSpacer />
+        <PaddingSpacer padding={this.props.padding} />
       </Button>
     </React.Fragment>
   );
