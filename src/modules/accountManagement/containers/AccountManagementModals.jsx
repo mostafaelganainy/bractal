@@ -31,6 +31,8 @@ const PanelsContainer = styled(Row)`
   flex-grow: 1;
 `;
 
+const backgroundImagePath = '/images/AccountManagement/panel_background/bg.png';
+
 const ModalContent = styled(Column)`
   ${cssMediaMin.desktop`
     width: 900px;
@@ -38,6 +40,7 @@ const ModalContent = styled(Column)`
     padding: 40px;
   `}
 
+  position: relative;
   align-items: stretch;
   justify-content: space-between;
 
@@ -46,6 +49,12 @@ const ModalContent = styled(Column)`
   border: 1px solid;
   border-radius: 7px;
   border-color: white; 
+
+  ${cssMediaMin.desktop`
+    background-image: url(${backgroundImagePath});
+    background-repeat: no-repeat;
+    background-position: right top;
+  `}
 `;
 
 const AccountManagementModals = () => (
