@@ -24,7 +24,13 @@ const RelayInitializer = {
         query: operation.text,
         variables,
       }),
-    }).then(response => response.json()));
+    }).then((response) => {
+      // TODO, handle when response.ok = false
+      console.log(response);
+      return response.json();
+    }).catch((err) => {
+      console.log(err);
+    }));
 
     // 5
     return new Environment({

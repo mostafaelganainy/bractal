@@ -42,6 +42,19 @@ export default {
         {...locals.attrs}
         value={locals.value}
         placeholder={locals.attrs.placeholder}
+        type={locals.attrs.overrideType || 'text'}
+      />
+    ),
+    renderError: locals => renderError(locals),
+  }),
+  password: t.form.Form.templates.textbox.clone({
+    renderInput: locals => (
+      <InputElem
+        {...getGlobalAttrs(locals)}
+        {...locals.attrs}
+        value={locals.value}
+        placeholder={locals.attrs.placeholder}
+        type="password"
       />
     ),
     renderError: locals => renderError(locals),
