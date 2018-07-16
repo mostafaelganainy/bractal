@@ -62,6 +62,7 @@ const ModalContainer = styled.div`
   ${cssMediaMax.tablet`
     position: absolute;
     overflow: auto;
+    overflow-x: hidden;
   `}  
   
   position: relative;
