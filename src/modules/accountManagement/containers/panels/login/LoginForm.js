@@ -68,6 +68,7 @@ class LoginForm extends React.Component {
               name: 'password',
               placeholder: 'Password',
               input_type: 'textbox',
+              overrideType: 'password',
               type: 'RequiredString',
             },
             {

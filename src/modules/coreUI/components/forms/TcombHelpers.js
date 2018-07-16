@@ -5,7 +5,7 @@ import FormLayout from './FormLayout';
 import Templates from './Template';
 
 t.String.getValidationErrorMessage = (value, path) =>
-  `${changeCase.sentenceCase(path[0])} value is invalid`;
+  `${changeCase.sentenceCase(path[0])}, value is invalid`;
 
 const defineSubtype = (type, predicate, getValidationErrorMessage, name) => {
   const Subtype = t.refinement(
@@ -23,7 +23,7 @@ const RequiredString = defineSubtype(
   (val, path) => {
     const field = path && path.length > 0 && path[0];
     if (!val || val.trim().length === 0) {
-      return `${changeCase.sentenceCase(field)} should't be left blank`;
+      return `${changeCase.sentenceCase(field)}, should't be left blank`;
     }
     return null;
   },
@@ -39,7 +39,7 @@ const Email = defineSubtype(
   },
   (val, path) => {
     const field = path && path.length > 0 && path[0];
-    return `${changeCase.sentenceCase(field)} isn't valid`;
+    return `${changeCase.sentenceCase(field)}, isn't valid`;
   },
   'Required',
 );
@@ -67,6 +67,7 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
         label: option.label,
         checkboxNote: option.checkboxNote,
         importantLabel: option.importantLabel,
+        overrideType: option.overrideType,
       },
     };
   });
