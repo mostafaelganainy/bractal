@@ -11,8 +11,11 @@ const logout = (e, invalidateUser) => {
 
 const DummyUserName = props => (
   <React.Fragment>
-    <Label> USER : {(props.userInfo && props.userInfo.firstName) || 'Not Loggedin'} </Label>
-    <BasicButton onClick={e => logout(e, props.invalidateUser)}>
+    <Label> USER : <b>{(props.userInfo && props.userInfo.firstName) || 'Not Loggedin'}</b></Label>
+    <BasicButton
+      disabled={!props.authenticated}
+      onClick={e => logout(e, props.invalidateUser)}
+    >
       Logout
     </BasicButton>
   </React.Fragment>

@@ -87,6 +87,12 @@ const Theme = {
     fontSize: 16,
     padding: 12,
     border: 1, // Only applicable in the inverted state
+    disabled: {
+      backgroundColor: {
+        normal: '#999999',
+        inverted: '#cccccc',
+      },
+    },
   },
 };
 

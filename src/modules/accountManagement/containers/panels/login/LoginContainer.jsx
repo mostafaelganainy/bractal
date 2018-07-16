@@ -4,6 +4,7 @@ import { translate } from 'react-i18next';
 
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { cssMediaMin } from '~/modules/core/utils/cssHelpers/cssMedia';
+import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
 
 import LoginFormPanel from './LoginPanel';
 import SignupPromptPanel from './SignupPromptPanel';
@@ -20,6 +21,7 @@ const PanelContent = styled(CenterAlignedColumn)`
 const Login = () => (
   <React.Fragment>
     <LoginFormPanel panelContentContainer={PanelContent} />
+    <Separator vertical offset="100px" separatorLength="large" separatorColorTone="normal" />
     <SignupPromptPanel panelContentContainer={PanelContent} />
   </React.Fragment>
 );

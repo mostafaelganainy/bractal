@@ -51,10 +51,29 @@ class LoginFormPanel extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
+    isMounted: false,
   };
+
+  componentDidMount = () => {
+    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
+    this.setState({
+      isMounted: true,
+    });
+  }
+
+  componentWillUnmount = () => {
+    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
+    this.setState({
+      isMounted: false,
+    });
+  }
 
   onSuccess = (response) => {
     const { history, location, updateUserInfo } = this.props;
+
+    if (!this.state.isMounted && this.form) {
+      return;
+    }
 
     updateUserInfo({
       token: response.signin_user.token,
@@ -71,6 +90,10 @@ class LoginFormPanel extends React.Component {
 
   onError = (error) => {
     const { invalidateUser } = this.props;
+
+    if (!this.state.isMounted && this.form) {
+      return;
+    }
 
     this.setState({ panelError: error });
 
