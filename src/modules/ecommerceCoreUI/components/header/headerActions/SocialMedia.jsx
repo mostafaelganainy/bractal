@@ -21,10 +21,7 @@ const SocialMediaItem = styled.div`
 const NavSocialMedia = props => (
   <SocialMediaWrapper {...props} >
     {props.title ?
-      <React.Fragment>
-        <SmallTitle>{props.title}</SmallTitle>
-        <LargeSpacer size={12} />
-      </React.Fragment>
+      <SmallTitle>{props.title} <LargeSpacer size={12} /></SmallTitle>
       :
       ' ' }
     <SocialMediaItem>
