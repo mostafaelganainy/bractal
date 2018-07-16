@@ -27,16 +27,15 @@ const Button = styled.button`
   margin-top:2px;
 `;
 const RelativePosition = styled.div`
-position:relative;
-width:${props => (props.width ? props.width : '100%')};
-margin-right:${props => (props.width ? '10px' : '0px')};
+  position:relative;
+  width:${props => (props.width ? props.width : '100%')};
+  margin-right:${props => (props.width ? '10px' : '0px')};
 `;
 const Triangle = styled.span`
-position:absolute;
-top:10px;
-right:10px;
-cursor:pointer;
-
+  position:absolute;
+  top:10px;
+  right:10px;
+  cursor:pointer;
 `;
 
 export default class CountriesCode extends Component {
@@ -47,18 +46,18 @@ export default class CountriesCode extends Component {
     return (
       <RelativePosition width={this.props.width}>
         <Button onClick={this.showDropdown} >
-          {this.props.SelectedImg
-        ? <img src={this.props.SelectedImg} alt={this.props.SelectedItem} />
-        : ''
-        }
-          {this.props.SelectedItem !== ''
-        ?
-          <span className="codeSelected">
-            {this.props.SelectedItem}
-          </span>
-        : ''
-        }
-
+          {this.props.SelectedImg ? (
+            <img src={this.props.SelectedImg} alt={this.props.SelectedItem} />
+          ) : (
+            ''
+          )}
+          {this.props.SelectedItem !== '' ? (
+            <span className="codeSelected">
+              {this.props.SelectedItem}
+            </span>
+          ) : (
+            ''
+          )}
         </Button>
         <Triangle onClick={this.showDropdown} >&#9660;</Triangle>
       </RelativePosition>

@@ -46,6 +46,7 @@ class LoginFormPanel extends React.Component {
     showInput: false,
     hasFlag: true,
     CountriesData: [],
+    DropdownIsShown: false,
   };
   componentWillMount() {
     this.setState({ CountriesData: AllCountries });
@@ -68,7 +69,7 @@ class LoginFormPanel extends React.Component {
   onSuccess = (response) => {
     const { history, location, updateUserInfo } = this.props;
 
-    if (!this.state.isMounted && this.form) {
+    if (!this.state.isMounted || !this.form) {
       return;
     }
 
@@ -147,6 +148,7 @@ class LoginFormPanel extends React.Component {
             showDropdown={this.showDropdown}
             CountriesData={this.state.CountriesData}
             hasFlag={!this.state.hasFlag}
+            DropdownIsShown={this.state.DropdownIsShown}
             width="40%"
           />
         </ContentContainer>
