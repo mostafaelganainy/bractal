@@ -60,7 +60,7 @@ const Button = styled.button`
 const HomeMainSlider = () => (
   <HomeSlider>
     <Item>
-      <View src="http://via.placeholder.com/1016x434" alt="" />
+      <View src="/images/slider-img.png" alt="" />
       <ViewDetails className="details">
         <Header>check the latest</Header>
         <SubHeader>At Nike Shop</SubHeader>
@@ -68,7 +68,7 @@ const HomeMainSlider = () => (
       </ViewDetails>
     </Item>
     <Item>
-      <View src="http://via.placeholder.com/1016x434" alt="" />
+      <View src="/images/slider-img.png" alt="" />
       <ViewDetails className="details">
         <Header>check the latest</Header>
         <SubHeader>At Nike Shop</SubHeader>
@@ -76,7 +76,7 @@ const HomeMainSlider = () => (
       </ViewDetails>
     </Item>
     <Item>
-      <View src="http://via.placeholder.com/1016x434" alt="" />
+      <View src="/images/slider-img.png" alt="" />
       <ViewDetails className="details">
         <Header>check the latest</Header>
         <SubHeader>At Nike Shop</SubHeader>
@@ -84,7 +84,7 @@ const HomeMainSlider = () => (
       </ViewDetails>
     </Item>
     <Item>
-      <View src="http://via.placeholder.com/1016x434" alt="" />
+      <View src="/images/slider-img.png" alt="" />
       <ViewDetails className="details">
         <Header>check the latest</Header>
         <SubHeader>At Nike Shop</SubHeader>
