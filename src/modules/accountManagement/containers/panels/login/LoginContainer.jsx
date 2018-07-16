@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { translate } from 'react-i18next';
+import Media from 'react-media';
 
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { cssMediaMin } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMin, mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
 
 import LoginFormPanel from './LoginPanel';
@@ -18,12 +19,21 @@ const PanelContent = styled(CenterAlignedColumn)`
   justify-content: flex-end;
 `;
 
-const Login = () => (
+const renderSeparator = () => (
+  <Media
+    query={mediaQueryMin('desktop')}
+    render={() => (
+      <Separator vertical offset="100px" separatorLength="large" separatorColorTone="normal" />
+    )}
+  />
+);
+
+const LoginContainer = () => (
   <React.Fragment>
     <LoginFormPanel panelContentContainer={PanelContent} />
-    <Separator vertical offset="100px" separatorLength="large" separatorColorTone="normal" />
+    {renderSeparator()}
     <SignupPromptPanel panelContentContainer={PanelContent} />
   </React.Fragment>
 );
 
-export default translate('accountManagement')(Login);
+export default translate('accountManagement')(LoginContainer);

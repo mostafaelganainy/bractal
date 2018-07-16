@@ -63,7 +63,6 @@ export const StyledProductsSearchInput = styled(Input)`
     flex-grow: 4;
 
     input {
-      line-height: 12px;
       font-size: 14px;
 
       padding: 6px;

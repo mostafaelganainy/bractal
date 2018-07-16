@@ -9,7 +9,7 @@ import EllipsisWithTooltip from '~/modules/coreUI/components/basic/EllipsisWithT
 const InputsIntraSpace = styled(LeftAlignedColumn)`
   width:  100%; 
   height: ${props => props.theme.paddings.xxxLarge}px;
-  padding-left: ${props => props.theme.inputs.padding.left}px;
+  padding-left: ${props => props.theme.inputs.padding.left + 1}px;
   padding-right: ${props => props.theme.inputs.padding.right}px;
   padding-top: ${props => props.theme.paddings.xSmall}px;
 `;
