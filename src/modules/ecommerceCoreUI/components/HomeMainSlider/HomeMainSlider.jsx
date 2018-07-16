@@ -31,31 +31,38 @@ const Item = styled.div`
 `;
 const Header = styled.div`
   color: ${props => props.theme.colors.named.white};
-  font-size: 48px;
+  font-size: ${props => props.theme.fonts.sizes.xxxLarge}px;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 1.1;
   ${cssMediaMax.tablet`
-    font-size: 29px;
+    font-size: ${props => props.theme.fonts.sizes.xLarge}px;
+  `};
+  ${cssMediaMax.xsmall`
+    font-size: 23px;
   `};
 `;
 const SubHeader = styled.div`
   color: ${props => props.theme.colors.named.white};
-  font-size: 36px;
+  font-size:  ${props => props.theme.fonts.sizes.xxLarge}px;
   letter-spacing: -0.4px;
   line-height: 1.1;
-  ${cssMediaMax.tablet`
-    font-size: 21.5px;
+  ${cssMediaMax.xsmall`
+    font-size: 18px;
   `};
 `;
 const Button = styled.button`
   background-color: ${props => props.theme.colors.named.white};
-  color: rgba(0,0,0,0.7);
-  font-size: 18px;
-  border-radius: 5px;
+  color: rgba(0,0,0,0.7); 
+  font-size: 18px; 
+  border-radius: 5px; 
   border: none;
   padding: 11px 18px;
   cursor: pointer;
+  ${cssMediaMax.xsmall`
+    font-size: 13px;
+    padding: 9px 15px;
+  `};
 `;
 const HomeMainSlider = () => (
   <HomeSlider>
