@@ -5,8 +5,10 @@ import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Icon from '~/modules/coreUI/components/basic/Icon';
-import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
+import { cssMediaMin, cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import Image from '~/modules/coreUI/components/basic/Image';
 import { cssMediaMax, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Media from 'react-media';
 
@@ -29,7 +31,25 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 ReactModal.setAppElement('#root');
 
+const TabletCloseIcon = styled(Image)`
+  max-width: 17px;
+  max-height: 17px;
+  
+  position: absolute;
+  top: ${props => props.theme.paddings.xxLarge}px;
+  right: ${props => props.theme.paddings.xxLarge}px;
+  z-index: 3;
+`;
 const CloseIcon = styled(Icon)`
+  &&& {
+    align-self: flex-end;
+    margin-bottom: 5px;
+
+    font-size: 25px !important;
+    color: white;
+    cursor: pointer;
+    z-index: 3;
+  }
 font-size: 17px !important;
 color: white;
 cursor: pointer;
@@ -40,16 +60,35 @@ z-index: 1;
 `;
 
 
-const ModalContainer = styled.div`
+const ModalContainer = styled.div`  
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  
+  ${cssMediaMin.desktop`
+    
+  `}  
+  ${cssMediaMax.tablet`
+    position: absolute;
+    overflow: auto;
+  `}  
+  
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
+  background-color: rgba(0,0,0,0.7);
+  
   ${cssMediaMax.tablet`
     background-color: white;
+  `}
+`;
+
+const ModalContent = styled(CenterAlignedColumn)`
+  ${cssMediaMax.tablet`
+    align-self: flex-start;
+    padding-top: ${props => props.theme.paddings.xxLarge}px;
   `}
 `;
 
@@ -59,12 +98,33 @@ class Modal extends React.Component {
     closeCurrentModal(location, history);
   }
 
-  clickedOutsite = (e, location, history) => {
+  clickedOutsite = (e, location, history, isDesktop) => {
+    if (!isDesktop) {
+      return;
+    }
     // eslint-disable-next-line
     const domNode = ReactDOM.findDOMNode(this.modalContainer);
     if (domNode === e.target) {
       this.closeModal(location, history);
     }
+  }
+  renderContent = () => {
+    const { location, history } = this.props;
+
+    return (
+      <ModalContent >
+        <Media query={mediaQueryMax('tablet')}>
+          {matches => (
+            matches ? (
+              <TabletCloseIcon src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
+            ) : (
+              <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
+            )
+          )}
+        </Media>
+        {this.props.children}
+      </ModalContent>
+    );
   }
 
   render = () => {
@@ -76,6 +136,16 @@ class Modal extends React.Component {
           isOpen
           style={customStyles}
         >
+          <Media query={mediaQueryMin('desktop')}>
+            {matches => (
+              <ModalContainer
+                ref={(ref) => { this.modalContainer = ref; }}
+                onClick={e => this.clickedOutsite(e, location, history, matches)}
+              >
+                {this.renderContent()}
+              </ModalContainer>
+            )}
+          </Media>
           <ModalContainer
             ref={(ref) => { this.modalContainer = ref; }}
             onClick={e => this.clickedOutsite(e, location, history)}

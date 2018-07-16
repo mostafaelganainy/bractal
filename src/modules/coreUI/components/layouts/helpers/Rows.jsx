@@ -27,8 +27,10 @@ const getAlignItems = (props) => {
 
 export const Row = styled.div`
   width: ${props => (props.fullWidth ? '100%' : null)};
+  height: ${props => (props.fullHeight ? '100%' : null)};
   display: flex;
   flex-direction: row;
+  flex-grow: ${props => (props.grow ? 1 : null)};
   justify-content: ${props => getJustifyContent(props) || 'space-around'};
   align-items: ${props => getAlignItems(props) || 'center'};  
 `;

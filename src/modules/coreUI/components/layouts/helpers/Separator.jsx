@@ -63,6 +63,10 @@ const getGenericWidth = (props) => {
 const SeparatorRenderer = styled.div`
   height: ${props => getGenericHeight(props)};
   width: ${props => getGenericWidth(props)};
+
+  margin-top: ${props => (props.vertical ? props.offset : null)};
+  margin-left: ${props => (!props.vertical ? props.offset : null)};
+  
   background-color: ${props => getColor(props) || props.theme.borders.color.light};
   opacity: ${props => props.opacity || 0.4};
 `;

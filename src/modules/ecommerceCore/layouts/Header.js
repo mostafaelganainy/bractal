@@ -16,6 +16,8 @@ import NavLanguage from '~/modules/ecommerceCoreUI/components/header/headerActio
 import NavCurrency from '~/modules/ecommerceCoreUI/components/header/headerActions/NavCurrency';
 import NavProductsSearch from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsSearch';
 
+import DummyUserName from '~/modules/ecommerceCore/components/DummyUserName';
+
 import {
   desktopTopHeaderStyles,
   desktopBottomHeaderStyles,
@@ -107,6 +109,12 @@ const Header = () => {
           {
             itemRenderer: <TabLabel>Department 1</TabLabel>,
             targetURL: 'http://www.facebook.com',
+          },
+          {
+            horizontalSpacer: true,
+          },
+          {
+            itemRenderer: <DummyUserName />,
           },
         ],
         right: [

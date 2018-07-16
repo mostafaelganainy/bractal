@@ -24,7 +24,7 @@ const FooterLinks = ({ links, title }) => (
     {links.map(link => (
       <div className="link-item" key={link.id} >{link.name} <LargeSpacer size={12} /> </div>
     ))}
-    <LargeSpacer />
+    {/* <LargeSpacer /> */}
   </FooterLinksItems>
 );
 

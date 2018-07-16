@@ -9,6 +9,13 @@ import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { MediumLabel } from '~/modules/coreUI/components/basic/Labels';
 
 const getBackgroundColor = (props) => {
+  if (props.disabled) {
+    if (props.inverted) {
+      return props.theme.buttons.disabled.backgroundColor.inverted;
+    }
+    return props.theme.buttons.disabled.backgroundColor.normal;
+  }
+
   if (props.inverted) {
     return props.theme.colors.named.white;
   }
@@ -41,6 +48,13 @@ const getClickedColor = (props) => {
 };
 
 const getHoverBackgroundColor = (props) => {
+  if (props.disabled) {
+    if (props.inverted) {
+      return props.theme.buttons.disabled.backgroundColor.inverted;
+    }
+    return props.theme.buttons.disabled.backgroundColor.normal;
+  }
+
   if (props.inverted) {
     return props.theme.colors.named.white;
   }
@@ -49,6 +63,13 @@ const getHoverBackgroundColor = (props) => {
 };
 
 const getClickedBackgorundColor = (props) => {
+  if (props.disabled) {
+    if (props.inverted) {
+      return props.theme.buttons.disabled.backgroundColor.inverted;
+    }
+    return props.theme.buttons.disabled.backgroundColor.normal;
+  }
+
   if (props.inverted) {
     return props.theme.colors.named.white;
   }
@@ -122,27 +143,35 @@ const PaddingSpacer = styled.div`
   height: ${props => props.theme.buttons.padding}px;
 `;
 
-export const BasicButton = props => (
-  <React.Fragment>
-    <HiddenActualButton {...props} />
-    <Button
-      {...props}
-      centerAlign
-      centerJustify
-      width={props.width}
-    >
-      {props.loading &&
-        <ButtonLoadingIcon icon={faSpinner} spin />
-      }
-      <PaddingSpacer />
-      <MediumLabel {...props} customStyle={ButtonLabelStyle}>
-        {props.children}
-      </MediumLabel>
-      <PaddingSpacer />
-    </Button>
-  </React.Fragment>
-);
+export class BasicButton extends React.Component {
+  onClick = (e) => {
+    if (!this.props.disabled) {
+      this.props.onClick(e);
+    }
+  };
 
+  render = () => (
+    <React.Fragment>
+      <HiddenActualButton {...this.props} />
+      <Button
+        {...this.props}
+        onClick={this.onClick}
+        centerAlign
+        centerJustify
+        width={this.props.width}
+      >
+        {this.props.loading &&
+          <ButtonLoadingIcon icon={faSpinner} spin />
+        }
+        <PaddingSpacer />
+        <MediumLabel {...this.props} customStyle={ButtonLabelStyle}>
+          {this.props.children}
+        </MediumLabel>
+        <PaddingSpacer />
+      </Button>
+    </React.Fragment>
+  );
+}
 
 BasicButton.propTypes = PropTypes.shape({
   iconName: PropTypes.string.isRequired,

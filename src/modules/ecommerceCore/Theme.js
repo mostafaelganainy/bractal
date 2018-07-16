@@ -28,6 +28,7 @@ const Theme = {
   },
   fonts: {
     sizes: {
+      xxxLarge: 48,
       xxLarge: 36,
       xLarge: 25,
       large: 18,
@@ -85,8 +86,14 @@ const Theme = {
   buttons: {
     radius: 5,
     fontSize: 16,
-    padding: 10,
+    padding: 12,
     border: 1, // Only applicable in the inverted state
+    disabled: {
+      backgroundColor: {
+        normal: '#999999',
+        inverted: '#cccccc',
+      },
+    },
   },
 };
 

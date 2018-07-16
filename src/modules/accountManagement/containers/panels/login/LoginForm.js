@@ -15,18 +15,27 @@ const FormMutation = graphql`
       password: $password, 
       remember_me: $remember_me
     ) {
+      token
       client_id
+      expiry
+      user {
+        id
+        first_name
+        last_name
+        email
+      }
       errors {
         field
         messages
       }
-      token
     }
   }
 `;
 
 
 class LoginForm extends React.Component {
+  getValue = () => this.form.getValue();
+
   submitForm = () => {
     this.form.submitForm();
   }
@@ -53,7 +62,7 @@ class LoginForm extends React.Component {
               name: 'email',
               placeholder: 'Email/ Mobile Number',
               input_type: 'textbox',
-              type: 'RequiredString',
+              type: 'Email',
             },
             {
               name: 'password',

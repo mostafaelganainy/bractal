@@ -1,13 +1,15 @@
 import React from 'react';
 import { Trans } from 'react-i18next';
 import styled, { css } from 'styled-components';
+import Media from 'react-media';
+
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { Column, CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { SocialMediaSectionTitle, SocialMediaNameLabel, SocialMediaPromptLabel } from '~/modules/accountManagement/components/basic/Labels';
-import { XXXXXLargeSpacer, MediumSpacer, XXSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { XXXXXLargeSpacer, MediumSpacer, LargeSpacer, XXSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
-import { cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 // TODO: Create one component for all these
 const SocialMediaButton = styled(CenterAlignedColumn)`
@@ -49,9 +51,10 @@ const SocialMediaNameContainer = styled(LeftAlignedColumn)`
   `}
 `;
 
-const LeftIcon = styled(LeftAlignedColumn)`
+const LeftIcon = styled(CenterAlignedColumn)`
     width: 28px;
     font-size: 23px;
+
     @media (max-width:1024px){
       font-size: 27px;
       padding-left: 1px;
@@ -85,36 +88,48 @@ const socialMedias = [
 // TODO: Move each to a separate comp
 export default function SocialMedia() {
   return (
-    <Column justifyCenter centerAligned>
-      <Separator />
+    <Column justifyCenter centerAligned fullWidth>
+      <XXXXXLargeSpacer />
+      <Media
+        query={mediaQueryMin('desktop')}
+        render={() => (
+          <Separator separatorLength="full" separatorColorTone="normal" />
+        )}
+      />
       <XXXXXLargeSpacer />
       <CenterAlignedColumn>
         <SocialMediaSectionTitle>
           <Trans i18nKey="CONNECTWITH" />
         </SocialMediaSectionTitle>
         <MediumSpacer />
+        <CenterAlignedRow>
+          {socialMedias.map(socialMedia => (
+            <SocialMediaButton
+              background={socialMedia.background}
+              isInstagram={socialMedia.isInstagram}
+            >
+              <LeftIcon>
+                <Icon className={socialMedia.icon} />
+              </LeftIcon>
+              <SocialMediaNameContainer>
+                <SocialMediaPromptLabel>
+                  <Trans i18nKey="LogInWith" />
+                </SocialMediaPromptLabel>
+                <XXSmallSpacer />
+                <SocialMediaNameLabel>
+                  {socialMedia.name}
+                </SocialMediaNameLabel>
+              </SocialMediaNameContainer>
+            </SocialMediaButton>
+          ))}
+        </CenterAlignedRow>
+        <Media
+          query={mediaQueryMax('tablet')}
+          render={() => (
+            <LargeSpacer />
+          )}
+        />
       </CenterAlignedColumn>
-      <CenterAlignedRow>
-        {socialMedias.map(socialMedia => (
-          <SocialMediaButton
-            background={socialMedia.background}
-            isInstagram={socialMedia.isInstagram}
-          >
-            <LeftIcon>
-              <Icon className={socialMedia.icon} />
-            </LeftIcon>
-            <SocialMediaNameContainer>
-              <SocialMediaPromptLabel>
-                <Trans i18nKey="LogInWith" />
-              </SocialMediaPromptLabel>
-              <XXSmallSpacer />
-              <SocialMediaNameLabel>
-                {socialMedia.name}
-              </SocialMediaNameLabel>
-            </SocialMediaNameContainer>
-          </SocialMediaButton>
-        ))}
-      </CenterAlignedRow>
     </Column>
   );
 }

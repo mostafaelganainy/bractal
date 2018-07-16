@@ -40,6 +40,8 @@ class RelayForm extends Component {
     this.Form.getComponent(path).validate();
   }
 
+  getValue = () => this.Form.getValue();
+
   save = () => {
     const value = this.Form.getValue();
     this.Form.validate();
@@ -79,9 +81,7 @@ class RelayForm extends Component {
         },
         onCompleted: (response, errors) => {
           this.onLoading(false);
-          const serverErrors = {
-            global: null,
-          };
+          const serverErrors = {};
           const globalError = errors && errors.length > 0 && errors[0];
 
           if (globalError) {
@@ -131,7 +131,7 @@ class RelayForm extends Component {
           }
         }
 
-        const errorsExist = errors && errors.length > 0;
+        const errorsExist = errors && (Object.keys(errors).length > 0 || errors.length > 0);
 
         if (onFormSuccess && !errorsExist) {
           onFormSuccess(response);
