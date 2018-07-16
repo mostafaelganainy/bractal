@@ -15,7 +15,7 @@ const Button = styled.button`
   white-space: nowrap;
   padding-left: ${props => props.theme.paddings.large}px;
   padding-right: ${props => props.theme.paddings.large}px;
-  height:${props => props.theme.paddings.xxxxxLarge + 2}px;
+  height:${props => props.theme.paddings.xxxxxLarge + 4}px;
   border: ${props => props.theme.borders.size.thin}px solid;
   border-color: ${props => props.theme.inputs.borderColor};
   border-radius:${props => props.theme.inputs.radius}px;
@@ -24,7 +24,8 @@ const Button = styled.button`
   border-bottom-right-radius:${props => (props.width ? props.theme.inputs.radius : '0')};
   background-color: white;
   margin-right: ${props => props.theme.inputs.padding.right}px;
-  margin-top:2px;
+  display: flex;
+  align-items: center;
 `;
 const RelativePosition = styled.div`
   position:relative;
@@ -37,6 +38,13 @@ const Triangle = styled.span`
   right:10px;
   cursor:pointer;
 `;
+const Image = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 3px;
+`;
+
 
 export default class CountriesCode extends Component {
   showDropdown = () => {
@@ -46,14 +54,14 @@ export default class CountriesCode extends Component {
     return (
       <RelativePosition width={this.props.width}>
         <Button onClick={this.showDropdown} >
-          {this.props.SelectedImg ? (
-            <img src={this.props.SelectedImg} alt={this.props.SelectedItem} />
+          {this.props.hasFlag ? (
+            <Image src={this.props.SelectedImg} alt={this.props.SelectedItem} />
           ) : (
             ''
           )}
           {this.props.SelectedItem !== '' ? (
             <span className="codeSelected">
-              {this.props.SelectedItem}
+              + {this.props.SelectedItem}
             </span>
           ) : (
             ''
@@ -73,4 +81,5 @@ CountriesCode.propTypes = {
   SelectedItem: PropTypes.string.isRequired,
   SelectedImg: PropTypes.string,
   width: PropTypes.string,
+  hasFlag: PropTypes.bool.isRequired,
 };

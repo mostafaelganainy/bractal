@@ -27,6 +27,10 @@ export default class InputSelect extends Component {
   showDropdown= () => {
     this.props.showDropdown();
   }
+  handleCodeChange = Code => this.props.handleCodeChange(Code);
+  GetSelectedOpt = (Item) => {
+    this.props.GetSelectedOpt(Item);
+  };
   render() {
     return (
       <React.Fragment>
@@ -35,6 +39,8 @@ export default class InputSelect extends Component {
             showDropdown={this.showDropdown}
             hasFlag={this.props.hasFlag}
             width={this.props.width}
+            SelectedImg={this.props.SelectedImg}
+            SelectedItem={this.props.SelectedItem}
           />
           {this.props.showInput ? <Input type="text" placeholder="Mobile number" /> : ''}
           {this.props.DropdownIsShown ? <SelectList ListItems={this.props.CountriesData} GetSelectedOpt={this.props.GetSelectedOpt} hasFlag={this.props.hasFlag} /> : ''}
@@ -52,5 +58,8 @@ InputSelect.propTypes = PropTypes.shape({
   showDropdown: PropTypes.func.isRequired,
   width: PropTypes.string,
   CountriesData: PropTypes.array.isRequired,
+  handleCodeChange: PropTypes.func.isRequired,
+  SelectedItem: PropTypes.string.isRequired,
+  SelectedImg: PropTypes.string.isRequired,
 }).isRequired;
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
 
 import { PanelContentMinorLabel, PanelContentSmallLabel } from '~/modules/accountManagement/components/basic/Labels';
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
@@ -11,9 +10,6 @@ import { SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/he
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
-import { navigateToModal } from '~/modules/core/utils/modalHelpers';
-
 import LoginForm from './LoginForm';
 import InputSelect from '../signup/InputSelect';
 import AllCountries from '../../../containers/AllCountries.json';
@@ -42,63 +38,21 @@ class LoginFormPanel extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
-    isMounted: false,
     showInput: false,
     hasFlag: true,
     CountriesData: [],
-    DropdownIsShown: false,
+    country_code: '',
+
   };
   componentWillMount() {
     this.setState({ CountriesData: AllCountries });
   }
 
-  componentDidMount = () => {
-    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
-    this.setState({
-      isMounted: true,
-    });
-  }
-
-  componentWillUnmount = () => {
-    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
-    this.setState({
-      isMounted: false,
-    });
-  }
-
   onSuccess = (response) => {
-    const { history, location, updateUserInfo } = this.props;
-
-    if (!this.state.isMounted || !this.form) {
-      return;
-    }
-
-    updateUserInfo({
-      token: response.signin_user.token,
-      clientID: response.signin_user.client_id,
-      expiry: response.signin_user.expiry,
-      email: response.signin_user.user.email,
-      firstName: response.signin_user.user.first_name,
-      lastName: response.signin_user.user.last_name,
-      rememberMe: this.form.getValue().remember_me,
-    });
-
-    navigateToModal(location, history, '/accountManagement/loginResult');
+    console.log(response);
   }
 
-  onError = (error) => {
-    const { invalidateUser } = this.props;
-
-    if (!this.state.isMounted && this.form) {
-      return;
-    }
-
-    this.setState({ panelError: error });
-
-    if (error) {
-      invalidateUser();
-    }
-  }
+  onError = error => this.setState({ panelError: error });
 
   setLoadingState = (isLoading) => {
     this.setState({ isLoading });
@@ -107,11 +61,13 @@ class LoginFormPanel extends React.Component {
   showDropdown =() => {
     this.setState({ DropdownIsShown: !this.state.DropdownIsShown });
   };
-  GetSelectedOpt =() => {
-    // alert("vv");
+  GetSelectedOpt =(Item) => {
+    this.setState({ country_code: Item.callingCodes[0] });
+    this.setState({ country_Img: Item.flag });
   };
+
   render = () => {
-    const { panelContentContainer, userInfo } = this.props;
+    const { panelContentContainer } = this.props;
     const { isLoading, panelError } = this.state;
     const ContentContainer = panelContentContainer;
 
@@ -125,8 +81,8 @@ class LoginFormPanel extends React.Component {
           <LoginForm
             ref={(ref) => { this.form = ref; }}
             customLayout={CustomFormLayout}
-            onFormError={error => this.onError(error, userInfo)}
-            onFormSuccess={response => this.onSuccess(response, userInfo)}
+            onFormError={error => this.onError(error)}
+            onFormSuccess={response => this.onSuccess(response)}
             onFormLoading={loading => this.setLoadingState(loading)}
           />
           <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
@@ -147,9 +103,11 @@ class LoginFormPanel extends React.Component {
             GetSelectedOpt={this.GetSelectedOpt}
             showDropdown={this.showDropdown}
             CountriesData={this.state.CountriesData}
-            hasFlag={!this.state.hasFlag}
+            hasFlag={this.state.hasFlag}
             DropdownIsShown={this.state.DropdownIsShown}
             width="40%"
+            SelectedImg={this.state.country_Img}
+            SelectedItem={this.state.country_code}
           />
         </ContentContainer>
       </Panel>
@@ -159,7 +117,6 @@ class LoginFormPanel extends React.Component {
 
 LoginFormPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
-  userInfo: PropTypes.shape({}),
 }).isRequired;
 
-export default withRelayEnvironment(withUserInfo(withRouter(LoginFormPanel)));
+export default withRelayEnvironment(LoginFormPanel);

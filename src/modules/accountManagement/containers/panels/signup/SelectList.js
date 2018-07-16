@@ -22,7 +22,7 @@ const List = styled.ul`
   box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
   width: 100%;
-  margin-top: 29px;
+  margin-top: 31px;
   left: 0%;
 `;
 const Option = styled.li`
@@ -81,6 +81,9 @@ export default class countriesList extends Component {
   componentDidMount() {
     document.getElementById('input').focus();
   }
+  GetSelectedOpt = (item) => {
+    this.props.GetSelectedOpt(item);
+  }
   SearchInp= (event) => {
     event.preventDefault();
     const input = document.getElementById('input');
@@ -89,7 +92,7 @@ export default class countriesList extends Component {
     for (let i = 0; i < lis.length; i += 1) {
       const name = lis[i].getElementsByClassName('ItemName')[0].innerHTML;
       if (name.toUpperCase().indexOf(filter) === 0) {
-        lis[i].style.display = 'list-item';
+        lis[i].style.display = 'flex';
       } else {
         lis[i].style.display = 'none';
       }
@@ -103,7 +106,7 @@ export default class countriesList extends Component {
         value={Item.callingCodes ? Item.callingCodes : Item.name}
         key={Item.name}
         className="Item"
-        onClick={() => this.props.GetSelectedOpt(Item)}
+        onClick={() => this.GetSelectedOpt(Item)}
       >
         {this.props.hasFlag ?
           <div className="imgCountry">
