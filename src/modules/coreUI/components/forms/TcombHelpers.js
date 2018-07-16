@@ -30,8 +30,24 @@ const RequiredString = defineSubtype(
   'Required',
 );
 
+const Email = defineSubtype(
+  RequiredString,
+  (val) => {
+    // eslint-disable-next-line
+    const emailMatch = val && val.search(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    return emailMatch >= 0;
+  },
+  (val, path) => {
+    const field = path && path.length > 0 && path[0];
+    return `${changeCase.sentenceCase(field)} isn't valid`;
+  },
+  'Required',
+);
+
+
 const Types = {
   RequiredString,
+  Email,
   Boolean: t.Boolean,
 };
 

@@ -85,36 +85,37 @@ const socialMedias = [
 // TODO: Move each to a separate comp
 export default function SocialMedia() {
   return (
-    <Column justifyCenter centerAligned>
-      <Separator />
+    <Column justifyCenter centerAligned fullWidth>
+      <XXXXXLargeSpacer />
+      <Separator separatorLength="full" separatorColorTone="normal" />
       <XXXXXLargeSpacer />
       <CenterAlignedColumn>
         <SocialMediaSectionTitle>
           <Trans i18nKey="CONNECTWITH" />
         </SocialMediaSectionTitle>
         <MediumSpacer />
+        <CenterAlignedRow>
+          {socialMedias.map(socialMedia => (
+            <SocialMediaButton
+              background={socialMedia.background}
+              isInstagram={socialMedia.isInstagram}
+            >
+              <LeftIcon>
+                <Icon className={socialMedia.icon} />
+              </LeftIcon>
+              <SocialMediaNameContainer>
+                <SocialMediaPromptLabel>
+                  <Trans i18nKey="LogInWith" />
+                </SocialMediaPromptLabel>
+                <XXSmallSpacer />
+                <SocialMediaNameLabel>
+                  {socialMedia.name}
+                </SocialMediaNameLabel>
+              </SocialMediaNameContainer>
+            </SocialMediaButton>
+          ))}
+        </CenterAlignedRow>
       </CenterAlignedColumn>
-      <CenterAlignedRow>
-        {socialMedias.map(socialMedia => (
-          <SocialMediaButton
-            background={socialMedia.background}
-            isInstagram={socialMedia.isInstagram}
-          >
-            <LeftIcon>
-              <Icon className={socialMedia.icon} />
-            </LeftIcon>
-            <SocialMediaNameContainer>
-              <SocialMediaPromptLabel>
-                <Trans i18nKey="LogInWith" />
-              </SocialMediaPromptLabel>
-              <XXSmallSpacer />
-              <SocialMediaNameLabel>
-                {socialMedia.name}
-              </SocialMediaNameLabel>
-            </SocialMediaNameContainer>
-          </SocialMediaButton>
-        ))}
-      </CenterAlignedRow>
     </Column>
   );
 }

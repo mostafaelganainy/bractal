@@ -85,7 +85,7 @@ const Theme = {
   buttons: {
     radius: 5,
     fontSize: 16,
-    padding: 10,
+    padding: 12,
     border: 1, // Only applicable in the inverted state
   },
 };

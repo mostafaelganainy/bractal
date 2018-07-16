@@ -9,6 +9,7 @@ import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import Login from '~/modules/accountManagement/containers/panels/login/LoginContainer';
+import LoginResult from '~/modules/accountManagement/containers/panels/login/LoginResult';
 import SocialMedia from '~/modules/accountManagement/containers/panels/socialMedia/SocialMedia';
 
 import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
@@ -26,6 +27,8 @@ const PanelsContainer = styled(Row)`
     flex-direction: column;
     align-items: center;
   `}
+
+  flex-grow: 1;
 `;
 
 const ModalContent = styled(Column)`
@@ -50,6 +53,7 @@ const AccountManagementModals = () => (
     <ModalContent>
       <PanelsContainer>
         <ModalRoute path="/accountManagement/login" component={Login} />
+        <ModalRoute path="/accountManagement/loginResult" component={LoginResult} />
         <ModalRoute path="/accountManagement/singup" component={Signup} />
         <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
         <ModalRoute path="/accountManagement/CreateNewPassword" component={CreateNewPassword} />
@@ -60,10 +64,8 @@ const AccountManagementModals = () => (
         <ModalRoute path="/accountManagement/VerifyByEmail" component={VerifyByEmail} />
         <ModalRoute path="/accountManagement/VerifyBySMS" component={VerifyBySMS} />
       </PanelsContainer>
-      <Column>
-        <ModalRoute path="/accountManagement/login" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
-      </Column>
+      <ModalRoute path="/accountManagement/login" component={SocialMedia} />
+      <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
     </ModalContent>
   </Modal>
 );

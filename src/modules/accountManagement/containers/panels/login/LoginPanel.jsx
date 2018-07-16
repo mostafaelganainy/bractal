@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
 import { PanelContentMinorLabel, PanelContentSmallLabel } from '~/modules/accountManagement/components/basic/Labels';
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
@@ -10,6 +11,9 @@ import { SmallSpacer, MediumSpacer } from '~/modules/coreUI/components/layouts/h
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
+import { navigateToModal } from '~/modules/core/utils/modalHelpers';
+
 import LoginForm from './LoginForm';
 
 const InputLayout = styled.div`
@@ -50,17 +54,37 @@ class LoginFormPanel extends React.Component {
   };
 
   onSuccess = (response) => {
-    console.log(response);
+    const { history, location, updateUserInfo } = this.props;
+
+    updateUserInfo({
+      token: response.signin_user.token,
+      clientID: response.signin_user.client_id,
+      expiry: response.signin_user.expiry,
+      email: response.signin_user.user.email,
+      firstName: response.signin_user.user.first_name,
+      lastName: response.signin_user.user.last_name,
+      rememberMe: this.form.getValue().remember_me,
+    });
+
+    navigateToModal(location, history, '/accountManagement/loginResult');
   }
 
-  onError = error => this.setState({ panelError: error });
+  onError = (error) => {
+    const { invalidateUser } = this.props;
+
+    this.setState({ panelError: error });
+
+    if (error) {
+      invalidateUser();
+    }
+  }
 
   setLoadingState = (isLoading) => {
     this.setState({ isLoading });
   }
 
   render = () => {
-    const { panelContentContainer } = this.props;
+    const { panelContentContainer, userInfo } = this.props;
     const { isLoading, panelError } = this.state;
     const ContentContainer = panelContentContainer;
 
@@ -74,8 +98,8 @@ class LoginFormPanel extends React.Component {
           <LoginForm
             ref={(ref) => { this.form = ref; }}
             customLayout={CustomFormLayout}
-            onFormError={error => this.onError(error)}
-            onFormSuccess={response => this.onSuccess(response)}
+            onFormError={error => this.onError(error, userInfo)}
+            onFormSuccess={response => this.onSuccess(response, userInfo)}
             onFormLoading={loading => this.setLoadingState(loading)}
           />
           <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
@@ -99,6 +123,7 @@ class LoginFormPanel extends React.Component {
 
 LoginFormPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
+  userInfo: PropTypes.shape({}),
 }).isRequired;
 
-export default withRelayEnvironment(LoginFormPanel);
+export default withRelayEnvironment(withUserInfo(withRouter(LoginFormPanel)));
