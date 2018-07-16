@@ -12,6 +12,8 @@ import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnv
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import LoginForm from './LoginForm';
 import InputSelect from '../signup/InputSelect';
+
+// ///////////////////////
 import AllCountries from '../../../containers/AllCountries.json';
 
 const InputLayout = styled.div`
@@ -19,7 +21,7 @@ const InputLayout = styled.div`
 `;
 const CustomFormLayout = locals => (
   <InputLayout>
-    <div>{locals.inputs.user_signin}</div>
+    <div>{locals.inputs.email}</div>
     <div>{locals.inputs.password}</div>
     <Row spaceBetween topAligned fullWidth>
       <div>{locals.inputs.remember_me}</div>
@@ -40,8 +42,12 @@ class LoginFormPanel extends React.Component {
     isLoading: false,
     showInput: false,
     hasFlag: true,
+    // ////////////
     CountriesData: [],
     country_code: '',
+    NationalitiesDropdownIsShown: false,
+    DropdownIsShown: false,
+    selectedNationality: '',
 
   };
   componentWillMount() {
@@ -50,49 +56,35 @@ class LoginFormPanel extends React.Component {
 
   onSuccess = (response) => {
     console.log(response);
-    const { history, location, updateUserInfo } = this.props;
-
-    if (!this.state.isMounted || !this.form || !response || !response.signin_user) {
-      return;
-    }
-
-    updateUserInfo({
-      token: response.signin_user.token,
-      clientID: response.signin_user.client_id,
-      expiry: response.signin_user.expiry,
-      email: response.signin_user.user.email,
-      firstName: response.signin_user.user.first_name,
-      lastName: response.signin_user.user.last_name,
-      rememberMe: this.form.getValue().remember_me,
-    });
-
-    navigateToModal(location, history, '/accountManagement/loginResult');
   }
 
   onError = error => this.setState({ panelError: error });
 
-    if (!this.state.isMounted || !this.form) {
-      return;
-    }
-
-    this.setState({ panelError: error });
-
-    if (error) {
-      invalidateUser();
-    }
-  }
-
   setLoadingState = (isLoading) => {
     this.setState({ isLoading });
   }
-
+  // ////////////////////
+  getInputValue =(event) => {
+    /* eslint-disable no-debugger */
+    debugger;
+    this.setState({ SelectedPhone: event.target.value });// eslint-disable-line
+  }
   showDropdown =() => {
     this.setState({ DropdownIsShown: !this.state.DropdownIsShown });
+  };
+  showNationalitiesDropdown =() => {
+    this.setState({ NationalitiesDropdownIsShown: !this.state.NationalitiesDropdownIsShown });
   };
   GetSelectedOpt =(Item) => {
     this.setState({ country_code: Item.callingCodes[0] });
     this.setState({ country_Img: Item.flag });
   };
+  GetSelectedNationality =(Item) => {
+    /* eslint-disable no-debugger */
+    debugger;
+    this.setState({ selectedNationality: Item.name });
+  };
+  // //////////////////////
 
   render = () => {
     const { panelContentContainer } = this.props;
@@ -136,6 +128,19 @@ class LoginFormPanel extends React.Component {
             width="40%"
             SelectedImg={this.state.country_Img}
             SelectedItem={this.state.country_code}
+            getInputValue={this.getInputValue}
+            borderRadius="0px"
+          />
+
+          {/* Nationality */}
+          <InputSelect
+            showInput={this.state.showInput}
+            GetSelectedOpt={this.GetSelectedNationality}
+            showDropdown={this.showNationalitiesDropdown}
+            CountriesData={this.state.CountriesData}
+            hasFlag={!this.state.hasFlag}
+            DropdownIsShown={this.state.NationalitiesDropdownIsShown}
+            SelectedItem={this.state.selectedNationality}
           />
         </ContentContainer>
       </Panel>

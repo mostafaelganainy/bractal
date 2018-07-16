@@ -24,10 +24,12 @@ const Input = styled.input`
     border-bottom-left-radius: 0px;
 `;
 export default class InputSelect extends Component {
+  getInputValue = (event) => {
+    this.props.getInputValue(event);
+  }
   showDropdown= () => {
     this.props.showDropdown();
   }
-  handleCodeChange = Code => this.props.handleCodeChange(Code);
   GetSelectedOpt = (Item) => {
     this.props.GetSelectedOpt(Item);
   };
@@ -41,8 +43,9 @@ export default class InputSelect extends Component {
             width={this.props.width}
             SelectedImg={this.props.SelectedImg}
             SelectedItem={this.props.SelectedItem}
+            borderRadius={this.props.borderRadius}
           />
-          {this.props.showInput ? <Input type="text" placeholder="Mobile number" /> : ''}
+          {this.props.showInput ? <Input type="text" placeholder="Mobile number" onChange={this.getInputValue} /> : ''}
           {this.props.DropdownIsShown ? <SelectList ListItems={this.props.CountriesData} GetSelectedOpt={this.props.GetSelectedOpt} hasFlag={this.props.hasFlag} /> : ''}
         </RelativePosition>
       </React.Fragment>

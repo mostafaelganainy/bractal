@@ -20,8 +20,8 @@ const Button = styled.button`
   border-color: ${props => props.theme.inputs.borderColor};
   border-radius:${props => props.theme.inputs.radius}px;
   outline: none;
-  border-top-right-radius:${props => (props.width ? props.theme.inputs.radius : '0')};
-  border-bottom-right-radius:${props => (props.width ? props.theme.inputs.radius : '0')};
+  border-top-right-radius:${props => (props.borderRadius ? props.borderRadius : props.theme.inputs.radius)};
+  border-bottom-right-radius:${props => (props.borderRadius ? props.borderRadius : props.theme.inputs.radius)};
   background-color: white;
   margin-right: ${props => props.theme.inputs.padding.right}px;
   display: flex;
@@ -46,14 +46,14 @@ const Image = styled.img`
 `;
 
 
-export default class CountriesCode extends Component {
+export default class CustomButton extends Component {
   showDropdown = () => {
     this.props.showDropdown();
   };
   render() {
     return (
       <RelativePosition width={this.props.width}>
-        <Button onClick={this.showDropdown} >
+        <Button onClick={this.showDropdown} borderRadius={this.props.borderRadius} >
           {this.props.hasFlag ? (
             <Image src={this.props.SelectedImg} alt={this.props.SelectedItem} />
           ) : (
@@ -72,14 +72,15 @@ export default class CountriesCode extends Component {
     );
   }
 }
-CountriesCode.defaultProps = {
+CustomButton.defaultProps = {
   SelectedImg: '',
   width: '',
 };
-CountriesCode.propTypes = {
+CustomButton.propTypes = {
   showDropdown: PropTypes.func.isRequired,
   SelectedItem: PropTypes.string.isRequired,
   SelectedImg: PropTypes.string,
   width: PropTypes.string,
   hasFlag: PropTypes.bool.isRequired,
+  borderRadius: PropTypes.string.isRequired,
 };
