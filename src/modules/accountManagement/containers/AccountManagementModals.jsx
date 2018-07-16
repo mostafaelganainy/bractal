@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { translate } from 'react-i18next';
 
 import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
@@ -8,7 +9,8 @@ import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import Login from '~/modules/accountManagement/containers/panels/login/LoginContainer';
-import SocialMedia from '~/modules/accountManagement/components/SocialMedia';
+import LoginResult from '~/modules/accountManagement/containers/panels/login/LoginResult';
+import SocialMedia from '~/modules/accountManagement/containers/panels/socialMedia/SocialMedia';
 
 import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
 import RecoverPassword from '~/modules/accountManagement/containers/panels/RecoverPassword';
@@ -25,17 +27,19 @@ const PanelsContainer = styled(Row)`
     flex-direction: column;
     align-items: center;
   `}
+
+  flex-grow: 1;
 `;
 
 const ModalContent = styled(Column)`
   ${cssMediaMin.desktop`
     width: 900px;
-    height: 530px;
+    height: 575px;
     padding: 40px;
   `}
 
   align-items: stretch;
-  justify-content: stretch;
+  justify-content: space-between;
 
   background-color: ${props => props.theme.colors.named.white};
 
@@ -44,16 +48,12 @@ const ModalContent = styled(Column)`
   border-color: white; 
 `;
 
-const FooterContainer = styled.div`
-  width: 100%;
-  height: 40px;
-`;
-
-export default () => (
+const AccountManagementModals = () => (
   <Modal>
     <ModalContent>
       <PanelsContainer>
         <ModalRoute path="/accountManagement/login" component={Login} />
+        <ModalRoute path="/accountManagement/loginResult" component={LoginResult} />
         <ModalRoute path="/accountManagement/singup" component={Signup} />
         <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
         <ModalRoute path="/accountManagement/CreateNewPassword" component={CreateNewPassword} />
@@ -64,9 +64,10 @@ export default () => (
         <ModalRoute path="/accountManagement/VerifyByEmail" component={VerifyByEmail} />
         <ModalRoute path="/accountManagement/VerifyBySMS" component={VerifyBySMS} />
       </PanelsContainer>
-      <FooterContainer>
-        <ModalRoute path="/accountManagement/login" component={SocialMedia} />
-      </FooterContainer>
+      <ModalRoute path="/accountManagement/login" component={SocialMedia} />
+      <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
     </ModalContent>
   </Modal>
 );
+
+export default translate('accountManagement')(AccountManagementModals);

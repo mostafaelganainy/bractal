@@ -4,6 +4,7 @@ import {
   LargeLabel,
   XSmallLabel,
   XXSmallLabel,
+  XXXSmallLabel,
   SmallLabel,
   XLargeLabel,
 } from '~/modules/coreUI/components/basic/Labels';
@@ -12,7 +13,6 @@ export const PanelTitle = styled(LargeLabel)`
   color:${props => props.theme.colors.primary};
   font-weight: bold;
   font-family: 'Panton', sans-serif;
-  text-transform: capitalize;
 `;
 export const SecondTitle = styled(XLargeLabel)`
   color:${props => props.theme.colors.labels.normal};
@@ -52,4 +52,18 @@ export const ParagraphFooterContent = styled(PanelContentLabel)`
   display: flex;
   padding: 11px;
   justify-content: center;
+`;
+
+export const SocialMediaSectionTitle = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.labels.important};
+  font-weight:bold;
+`;
+
+export const SocialMediaNameLabel = styled(XXSmallLabel)`
+  color: ${props => props.theme.colors.named.white};
+  font-weight:bold;
+`;
+
+export const SocialMediaPromptLabel = styled(XXXSmallLabel)`
+  color: ${props => props.theme.colors.named.white};
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Dropdown from '~/modules/coreUI/components/basic/Dropdown';
 
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
+import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 
 import {
   SearchDropdownTriggerStyles,
@@ -11,14 +11,14 @@ import {
 
 const DepartmentDropdown = ({ departments }) => (
   <StyledProductSearchDropdownContainer>
-    <CenterAlignedColumn>
+    <Column fullWidth stretchAlign>
       <Dropdown
         options={departments}
         pointing="top left"
         customTriggerLabelStyles={SearchDropdownTriggerStyles}
         onChange={this.onChange}
       />
-    </CenterAlignedColumn>
+    </Column>
   </StyledProductSearchDropdownContainer>
 );
 

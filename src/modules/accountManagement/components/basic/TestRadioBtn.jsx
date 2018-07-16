@@ -30,11 +30,11 @@ const Person = t.struct({
 });
 
 const myTemplate = t.form.Form.templates.radio.clone({
-  renderVertical: locals => (
+  renderVertical: () => (
     <RadioElm>
       <span>Gender</span>
-      <label htmlFor="female"><input type="radio" name="gender" value="0" id="female" />{locals.isChecked === true ? <img src="/images/AccountManagement/female-copy.png" alt="female" /> : <img src="/images/AccountManagement/female.png" alt="female" />}</label>
-      <label htmlFor="male"><input type="radio" name="gender" value="1" id="male" />{locals.isChecked === false ? <img src="/images/AccountManagement/male-copy.png" alt="male" /> : <img src="/images/AccountManagement/male.png" alt="male" />}</label>
+      <label htmlFor="female"><input type="radio" name="gender" value="0" id="female" /><i className="icon-male" /></label>
+      <label htmlFor="male"><input type="radio" name="gender" value="1" id="male" /><i className="icon-female" /></label>
     </RadioElm>
   ),
 });

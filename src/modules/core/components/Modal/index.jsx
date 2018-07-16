@@ -36,6 +36,13 @@ const CloseIconImg = styled(Image)`
       margin-right: 15px;
   }
 `;
+const CloseIcon = styled(Icon)`
+font-size: 17px !important;
+color: white;
+cursor: pointer;
+z-index: 1;
+`;
+
 
 const ModalContainer = styled.div`
   width: 100%;
@@ -83,10 +90,10 @@ class Modal extends React.Component {
                   matches ? (
                     <CloseIconImg src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
 
-                  ) : (
-                    <Icon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
-                  )
-                )}
+        ) : (
+          <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
+        )
+      )}
               </Media>
               {this.props.children}
             </RightAlignedColumn>

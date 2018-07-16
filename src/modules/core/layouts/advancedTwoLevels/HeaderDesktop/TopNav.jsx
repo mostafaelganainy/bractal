@@ -11,7 +11,8 @@ const SubMenuContainer = styled.div`
 `;
 
 const CenteredSubMenuContainer = styled(SubMenuContainer)`
-  justify-content: space-around;
+  justify-content: stretch;
+  flex-grow: 1;
 `;
 
 const BorderLessHeader = styled.div`  

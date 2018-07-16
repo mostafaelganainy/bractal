@@ -1,17 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 
-const CloseIcon = styled.i`
-    font-size: 17px !important;
-    color: white;
-    cursor: pointer;
-    z-index: 1;
-`;
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions,
+ jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 
 const Icon = props => (
-  <CloseIcon className={props.className} {...props} onClick={props.onClick} />
+  <i className={props.className} {...props} onClick={props.onClick} />
 );
 
 Icon.propTypes = PropTypes.shape({

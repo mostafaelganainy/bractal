@@ -35,6 +35,7 @@ const Theme = {
       small: 14,
       xSmall: 12,
       xxSmall: 11,
+      xxxSmall: 9.5,
     },
   },
   paddings: {
@@ -73,14 +74,25 @@ const Theme = {
     borderColor: 'rgba(0,0,0,0.22)',
     borderColorActive: '#33a8ff',
     color: 'rgba(0, 0, 0, 0.5)',
-    padding: '12px 15px',
+    padding: {
+      top: 12,
+      bottom: 12,
+      left: 15,
+      right: 15,
+    },
     borderWidth: 1,
   },
   buttons: {
     radius: 5,
     fontSize: 16,
-    padding: 15,
+    padding: 12,
     border: 1, // Only applicable in the inverted state
+    disabled: {
+      backgroundColor: {
+        normal: '#999999',
+        inverted: '#cccccc',
+      },
+    },
   },
 };
 
