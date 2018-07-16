@@ -17,7 +17,7 @@ const settings = {
   arrows: false,
   responsive: [
     {
-      breakpoint: mediaSizesMax.mobile,
+      breakpoint: mediaSizesMax.tablet,
       settings: {
         centerMode: false,
       },

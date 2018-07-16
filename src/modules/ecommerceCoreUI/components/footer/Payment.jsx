@@ -16,6 +16,12 @@ const Payment = props => (
     <ExternalLink url="#">
       <img src="images/Footer/master.png" alt="" />
     </ExternalLink>
+    <ExternalLink url="#">
+      <img src="images/Footer/visa-s.png" alt="" />
+    </ExternalLink>
+    <ExternalLink url="#">
+      <img src="images/Footer/mastercard.png" alt="" />
+    </ExternalLink>
   </PaymentWrapper>
 );
 

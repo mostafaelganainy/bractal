@@ -21,20 +21,16 @@ const linkList1 = [
   { name: 'Factories' },
 ];
 const linkList2 = [
-  { name: 'About Us' },
-  { name: 'FAQs' },
-  { name: 'Terms of Use' },
-  { name: 'Delivery Information' },
+  { name: 'Terms & Conditions' },
   { name: 'Privacy & Policy' },
-  { name: 'Order & Return' },
+  { name: 'Return & Refund Policy' },
+  { name: 'FAQs' },
+  { name: 'Ask AYK' },
 ];
 const linkList3 = [
-  { name: 'Login' },
-  { name: 'Register' },
-  { name: 'My Shopping Cart' },
-  { name: 'My Wishlist' },
-  { name: 'Checkout' },
-  { name: 'Track My Order' },
+  { name: 'About Us' },
+  { name: 'Contact Us' },
+  { name: 'Jois As A Business' },
 ];
 const FooterWrapper = styled.div`
   background: #faf9f9;
@@ -97,7 +93,7 @@ const SocialMediaItems = styled(SocialMedia)`
     `}
 `;
 const PaymentContent = styled(Payment)`
-  margin-left: 55px;
+  margin-left: 45px;
 `;
 
 const renderForDesktop = () => (

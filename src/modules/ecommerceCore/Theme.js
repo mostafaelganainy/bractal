@@ -28,6 +28,7 @@ const Theme = {
   },
   fonts: {
     sizes: {
+      xxxLarge: 48,
       xxLarge: 36,
       xLarge: 25,
       large: 18,
