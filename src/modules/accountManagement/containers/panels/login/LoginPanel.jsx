@@ -30,7 +30,7 @@ const RememberMeCheckbox = styled.div`
 
 const CustomFormLayout = locals => (
   <InputLayout>
-    <div>{locals.inputs.email}</div>
+    <div>{locals.inputs.user_signin}</div>
     <div>{locals.inputs.password}</div>
     <Row spaceBetween topAligned fullWidth>
       <RememberMeCheckbox>

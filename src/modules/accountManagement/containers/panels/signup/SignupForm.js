@@ -62,7 +62,7 @@ class SignupForm extends React.Component {
           fields: [
             {
               name: 'email',
-              placeholder: 'Email/ Mobile Number',
+              placeholder: 'Email/Mobile Number',
               input_type: 'textbox',
               type: 'RequiredString',
             },
