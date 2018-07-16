@@ -71,7 +71,7 @@ class LoginFormPanel extends React.Component {
   onSuccess = (response) => {
     const { history, location, updateUserInfo } = this.props;
 
-    if (!this.state.isMounted && this.form) {
+    if (!this.state.isMounted || !this.form || !response || !response.signin_user) {
       return;
     }
 
@@ -91,7 +91,7 @@ class LoginFormPanel extends React.Component {
   onError = (error) => {
     const { invalidateUser } = this.props;
 
-    if (!this.state.isMounted && this.form) {
+    if (!this.state.isMounted || !this.form) {
       return;
     }
 
