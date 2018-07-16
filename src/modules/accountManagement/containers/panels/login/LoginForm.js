@@ -6,12 +6,12 @@ import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 
 const FormMutation = graphql`
   mutation LoginFormMutation (
-    $email: String!,
+    $user_signin: String!,
     $password: String!,
     $remember_me: Boolean!
   ) {
     signin_user(
-      email: $email, 
+      user_signin: $user_signin, 
       password: $password, 
       remember_me: $remember_me
     ) {
@@ -59,15 +59,16 @@ class LoginForm extends React.Component {
           customLayout,
           fields: [
             {
-              name: 'email',
-              placeholder: 'Email/ Mobile Number',
+              name: 'user_signin',
+              placeholder: 'Email/Mobile Number',
               input_type: 'textbox',
-              type: 'Email',
+              type: 'RequiredString',
             },
             {
               name: 'password',
               placeholder: 'Password',
               input_type: 'textbox',
+              overrideType: 'password',
               type: 'RequiredString',
             },
             {

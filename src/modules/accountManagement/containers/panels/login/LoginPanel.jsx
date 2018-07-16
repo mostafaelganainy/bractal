@@ -23,7 +23,7 @@ const InputLayout = styled.div`
 `;
 const CustomFormLayout = locals => (
   <InputLayout>
-    <div>{locals.inputs.email}</div>
+    <div>{locals.inputs.user_signin}</div>
     <div>{locals.inputs.password}</div>
     <Row spaceBetween topAligned fullWidth>
       <div>{locals.inputs.remember_me}</div>
@@ -69,7 +69,7 @@ class LoginFormPanel extends React.Component {
   onSuccess = (response) => {
     const { history, location, updateUserInfo } = this.props;
 
-    if (!this.state.isMounted || !this.form) {
+    if (!this.state.isMounted || !this.form || !response || !response.signin_user) {
       return;
     }
 
@@ -89,7 +89,7 @@ class LoginFormPanel extends React.Component {
   onError = (error) => {
     const { invalidateUser } = this.props;
 
-    if (!this.state.isMounted && this.form) {
+    if (!this.state.isMounted || !this.form) {
       return;
     }
 

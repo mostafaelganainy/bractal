@@ -89,7 +89,11 @@ class RelayForm extends Component {
           }
           if (response && response[mutationRoot] && response[mutationRoot].errors) {
             response[mutationRoot].errors.forEach((error) => {
-              serverErrors[error.field] = `${changeCase.sentenceCase(error.field)} ${error.messages[0]}`;
+              let workAROUND = error.field;
+              if (workAROUND === 'email') {
+                workAROUND = 'user_signin';
+              }
+              serverErrors[workAROUND] = `${changeCase.sentenceCase(error.field)} ${error.messages[0]}`;
             });
           }
 
@@ -183,6 +187,7 @@ RelayForm.propTypes = PropTypes.shape({
       type: PropTypes.string.isRequired,
       placeholder: PropTypes.string,
       label: PropTypes.string,
+      overrideType: PropTypes.string,
     })),
     customLayout: PropTypes.func,
   }).isRequired,

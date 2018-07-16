@@ -55,7 +55,7 @@ const RecoverPasswords = () => (
                 fields: [
                   {
                     name: 'email',
-                    placeholder: 'Email/ Mobile Number',
+                    placeholder: 'Email/Mobile Number',
                     input_type: 'textbox',
                     type: 'RequiredString',
                   },
