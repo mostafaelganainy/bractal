@@ -19,7 +19,7 @@ const InputLayout = styled.div`
 `;
 const CustomFormLayout = locals => (
   <InputLayout>
-    <div>{locals.inputs.email}</div>
+    <div>{locals.inputs.user_signin}</div>
     <div>{locals.inputs.password}</div>
     <Row spaceBetween topAligned fullWidth>
       <div>{locals.inputs.remember_me}</div>
@@ -50,9 +50,37 @@ class LoginFormPanel extends React.Component {
 
   onSuccess = (response) => {
     console.log(response);
+    const { history, location, updateUserInfo } = this.props;
+
+    if (!this.state.isMounted || !this.form || !response || !response.signin_user) {
+      return;
+    }
+
+    updateUserInfo({
+      token: response.signin_user.token,
+      clientID: response.signin_user.client_id,
+      expiry: response.signin_user.expiry,
+      email: response.signin_user.user.email,
+      firstName: response.signin_user.user.first_name,
+      lastName: response.signin_user.user.last_name,
+      rememberMe: this.form.getValue().remember_me,
+    });
+
+    navigateToModal(location, history, '/accountManagement/loginResult');
   }
 
   onError = error => this.setState({ panelError: error });
+
+    if (!this.state.isMounted || !this.form) {
+      return;
+    }
+
+    this.setState({ panelError: error });
+
+    if (error) {
+      invalidateUser();
+    }
+  }
 
   setLoadingState = (isLoading) => {
     this.setState({ isLoading });
