@@ -17,6 +17,7 @@ const SocialMediaWrapper = styled.div`
 `;
 const SocialMediaItem = styled.div`
   display: flex;
+  justify-content: ${props => props.alignment || 'flex-start'};  
 `;
 const NavSocialMedia = props => (
   <SocialMediaWrapper {...props} >
@@ -27,7 +28,7 @@ const NavSocialMedia = props => (
       </React.Fragment>
       :
       ' ' }
-    <SocialMediaItem>
+    <SocialMediaItem {...props} >
       <ExternalLink url="http://www.google.com">
         <i
           className="icon-fb"
@@ -58,8 +59,10 @@ export default NavSocialMedia;
 
 NavSocialMedia.propTypes = {
   title: PropTypes.string,
+  alignment: PropTypes.string,
 };
 
 NavSocialMedia.defaultProps = {
   title: ' ',
+  alignment: ' ',
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Accordion } from 'semantic-ui-react';
 import styled from 'styled-components';
+import DropDownElementAccount from './DropDownElementAccount';
+import DropDownTracks from './DropDownTracks';
 
 const AccordionList = styled.div`
   background: #148ce5;
@@ -58,17 +60,19 @@ const AccordionMainList = styled.div`
         border-radius: 50%;
       }
       :before {
-        content : '+';
+        content : '\\e811';
+        font-family: fontello, sans-serif;
         position: absolute;
         right: 13px;
         top: 10px;
+        font-size: 10px;
       }
       i{
         display: none;
       }
     }
     .title.active:before{
-      content : '-';
+      content : '\\e813';
     }
     .content .title {
       i{
@@ -100,47 +104,15 @@ const AccordionMainList = styled.div`
   }
 `;
 // Account
-const AccountContentList = [
-  { name: 'My profile', icon: 'icon-heart' },
-  { name: 'My orders', icon: 'icon-heart' },
-  { name: 'Shopping cart', icon: 'icon-heart' },
-  { name: 'Recently viewed', icon: 'icon-heart' },
-  { name: 'Notifications and messages', icon: 'icon-heart' },
-  { name: 'Wishlist', icon: 'icon-heart' },
-  { name: 'Smart cart', icon: 'icon-heart' },
-  { name: 'Following', icon: 'icon-heart' },
-  { name: 'My points and loyalty program', icon: 'icon-heart' },
-  { name: 'My coupons and promo codes', icon: 'icon-heart' },
-  { name: 'Settings', icon: 'icon-heart' },
-  { name: 'Invite friends', icon: 'icon-heart' },
-  { name: 'Customer services', icon: 'icon-heart' },
-];
-const AccountContentListItems = AccountContentList.map((item, index) =>
-  <li key={index.id}><i className={item.icon} />{item.name}</li>);
 const AccountContent = (
   <AccordionList>
-    <ul>
-      {AccountContentListItems}
-    </ul>
+    <DropDownElementAccount />
   </AccordionList>
 );
 // Tracks
-const TracksContentList = [
-  { name: 'Products', icon: 'icon-heart' },
-  { name: 'Shops', icon: 'icon-heart' },
-  { name: 'Homemade', icon: 'icon-heart' },
-  { name: 'Health Park', icon: 'icon-heart' },
-  { name: 'Education Park', icon: 'icon-heart' },
-  { name: 'Factories', icon: 'icon-heart' },
-];
-const TracksContentListItems = TracksContentList.map((item, index) =>
-  <li key={index.id}><i className={item.icon} />{item.name}</li>);
-
 const TracksContent = (
   <AccordionList>
-    <ul>
-      {TracksContentListItems}
-    </ul>
+    <DropDownTracks />
   </AccordionList>
 );
 
@@ -238,7 +210,7 @@ const rootPanels = [
 
 const DropdownElement = () => (
   <AccordionMainList>
-    <Accordion defaultActiveIndex={3} panels={rootPanels} inverted />
+    <Accordion panels={rootPanels} inverted />
   </AccordionMainList>
 );
 
