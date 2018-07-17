@@ -2,21 +2,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react';
-import { Image, Dropdown } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 
 import { LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { IconOnlyButton } from '~/modules/ecommerceCoreUI/components/basic/Buttons';
-// import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
-
-
-// import userAuthurization from '../../../../accountManagement/utilities/AccountManagement';
 
 const DropdownContentItems = styled(Dropdown)`
   &.dropdown>.menu {
@@ -37,17 +33,25 @@ const DropdownContentItems = styled(Dropdown)`
     }
   }
 `;
+const UserloggedinContent = styled.div`
+  font-size: 16px;
+  color: #000;
+  text-transform: capitalize;
+  i {
+    font-size:30px;
+    color:#B2B2B2;
+  }
+`;
 
 const NavUserProfile = (props) => {
   const logout = (e, invalidateUser) => {
     e.stopPropagation();
     invalidateUser();
   };
-  // const Token = userAuthurization();
   let userImage = '';
   // eslint-disable-next-line
   if (props.authenticated) {
-    userImage = <Image src="/images/Header/userloggedIn.png" />;
+    userImage = <IconOnlyButton primary iconName="icon-userloggedin" size={28} />;
   } else {
     userImage = (
       <IconOnlyButton primary iconName="icon-user" size={28} />
@@ -56,22 +60,22 @@ const NavUserProfile = (props) => {
   const AccountItems = [
     {
       name: 'My profile',
-      icon: 'icon-heart',
+      icon: 'icon-profile',
       guestView: false,
     },
     {
       name: 'My orders',
-      icon: 'icon-heart',
+      icon: 'icon-list',
       guestView: false,
     },
     {
       name: 'Shopping cart',
-      icon: 'icon-heart',
+      icon: 'icon-shop',
       guestView: true,
     },
     {
       name: 'Recent viewed',
-      icon: 'icon-heart',
+      icon: 'icon-view',
       guestView: true,
     },
     {
@@ -81,7 +85,7 @@ const NavUserProfile = (props) => {
     },
     {
       name: 'Smart cart',
-      icon: 'icon-heart',
+      icon: 'icon-smart-cart',
       guestView: false,
     },
     {
@@ -91,32 +95,32 @@ const NavUserProfile = (props) => {
     },
     {
       name: 'Following',
-      icon: 'icon-heart',
+      icon: 'icon-follow-shop',
       guestView: true,
     },
     {
       name: 'My points and loyalty program',
-      icon: 'icon-heart',
+      icon: 'icon-loyalty',
       guestView: false,
     },
     {
       name: 'My coupons and promo codes',
-      icon: 'icon-heart',
+      icon: 'icon-promo',
       guestView: false,
     },
     {
       name: 'Settings',
-      icon: 'icon-heart',
+      icon: 'icon-setting',
       guestView: true,
     },
     {
       name: 'Invite friends',
-      icon: 'icon-heart',
+      icon: 'icon-invite',
       guestView: false,
     },
     {
       name: 'Customer service',
-      icon: 'icon-heart',
+      icon: 'icon-customer',
       guestView: true,
     },
   ];
@@ -132,7 +136,15 @@ const NavUserProfile = (props) => {
           <Dropdown.Item>
             <LargeSpacer />
             {props.authenticated ?
-              (props.userInfo.firstName)
+              (
+                <UserloggedinContent>
+                  <CenterAlignedRow>
+                    <i className="icon-userloggedin" />
+                    <LargeSpacer size={8} />
+                    {props.userInfo.firstName}
+                  </CenterAlignedRow>
+                </UserloggedinContent>
+              )
               :
               (
                 <BasicButton
