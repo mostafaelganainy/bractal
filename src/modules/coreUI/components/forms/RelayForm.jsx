@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { commitMutation } from 'react-relay';
-import changeCase from 'change-case';
 
 
 import t from 'tcomb-form';
@@ -93,7 +92,7 @@ class RelayForm extends Component {
               if (workAROUND === 'email') {
                 workAROUND = 'user_signin';
               }
-              serverErrors[workAROUND] = `${changeCase.sentenceCase(error.field)} ${error.messages[0]}`;
+              [serverErrors[workAROUND]] = error.messages;
             });
           }
 
