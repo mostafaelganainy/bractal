@@ -47,6 +47,7 @@ class InputSelect extends Component {
   state = {
     selectedValue: null,
     optionsMap: {},
+    dropdownShown: false,
   }
 
   // CHange this to reduceStatefromProps
@@ -62,12 +63,19 @@ class InputSelect extends Component {
   }
 
   onListItemSelected = (item) => {
-    this.setState({
-      selectedValue: item.value,
-    });
+    if (item != null) { // It comes as null, when the list
+      // want to abort the operation, without any change to the selected item
+      this.setState({
+        selectedValue: item.value,
+      });
+    }
+    setTimeout( // Giving it a moment, so that focus is taken correctly on the button
+      () => this.buttonRef.focus(),
+      10,
+    );
   }
   onKeyUp = (e) => {
-    const controls = ['ArrowUp', 'ArroDown', ' ', 'Enter'].includes(e.key);
+    const controls = ['ArrowUp', 'ArrowDown', ' ', 'Enter'].includes(e.key);
     const chars = e.key.search(/[a-zA-Z]/) >= 0;
     if (controls) {
       this.showDropdown();
@@ -75,6 +83,16 @@ class InputSelect extends Component {
       // this.props.onKeydown(e.key, true);
     }
   };
+  onDropdownShown = () => {
+    this.setState({
+      dropdownShown: true,
+    });
+  }
+  onDropdownHidden = () => {
+    this.setState({
+      dropdownShown: false,
+    });
+  }
   getSelectedItemImage = () => {
     const { optionsMap, selectedValue } = this.state;
     const { getSelectedItemImage } = this.props;
@@ -134,14 +152,14 @@ class InputSelect extends Component {
           <SelectButton
             ref={(ref) => { this.buttonRef = ref; }}
             label={this.getSelectedItemLabel()}
-            actAsInFocus={false}
+            actAsInFocus={this.state.dropdownShown}
             placeholder={showInput ? 'Select' : placeholder}
             image={this.getSelectedItemImage()}
             width={showInput ? `${selectButtonRatio}%` : '100%'}
             rightBorderRadius={showInput ? '0px' : null}
             fontSize={showInput ? theme.fonts.sizes.xSmall : null}
             dropIconDistanceFromRight={showInput && theme.paddings.medium}
-            onClick={this.toggleDropdown}
+            onMouseDown={this.toggleDropdown}
             onKeyUp={this.onKeyUp}
           />
           {showInput &&
@@ -158,8 +176,10 @@ class InputSelect extends Component {
           <SelectList
             ref={(ref) => { this.listRef = ref; }}
             options={options}
+            selectedValue={this.state.selectedValue}
             onItemSelected={this.onListItemSelected}
-            onCloseListRequested={this.closeDropdown}
+            onDropdownShown={this.onDropdownShown}
+            onDropdownHidden={this.onDropdownHidden}
           />
         </RelativePosition>
       </React.Fragment>

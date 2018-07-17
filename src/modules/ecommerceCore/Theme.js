@@ -9,6 +9,8 @@ const Theme = {
     secondaryClicked: '#fc9430',
     secondaryDark: '#cc790e',
     error: '#D32f2f',
+    cellHoverColor: 'rgba(48, 157, 224, 0.1)',
+    cellHoverColorAlt: 'rgba(48, 157, 224, 0.2)',
     link: '#309de0',
     labels: {
       important: '#000000',

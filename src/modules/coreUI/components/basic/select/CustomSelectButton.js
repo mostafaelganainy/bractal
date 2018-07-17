@@ -19,6 +19,24 @@ const getBorderColor = (props, forceFocusMode) => {
   return props.theme.inputs.borderColor;
 };
 
+const DropdownIconContainer = styled(CenterAlignedColumn)`
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: ${props => props.dropIconDistanceFromRight || props.theme.paddings.xLarge}px;  
+
+  justify-content: center;
+  
+  cursor: pointer;
+
+  i {
+    line-height: 1;
+    font-size: 8px;
+
+    color: ${props => getBorderColor(props)};
+  }
+`;
+
 const Button = styled.button`
   display: flex;
   position: relative;  
@@ -52,11 +70,19 @@ const Button = styled.button`
     width: 20px;
     height: 20px;
 
+    margin-top: 1px;
+    margin-left: -2px;
+    margin-right: 2px;
+
     border-radius: 50%;    
   }
 
   &:focus {
     border: solid ${props => props.theme.inputs.borderWidth}px ${props => getBorderColor(props, true)};
+  }
+
+  &:focus i {
+    color: ${props => getBorderColor(props, true)};
   }
 `;
 
@@ -67,24 +93,6 @@ const ButtonContainer = styled(CenterAlignedRow)`
   align-items: stretch;
 `;
 
-const DropdownIconContainer = styled(CenterAlignedColumn)`
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  right: ${props => props.dropIconDistanceFromRight || props.theme.paddings.xLarge}px;  
-
-  justify-content: center;
-  
-  cursor: pointer;
-
-  i {
-    line-height: 1;
-    font-size: 8px;
-
-    color: ${props => props.theme.inputs.borderColor};
-  }
-`;
-
 // eslint-disable-next-line
 class CustomButton extends React.Component {
   focus = () => {
@@ -93,7 +101,7 @@ class CustomButton extends React.Component {
   render = () => {
     const {
       width,
-      onClick,
+      onMouseDown,
       rightBorderRadius,
       image,
       label,
@@ -109,7 +117,7 @@ class CustomButton extends React.Component {
     return (
       <ButtonContainer
         width={width}
-        onClick={onClick}
+        onMouseDown={onMouseDown}
         onKeyUp={onKeyUp}
         visible={visible}
       >
@@ -124,10 +132,13 @@ class CustomButton extends React.Component {
           {image}
           <XSmallSpacer />
           {label || placeholder}
+          <DropdownIconContainer
+            dropIconDistanceFromRight={dropIconDistanceFromRight}
+            actAsInFocus={actAsInFocus}
+          >
+            <Icon name="chevron down" />
+          </DropdownIconContainer>
         </Button>
-        <DropdownIconContainer dropIconDistanceFromRight={dropIconDistanceFromRight}>
-          <Icon name="chevron down" />
-        </DropdownIconContainer>
       </ButtonContainer>
     );
   };
@@ -150,7 +161,7 @@ CustomButton.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   width: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onMouseDown: PropTypes.func.isRequired,
   onKeyUp: PropTypes.func.isRequired,
   rightBorderRadius: PropTypes.string,
   dropIconDistanceFromRight: PropTypes.number,

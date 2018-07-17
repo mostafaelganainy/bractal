@@ -45,6 +45,7 @@ export default {
         {...locals.attrs}
         value={locals.value}
         placeholder={locals.attrs.placeholder}
+        tabIndex={locals.attrs.tabIndex}
         type={locals.attrs.overrideType || 'text'}
       />
     ),

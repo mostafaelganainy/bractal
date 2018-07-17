@@ -5,60 +5,52 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const List = styled.ul`
+import FilteredItemsList from './FilteredItemsList';
+
+const Dropdown = styled.div`
+  width: 100%;
+  height: 200px;
   visibility: visible;
-  transition: all 0.3s ease;
   transform: scaleY(1);
-  color: #333;
+  z-index: 10;  
+
+  left: 0%;
+
+  position: absolute;
+  margin-top: 31px; 
+  
+  background-color: ${props => props.theme.colors.named.white};
   border: solid ${props => props.theme.inputs.borderWidth}px ${props => props.theme.inputs.borderColor};
 
-  height: 200px;
+  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+`;
+const List = styled.ul`
+  width: 100%;
+  height: 150px;  
+  z-index: 10;
+  transform-origin: top;
+
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 100;
-  transform-origin: top;
-  padding: 0;
-  list-style: none;
-  background-color: white;
-  box-shadow: 0px 2px 6px 0 rgba(0, 0, 0, 0.2);
+
   position: absolute;
-  width: 100%;
-  margin-top: 31px;
-  left: 0%;  
+
+  padding: 0;
+  margin-top: 0px; 
+  
+  list-style: none;
 `;
-const Option = styled.li`
-  background: #fff;
-  padding: 8px 5px;
-  box-sizing: border-box;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  position: relative;
-  font-size: 13px;
-  border-bottom: 1px solid #f5f5f5;
-  min-height: 40px;
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  &&:hover{
-    background: #f6f6f6;
-    transition: background 0.2s ease;
-  }
-  img{
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    top: 0px;
-  }
-`;
+
 const Input = styled.input`
   border-radius: 0px;
   margin: 7px;
   width: 93%;
   padding: 7px;
-  border: 1px solid;
-  border-color: rgba(0,0,0,0.11);
+  border-bottom: 1px solid ${props => props.theme.borders.color.light};
+  border-top: none;
+  border-right: none;
+  border-left: none;
   outline: none;
 
   ::placeholder {
@@ -78,35 +70,6 @@ const Arrow = styled.div`
   border-bottom: solid ${props => props.theme.inputs.borderWidth}px ${props => props.theme.inputs.borderColor};
   z-index: 1000;
 `;
-const ItemName = styled.div`
-text-align:left;
-`;
-
-const FilteredItemsList = ({ options, filter, listEntryClicked }) =>
-  options
-    .filter(entry => !filter || entry.label.toLowerCase().indexOf(filter) === 0)
-    .map(entry => (
-      <Option
-        id={entry.value}
-        value={entry.value}
-        key={entry.value}
-        className="item"
-        onClick={() => listEntryClicked(entry)}
-      >
-        {entry.image &&
-          <div className="imgCountry">
-            {entry.image}
-          </div>
-        }
-
-        <ItemName className="ItemName">{entry.label}</ItemName>
-        {entry.rightPulledLabel &&
-          <div className="codeLbl">
-            +{entry.rightPulledLabel}
-          </div>
-        }
-      </Option>
-    ));
 
 const ListContainer = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
@@ -119,34 +82,80 @@ export default class countriesList extends Component {
   };
 
   onBlur = () => {
-    this.close();
+    setTimeout(() => this.hide(), 300);
   }
-
-  setMounted = (mounted) => {
-    // We need an immediate effect, and state isn't immediate. So we use local var as well
-    this.mounted = mounted;
+  onKeyDown = (event) => {
+    if (event.key === 'Tab') {
+      this.props.onItemSelected(null);
+      event.stopPropagation();
+    } else if (event.key === 'ArrowDown') {
+      this.filteredListRef.moveFocusDown();
+      event.stopPropagation();
+    } else if (event.key === 'ArrowUp') {
+      this.filteredListRef.moveFocusUp();
+      event.stopPropagation();
+    } else if (event.key === 'Enter') {
+      this.filteredListRef.enterPressed();
+      event.stopPropagation();
+    } else {
+      // Give it sometime to handle the event (In case the user was deleting this helps)
+      setTimeout(
+        () => this.filteredListRef.moveFocusTop(),
+        10,
+      );
+    }
+  }
+  onFilterChange = (event) => {
     this.setState({
-      mounted,
+      filter: event.target.value,
     });
   }
-  getMounted = () => this.state.mounted && this.mounted;
+  isShowHideAllowable = () => {
+    const currTime = (new Date()).getTime();
+    const HAND_OFF_PERIOD = 200;
+    let allowed = false;
+    if (!this.lastShowHideEventTimestamp) {
+      this.lastShowHideEventTimestamp = 0;
+    }
+    if (currTime - this.lastShowHideEventTimestamp > HAND_OFF_PERIOD) {
+      allowed = true;
+    }
+    // Store timestamp of the show/Hide, to implement
+    // handoff checks to handle various corner cases
+    // And not handled as state, to have immediate effect
+    this.lastShowHideEventTimestamp = currTime;
 
+    return allowed;
+  }
   show = () => {
+    if (!this.isShowHideAllowable()) {
+      return;
+    }
     this.setState({
       visible: true,
     });
     setTimeout(
       () => {
-        console.log('SETTING FOCUS');
         this.inputRef.focus();
+        this.filteredListRef.scrollToFocusValue();
       },
       10,
     );
+    if (this.props.onDropdownShown) {
+      this.props.onDropdownShown();
+    }
   }
   hide = () => {
+    if (!this.isShowHideAllowable()) {
+      return;
+    }
     this.setState({
       visible: false,
     });
+
+    if (this.props.onDropdownHidden) {
+      this.props.onDropdownHidden();
+    }
   }
   toggle = () => {
     if (this.state.visible) {
@@ -155,60 +164,53 @@ export default class countriesList extends Component {
       this.show();
     }
   }
-  close = (requestFocus) => {
-    if (!this.state.closing && this.getMounted()) {
-      this.setState({
-        closing: true,
-      });
-      this.props.onCloseListRequested(requestFocus);
-    }
-  }
 
   listEntryClicked = (entry) => {
-    this.setState({
-      closing: true,
-    });
-
     if (this.props.onItemSelected) {
       this.props.onItemSelected(entry);
-      this.close(true);
+      this.hide(true);
+      this.setState({
+        filter: '',
+      });
     }
-  }
-
-  SearchInp = (event) => {
-    event.preventDefault();
-    this.setState({
-      filter: this.inputRef.value.toLowerCase(),
-    });
   }
 
   render() {
-    const { options } = this.props;
+    const { options, selectedValue } = this.props;
     const { filter, visible } = this.state;
 
     return (
       <ListContainer visible={visible}>
         <Arrow />
-        <List>
-          <li>
-            <Input
-              placeholder="Search..."
-              innerRef={(ref) => { this.inputRef = ref; }}
-              onBlur={this.onBlur}
-              type="text"
-              onKeyUp={this.SearchInp}
-            />
-          </li>
-          <FilteredItemsList
-            options={options}
-            filter={filter}
-            listEntryClicked={this.listEntryClicked}
+        <Dropdown>
+          <Input
+            value={this.state.filter}
+            placeholder="Search..."
+            innerRef={(ref) => { this.inputRef = ref; }}
+            onBlur={this.onBlur}
+            type="text"
+            onChange={this.onFilterChange}
+            onKeyDown={this.onKeyDown}
           />
-        </List>
+          <List>
+            <FilteredItemsList
+              ref={(ref) => { this.filteredListRef = ref; }}
+              selectedValue={selectedValue}
+              options={options}
+              filter={filter}
+              listEntryClicked={this.listEntryClicked}
+            />
+          </List>
+        </Dropdown>
       </ListContainer>
     );
   }
 }
+
+countriesList.defaultProps = {
+  onDropdownShown: null,
+  onDropdownHidden: null,
+};
 
 countriesList.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
@@ -217,6 +219,8 @@ countriesList.propTypes = {
     value: PropTypes.string,
     attrs: PropTypes.shape({}),
   })).isRequired,
+  selectedValue: PropTypes.string.isRequired,
   onItemSelected: PropTypes.func.isRequired,
-  onCloseListRequested: PropTypes.func.isRequired,
+  onDropdownShown: PropTypes.func,
+  onDropdownHidden: PropTypes.func,
 };

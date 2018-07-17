@@ -33,7 +33,7 @@ const RequiredString = defineSubtype(
 const RequiredNumber = defineSubtype(
   maybe(t.String),
   (val) => {
-    const cleanedVal = val.replace(/[ ()-]/g, '');
+    const cleanedVal = val && val.replace(/[ ()-]/g, '');
     return parseInt(cleanedVal, 10).toString() === cleanedVal;
   },
   (val, path) => {
