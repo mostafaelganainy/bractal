@@ -71,10 +71,11 @@ const Theme = {
   },
   inputs: {
     radius: 25,
+    fontSize: 14,
     placeholderColor: 'rgba(0,0,0,0.22)',
     borderColor: 'rgba(0,0,0,0.22)',
     borderColorActive: '#33a8ff',
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: 'rgba(0, 0, 0)',
     padding: {
       top: 12,
       bottom: 12,

@@ -85,14 +85,14 @@ class SignupForm extends React.Component {
             {
               name: 'nationality',
               placeholder: 'Nationality',
-              input_type: 'textbox',
+              input_type: 'country',
               type: 'RequiredString',
             },
             {
               name: 'mobile_number',
               placeholder: 'Mobile Number',
-              input_type: 'textbox',
-              type: 'RequiredString',
+              input_type: 'phoneNumber',
+              type: 'RequiredNumber',
             },
             {
               name: 'gender',

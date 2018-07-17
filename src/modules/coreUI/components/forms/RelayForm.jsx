@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { commitMutation } from 'react-relay';
-import changeCase from 'change-case';
 
 
 import t from 'tcomb-form';
@@ -19,6 +18,7 @@ class RelayForm extends Component {
   state = {
     value: {},
     serverErrors: {},
+    isLoading: false,
     localValidationErrors: {},
   };
 
@@ -90,10 +90,11 @@ class RelayForm extends Component {
           if (response && response[mutationRoot] && response[mutationRoot].errors) {
             response[mutationRoot].errors.forEach((error) => {
               let workAROUND = error.field;
+              // Till the return from the backend isn't 'email' any more
               if (workAROUND === 'email') {
                 workAROUND = 'user_signin';
               }
-              serverErrors[workAROUND] = `${changeCase.sentenceCase(error.field)} ${error.messages[0]}`;
+              serverErrors[workAROUND] = `${error.messages[0]}`;
             });
           }
 
@@ -115,6 +116,10 @@ class RelayForm extends Component {
       environment,
       mutation,
     } = this.props;
+
+    if (this.state.isLoading) {
+      return;
+    }
 
     this.commitFormMutation(
       environment,

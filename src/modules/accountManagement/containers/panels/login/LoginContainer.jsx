@@ -10,6 +10,7 @@ import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
 import LoginFormPanel from './LoginPanel';
 import SignupPromptPanel from './SignupPromptPanel';
 
+
 // eslint-disable-next-line react/prop-types
 const PanelContent = styled(CenterAlignedColumn)`
   ${cssMediaMin.desktop`

@@ -15,8 +15,8 @@ import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserI
 import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 
 import LoginForm from './LoginForm';
-import InputSelect from '../signup/InputSelect';
-import AllCountries from '../../../containers/AllCountries.json';
+
+// import PhoneNumber from '../signup/PhoneNumber';
 
 const InputLayout = styled.div`
   width: 100%;
@@ -42,34 +42,12 @@ class LoginFormPanel extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
-    isMounted: false,
-    showInput: false,
-    hasFlag: true,
-    CountriesData: [],
-    DropdownIsShown: false,
   };
-  componentWillMount() {
-    this.setState({ CountriesData: AllCountries });
-  }
-
-  componentDidMount = () => {
-    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
-    this.setState({
-      isMounted: true,
-    });
-  }
-
-  componentWillUnmount = () => {
-    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
-    this.setState({
-      isMounted: false,
-    });
-  }
 
   onSuccess = (response) => {
     const { history, location, updateUserInfo } = this.props;
 
-    if (!this.state.isMounted || !this.form || !response || !response.signin_user) {
+    if (!this.form || !response || !response.signin_user) {
       return;
     }
 
@@ -89,7 +67,7 @@ class LoginFormPanel extends React.Component {
   onError = (error) => {
     const { invalidateUser } = this.props;
 
-    if (!this.state.isMounted || !this.form) {
+    if (!this.form) {
       return;
     }
 
@@ -104,14 +82,8 @@ class LoginFormPanel extends React.Component {
     this.setState({ isLoading });
   }
 
-  showDropdown =() => {
-    this.setState({ DropdownIsShown: !this.state.DropdownIsShown });
-  };
-  GetSelectedOpt =() => {
-    // alert("vv");
-  };
   render = () => {
-    const { panelContentContainer, userInfo } = this.props;
+    const { panelContentContainer } = this.props;
     const { isLoading, panelError } = this.state;
     const ContentContainer = panelContentContainer;
 
@@ -125,8 +97,8 @@ class LoginFormPanel extends React.Component {
           <LoginForm
             ref={(ref) => { this.form = ref; }}
             customLayout={CustomFormLayout}
-            onFormError={error => this.onError(error, userInfo)}
-            onFormSuccess={response => this.onSuccess(response, userInfo)}
+            onFormError={error => this.onError(error)}
+            onFormSuccess={response => this.onSuccess(response)}
             onFormLoading={loading => this.setLoadingState(loading)}
           />
           <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
@@ -142,15 +114,6 @@ class LoginFormPanel extends React.Component {
               </ModalLink>
             </CenterAlignedRow>
           </PanelContentMinorLabel>
-          <InputSelect
-            showInput={!this.state.showInput}
-            GetSelectedOpt={this.GetSelectedOpt}
-            showDropdown={this.showDropdown}
-            CountriesData={this.state.CountriesData}
-            hasFlag={!this.state.hasFlag}
-            DropdownIsShown={this.state.DropdownIsShown}
-            width="40%"
-          />
         </ContentContainer>
       </Panel>
     );

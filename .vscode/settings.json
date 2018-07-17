@@ -7,4 +7,13 @@
     "**/bower_components": true
   },
   "editor.tabSize": 2,
+  "LineCount.includes": [     
+    "**/src/**" 
+  ],
+  "LineCount.excludes": [ 
+    "**/src/assets/**",
+    "**/node_modules/**",
+    "**/__generated__/**",
+    "**/src/styles/css/**",
+  ],
 }

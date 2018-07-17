@@ -30,6 +30,22 @@ const RequiredString = defineSubtype(
   'Required',
 );
 
+const RequiredNumber = defineSubtype(
+  maybe(t.String),
+  (val) => {
+    const cleanedVal = val.replace(/[ ()-]/g, '');
+    return parseInt(cleanedVal, 10).toString() === cleanedVal;
+  },
+  (val, path) => {
+    const field = path && path.length > 0 && path[0];
+    if (!val || val.trim().length === 0) {
+      return `${changeCase.sentenceCase(field)}, should't be left blank`;
+    }
+    return null;
+  },
+  'Required',
+);
+
 const Email = defineSubtype(
   RequiredString,
   (val) => {
@@ -47,6 +63,7 @@ const Email = defineSubtype(
 
 const Types = {
   RequiredString,
+  RequiredNumber,
   Email,
   Boolean: t.Boolean,
 };

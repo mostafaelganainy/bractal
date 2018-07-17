@@ -12,7 +12,6 @@ import VerticalSeparator from '~/modules/coreUI/components/layouts/helpers/Verti
 
 import SignupForm from './SignupForm';
 
-
 const InputLayout = styled(PanelRoot)`
   display: flex;
   align-items: stretch;
@@ -21,17 +20,16 @@ const CustomFormLayout = locals => (
   <CenterAlignedRow>
     <CenterAlignedColumn>
       <InputLayout>
-        <div>{locals.inputs.email}</div>
         <div>{locals.inputs.first_name}</div>
         <div>{locals.inputs.last_name}</div>
-        <div>{locals.inputs.mobile_number}</div>
+        <div>{locals.inputs.email}</div>
       </InputLayout>
     </CenterAlignedColumn>
     <LargeSpacer />
     <CenterAlignedColumn>
       <InputLayout>
         <div>{locals.inputs.nationality}</div>
-        <div>{locals.inputs.gender}</div>
+        <div>{locals.inputs.mobile_number}</div>
         <div>{locals.inputs.password}</div>
       </InputLayout>
     </CenterAlignedColumn>

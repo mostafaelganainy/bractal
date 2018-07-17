@@ -5,6 +5,9 @@ import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
 import { XSmallLabel } from '~/modules/coreUI/components/basic/Labels';
 import { XSmallSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import PhoneNumber from '~/modules/coreUI/components/compound/PhoneNumber';
+import CountriesDropdown from '~/modules/coreUI/components/compound/CountriesDropdown';
+
 import renderError from './Errors';
 
 const InputElem = styled.input`
@@ -55,6 +58,28 @@ export default {
         value={locals.value}
         placeholder={locals.attrs.placeholder}
         type="password"
+      />
+    ),
+    renderError: locals => renderError(locals),
+  }),
+  phoneNumber: t.form.Form.templates.textbox.clone({
+    renderInput: locals => (
+      <PhoneNumber
+        {...getGlobalAttrs(locals)}
+        {...locals.attrs}
+        value={locals.value}
+        placeholder={locals.attrs.placeholder}
+      />
+    ),
+    renderError: locals => renderError(locals),
+  }),
+  country: t.form.Form.templates.textbox.clone({
+    renderInput: locals => (
+      <CountriesDropdown
+        {...getGlobalAttrs(locals)}
+        {...locals.attrs}
+        value={locals.value}
+        placeholder={locals.attrs.placeholder}
       />
     ),
     renderError: locals => renderError(locals),
