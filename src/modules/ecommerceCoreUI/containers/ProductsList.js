@@ -52,16 +52,12 @@ import Product from './Product';
 
 const ProductsList = ({ query }) => (
   <ProductsSlider>
-    {
-      query
-      ?
-        query.list_products.map(entry => (
-          // eslint-disable-next-line no-underscore-dangle
-          <Product key={entry.__id} productInfo={entry} />
-        ))
-      :
-        ''
-      }
+    {query && query.list_products &&
+      query.list_products.map(entry => (
+        // eslint-disable-next-line no-underscore-dangle
+        <Product key={entry.__id} productInfo={entry} />
+      ))
+    }
   </ProductsSlider>
 );
 

@@ -6,7 +6,7 @@ const ListElm = styled.ul`
   width:90%;
 `;
 const List = props => (
-  <ListElm>
+  <ListElm {...props}>
     { props.TxtList.map(Txt => (
       <li>
         { Txt }

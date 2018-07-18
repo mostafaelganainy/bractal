@@ -145,7 +145,7 @@ const PaddingSpacer = styled.div`
 
 export class BasicButton extends React.Component {
   onClick = (e) => {
-    if (!this.props.disabled) {
+    if (!this.props.disabled && this.props.onClick) {
       this.props.onClick(e);
     }
   };
