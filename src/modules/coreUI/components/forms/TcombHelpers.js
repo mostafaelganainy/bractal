@@ -96,7 +96,6 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
         label: option.label,
         checkboxNote: option.checkboxNote,
         importantLabel: option.importantLabel,
-        overrideType: option.overrideType,
         displayName: option.displayName,
       },
     };

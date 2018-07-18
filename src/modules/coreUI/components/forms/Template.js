@@ -38,7 +38,7 @@ const InputElem = styled.input`
   }
 `;
 
-
+// TODO : Change to a more suitable name (i.e. global state)
 const getGlobalAttrs = locals => ({
   onKeyUp: locals.context.onKeyUp,
 });
@@ -52,7 +52,7 @@ export default {
         value={locals.value}
         placeholder={locals.attrs.placeholder}
         tabIndex={locals.attrs.tabIndex}
-        type={locals.attrs.overrideType || 'text'}
+        type="text"
       />
     ),
     renderError: locals => renderError(locals),

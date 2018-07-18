@@ -101,7 +101,7 @@ class RelayForm extends Component {
           if (response && response[mutationRoot] && response[mutationRoot].errors) {
             response[mutationRoot].errors.forEach((error) => {
               let workAROUND = error.field;
-              // Till the return from the backend isn't 'email' any more
+              // TODO : Till the return from the backend isn't 'email' any more
               serverErrors[workAROUND] = `${error.messages[0]}`;
               if (workAROUND === 'email') {
                 workAROUND = 'user_signin';
@@ -206,7 +206,6 @@ RelayForm.propTypes = PropTypes.shape({
       type: PropTypes.string.isRequired,
       placeholder: PropTypes.string,
       label: PropTypes.string,
-      overrideType: PropTypes.string,
       displayName: PropTypes.string,
       customInputsContainer: PropTypes.element,
       customLayout: PropTypes.func,

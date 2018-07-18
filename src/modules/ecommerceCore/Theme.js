@@ -44,7 +44,7 @@ const Theme = {
   paddings: {
     xxSmall: 1,
     xSmall: 2,
-    xsmall: 2, // for backward compatibility (Some usages are using this form)
+    xsmall: 2, // TODO : for backward compatibility (Some usages are using this form)
     small: 5,
     medium: 10,
     large: 15,

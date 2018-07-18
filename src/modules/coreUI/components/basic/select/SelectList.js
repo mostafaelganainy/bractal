@@ -85,7 +85,7 @@ export default class countriesList extends Component {
     setTimeout(() => this.hide(), 300);
   }
   onKeyDown = (event) => {
-    if (event.key === 'Tab' || event.key === 'Backspace' || event.key === 'Escape') {
+    if (event.key === 'Tab' || event.key === 'Escape') {
       this.props.onItemSelected(null);
       event.stopPropagation();
     } else if (event.key === 'ArrowDown') {

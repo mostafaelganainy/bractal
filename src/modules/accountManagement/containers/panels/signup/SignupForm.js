@@ -75,8 +75,7 @@ class SignupForm extends React.Component {
             {
               name: 'password',
               placeholder: 'Password',
-              overrideType: 'password',
-              input_type: 'textbox',
+              input_type: 'password',
               type: 'RequiredString',
             },
             {
