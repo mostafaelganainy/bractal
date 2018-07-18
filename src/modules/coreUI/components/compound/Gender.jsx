@@ -25,16 +25,20 @@ const Input = styled.input`
    color: ${props => props.theme.colors.primary};
    opacity:1;
   }
+  &&:focus + i {
+    color: ${props => props.theme.colors.primaryClicked};
+  }
 `;
 const Gender = t.enums({
   M: 'Male',
   F: 'Female',
 });
+// Should take same height as text inputs
 const Icon = styled.i`
-  color:gray;
-  font-size: ${props => props.theme.fonts.sizes.xxLarge}px;
-  opacity:0.7;
-  cursor:pointer;
+  color: ${props => props.theme.inputs.borderColor};
+  font-size: ${props => ((2 * props.theme.inputs.padding.top) + props.theme.inputs.fontSize + 4)}px;
+  opacity: 0.7;
+  cursor: pointer;
 `;
 const Person = t.struct({
   gender: Gender, // enum

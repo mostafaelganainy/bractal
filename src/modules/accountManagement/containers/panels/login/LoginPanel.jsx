@@ -16,8 +16,6 @@ import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 
 import LoginForm from './LoginForm';
 
-// import PhoneNumber from '../signup/PhoneNumber';
-
 const InputLayout = styled.div`
   width: 100%;
 `;

@@ -12,11 +12,11 @@ const VerificationTrans = {
     verifyParagraph: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     VerifyEmailTxt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
     VerifySMSTxt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.',
-    footerTxt: 'Already have an account',
+    footerTxt: 'Already have an account ? ',
     footerLink: 'Login',
     ButtonCreateAccount: 'Verify your account',
     SMSTxt: 'The Verification code has been sent to your email address check your inbox',
-    EmailTxt: 'The Verification code has been sent to your number address check your inbox',
+    EmailTxt: 'The Verification code has been sent to your email address, check your inbox',
   },
   Ar: {
     HeaderTitle: 'VERIFY YOUR ACCOUNT',
