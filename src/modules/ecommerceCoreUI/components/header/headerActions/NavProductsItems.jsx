@@ -26,14 +26,13 @@ class NavProductsItems extends Component {
           <LeftAlignedColumn>
             <XSmallSpacer />
             <EmphasizedImportantMinorDetailsLabel uppercase>
-              <Trans i18nKey="HeaderProductItems" />
+              <Trans i18nKey="HeaderProductItems" /> <i className="icon-down-open" />
             </EmphasizedImportantMinorDetailsLabel>
             <XXSmallSpacer />
             <EmphasizedMinorDetailsLabel>
               00.00 QAR
             </EmphasizedMinorDetailsLabel>
           </LeftAlignedColumn>
-          Y
         </TopAlignedRow>
       </CenterAlignedRow>
     );

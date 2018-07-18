@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import cuid from 'cuid';
 
 import HeaderDesktop from './HeaderDesktop';
+import HeaderMobile from './HeaderMobile';
 
-
-const HeaderMobile = () => (
-  <div />
-);
 
 class TwoLevelsHeader extends React.Component {
   state = {
