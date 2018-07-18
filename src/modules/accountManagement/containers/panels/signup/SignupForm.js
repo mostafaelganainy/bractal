@@ -23,8 +23,14 @@ const FormMutation = graphql`
       mobile_number: $mobile_number
       gender: $gender
     ) {
+      token
+      client_id
+      expiry
       user {
         id
+        first_name
+        last_name
+        email
       }
       errors {
         field
@@ -98,9 +104,8 @@ class SignupForm extends React.Component {
             },
             {
               name: 'gender',
-              placeholder: 'Gender',
-              input_type: 'textbox',
-              type: 'RequiredString',
+              input_type: 'gender',
+              type: 'RequiredEnum',
             },
             {
               name: 'register_for_news',

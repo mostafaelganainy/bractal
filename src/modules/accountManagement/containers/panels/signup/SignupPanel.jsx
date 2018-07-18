@@ -11,6 +11,8 @@ import { mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import Panel, { PanelRoot } from '~/modules/accountManagement/components/basic/Panel';
 import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
+import { navigateToModal } from '~/modules/core/utils/modalHelpers';
+import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 
 import SignupForm from './SignupForm';
 
@@ -69,7 +71,23 @@ class SignupPanel extends React.Component {
   };
 
   onSuccess = (response) => {
-    console.log(response);
+    const { history, location, updateUserInfo } = this.props;
+
+    if (!this.form || !response || !response.create_user) {
+      return;
+    }
+
+    updateUserInfo({
+      token: response.create_user.token,
+      clientID: response.create_user.client_id,
+      expiry: response.create_user.expiry,
+      email: response.create_user.user.email,
+      firstName: response.create_user.user.first_name,
+      lastName: response.create_user.user.last_name,
+      rememberMe: true, // TODO : Double check this ??
+    });
+
+    navigateToModal(location, history, '/accountManagement/VerifyAccountEmailOrSms');
   }
 
   onError = error => this.setState({ panelError: error });
@@ -82,40 +100,38 @@ class SignupPanel extends React.Component {
     const { isLoading, panelError } = this.state;
 
     return (
-      <React.Fragment>
-        <Panel
-          titleLabel="Register"
-          subTitleLabel="Join our community"
-          error={panelError}
-          panelWidth="100%"
-        >
-          <Media query={mediaQueryMin('desktop')}>
-            {isOnDesktop => (
-              <React.Fragment>
-                <SignupForm
-                  ref={(ref) => { this.form = ref; }}
-                  customLayout={isOnDesktop ? DesktopFormLayout : null}
-                  customInputsContainer={isOnDesktop ? null : InputLayout}
-                  onFormError={error => this.onError(error)}
-                  onFormSuccess={response => this.onSuccess(response)}
-                  onFormLoading={loading => this.setLoadingState(loading)}
-                />
-                {!isOnDesktop &&
-                  <InputLayout>
-                    <BasicButton
-                      loading={isLoading}
-                      secondary
-                      onClick={() => this.form.submitForm()}
-                    >
-                      Signup
-                    </BasicButton>
-                  </InputLayout>
-                }
-              </React.Fragment>
-            )}
-          </Media>
-        </Panel>
-      </React.Fragment>
+      <Panel
+        titleLabel="Register"
+        subTitleLabel="Join our community"
+        error={panelError}
+        panelWidth="100%"
+      >
+        <Media query={mediaQueryMin('desktop')}>
+          {isOnDesktop => (
+            <React.Fragment>
+              <SignupForm
+                ref={(ref) => { this.form = ref; }}
+                customLayout={isOnDesktop ? DesktopFormLayout : null}
+                customInputsContainer={isOnDesktop ? null : InputLayout}
+                onFormError={error => this.onError(error)}
+                onFormSuccess={response => this.onSuccess(response)}
+                onFormLoading={loading => this.setLoadingState(loading)}
+              />
+              {!isOnDesktop &&
+                <InputLayout>
+                  <BasicButton
+                    loading={isLoading}
+                    secondary
+                    onClick={() => this.form.submitForm()}
+                  >
+                    Signup
+                  </BasicButton>
+                </InputLayout>
+              }
+            </React.Fragment>
+          )}
+        </Media>
+      </Panel>
     );
   };
 }
@@ -124,4 +140,4 @@ SignupPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
 }).isRequired;
 
-export default withRelayEnvironment(SignupPanel);
+export default withRelayEnvironment(withUserInfo(SignupPanel));

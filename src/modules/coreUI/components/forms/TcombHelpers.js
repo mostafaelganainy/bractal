@@ -30,21 +30,39 @@ const RequiredString = defineSubtype(
   'Required',
 );
 
+const isValidPhoneNumber = (val) => {
+  const cleanedVal = val && val.replace(/[ ()-]/g, '');
+  return parseInt(cleanedVal, 10).toString() === cleanedVal;
+};
+
 const RequiredNumber = defineSubtype(
   maybe(t.String),
-  (val) => {
-    const cleanedVal = val && val.replace(/[ ()-]/g, '');
-    return parseInt(cleanedVal, 10).toString() === cleanedVal;
-  },
+  val => isValidPhoneNumber(val),
   (val, path) => {
     const field = path && path.length > 0 && path[0];
     if (!val || val.trim().length === 0) {
       return `${changeCase.sentenceCase(field)}, should't be left blank`;
+    } else if (!isValidPhoneNumber(val)) {
+      return `${changeCase.sentenceCase(field)}, isn't a valid phone number`;
     }
     return null;
   },
   'Required',
 );
+
+const RequiredEnum = defineSubtype(
+  maybe(t.String),
+  val => val && val.trim().length > 0,
+  (val, path) => {
+    const field = path && path.length > 0 && path[0];
+    if (!val || val.trim().length === 0) {
+      return `${changeCase.sentenceCase(field)}, is Required`;
+    }
+    return null;
+  },
+  'Required',
+);
+
 
 const Email = defineSubtype(
   RequiredString,
@@ -64,6 +82,7 @@ const Email = defineSubtype(
 const Types = {
   RequiredString,
   RequiredNumber,
+  RequiredEnum,
   Email,
   Boolean: t.Boolean,
 };

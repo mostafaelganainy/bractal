@@ -21,8 +21,23 @@ import VerficationCodeSMS from '~/modules/accountManagement/containers/forgetPas
 import VerifyAccountEmailOrSms from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyAccountEmailOrSms';
 import VerifyByEmail from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyByEmail';
 import VerifyBySMS from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyBySMS';
+import ModalLoginFooter from '~/modules/accountManagement/components/footers/ModalLoginFooter';
 
 const PanelsContainer = styled(Row)` 
+  ${cssMediaMax.tablet`
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+  `}
+  ${cssMediaMin.desktop`
+    padding: 40px;
+  `}
+  
+  flex-grow: 1;
+`;
+
+const PanelsFooter = styled(Column)`
+  justify-self: flex-end;
   ${cssMediaMax.tablet`
     flex-direction: column;
     align-items: center;
@@ -36,8 +51,7 @@ const backgroundImagePath = '/images/AccountManagement/panel_background/bg.png';
 const ModalContent = styled(Column)`
   ${cssMediaMin.desktop`
     width: 920px;
-    height: 575px;
-    padding: 40px;
+    height: 600px;
   `}
 
   position: relative;
@@ -47,7 +61,7 @@ const ModalContent = styled(Column)`
   background-color: ${props => props.theme.colors.named.white};
 
   border: 1px solid;
-  border-radius: 7px;
+  border-radius: ${props => props.theme.borders.radius.normal}px;
   border-color: white; 
 
   ${cssMediaMin.desktop`
@@ -73,8 +87,12 @@ const AccountManagementModals = () => (
         <ModalRoute path="/accountManagement/VerifyByEmail" component={VerifyByEmail} />
         <ModalRoute path="/accountManagement/VerifyBySMS" component={VerifyBySMS} />
       </PanelsContainer>
-      <ModalRoute path="/accountManagement/login" component={SocialMedia} />
-      <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
+      <PanelsFooter>
+        <ModalRoute path="/accountManagement/login" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/singup" component={ModalLoginFooter} />
+        <ModalRoute path="/accountManagement/VerifyAccountEmailOrSms" component={ModalLoginFooter} />
+      </PanelsFooter>
     </ModalContent>
   </Modal>
 );

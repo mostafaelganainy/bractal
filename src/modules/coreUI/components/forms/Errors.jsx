@@ -25,14 +25,13 @@ const ErrorEllipsisWithTooltip = withTheme(({ theme, children }) => (
 ));
 
 const renderError = (locals) => {
-  let errorMessage = locals.hasError && locals.error;
-  const serverErrors = locals.context && locals.context.serverErrors;
   const fieldName = locals.path && locals.path.length > 0 && locals.path[0];
-  if (!errorMessage && serverErrors[fieldName]
-  ) {
-    errorMessage = serverErrors[fieldName];
-  }
+  const localValidationErrors = locals.context.localValidationErrors || {};
+  const serverErrors = (locals.context && locals.context.serverErrors) || {};
 
+  let errorMessage = locals.hasError && locals.error;
+  errorMessage = errorMessage || localValidationErrors[fieldName];
+  errorMessage = errorMessage || serverErrors[fieldName];
   errorMessage = errorMessage || <span>&nbsp;</span>;
 
   return (

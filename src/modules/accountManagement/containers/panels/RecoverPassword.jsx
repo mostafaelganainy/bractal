@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 
@@ -67,6 +66,7 @@ const RecoverPasswords = () => (
               <Trans i18nKey="recoverPassword.Button" />
             </BasicButton>
             <XXLargeSpacer />
+            {/*
             <ParagraphFooterContent>
               <CenterAlignedRow>
                 <Trans i18nKey="recoverPassword.footer_BackTo" />
@@ -76,6 +76,7 @@ const RecoverPasswords = () => (
                 </ModalLink>
               </CenterAlignedRow>
             </ParagraphFooterContent>
+            */}
           </CenterAlignedColumn>
         </Panel>
       </DesktopContainer>

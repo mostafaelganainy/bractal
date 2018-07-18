@@ -8,6 +8,8 @@ import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows'
 import PhoneNumber from '~/modules/coreUI/components/compound/PhoneNumber';
 import CountriesDropdown from '~/modules/coreUI/components/compound/CountriesDropdown';
 
+import Gender from '~/modules/coreUI/components/compound/Gender';
+
 import renderError from './Errors';
 
 const InputElem = styled.input`
@@ -91,6 +93,10 @@ export default {
         placeholder={locals.attrs.placeholder}
       />
     ),
+    renderError: locals => renderError(locals),
+  }),
+  gender: t.form.Form.templates.radio.clone({
+    renderRadios: locals => <Gender onChange={locals.onChange} />,
     renderError: locals => renderError(locals),
   }),
   checkbox: t.form.Form.templates.checkbox.clone({

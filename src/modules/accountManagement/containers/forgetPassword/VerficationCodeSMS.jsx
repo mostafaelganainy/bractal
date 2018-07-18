@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ParagraphFooterContent, SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { SecondTitle, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
@@ -64,11 +64,13 @@ const VerficationCodeSMS = () => (
           <XLargeSpacer />
           <BasicButton> <Trans i18nKey="forgetPassVerifyEmailSMS.Button" /> </BasicButton>
           <XXLargeSpacer />
+          {/*
           <ParagraphFooterContent>
             <CenterAlignedRow>
               <Trans i18nKey="forgetPassVerifyEmailSMS.Footer" />
             </CenterAlignedRow>
           </ParagraphFooterContent>
+          */}
         </CenterAlignedColumn>
       </Panel>
     </DesktopContainer>
