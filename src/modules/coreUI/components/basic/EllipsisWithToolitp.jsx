@@ -26,6 +26,10 @@ const PositionedParent = styled.div`
   position: relative;
 `;
 
+const StyledSpan = styled.div`
+  ${props => props.customStyle}
+`;
+
 class EllipisWithTooltip extends React.Component {
   state = {
     hasOverflow: false,
@@ -61,7 +65,7 @@ class EllipisWithTooltip extends React.Component {
   );
 
   render() {
-    const { color, children } = this.props;
+    const { color, children, customTextStyle } = this.props;
     const { hasOverflow, innerText } = this.state;
 
     return (
@@ -71,10 +75,12 @@ class EllipisWithTooltip extends React.Component {
           innerRef={(ref) => { this.rootElement = ref; }}
           onMouseEnter={this.updateOverflow}
         >
-          {children}
+          <StyledSpan customStyle={customTextStyle}>
+            {children}
+          </StyledSpan>
           {innerText && innerText.trim().length > 0 &&
             <Tooltip hidden color={color}>
-              {children}
+                {children}
             </Tooltip>
           }
         </EllipsisContainer>

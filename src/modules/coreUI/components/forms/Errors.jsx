@@ -19,13 +19,16 @@ const FullWidthErrorLabel = styled(ErrorLabel)`
   width: 100%;
 `;
 
-const ErrorEllipsisWithTooltip = withTheme(({ theme, children }) => (
-  <EllipsisWithTooltip color={theme.colors.error}>
+const ErrorEllipsisWithTooltip = withTheme(({ theme, children, customTextStyle }) => (
+  <EllipsisWithTooltip
+    color={theme.colors.error}
+    customTextStyle={customTextStyle}
+  >
     {children}
   </EllipsisWithTooltip>
 ));
 
-const renderError = (locals) => {
+const renderError = (locals, customErrorTextStyle) => {
   const fieldName = locals.attrs.displayName || (
     locals.path && locals.path.length > 0 && locals.path[0]
   );
@@ -45,14 +48,18 @@ const renderError = (locals) => {
   errorMessage = errorMessage || serverErrors[fieldName];
   errorMessage = errorMessage || <span>&nbsp;</span>;
 
-  return (
+  const ErrorComponent = (
     <InputsIntraSpace>
       <FullWidthErrorLabel>
-        <ErrorEllipsisWithTooltip>
+        <ErrorEllipsisWithTooltip customTextStyle={customErrorTextStyle}>
           {errorMessage}
         </ErrorEllipsisWithTooltip>
       </FullWidthErrorLabel>
     </InputsIntraSpace>
+  );
+
+  return (
+    ErrorComponent
   );
 };
 

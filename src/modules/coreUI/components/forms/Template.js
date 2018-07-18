@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import t from 'tcomb-form';
 import React from 'react';
 import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
@@ -11,10 +11,6 @@ import CountriesDropdown from '~/modules/coreUI/components/compound/CountriesDro
 import Gender from '~/modules/coreUI/components/compound/Gender';
 
 import renderError from './Errors';
-
-const CenterAlignedText = styled.div`
-  text-align: center;
-`;
 
 const InputElem = styled.input`
   width: ${props => (props.width ? props.width : '100%')};
@@ -101,7 +97,12 @@ export default {
   }),
   gender: t.form.Form.templates.radio.clone({
     renderRadios: locals => <Gender onChange={locals.onChange} />,
-    renderError: locals => <CenterAlignedText>{renderError(locals)}</CenterAlignedText>,
+    renderError: (locals) => {
+      const customErrorTextStyle = css`
+        text-align: center;
+      `;
+      return renderError(locals, customErrorTextStyle);
+    },
   }),
   checkbox: t.form.Form.templates.checkbox.clone({
     renderCheckbox: (locals) => {
