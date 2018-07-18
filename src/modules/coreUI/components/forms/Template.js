@@ -69,6 +69,13 @@ export default {
         {...getGlobalAttrs(locals)}
         {...locals.attrs}
         value={locals.value}
+        onChange={(entry, text) => {
+          if (text && text.length > 0) {
+            locals.onChange(`(${entry.attrs.callingCodes}) ${text}`);
+          } else {
+            locals.onChange('');
+          }
+        }}
         placeholder={locals.attrs.placeholder}
       />
     ),
@@ -80,6 +87,7 @@ export default {
         {...getGlobalAttrs(locals)}
         {...locals.attrs}
         value={locals.value}
+        onChange={entry => locals.onChange(entry.value)}
         placeholder={locals.attrs.placeholder}
       />
     ),

@@ -45,42 +45,39 @@ const Input = styled.input`
 
 class InputSelect extends Component {
   state = {
-    selectedValue: null,
-    optionsMap: {},
+    selectedEntry: null,
     dropdownShown: false,
-  }
-
-  // CHange this to reduceStatefromProps
-  componentDidMount = () => {
-    const optionsMap = {};
-    this.props.options.forEach((entry) => {
-      optionsMap[entry.value] = entry;
-    });
-
-    this.setState({
-      optionsMap,
-    });
   }
 
   onListItemSelected = (item) => {
     if (item != null) { // It comes as null, when the list
       // want to abort the operation, without any change to the selected item
       this.setState({
-        selectedValue: item.value,
+        selectedEntry: item,
       });
+      this.notifyValueChange(item);
     }
     setTimeout( // Giving it a moment, so that focus is taken correctly on the button
       () => this.buttonRef.focus(),
       10,
     );
   }
-  onKeyUp = (e) => {
+
+  // It's important to use keyDown not keyUp, to catch some events like "Tab", before
+  // It effect is done, since we're acting on those
+  onKeyDown = (e) => {
     const controls = ['ArrowUp', 'ArrowDown', ' ', 'Enter'].includes(e.key);
-    const chars = e.key.search(/[a-zA-Z]/) >= 0;
+    const chars = e.key.length === 1 && e.key.search(/[a-zA-Z]/) >= 0;
     if (controls) {
       this.showDropdown();
     } else if (chars) {
-      // this.props.onKeydown(e.key, true);
+      this.showDropdown();
+      const { key } = e; // after the timeout the value of
+      // e.key, changes, that's why we're saving it
+      setTimeout( // give it time to open before setting the filter
+        () => this.listRef.setFilter(key),
+        100,
+      );
     }
   };
   onDropdownShown = () => {
@@ -93,35 +90,43 @@ class InputSelect extends Component {
       dropdownShown: false,
     });
   }
+  onInputChanged = () => {
+    this.notifyValueChange(this.state.selectedEntry);
+  }
   getSelectedItemImage = () => {
-    const { optionsMap, selectedValue } = this.state;
+    const { selectedEntry } = this.state;
     const { getSelectedItemImage } = this.props;
 
-    if (!optionsMap || !selectedValue) {
+    if (!selectedEntry) {
       return null;
     }
 
-    const entry = optionsMap[selectedValue];
     if (getSelectedItemImage) {
-      return getSelectedItemImage(entry);
+      return getSelectedItemImage(selectedEntry);
     }
 
-    return entry.image;
+    return selectedEntry.image;
   }
   getSelectedItemLabel = () => {
-    const { optionsMap, selectedValue } = this.state;
+    const { selectedEntry } = this.state;
     const { getSelectedItemLabel } = this.props;
 
-    if (!optionsMap || !selectedValue) {
+    if (!selectedEntry) {
       return null;
     }
 
-    const entry = optionsMap[selectedValue];
     if (getSelectedItemLabel) {
-      return getSelectedItemLabel(entry);
+      return getSelectedItemLabel(selectedEntry);
     }
 
-    return entry.image;
+    return selectedEntry.image;
+  }
+
+  notifyValueChange = (entry) => {
+    if (this.props.onChange) {
+      const inputText = this.props.showInput && this.inputRef.value;
+      this.props.onChange(entry, inputText);
+    }
   }
 
   showDropdown = () => {
@@ -160,7 +165,7 @@ class InputSelect extends Component {
             fontSize={showInput ? theme.fonts.sizes.xSmall : null}
             dropIconDistanceFromRight={showInput && theme.paddings.medium}
             onMouseDown={this.toggleDropdown}
-            onKeyUp={this.onKeyUp}
+            onKeyDown={this.onKeyDown}
           />
           {showInput &&
             <React.Fragment>
@@ -168,7 +173,8 @@ class InputSelect extends Component {
               <Input
                 type="text"
                 placeholder={placeholder}
-                onChange={this.getInputValue}
+                innerRef={(ref) => { this.inputRef = ref; }}
+                onChange={() => this.onInputChanged()}
                 width={`${100 - selectButtonRatio}%`}
               />
             </React.Fragment>
@@ -176,7 +182,7 @@ class InputSelect extends Component {
           <SelectList
             ref={(ref) => { this.listRef = ref; }}
             options={options}
-            selectedValue={this.state.selectedValue}
+            selectedValue={this.state.selectedEntry && this.state.selectedEntry.value}
             onItemSelected={this.onListItemSelected}
             onDropdownShown={this.onDropdownShown}
             onDropdownHidden={this.onDropdownHidden}

@@ -35,7 +35,7 @@ const backgroundImagePath = '/images/AccountManagement/panel_background/bg.png';
 
 const ModalContent = styled(Column)`
   ${cssMediaMin.desktop`
-    width: 900px;
+    width: 920px;
     height: 575px;
     padding: 40px;
   `}

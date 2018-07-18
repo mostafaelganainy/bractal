@@ -109,7 +109,7 @@ class CustomButton extends React.Component {
       dropIconDistanceFromRight,
       fontSize,
       actAsInFocus,
-      onKeyUp,
+      onKeyDown,
       onFocus,
       visible,
     } = this.props;
@@ -118,7 +118,7 @@ class CustomButton extends React.Component {
       <ButtonContainer
         width={width}
         onMouseDown={onMouseDown}
-        onKeyUp={onKeyUp}
+        onKeyDown={onKeyDown}
         visible={visible}
       >
         <Button
@@ -162,7 +162,7 @@ CustomButton.propTypes = {
   placeholder: PropTypes.string,
   width: PropTypes.string,
   onMouseDown: PropTypes.func.isRequired,
-  onKeyUp: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
   rightBorderRadius: PropTypes.string,
   dropIconDistanceFromRight: PropTypes.number,
   fontSize: PropTypes.number,

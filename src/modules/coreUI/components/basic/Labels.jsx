@@ -19,6 +19,8 @@ export const Label = styled.span`
 
   ${props => props.customStyle}
 
+  text-align: ${props => props.align || 'left'};
+
   a {
     color: ${props => props.theme.colors.link};
     border-bottom: solid 1px;

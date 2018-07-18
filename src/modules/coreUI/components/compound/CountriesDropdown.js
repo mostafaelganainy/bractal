@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import InputSelect from '~/modules/coreUI/components/basic/select/InputSelect';
-
 import AllCountries from './AllCountries.json';
 
 const CountriesOptions = AllCountries.map(country => ({
@@ -14,9 +14,10 @@ const CountriesOptions = AllCountries.map(country => ({
   },
 }));
 
-export default () => (
+const CountriesDropdown = ({ onChange }) => (
   <InputSelect
     showInput={false}
+    onChange={entry => onChange(entry)}
     showImageOnButton={false}
     getSelectedItemLabel={entry => `${entry.label}`}
     getSelectedItemImage={() => null}
@@ -25,3 +26,8 @@ export default () => (
   />
 );
 
+CountriesDropdown.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
+
+export default CountriesDropdown;

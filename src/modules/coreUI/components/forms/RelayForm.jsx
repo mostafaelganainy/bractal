@@ -168,6 +168,8 @@ class RelayForm extends Component {
           value={this.state.value}
           onChange={this.onChange}
           context={{
+            customInputsContainer: options.customInputsContainer, // Options are not being passed
+            // to Form Layout, so that we put it in context
             serverErrors,
             localValidationErrors,
             isLoading,
@@ -193,8 +195,9 @@ RelayForm.propTypes = PropTypes.shape({
       placeholder: PropTypes.string,
       label: PropTypes.string,
       overrideType: PropTypes.string,
+      customInputsContainer: PropTypes.element,
+      customLayout: PropTypes.func,
     })),
-    customLayout: PropTypes.func,
   }).isRequired,
   onFormError: PropTypes.func.isRequired,
   onFormSuccess: PropTypes.func.isRequired,

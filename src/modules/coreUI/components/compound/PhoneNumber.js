@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import InputSelect from '~/modules/coreUI/components/basic/select/InputSelect';
 
@@ -20,6 +21,7 @@ class PhoneNumber extends React.Component {
     <InputSelect
       showInput
       selectButtonRatio={40}
+      onChange={(entry, text) => this.props.onChange(entry, text)}
       showImageOnButton={false}
       getSelectedItemLabel={entry => `+${entry.attrs.callingCodes}`}
       getSelectedItemImage={entry => entry.image}
@@ -29,4 +31,10 @@ class PhoneNumber extends React.Component {
   );
 }
 
+
+PhoneNumber.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
+
 export default PhoneNumber;
+

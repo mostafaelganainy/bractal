@@ -43,6 +43,7 @@ class SignupForm extends React.Component {
   render = () => {
     const {
       customLayout,
+      customInputsContainer,
       onFormError,
       onFormSuccess,
       onFormLoading,
@@ -57,6 +58,7 @@ class SignupForm extends React.Component {
         mutationRoot="create_user"
         options={{
           customLayout,
+          customInputsContainer,
           fields: [
             {
               name: 'email',

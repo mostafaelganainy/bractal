@@ -85,7 +85,7 @@ export default class countriesList extends Component {
     setTimeout(() => this.hide(), 300);
   }
   onKeyDown = (event) => {
-    if (event.key === 'Tab') {
+    if (event.key === 'Tab' || event.key === 'Backspace' || event.key === 'Escape') {
       this.props.onItemSelected(null);
       event.stopPropagation();
     } else if (event.key === 'ArrowDown') {
@@ -97,18 +97,20 @@ export default class countriesList extends Component {
     } else if (event.key === 'Enter') {
       this.filteredListRef.enterPressed();
       event.stopPropagation();
-    } else {
-      // Give it sometime to handle the event (In case the user was deleting this helps)
-      setTimeout(
-        () => this.filteredListRef.moveFocusTop(),
-        10,
-      );
     }
   }
-  onFilterChange = (event) => {
+  onFilterInputTextChange = (event) => {
+    this.setFilter(event.target.value);
+  }
+  setFilter = (value) => {
     this.setState({
-      filter: event.target.value,
+      filter: value,
     });
+    setTimeout(
+      // Give it sometime to handle the event (In case the user was deleting this helps)
+      () => this.filteredListRef.moveFocusTop(),
+      10,
+    );
   }
   isShowHideAllowable = () => {
     const currTime = (new Date()).getTime();
@@ -189,7 +191,7 @@ export default class countriesList extends Component {
             innerRef={(ref) => { this.inputRef = ref; }}
             onBlur={this.onBlur}
             type="text"
-            onChange={this.onFilterChange}
+            onChange={this.onFilterInputTextChange}
             onKeyDown={this.onKeyDown}
           />
           <List>
