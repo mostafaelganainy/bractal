@@ -60,6 +60,7 @@ class LoginForm extends React.Component {
           fields: [
             {
               name: 'user_signin',
+              displayName: 'Email/Mobile Number',
               placeholder: 'Email/Mobile Number',
               input_type: 'textbox',
               type: 'RequiredString',

@@ -6,6 +6,7 @@ import EcommerceMainContainer from '~/modules/ecommerceCore/components/Ecommerce
 import AccountManagementModals from '~/modules/accountManagement/containers/AccountManagementModals';
 import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
 import UserInfoProvider from '~/modules/core/utils/accessManagementHelpers/UserInfoProvider';
+
 import Header from './Header';
 import Footer from './Footer';
 import PageContent from './PageContent';

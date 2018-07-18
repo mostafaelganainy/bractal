@@ -1,11 +1,10 @@
 import t, { maybe } from 'tcomb-form';
-import changeCase from 'change-case';
 
 import FormLayout from './FormLayout';
 import Templates from './Template';
 
-t.String.getValidationErrorMessage = (value, path) =>
-  `${changeCase.sentenceCase(path[0])}, value is invalid`;
+t.String.getValidationErrorMessage = () =>
+  'value is invalid';
 
 const defineSubtype = (type, predicate, getValidationErrorMessage, name) => {
   const Subtype = t.refinement(
@@ -20,10 +19,9 @@ const defineSubtype = (type, predicate, getValidationErrorMessage, name) => {
 const RequiredString = defineSubtype(
   maybe(t.String),
   val => val && val.trim().length > 0,
-  (val, path) => {
-    const field = path && path.length > 0 && path[0];
+  (val) => {
     if (!val || val.trim().length === 0) {
-      return `${changeCase.sentenceCase(field)}, should't be left blank`;
+      return 'is missing';
     }
     return null;
   },
@@ -38,12 +36,11 @@ const isValidPhoneNumber = (val) => {
 const RequiredNumber = defineSubtype(
   maybe(t.String),
   val => isValidPhoneNumber(val),
-  (val, path) => {
-    const field = path && path.length > 0 && path[0];
+  (val) => {
     if (!val || val.trim().length === 0) {
-      return `${changeCase.sentenceCase(field)}, should't be left blank`;
+      return 'is missing';
     } else if (!isValidPhoneNumber(val)) {
-      return `${changeCase.sentenceCase(field)}, isn't a valid phone number`;
+      return "isn't number";
     }
     return null;
   },
@@ -53,10 +50,9 @@ const RequiredNumber = defineSubtype(
 const RequiredEnum = defineSubtype(
   maybe(t.String),
   val => val && val.trim().length > 0,
-  (val, path) => {
-    const field = path && path.length > 0 && path[0];
+  (val) => {
     if (!val || val.trim().length === 0) {
-      return `${changeCase.sentenceCase(field)}, is Required`;
+      return 'is Required';
     }
     return null;
   },
@@ -71,10 +67,7 @@ const Email = defineSubtype(
     const emailMatch = val && val.search(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     return emailMatch >= 0;
   },
-  (val, path) => {
-    const field = path && path.length > 0 && path[0];
-    return `${changeCase.sentenceCase(field)}, isn't valid`;
-  },
+  () => "isn't valid",
   'Required',
 );
 
@@ -104,6 +97,7 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
         checkboxNote: option.checkboxNote,
         importantLabel: option.importantLabel,
         overrideType: option.overrideType,
+        displayName: option.displayName,
       },
     };
   });
