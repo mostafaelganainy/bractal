@@ -18,9 +18,9 @@ import CreateNewPassword from '~/modules/accountManagement/containers/forgetPass
 import EmailOrSms from '~/modules/accountManagement/containers/forgetPassword/EmailOrSms';
 import VerficationCodeEmail from '~/modules/accountManagement/containers/forgetPassword/VerficationCodeEmail';
 import VerficationCodeSMS from '~/modules/accountManagement/containers/forgetPassword/VerficationCodeSMS';
-import VerifyAccountEmailOrSms from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyAccountEmailOrSms';
-import VerifyByEmail from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyByEmail';
-import VerifyBySMS from '~/modules/accountManagement/containers/panels/VerifyAccount/VerifyBySMS';
+import VerifyAccountEmailOrSms from '~/modules/accountManagement/containers/panels/verifyAccount/VerifyAccountEmailOrSms';
+import VerifyByEmail from '~/modules/accountManagement/containers/panels/verifyAccount/verifyByEmail/VerifyByEmail';
+import VerifyBySMS from '~/modules/accountManagement/containers/panels/verifyAccount/verifyBySMS/VerifyBySMS';
 import ModalLoginFooter from '~/modules/accountManagement/components/footers/ModalLoginFooter';
 
 const PanelsContainer = styled(Row)` 
