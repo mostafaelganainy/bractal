@@ -12,6 +12,10 @@ import Gender from '~/modules/coreUI/components/compound/Gender';
 
 import renderError from './Errors';
 
+const CenterAlignedText = styled.div`
+  text-align: center;
+`;
+
 const InputElem = styled.input`
   width: ${props => (props.width ? props.width : '100%')};
   padding-left: ${props => props.theme.inputs.padding.left}px;
@@ -97,7 +101,7 @@ export default {
   }),
   gender: t.form.Form.templates.radio.clone({
     renderRadios: locals => <Gender onChange={locals.onChange} />,
-    renderError: locals => renderError(locals),
+    renderError: locals => <CenterAlignedText>{renderError(locals)}</CenterAlignedText>,
   }),
   checkbox: t.form.Form.templates.checkbox.clone({
     renderCheckbox: (locals) => {

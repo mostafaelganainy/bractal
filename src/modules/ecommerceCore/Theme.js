@@ -11,7 +11,7 @@ const Theme = {
     error: '#D32f2f',
     cellHoverColor: 'rgba(48, 157, 224, 0.1)',
     cellHoverColorAlt: 'rgba(48, 157, 224, 0.2)',
-    link: '#309de0',
+    link: '#fb9410',
     labels: {
       important: '#000000',
       normal: 'rgba(0, 0, 0, 0.5)',

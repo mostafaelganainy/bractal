@@ -11,7 +11,7 @@ class PhoneNumber extends React.Component {
     label: country.name,
     image: <Image src={country.flag} alt={country.flag} />,
     value: country.alpha3Code,
-    rightPulledLabel: country.callingCodes,
+    rightPulledLabel: `+${country.callingCodes}`,
     attrs: {
       callingCodes: country.callingCodes,
     },

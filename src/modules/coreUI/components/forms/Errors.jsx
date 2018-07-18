@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
+import changeCase from 'change-case';
 
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
@@ -29,6 +30,8 @@ const renderError = (locals) => {
     locals.path && locals.path.length > 0 && locals.path[0]
   );
 
+  const displayName = locals.attrs.displayName || changeCase.sentence(fieldName);
+
   const localValidationErrors = locals.context.localValidationErrors || {};
   const serverErrors = (locals.context && locals.context.serverErrors) || {};
 
@@ -36,7 +39,7 @@ const renderError = (locals) => {
   errorMessage = errorMessage || localValidationErrors[fieldName];
 
   if (errorMessage) {
-    errorMessage = `${fieldName}, ${errorMessage}`;
+    errorMessage = `${displayName}, ${errorMessage}`;
   }
 
   errorMessage = errorMessage || serverErrors[fieldName];

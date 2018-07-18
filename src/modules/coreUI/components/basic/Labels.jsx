@@ -23,8 +23,6 @@ export const Label = styled.span`
 
   a {
     color: ${props => props.theme.colors.link};
-    border-bottom: solid 1px;
-    padding-top: 1px;
   }
 `;
 
