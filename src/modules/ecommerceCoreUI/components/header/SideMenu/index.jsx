@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import { Sidebar, Menu } from 'semantic-ui-react';
 import SocialMedia from '~/modules/ecommerceCoreUI/components/header/headerActions/SocialMedia';
 import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 import { BasicButton } from '~/modules/ecommerceCoreUI/components/basic/BasicButton';
@@ -51,37 +50,28 @@ const logout = (e, invalidateUser) => {
 };
 
 const SideMenu = props => (
-  <Sidebar
-    as={Menu}
-    animation="push"
-    width="thin"
-    visible="true"
-    icon="labeled"
-    className="side-menu"
-  >
-    <SideMenuContainer>
-      <Heading />
-      <Item>Home</Item>
-      <DropdownElement />
-      {props.authenticated ?
-        (
-          <Logout>
-            <LargeSpacer />
-            <BasicButton
-              primary
-              onClick={e => logout(e, props.invalidateUser)}
-            >
-              Log out
-            </BasicButton>
-            <LargeSpacer />
-          </Logout>
-        )
-        :
-        ' '
-      }
-      <SocialMediaContent alignment="center" />
-    </SideMenuContainer>
-  </Sidebar>
+  <SideMenuContainer>
+    <Heading />
+    <Item>Home</Item>
+    <DropdownElement />
+    {props.authenticated ?
+      (
+        <Logout>
+          <LargeSpacer />
+          <BasicButton
+            primary
+            onClick={e => logout(e, props.invalidateUser)}
+          >
+            Log out
+          </BasicButton>
+          <LargeSpacer />
+        </Logout>
+      )
+      :
+      ' '
+    }
+    <SocialMediaContent alignment="center" />
+  </SideMenuContainer>
 );
 
 SideMenu.propTypes = {

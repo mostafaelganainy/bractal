@@ -10,7 +10,7 @@ import NavWishList from '~/modules/AykLayout/components/header/Common/NavWishLis
 
 class HeaderMobile extends Component {
   toggleVisibility = () => {
-    this.props.visible(!this.props.visible);
+    this.props.toggleVisibility(true);
   };
   render() {
     return (
@@ -44,11 +44,11 @@ class HeaderMobile extends Component {
 }
 
 HeaderMobile.propTypes = {
-  visible: PropTypes.bool,
+  toggleVisibility: PropTypes.bool,
 };
 
 HeaderMobile.defaultProps = {
-  visible: ' ',
+  toggleVisibility: ' ',
 };
 
 export default HeaderMobile;
