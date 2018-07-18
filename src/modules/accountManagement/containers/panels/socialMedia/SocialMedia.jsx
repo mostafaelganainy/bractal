@@ -7,9 +7,9 @@ import Icon from '~/modules/coreUI/components/basic/Icon';
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { Column, CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { SocialMediaSectionTitle, SocialMediaNameLabel, SocialMediaPromptLabel } from '~/modules/accountManagement/components/basic/Labels';
-import { XXXXXLargeSpacer, MediumSpacer, LargeSpacer, XXSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { XXXXXLargeSpacer, MediumSpacer, XXSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
-import { cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMax, mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 // TODO: Create one component for all these
 const SocialMediaButton = styled(CenterAlignedColumn)`
@@ -89,7 +89,6 @@ const socialMedias = [
 export default function SocialMedia() {
   return (
     <Column justifyCenter centerAligned fullWidth>
-      <XXXXXLargeSpacer />
       <Media
         query={mediaQueryMin('desktop')}
         render={() => (
@@ -123,12 +122,7 @@ export default function SocialMedia() {
             </SocialMediaButton>
           ))}
         </CenterAlignedRow>
-        <Media
-          query={mediaQueryMax('tablet')}
-          render={() => (
-            <LargeSpacer />
-          )}
-        />
+        <XXXXXLargeSpacer />
       </CenterAlignedColumn>
     </Column>
   );

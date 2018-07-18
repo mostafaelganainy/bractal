@@ -7,7 +7,7 @@ import { PanelContentMinorLabel, PanelContentSmallLabel } from '~/modules/accoun
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
@@ -16,26 +16,17 @@ import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 
 import LoginForm from './LoginForm';
 
+// import PhoneNumber from '../signup/PhoneNumber';
+
 const InputLayout = styled.div`
   width: 100%;
 `;
-
-const RememberMeCheckbox = styled.div`
-  &&& {
-    span {
-      font-size: ${props => props.theme.fonts.sizes.xSmall}px;
-    }
-  }
-`;
-
 const CustomFormLayout = locals => (
   <InputLayout>
     <div>{locals.inputs.user_signin}</div>
     <div>{locals.inputs.password}</div>
     <Row spaceBetween topAligned fullWidth>
-      <RememberMeCheckbox>
-        {locals.inputs.remember_me}
-      </RememberMeCheckbox>
+      <div>{locals.inputs.remember_me}</div>
       <PanelContentSmallLabel>
         <RightAlignedColumn>
           <ModalLink to="/accountManagement/recoverPassword">
@@ -51,27 +42,12 @@ class LoginFormPanel extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
-    isMounted: false,
   };
-
-  componentDidMount = () => {
-    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
-    this.setState({
-      isMounted: true,
-    });
-  }
-
-  componentWillUnmount = () => {
-    // Workaround for an issue happening when the onSuccess got called after the form got unmounted
-    this.setState({
-      isMounted: false,
-    });
-  }
 
   onSuccess = (response) => {
     const { history, location, updateUserInfo } = this.props;
 
-    if (!this.state.isMounted || !this.form || !response || !response.signin_user) {
+    if (!this.form || !response || !response.signin_user) {
       return;
     }
 
@@ -91,7 +67,7 @@ class LoginFormPanel extends React.Component {
   onError = (error) => {
     const { invalidateUser } = this.props;
 
-    if (!this.state.isMounted || !this.form) {
+    if (!this.form) {
       return;
     }
 
@@ -107,7 +83,7 @@ class LoginFormPanel extends React.Component {
   }
 
   render = () => {
-    const { panelContentContainer, userInfo } = this.props;
+    const { panelContentContainer } = this.props;
     const { isLoading, panelError } = this.state;
     const ContentContainer = panelContentContainer;
 
@@ -121,14 +97,14 @@ class LoginFormPanel extends React.Component {
           <LoginForm
             ref={(ref) => { this.form = ref; }}
             customLayout={CustomFormLayout}
-            onFormError={error => this.onError(error, userInfo)}
-            onFormSuccess={response => this.onSuccess(response, userInfo)}
+            onFormError={error => this.onError(error)}
+            onFormSuccess={response => this.onSuccess(response)}
             onFormLoading={loading => this.setLoadingState(loading)}
           />
           <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
             Login
           </BasicButton>
-          <MediumSpacer />
+          <LargeSpacer />
           <PanelContentMinorLabel>
             <CenterAlignedRow>
               By login you agree to our

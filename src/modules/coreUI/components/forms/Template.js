@@ -5,6 +5,11 @@ import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
 import { XSmallLabel } from '~/modules/coreUI/components/basic/Labels';
 import { XSmallSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { TopAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import PhoneNumber from '~/modules/coreUI/components/compound/PhoneNumber';
+import CountriesDropdown from '~/modules/coreUI/components/compound/CountriesDropdown';
+
+import Gender from '~/modules/coreUI/components/compound/Gender';
+
 import renderError from './Errors';
 
 const InputElem = styled.input`
@@ -42,6 +47,7 @@ export default {
         {...locals.attrs}
         value={locals.value}
         placeholder={locals.attrs.placeholder}
+        tabIndex={locals.attrs.tabIndex}
         type={locals.attrs.overrideType || 'text'}
       />
     ),
@@ -57,6 +63,40 @@ export default {
         type="password"
       />
     ),
+    renderError: locals => renderError(locals),
+  }),
+  phoneNumber: t.form.Form.templates.textbox.clone({
+    renderInput: locals => (
+      <PhoneNumber
+        {...getGlobalAttrs(locals)}
+        {...locals.attrs}
+        value={locals.value}
+        onChange={(entry, text) => {
+          if (text && text.length > 0) {
+            locals.onChange(`(${entry.attrs.callingCodes}) ${text}`);
+          } else {
+            locals.onChange('');
+          }
+        }}
+        placeholder={locals.attrs.placeholder}
+      />
+    ),
+    renderError: locals => renderError(locals),
+  }),
+  country: t.form.Form.templates.textbox.clone({
+    renderInput: locals => (
+      <CountriesDropdown
+        {...getGlobalAttrs(locals)}
+        {...locals.attrs}
+        value={locals.value}
+        onChange={entry => locals.onChange(entry.value)}
+        placeholder={locals.attrs.placeholder}
+      />
+    ),
+    renderError: locals => renderError(locals),
+  }),
+  gender: t.form.Form.templates.radio.clone({
+    renderRadios: locals => <Gender onChange={locals.onChange} />,
     renderError: locals => renderError(locals),
   }),
   checkbox: t.form.Form.templates.checkbox.clone({

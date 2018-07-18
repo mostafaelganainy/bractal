@@ -9,6 +9,8 @@ const Theme = {
     secondaryClicked: '#fc9430',
     secondaryDark: '#cc790e',
     error: '#D32f2f',
+    cellHoverColor: 'rgba(48, 157, 224, 0.1)',
+    cellHoverColorAlt: 'rgba(48, 157, 224, 0.2)',
     link: '#309de0',
     labels: {
       important: '#000000',
@@ -71,10 +73,11 @@ const Theme = {
   },
   inputs: {
     radius: 25,
+    fontSize: 14,
     placeholderColor: 'rgba(0,0,0,0.22)',
     borderColor: 'rgba(0,0,0,0.22)',
     borderColorActive: '#33a8ff',
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: 'rgba(0, 0, 0)',
     padding: {
       top: 12,
       bottom: 12,

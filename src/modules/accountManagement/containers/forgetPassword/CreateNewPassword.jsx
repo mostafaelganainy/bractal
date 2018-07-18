@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CenteredParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import Image from '~/modules/coreUI/components/basic/Image';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
@@ -71,11 +71,13 @@ const RecoverPasswords = () => (
           <MediumSpacer />
           <BasicButton> <Trans i18nKey="CreateNewPassword.Button" /> </BasicButton>
           <XXXXXLargeSpacer />
+          {/*
           <ParagraphFooterContent>
             <CenterAlignedRow>
               <Trans i18nKey="forgetPassVerifyEmailSMS.Footer" />
             </CenterAlignedRow>
           </ParagraphFooterContent>
+          */}
         </CenterAlignedColumn>
       </Panel>
     </DesktopContainer>

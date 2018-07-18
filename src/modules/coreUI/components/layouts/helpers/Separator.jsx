@@ -8,6 +8,7 @@ const lengths = {
   small: '30%',
   normal: '40%',
   large: '70%',
+  xLarge: '90%',
   full: '100%',
 };
 

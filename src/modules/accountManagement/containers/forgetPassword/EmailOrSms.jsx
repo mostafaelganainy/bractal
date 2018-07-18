@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ParagraphPanelContent, ParagraphFooterContent } from '~/modules/accountManagement/components/basic/Labels';
+import { ParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import List from '~/modules/coreUI/components/basic/List';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { MediumSpacer, XXXXXLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import HomePageLogo from '~/modules/coreUI/components/projects/HomePageLogo';
@@ -80,6 +80,7 @@ const EmailOrSMS = () => (
             <List TxtList={verifyByTypes} />
           </LeftAlignedColumn>
           <XXLargeSpacer />
+          {/*
           <ParagraphFooterContent>
             <CenterAlignedRow>
               <Trans i18nKey="recoverPassword.footer_BackTo" />
@@ -89,6 +90,7 @@ const EmailOrSMS = () => (
               </ModalLink>
             </CenterAlignedRow>
           </ParagraphFooterContent>
+          */}
         </CenterAlignedColumn>
       </PanelCont>
     </DesktopContainer>

@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { commitMutation } from 'react-relay';
-import changeCase from 'change-case';
 
 
 import t from 'tcomb-form';
@@ -19,6 +18,7 @@ class RelayForm extends Component {
   state = {
     value: {},
     serverErrors: {},
+    isLoading: false,
     localValidationErrors: {},
   };
 
@@ -37,10 +37,16 @@ class RelayForm extends Component {
 
   onChange = (value, path) => {
     this.setState({ value });
+    // reset this field's error state
+    this.updateLocalValidationErrors({
+      ...this.state.localValidationErrors,
+      [this.getFieldName(path)]: null,
+    });
     this.Form.getComponent(path).validate();
   }
 
   getValue = () => this.Form.getValue();
+  getFieldName = path => path[0];
 
   save = () => {
     const value = this.Form.getValue();
@@ -48,14 +54,19 @@ class RelayForm extends Component {
     console.log(value);
   }
 
+  updateLocalValidationErrors = (errors) => {
+    this.setState({ localValidationErrors: errors });
+  }
+
   commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
     // Apply local validations first
     const localErrors = this.Form.validate();
     const value = this.Form.getValue();
 
+    this.updateLocalValidationErrors({});
     if (!value) {
-      const localValidationErrors = {};
       const errors = (localErrors && localErrors.errors) || [];
+      const localValidationErrors = {};
 
       errors.forEach((error) => {
         if (error.path && error.path.length > 0) {
@@ -65,7 +76,7 @@ class RelayForm extends Component {
         }
       });
 
-      this.setState({ localValidationErrors });
+      this.updateLocalValidationErrors(localValidationErrors);
 
       return;
     }
@@ -90,10 +101,12 @@ class RelayForm extends Component {
           if (response && response[mutationRoot] && response[mutationRoot].errors) {
             response[mutationRoot].errors.forEach((error) => {
               let workAROUND = error.field;
+              // Till the return from the backend isn't 'email' any more
+              serverErrors[workAROUND] = `${error.messages[0]}`;
               if (workAROUND === 'email') {
                 workAROUND = 'user_signin';
+                serverErrors[workAROUND] = `${error.messages[0]}`;
               }
-              serverErrors[workAROUND] = `${changeCase.sentenceCase(error.field)} ${error.messages[0]}`;
             });
           }
 
@@ -115,6 +128,10 @@ class RelayForm extends Component {
       environment,
       mutation,
     } = this.props;
+
+    if (this.state.isLoading) {
+      return;
+    }
 
     this.commitFormMutation(
       environment,
@@ -163,6 +180,8 @@ class RelayForm extends Component {
           value={this.state.value}
           onChange={this.onChange}
           context={{
+            customInputsContainer: options.customInputsContainer, // Options are not being passed
+            // to Form Layout, so that we put it in context
             serverErrors,
             localValidationErrors,
             isLoading,
@@ -188,8 +207,9 @@ RelayForm.propTypes = PropTypes.shape({
       placeholder: PropTypes.string,
       label: PropTypes.string,
       overrideType: PropTypes.string,
+      customInputsContainer: PropTypes.element,
+      customLayout: PropTypes.func,
     })),
-    customLayout: PropTypes.func,
   }).isRequired,
   onFormError: PropTypes.func.isRequired,
   onFormSuccess: PropTypes.func.isRequired,

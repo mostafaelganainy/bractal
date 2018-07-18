@@ -1,43 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Media from 'react-media';
 import styled from 'styled-components';
 
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { LargeSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
+import { mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import Panel, { PanelRoot } from '~/modules/accountManagement/components/basic/Panel';
-import VerticalSeparator from '~/modules/coreUI/components/layouts/helpers/VerticalSeparator';
+import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
+import { navigateToModal } from '~/modules/core/utils/modalHelpers';
+import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 
 import SignupForm from './SignupForm';
-
 
 const InputLayout = styled(PanelRoot)`
   display: flex;
   align-items: stretch;
 `;
-const CustomFormLayout = locals => (
+const DesktopFormLayout = locals => (
   <CenterAlignedRow>
     <CenterAlignedColumn>
+      <CenterAlignedRow>
+        <CenterAlignedColumn>
+          <InputLayout>
+            <div>{locals.inputs.first_name}</div>
+            <div>{locals.inputs.last_name}</div>
+            <div>{locals.inputs.email}</div>
+          </InputLayout>
+        </CenterAlignedColumn>
+        <LargeSpacer />
+        <CenterAlignedColumn>
+          <InputLayout>
+            <div>{locals.inputs.nationality}</div>
+            <div>{locals.inputs.mobile_number}</div>
+            <div>{locals.inputs.password}</div>
+          </InputLayout>
+        </CenterAlignedColumn>
+      </CenterAlignedRow>
       <InputLayout>
-        <div>{locals.inputs.email}</div>
-        <div>{locals.inputs.first_name}</div>
-        <div>{locals.inputs.last_name}</div>
-        <div>{locals.inputs.mobile_number}</div>
-      </InputLayout>
-    </CenterAlignedColumn>
-    <LargeSpacer />
-    <CenterAlignedColumn>
-      <InputLayout>
-        <div>{locals.inputs.nationality}</div>
         <div>{locals.inputs.gender}</div>
-        <div>{locals.inputs.password}</div>
       </InputLayout>
     </CenterAlignedColumn>
-    <VerticalSeparator
-      spacerWidth="xxxxxLarge"
-      separatorLength="large"
+    <Separator
+      vertical
+      spacerSize="xxxxxLarge"
+      separatorLength="xLarge"
       separatorColorTone="normal"
     />
     <InputLayout>
@@ -61,40 +71,67 @@ class SignupPanel extends React.Component {
   };
 
   onSuccess = (response) => {
-    console.log(response);
+    const { history, location, updateUserInfo } = this.props;
+
+    if (!this.form || !response || !response.create_user) {
+      return;
+    }
+
+    updateUserInfo({
+      token: response.create_user.token,
+      clientID: response.create_user.client_id,
+      expiry: response.create_user.expiry,
+      email: response.create_user.user.email,
+      firstName: response.create_user.user.first_name,
+      lastName: response.create_user.user.last_name,
+      rememberMe: true, // TODO : Double check this ??
+    });
+
+    navigateToModal(location, history, '/accountManagement/VerifyAccountEmailOrSms');
   }
 
   onError = error => this.setState({ panelError: error });
 
   setLoadingState = (isLoading) => {
     this.setState({ isLoading });
-    console.log(`Hiiiiiii ${isLoading}`);
   }
 
   render = () => {
     const { isLoading, panelError } = this.state;
 
-    console.log(isLoading);
-
     return (
-      <React.Fragment>
-        <Panel
-          titleLabel="Register"
-          subTitleLabel="Join our community"
-          error={panelError}
-          panelWidth="100%"
-        >
-          <CenterAlignedRow>
-            <SignupForm
-              ref={(ref) => { this.form = ref; }}
-              customLayout={CustomFormLayout}
-              onFormError={error => this.onError(error)}
-              onFormSuccess={response => this.onSuccess(response)}
-              onFormLoading={loading => this.setLoadingState(loading)}
-            />
-          </CenterAlignedRow>
-        </Panel>
-      </React.Fragment>
+      <Panel
+        titleLabel="Register"
+        subTitleLabel="Join our community"
+        error={panelError}
+        panelWidth="100%"
+      >
+        <Media query={mediaQueryMin('desktop')}>
+          {isOnDesktop => (
+            <React.Fragment>
+              <SignupForm
+                ref={(ref) => { this.form = ref; }}
+                customLayout={isOnDesktop ? DesktopFormLayout : null}
+                customInputsContainer={isOnDesktop ? null : InputLayout}
+                onFormError={error => this.onError(error)}
+                onFormSuccess={response => this.onSuccess(response)}
+                onFormLoading={loading => this.setLoadingState(loading)}
+              />
+              {!isOnDesktop &&
+                <InputLayout>
+                  <BasicButton
+                    loading={isLoading}
+                    secondary
+                    onClick={() => this.form.submitForm()}
+                  >
+                    Signup
+                  </BasicButton>
+                </InputLayout>
+              }
+            </React.Fragment>
+          )}
+        </Media>
+      </Panel>
     );
   };
 }
@@ -103,4 +140,4 @@ SignupPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
 }).isRequired;
 
-export default withRelayEnvironment(SignupPanel);
+export default withRelayEnvironment(withUserInfo(SignupPanel));

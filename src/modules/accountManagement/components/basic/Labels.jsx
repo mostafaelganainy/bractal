@@ -45,15 +45,6 @@ export const CenteredParagraphPanelContent = styled(PanelContentLabel)`
   text-align:center;
 `;
 
-export const ParagraphFooterContent = styled(PanelContentLabel)`
-  line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
-  width: 100%;
-  background-color: #faf9f9;
-  display: flex;
-  padding: 11px;
-  justify-content: center;
-`;
-
 export const SocialMediaSectionTitle = styled(XXSmallLabel)`
   color: ${props => props.theme.colors.labels.important};
   font-weight:bold;

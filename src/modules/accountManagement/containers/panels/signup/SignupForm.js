@@ -23,8 +23,14 @@ const FormMutation = graphql`
       mobile_number: $mobile_number
       gender: $gender
     ) {
+      token
+      client_id
+      expiry
       user {
         id
+        first_name
+        last_name
+        email
       }
       errors {
         field
@@ -43,6 +49,7 @@ class SignupForm extends React.Component {
   render = () => {
     const {
       customLayout,
+      customInputsContainer,
       onFormError,
       onFormSuccess,
       onFormLoading,
@@ -57,6 +64,7 @@ class SignupForm extends React.Component {
         mutationRoot="create_user"
         options={{
           customLayout,
+          customInputsContainer,
           fields: [
             {
               name: 'email',
@@ -85,20 +93,19 @@ class SignupForm extends React.Component {
             {
               name: 'nationality',
               placeholder: 'Nationality',
-              input_type: 'textbox',
+              input_type: 'country',
               type: 'RequiredString',
             },
             {
               name: 'mobile_number',
               placeholder: 'Mobile Number',
-              input_type: 'textbox',
-              type: 'RequiredString',
+              input_type: 'phoneNumber',
+              type: 'RequiredNumber',
             },
             {
               name: 'gender',
-              placeholder: 'Gender',
-              input_type: 'textbox',
-              type: 'RequiredString',
+              input_type: 'gender',
+              type: 'RequiredEnum',
             },
             {
               name: 'register_for_news',

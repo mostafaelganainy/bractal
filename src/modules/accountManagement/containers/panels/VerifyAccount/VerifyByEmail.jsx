@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ParagraphFooterContent, CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
+import { CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { CenterAlignedRow, Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import Modal from '~/modules/core/components/Modal/index';
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer, SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import ModalLink from '~/modules/core/components/Modal/ModalLink';
+import { MediumSpacer, XXXXXLargeSpacer, XLargeSpacer, XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans, translate } from 'react-i18next';
 import Image from '~/modules/coreUI/components/basic/Image';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
@@ -65,6 +64,7 @@ const VerficationCodeEmail = () => (
           <XLargeSpacer />
           <BasicButton> <Trans i18nKey="verifyAccount.ButtonCreateAccount" /> </BasicButton>
           <XXLargeSpacer />
+          {/*
           <ParagraphFooterContent>
             <CenterAlignedRow>
               <Trans i18nKey="verifyAccount.footerTxt" />
@@ -74,6 +74,7 @@ const VerficationCodeEmail = () => (
               </ModalLink>
             </CenterAlignedRow>
           </ParagraphFooterContent>
+          */}
         </CenterAlignedColumn>
       </Panel>
     </DesktopContainer>

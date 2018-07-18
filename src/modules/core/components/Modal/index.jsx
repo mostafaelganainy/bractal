@@ -49,6 +49,13 @@ const CloseIcon = styled(Icon)`
     cursor: pointer;
     z-index: 3;
   }
+font-size: 17px !important;
+color: white;
+cursor: pointer;
+z-index: 1;
+@media (max-width: 1024px) {
+      color: black;
+  }
 `;
 
 
@@ -62,6 +69,7 @@ const ModalContainer = styled.div`
   ${cssMediaMax.tablet`
     position: absolute;
     overflow: auto;
+    overflow-x: hidden;
   `}  
   
   position: relative;
