@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
-import { cssMediaMin, cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Image from '~/modules/coreUI/components/basic/Image';
 import Media from 'react-media';
 
@@ -62,10 +62,7 @@ z-index: 1;
 const ModalContainer = styled.div`  
   width: 100%;
   height: 100%;
-  
-  ${cssMediaMin.desktop`
-    
-  `}  
+   
   ${cssMediaMax.tablet`
     position: absolute;
     overflow: auto;

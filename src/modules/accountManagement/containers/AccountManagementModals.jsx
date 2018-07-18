@@ -54,7 +54,7 @@ const ModalContent = styled(Column)`
     height: 600px;
   `}
 
-  position: relative;
+  position: unset;
   align-items: stretch;
   justify-content: space-between;
 
@@ -90,8 +90,21 @@ const AccountManagementModals = () => (
       <PanelsFooter>
         <ModalRoute path="/accountManagement/login" component={SocialMedia} />
         <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/EmailOrSms" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/VerficationCodeEmail" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/VerficationCodeSMS" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/VerifyAccountEmailOrSms" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/VerifyByEmail" component={SocialMedia} />
+        <ModalRoute path="/accountManagement/VerifyBySMS" component={SocialMedia} />
+
+
         <ModalRoute path="/accountManagement/singup" component={ModalLoginFooter} />
+        <ModalRoute path="/accountManagement/EmailOrSms" component={ModalLoginFooter} />
+        <ModalRoute path="/accountManagement/VerficationCodeEmail" component={ModalLoginFooter} />
+        <ModalRoute path="/accountManagement/VerficationCodeSMS" component={ModalLoginFooter} />
         <ModalRoute path="/accountManagement/VerifyAccountEmailOrSms" component={ModalLoginFooter} />
+        <ModalRoute path="/accountManagement/VerifyByEmail" component={ModalLoginFooter} />
+        <ModalRoute path="/accountManagement/VerifyBySMS" component={ModalLoginFooter} />
       </PanelsFooter>
     </ModalContent>
   </Modal>
