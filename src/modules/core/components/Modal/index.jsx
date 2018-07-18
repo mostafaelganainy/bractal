@@ -61,14 +61,15 @@ z-index: 1;
 
 const ModalContainer = styled.div`  
   width: 100%;
-  height: 100%;
   
   ${cssMediaMin.desktop`
-    
-  `}  
+    height: 100%;
+  `}
+   
   ${cssMediaMax.tablet`
     position: absolute;
-    overflow: auto;
+    top: 0;
+    min-height: 100vh;
     overflow-x: hidden;
   `}  
   

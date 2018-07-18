@@ -207,6 +207,7 @@ RelayForm.propTypes = PropTypes.shape({
       placeholder: PropTypes.string,
       label: PropTypes.string,
       overrideType: PropTypes.string,
+      displayName: PropTypes.string,
       customInputsContainer: PropTypes.element,
       customLayout: PropTypes.func,
     })),

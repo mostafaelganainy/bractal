@@ -9,7 +9,7 @@ import { Column, CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI
 import { SocialMediaSectionTitle, SocialMediaNameLabel, SocialMediaPromptLabel } from '~/modules/accountManagement/components/basic/Labels';
 import { XXXXXLargeSpacer, MediumSpacer, XXSmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Separator from '~/modules/coreUI/components/layouts/helpers/Separator';
-import { cssMediaMax, mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
+import { cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 // TODO: Create one component for all these
 const SocialMediaButton = styled(CenterAlignedColumn)`
@@ -123,6 +123,12 @@ export default function SocialMedia() {
           ))}
         </CenterAlignedRow>
         <XXXXXLargeSpacer />
+        <Media
+          query={mediaQueryMax('tablet')}
+          render={() => (
+            <XXXXXLargeSpacer />
+          )}
+        />
       </CenterAlignedColumn>
     </Column>
   );
