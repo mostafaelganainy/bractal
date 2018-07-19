@@ -73,7 +73,9 @@ export default {
         value={locals.value}
         onChange={(entry, text) => {
           if (text && text.length > 0) {
-            locals.onChange(`(${entry && entry.attrs && entry.attrs.callingCodes}) ${text}`);
+            // TODO: Find more reasonable solution.
+            const value = (entry && entry.attrs && entry.attrs.callingCodes) ? `(${entry.attrs.callingCodes}) ${text}` : '';
+            locals.onChange(value);
           } else {
             locals.onChange('');
           }
