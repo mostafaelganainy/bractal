@@ -48,6 +48,12 @@ class RelayForm extends Component {
   getValue = () => this.Form.getValue();
   getFieldName = path => path[0];
 
+  initializeOptions = () => {
+    const { options } = this.props;
+    this.tcombOptions = getTcombOptionsFromRawOptions(options);
+    this.tcombTypes = getTcombTypesFromRawOptions(options);
+  }
+
   save = () => {
     const value = this.Form.getValue();
     this.Form.validate();
@@ -166,17 +172,23 @@ class RelayForm extends Component {
       options,
     } = this.props;
 
-    const { serverErrors, localValidationErrors, isLoading } = this.state;
+    const {
+      serverErrors,
+      localValidationErrors,
+      isLoading,
+    } = this.state;
 
-    const tcombOptions = getTcombOptionsFromRawOptions(options);
-    const tcombTypes = getTcombTypesFromRawOptions(options);
+    if (options && (!this.tcombOptions || !this.tcombTypes)) {
+      this.initializeOptions();
+    }
+
     return (
       <React.Fragment>
         <Form
           tabIndex="0"
           ref={(ref) => { this.Form = ref; }}
-          options={tcombOptions}
-          type={tcombTypes}
+          options={this.tcombOptions}
+          type={this.tcombTypes}
           value={this.state.value}
           onChange={this.onChange}
           context={{

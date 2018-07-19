@@ -29,9 +29,7 @@ const ErrorEllipsisWithTooltip = withTheme(({ theme, children, customTextStyle }
 ));
 
 const renderError = (locals, customErrorTextStyle) => {
-  const fieldName = locals.attrs.displayName || (
-    locals.path && locals.path.length > 0 && locals.path[0]
-  );
+  const fieldName = locals.path && locals.path.length > 0 && locals.path[0];
 
   const displayName = locals.attrs.displayName || changeCase.sentence(fieldName);
 

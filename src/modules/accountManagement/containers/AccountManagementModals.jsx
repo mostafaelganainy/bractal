@@ -14,11 +14,11 @@ import SocialMedia from '~/modules/accountManagement/containers/panels/socialMed
 
 import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
 import RecoverPassword from '~/modules/accountManagement/containers/panels/RecoverPassword';
-import CreateNewPassword from '~/modules/accountManagement/containers/forgetPassword/CreateNewPassword';
-import EmailOrSms from '~/modules/accountManagement/containers/forgetPassword/EmailOrSms';
-import VerficationCodeEmail from '~/modules/accountManagement/containers/forgetPassword/VerficationCodeEmail';
-import VerficationCodeSMS from '~/modules/accountManagement/containers/forgetPassword/VerficationCodeSMS';
-import VerifyAccountEmailOrSms from '~/modules/accountManagement/containers/panels/verifyAccount/VerifyAccountEmailOrSms';
+import CreateNewPassword from '~/modules/accountManagement/containers/panels/forgetPassword/CreateNewPassword';
+import EmailOrSms from '~/modules/accountManagement/containers/panels/forgetPassword/EmailOrSms';
+import VerficationCodeEmail from '~/modules/accountManagement/containers/panels/forgetPassword/VerficationCodeEmail';
+import VerficationCodeSMS from '~/modules/accountManagement/containers/panels/forgetPassword/VerficationCodeSMS';
+import VerifyAccountEmailOrSms from '~/modules/accountManagement/containers/panels/VerifyAccountEmailOrSms';
 import VerifyByEmail from '~/modules/accountManagement/containers/panels/verifyAccount/verifyByEmail/VerifyByEmail';
 import VerifyBySMS from '~/modules/accountManagement/containers/panels/verifyAccount/verifyBySMS/VerifyBySMS';
 import ModalLoginFooter from '~/modules/accountManagement/components/footers/ModalLoginFooter';

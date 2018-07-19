@@ -28,6 +28,7 @@ const PositionedParent = styled.div`
 
 const StyledSpan = styled.div`
   ${props => props.customStyle}
+  line-height: 1.3;
 `;
 
 class EllipisWithTooltip extends React.Component {

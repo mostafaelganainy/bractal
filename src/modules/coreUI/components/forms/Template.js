@@ -73,7 +73,7 @@ export default {
         value={locals.value}
         onChange={(entry, text) => {
           if (text && text.length > 0) {
-            locals.onChange(`(${entry.attrs.callingCodes}) ${text}`);
+            locals.onChange(`(${entry && entry.attrs && entry.attrs.callingCodes}) ${text}`);
           } else {
             locals.onChange('');
           }
