@@ -22,6 +22,12 @@ export const ParagraphFooterContent = styled(CenterAlignedRow)`
 
   border-bottom-left-radius: ${props => props.theme.borders.radius.normal}px;
   border-bottom-right-radius: ${props => props.theme.borders.radius.normal}px;
+  @media (max-width:1024px) and (min-width:768px){
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
 `;
 
 
