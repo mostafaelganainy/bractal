@@ -1,7 +1,6 @@
 import React from 'react';
 import { translate } from 'react-i18next';
 import Media from 'react-media';
-
 // import ProductsListPage from '~/modules/ecommerceCoreUI/containers/ProductsListPage';
 import Brands from '~/modules/ecommerceCoreUI/components/brands/Brands';
 import HomeMainSlider from '~/modules/ecommerceCoreUI/components/HomeMainSlider/HomeMainSlider';
