@@ -32,7 +32,7 @@ const Heading = props => (
       </React.Fragment>
     :
       <React.Fragment>
-        <img src="images/Header/sideMenu-logo.png" alt="logo" />
+        <img src="/images/Header/sideMenu-logo.png" alt="logo" />
         <BasicButton
           primary
           onClick={() => navigateToModal(props.location, props.history, '/accountManagement/login')}
