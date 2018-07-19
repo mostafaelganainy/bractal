@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cuid from 'cuid';
-import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { LargeLabel } from '~/modules/coreUI/components/basic/Labels';
+// import ModalLink from '~/modules/core/components/Modal/ModalLink';
+// import { LargeLabel } from '~/modules/coreUI/components/basic/Labels';
 
 import HeaderDesktop from './HeaderDesktop';
 import HeaderMobile from './HeaderMobile';
 
 
-const HeaderMobile = () => (
-  <LargeLabel style={{ height: '50px', padding: '20px' }}>
-    <ModalLink to="/accountManagement/login">
-      Login
-    </ModalLink>
-  </LargeLabel>
-);
+// const HeaderMobile = () => (
+//   <LargeLabel style={{ height: '50px', padding: '20px' }}>
+//     <ModalLink to="/accountManagement/login">
+//       Login
+//     </ModalLink>
+//   </LargeLabel>
+// );
 
 class TwoLevelsHeader extends React.Component {
   state = {

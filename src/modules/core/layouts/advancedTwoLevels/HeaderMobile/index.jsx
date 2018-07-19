@@ -3,10 +3,11 @@ import { Menu, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
-import NavProductsItems from '~/modules/AykLayout/components/header/Common/NavProductsItems';
-// import NavProductsSearch from '~/modules/AykLayout/components/header/Common/NavProductsSearch';
-import NavNotification from '~/modules/AykLayout/components/header/Common/NavNotification';
-import NavWishList from '~/modules/AykLayout/components/header/Common/NavWishList';
+import NavProductsItems from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsItems';
+// import NavProductsSearch from
+// '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsSearch';
+import NavNotification from '~/modules/ecommerceCoreUI/components/header/headerActions/NavNotification';
+import NavWishList from '~/modules/ecommerceCoreUI/components/header/headerActions/NavWishList';
 
 class HeaderMobile extends Component {
   toggleVisibility = () => {
