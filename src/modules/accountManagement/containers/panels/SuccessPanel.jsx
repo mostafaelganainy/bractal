@@ -81,7 +81,7 @@ const StyledIcon = styled.div`
   }
 `;
 
-class LoginResult extends React.Component {
+class SuccessPanel extends React.Component {
   componentDidMount = () => {
     const { location, history } = this.props;
     setTimeout(() => {
@@ -120,8 +120,8 @@ class LoginResult extends React.Component {
   };
 }
 
-LoginResult.propTypes = PropTypes.shape({
+SuccessPanel.propTypes = PropTypes.shape({
   mode: PropTypes.oneOf(['success', 'error']).isRequired,
 }).isRequired;
 
-export default withRouter(LoginResult);
+export default withRouter(SuccessPanel);

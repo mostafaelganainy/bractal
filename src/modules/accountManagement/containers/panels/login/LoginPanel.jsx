@@ -60,7 +60,7 @@ class LoginFormPanel extends React.Component {
       rememberMe: this.form.getValue().remember_me,
     });
 
-    navigateToModal(location, history, '/accountManagement/loginResult');
+    navigateToModal(location, history, '/accountManagement/showSuccess');
   }
 
   onError = (error) => {

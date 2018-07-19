@@ -78,11 +78,9 @@ const VerifyByEmailButton = () => (
 
 const VerifyBySMSButton = () => (
   <InputLayout>
-    <ModalLink to="/accountManagement/VerifyBySMS">
-      <BasicButton width="100%">
-        <Trans i18nKey="verifyAccount.VerifyBySMS" />
-      </BasicButton>
-    </ModalLink>
+    <BasicButton disabled width="100%">
+      <Trans i18nKey="verifyAccount.VerifyBySMS" />
+    </BasicButton>
   </InputLayout>
 );
 

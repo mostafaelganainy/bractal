@@ -12,7 +12,7 @@ import Panel, { PanelRoot } from '~/modules/accountManagement/components/basic/P
 import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 
-import VerifyByEmailForm from './VerifyByEmailForm';
+import VerifyByEmailForm from './RecoverVerifyByEmailForm';
 
 const IMAGE_PATH = '/images/AccountManagement';
 
@@ -33,24 +33,24 @@ class VerficationCodeEmail extends React.Component {
     isLoading: false,
   };
 
-  onSuccess = (response) => {
-    const { history, location, updateUserInfo } = this.props;
+  onSuccess = () => {
+    const {
+      history,
+      location,
+      updateUserInfoTempPartial,
+      userInfo,
+    } = this.props;
 
-    if (!this.form || !response || !response.confirm_email) {
+    if (!this.form) {
       return;
     }
 
-    updateUserInfo({
-      token: response.confirm_email.token,
-      clientID: response.confirm_email.client_id,
-      expiry: response.confirm_email.expiry,
-      email: response.confirm_email.user.email,
-      firstName: response.confirm_email.user.first_name,
-      lastName: response.confirm_email.user.last_name,
-      rememberMe: true,
+    updateUserInfoTempPartial({
+      email: userInfo.email,
+      code: this.form.getValue().code,
     });
 
-    navigateToModal(location, history, '/accountManagement/showSuccess');
+    navigateToModal(location, history, '/accountManagement/recoverpassword/CreateNewPassword');
   }
 
   onError = error => this.setState({ panelError: error });
@@ -61,12 +61,18 @@ class VerficationCodeEmail extends React.Component {
 
   render = () => {
     const { isLoading, panelError } = this.state;
+    const { userInfo } = this.props;
+
+    let currentPanelError = panelError;
+    if (!userInfo) {
+      currentPanelError = 'Email not found, go back and re-enter your email, or contact customer support';
+    }
 
     return (
       <Panel
-        title="VERIFY YOUR ACCOUNT"
-        subTitle="Necessary Step to active your account"
-        error={panelError}
+        title="RECOVER YOUR PASSWORD"
+        subTitle="Follow the steps to reset your password"
+        error={currentPanelError}
         panelWidth="100%"
       >
         <CenterAlignedColumn>
@@ -84,6 +90,9 @@ class VerficationCodeEmail extends React.Component {
           <InputLayout>
             <VerifyByEmailForm
               ref={(ref) => { this.form = ref; }}
+              addiontalMutationVariables={{
+                email: userInfo && userInfo.email,
+              }}
               onFormError={error => this.onError(error)}
               onFormSuccess={response => this.onSuccess(response)}
               onFormLoading={loading => this.setLoadingState(loading)}
@@ -104,7 +113,8 @@ class VerficationCodeEmail extends React.Component {
 VerficationCodeEmail.propTypes = {
   history: PropTypes.shape({}).isRequired,
   location: PropTypes.shape({}).isRequired,
-  updateUserInfo: PropTypes.shape({}).isRequired,
+  userInfo: PropTypes.shape({}).isRequired,
+  updateUserInfoTempPartial: PropTypes.func.isRequired,
 };
 
 export default withUserInfo(VerficationCodeEmail);

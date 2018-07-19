@@ -6,9 +6,15 @@ import {
   makeModalPath,
 } from '../../utils/modalHelpers';
 
-const ModalRoute = ({ path, component, location }) => (
+const ModalRoute = ({
+  exact,
+  path,
+  component,
+  location,
+}) => (
   <Switch location={extractModalPartFromLocation(location)}>
     <Route
+      exact={exact}
       path={makeModalPath(path)}
       component={component}
     />
@@ -16,6 +22,7 @@ const ModalRoute = ({ path, component, location }) => (
 );
 
 ModalRoute.propTypes = PropTypes.shape({
+  exact: PropTypes.bool,
   path: PropTypes.string.isRequired,
   component: PropTypes.string.isRequired,
   location: PropTypes.shape({}).isRequired,

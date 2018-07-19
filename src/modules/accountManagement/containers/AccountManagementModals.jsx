@@ -9,19 +9,20 @@ import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 
 import Login from '~/modules/accountManagement/containers/panels/login/LoginContainer';
-import LoginResult from '~/modules/accountManagement/containers/panels/login/LoginResult';
+import SuccessPanel from '~/modules/accountManagement/containers/panels/SuccessPanel';
 import SocialMedia from '~/modules/accountManagement/containers/panels/socialMedia/SocialMedia';
 
 import Signup from '~/modules/accountManagement/containers/panels/signup/SignupPanel';
-import RecoverPassword from '~/modules/accountManagement/containers/panels/RecoverPassword';
-import CreateNewPassword from '~/modules/accountManagement/containers/panels/forgetPassword/CreateNewPassword';
-import EmailOrSms from '~/modules/accountManagement/containers/panels/forgetPassword/EmailOrSms';
-import VerficationCodeEmail from '~/modules/accountManagement/containers/panels/forgetPassword/VerficationCodeEmail';
-import VerficationCodeSMS from '~/modules/accountManagement/containers/panels/forgetPassword/VerficationCodeSMS';
-import VerifyAccountEmailOrSms from '~/modules/accountManagement/containers/panels/VerifyAccountEmailOrSms';
-import VerifyByEmail from '~/modules/accountManagement/containers/panels/verifyAccount/verifyByEmail/VerifyByEmail';
-import VerifyBySMS from '~/modules/accountManagement/containers/panels/verifyAccount/verifyBySMS/VerifyBySMS';
+import RecoverPassword from '~/modules/accountManagement/containers/panels/forgetPassword/recoverPassword/RecoverPassword';
+import CreateNewPassword from '~/modules/accountManagement/containers/panels/forgetPassword/createNewPassword/CreateNewPassword';
+
+import VerifyAccountByEmailOrSms from '~/modules/accountManagement/containers/panels/verifyAccount/VerifyAccountEmailOrSms';
+
+import VerifyAccountByEmail from '~/modules/accountManagement/containers/panels/verifyAccount/verifyByEmail/VerifyByEmail';
+import VerifyRecoverByEmail from '~/modules/accountManagement/containers/panels/forgetPassword/verifyByEmail/RecoverVerifyByEmail';
+
 import ModalLoginFooter from '~/modules/accountManagement/components/footers/ModalLoginFooter';
+import AykCopyRightsFooter from '~/modules/accountManagement/components/footers/AykCopyRightsFooter';
 
 const PanelsContainer = styled(Row)` 
   ${cssMediaMax.tablet`
@@ -75,36 +76,35 @@ const AccountManagementModals = () => (
   <Modal>
     <ModalContent>
       <PanelsContainer>
-        <ModalRoute path="/accountManagement/login" component={Login} />
-        <ModalRoute path="/accountManagement/loginResult" component={LoginResult} />
-        <ModalRoute path="/accountManagement/singup" component={Signup} />
-        <ModalRoute path="/accountManagement/recoverPassword" component={RecoverPassword} />
-        <ModalRoute path="/accountManagement/CreateNewPassword" component={CreateNewPassword} />
-        <ModalRoute path="/accountManagement/EmailOrSms" component={EmailOrSms} />
-        <ModalRoute path="/accountManagement/VerficationCodeEmail" component={VerficationCodeEmail} />
-        <ModalRoute path="/accountManagement/VerficationCodeSMS" component={VerficationCodeSMS} />
-        <ModalRoute path="/accountManagement/VerifyAccountEmailOrSms" component={VerifyAccountEmailOrSms} />
-        <ModalRoute path="/accountManagement/VerifyByEmail" component={VerifyByEmail} />
-        <ModalRoute path="/accountManagement/VerifyBySMS" component={VerifyBySMS} />
+        <ModalRoute exact path="/accountManagement/login" component={Login} />
+        <ModalRoute exact path="/accountManagement/showSuccess" component={SuccessPanel} />
+
+        <ModalRoute exact path="/accountManagement/singup" component={Signup} />
+
+        <ModalRoute exact path="/accountManagement/recoverPassword" component={RecoverPassword} />
+        <ModalRoute exact path="/accountManagement/recoverpassword/VerifyByEmail" component={VerifyRecoverByEmail} />
+        <ModalRoute exact path="/accountManagement/recoverpassword/CreateNewPassword" component={CreateNewPassword} />
+
+        <ModalRoute exact path="/accountManagement/VerifyAccountEmailOrSms" component={VerifyAccountByEmailOrSms} />
+        <ModalRoute exact path="/accountManagement/VerifyByEmail" component={VerifyAccountByEmail} />
       </PanelsContainer>
+
+
       <PanelsFooter>
-        <ModalRoute path="/accountManagement/login" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/singup" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/EmailOrSms" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/VerficationCodeEmail" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/VerficationCodeSMS" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/VerifyAccountEmailOrSms" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/VerifyByEmail" component={SocialMedia} />
-        <ModalRoute path="/accountManagement/VerifyBySMS" component={SocialMedia} />
+        <ModalRoute exact path="/accountManagement/login" component={SocialMedia} />
 
+        <ModalRoute exact path="/accountManagement/singup" component={SocialMedia} />
+        <ModalRoute exact path="/accountManagement/singup" component={ModalLoginFooter} />
 
-        <ModalRoute path="/accountManagement/singup" component={ModalLoginFooter} />
-        <ModalRoute path="/accountManagement/EmailOrSms" component={ModalLoginFooter} />
-        <ModalRoute path="/accountManagement/VerficationCodeEmail" component={ModalLoginFooter} />
-        <ModalRoute path="/accountManagement/VerficationCodeSMS" component={ModalLoginFooter} />
-        <ModalRoute path="/accountManagement/VerifyAccountEmailOrSms" component={ModalLoginFooter} />
-        <ModalRoute path="/accountManagement/VerifyByEmail" component={ModalLoginFooter} />
-        <ModalRoute path="/accountManagement/VerifyBySMS" component={ModalLoginFooter} />
+        <ModalRoute exact path="/accountManagement/VerifyByEmail" component={SocialMedia} />
+        <ModalRoute exact path="/accountManagement/VerifyByEmail" component={ModalLoginFooter} />
+
+        <ModalRoute exact path="/accountManagement/recoverPassword" component={ModalLoginFooter} />
+
+        <ModalRoute exact path="/accountManagement/recoverpassword/VerifyByEmail" component={SocialMedia} />
+        <ModalRoute exact path="/accountManagement/recoverpassword/VerifyByEmail" component={AykCopyRightsFooter} />
+
+        <ModalRoute exact path="/accountManagement/recoverpassword/CreateNewPassword" component={ModalLoginFooter} />
       </PanelsFooter>
     </ModalContent>
   </Modal>

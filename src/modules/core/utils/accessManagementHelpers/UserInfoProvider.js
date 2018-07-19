@@ -34,6 +34,19 @@ class UserInfoProvider extends React.Component {
       }
     }
   }
+  updateUserInfoTempPartial = (newUserInfo) => {
+    const currentInfo = (this.state.userManagement && this.state.userManagement.userInfo) || {};
+    this.setState({
+      userManagement: {
+        ...this.state.userManagement,
+        userInfo: {
+          ...currentInfo,
+          ...newUserInfo,
+        },
+      },
+    });
+  }
+
   updateUserInfo = (userInfo) => {
     this.invalidateUser();
 
@@ -76,6 +89,7 @@ class UserInfoProvider extends React.Component {
   initialState = {
     userManagement: {
       updateUserInfo: this.updateUserInfo,
+      updateUserInfoTempPartial: this.updateUserInfoTempPartial,
       invalidateUser: this.invalidateUser,
       authenticated: false,
       userInfo: null,
