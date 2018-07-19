@@ -61,13 +61,14 @@ const FooterLinksWrapper = styled.div`
   }
 
 `;
-const FooterAssets = styled.div`
-  display: flex;
-`;
+
 const FooterDetails = styled.div`
   display:flex;
   flex-direction: column;
   width: 50%;
+  ${cssMediaMax.xsmall`
+    width: 100%;
+  `}
 `;
 const DownloadAppItem = styled(DownloadApp)`
   width: 35%;
@@ -84,16 +85,11 @@ const DownloadAppItem = styled(DownloadApp)`
   }
 `;
 const SocialMediaItems = styled(SocialMedia)`
-  width: 33.3%;
   ${cssMediaMax.tablet`
-      width: 100%;
       i {
         font-size: 28px;
       }
     `}
-`;
-const PaymentContent = styled(Payment)`
-  margin-left: 45px;
 `;
 
 const renderForDesktop = () => (
@@ -101,14 +97,17 @@ const renderForDesktop = () => (
     <Container>
       <FooterDetails>
         <FooterLinksWrapper>
-          <FooterLinks links={linkList1} />
-          <FooterLinks links={linkList2} />
+          <div>
+            <FooterLinks links={linkList1} />
+            <SocialMediaItems />
+          </div>
+          <div>
+            <FooterLinks links={linkList2} />
+            <XXLargeSpacer size={33} />
+            <Payment />
+          </div>
           <FooterLinks links={linkList3} />
         </FooterLinksWrapper>
-        <FooterAssets>
-          <SocialMediaItems />
-          <PaymentContent />
-        </FooterAssets>
       </FooterDetails>
       <DownloadAppItem />
       <ImageWrapper />

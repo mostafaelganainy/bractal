@@ -38,6 +38,24 @@ const PanelsContainer = styled(Row)`
 `;
 
 const PanelsFooter = styled(Column)`
+  ${cssMediaMin.desktop`
+    position: absolute;
+  `}
+
+  ${cssMediaMax.mobile`
+    position: absolute;
+  `}
+  
+  ${cssMediaMin.tablet`
+    ${cssMediaMax.tablet`
+      position: fixed;      
+    `}    
+  `}
+  
+  bottom: 0;
+  right: 0;
+  left: 0;
+
   justify-self: flex-end;
   ${cssMediaMax.tablet`
     flex-direction: column;
@@ -50,12 +68,14 @@ const PanelsFooter = styled(Column)`
 const backgroundImagePath = '/images/AccountManagement/panel_background/bg.png';
 
 const ModalContent = styled(Column)`
+  position: unset;
+
   ${cssMediaMin.desktop`
     width: 920px;
     height: 600px;
+    position: relative;
   `}
 
-  position: unset;
   align-items: stretch;
   justify-content: space-between;
 
@@ -95,6 +115,8 @@ const AccountManagementModals = () => (
 
         <ModalRoute exact path="/accountManagement/singup" component={SocialMedia} />
         <ModalRoute exact path="/accountManagement/singup" component={ModalLoginFooter} />
+
+        <ModalRoute exact path="/accountManagement/VerifyAccountEmailOrSms" component={ModalLoginFooter} />
 
         <ModalRoute exact path="/accountManagement/VerifyByEmail" component={SocialMedia} />
         <ModalRoute exact path="/accountManagement/VerifyByEmail" component={ModalLoginFooter} />

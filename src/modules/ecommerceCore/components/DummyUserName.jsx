@@ -2,7 +2,7 @@
 import React from 'react';
 import { Label } from '~/modules/coreUI/components/basic/Labels';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import withUserInfo from '../../core/utils/accessManagementHelpers/withUserInfo';
+import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 
 const logout = (e, invalidateUser) => {
   e.stopPropagation();

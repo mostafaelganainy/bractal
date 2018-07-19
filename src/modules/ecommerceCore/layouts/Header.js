@@ -16,8 +16,6 @@ import NavLanguage from '~/modules/ecommerceCoreUI/components/header/headerActio
 import NavCurrency from '~/modules/ecommerceCoreUI/components/header/headerActions/NavCurrency';
 import NavProductsSearch from '~/modules/ecommerceCoreUI/components/header/headerActions/NavProductsSearch';
 
-import DummyUserName from '~/modules/ecommerceCore/components/DummyUserName';
-
 import {
   desktopTopHeaderStyles,
   desktopBottomHeaderStyles,
@@ -112,9 +110,6 @@ const Header = () => {
           },
           {
             horizontalSpacer: true,
-          },
-          {
-            itemRenderer: <DummyUserName />,
           },
         ],
         right: [
