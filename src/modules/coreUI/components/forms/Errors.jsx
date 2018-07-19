@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
+import changeCase from 'change-case';
 
 import { ErrorLabel } from '~/modules/coreUI/components/basic/Labels';
 import { LeftAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
@@ -18,16 +19,19 @@ const FullWidthErrorLabel = styled(ErrorLabel)`
   width: 100%;
 `;
 
-const ErrorEllipsisWithTooltip = withTheme(({ theme, children }) => (
-  <EllipsisWithTooltip color={theme.colors.error}>
+const ErrorEllipsisWithTooltip = withTheme(({ theme, children, customTextStyle }) => (
+  <EllipsisWithTooltip
+    color={theme.colors.error}
+    customTextStyle={customTextStyle}
+  >
     {children}
   </EllipsisWithTooltip>
 ));
 
-const renderError = (locals) => {
-  const fieldName = locals.attrs.displayName || (
-    locals.path && locals.path.length > 0 && locals.path[0]
-  );
+const renderError = (locals, customErrorTextStyle) => {
+  const fieldName = locals.path && locals.path.length > 0 && locals.path[0];
+
+  const displayName = locals.attrs.displayName || changeCase.sentence(fieldName);
 
   const localValidationErrors = locals.context.localValidationErrors || {};
   const serverErrors = (locals.context && locals.context.serverErrors) || {};
@@ -36,20 +40,24 @@ const renderError = (locals) => {
   errorMessage = errorMessage || localValidationErrors[fieldName];
 
   if (errorMessage) {
-    errorMessage = `${fieldName}, ${errorMessage}`;
+    errorMessage = `${displayName}, ${errorMessage}`;
   }
 
   errorMessage = errorMessage || serverErrors[fieldName];
   errorMessage = errorMessage || <span>&nbsp;</span>;
 
-  return (
+  const ErrorComponent = (
     <InputsIntraSpace>
       <FullWidthErrorLabel>
-        <ErrorEllipsisWithTooltip>
+        <ErrorEllipsisWithTooltip customTextStyle={customErrorTextStyle}>
           {errorMessage}
         </ErrorEllipsisWithTooltip>
       </FullWidthErrorLabel>
     </InputsIntraSpace>
+  );
+
+  return (
+    ErrorComponent
   );
 };
 

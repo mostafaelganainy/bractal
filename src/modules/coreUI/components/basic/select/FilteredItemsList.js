@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const ItemName = styled.div`
+import { XSmallLabel } from '~/modules/coreUI/components/basic/Labels';
+
+const ItemName = styled(XSmallLabel)`
   text-align:left;
+  flex-grow: 1;
+  padding-left: ${props => props.theme.paddings.medium}px;
 `;
 
-const Option = styled.li`
+const Option = styled.li`  
   background: ${props => (props.isFocusOption ? props.theme.colors.cellHoverColorAlt : props.theme.colors.named.white)};
   padding: 5px 15px 5px 15px;
   box-sizing: border-box;
@@ -19,6 +23,7 @@ const Option = styled.li`
   display:flex;
   justify-content: space-between;
   align-items: center;
+  color: ${props => props.theme.colors.labels.normal};
 
   &&:hover{
     background: ${props => props.theme.colors.cellHoverColor};
@@ -194,9 +199,7 @@ export default class FilteredItemsList extends React.Component {
 
         <ItemName className="ItemName">{entry.label}</ItemName>
         {entry.rightPulledLabel &&
-          <div className="codeLbl">
-            +{entry.rightPulledLabel}
-          </div>
+          entry.rightPulledLabel
         }
       </Option>
     ));

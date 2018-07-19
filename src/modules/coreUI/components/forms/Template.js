@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import t from 'tcomb-form';
 import React from 'react';
 import Checkbox from '~/modules/coreUI/components/basic/Checkbox';
@@ -34,7 +34,7 @@ const InputElem = styled.input`
   }
 `;
 
-
+// TODO : Change to a more suitable name (i.e. global state)
 const getGlobalAttrs = locals => ({
   onKeyUp: locals.context.onKeyUp,
 });
@@ -48,7 +48,7 @@ export default {
         value={locals.value}
         placeholder={locals.attrs.placeholder}
         tabIndex={locals.attrs.tabIndex}
-        type={locals.attrs.overrideType || 'text'}
+        type="text"
       />
     ),
     renderError: locals => renderError(locals),
@@ -73,7 +73,7 @@ export default {
         value={locals.value}
         onChange={(entry, text) => {
           if (text && text.length > 0) {
-            locals.onChange(`(${entry.attrs.callingCodes}) ${text}`);
+            locals.onChange(`(${entry && entry.attrs && entry.attrs.callingCodes}) ${text}`);
           } else {
             locals.onChange('');
           }
@@ -97,7 +97,12 @@ export default {
   }),
   gender: t.form.Form.templates.radio.clone({
     renderRadios: locals => <Gender onChange={locals.onChange} />,
-    renderError: locals => renderError(locals),
+    renderError: (locals) => {
+      const customErrorTextStyle = css`
+        text-align: center;
+      `;
+      return renderError(locals, customErrorTextStyle);
+    },
   }),
   checkbox: t.form.Form.templates.checkbox.clone({
     renderCheckbox: (locals) => {

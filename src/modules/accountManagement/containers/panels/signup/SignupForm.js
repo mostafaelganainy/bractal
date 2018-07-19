@@ -68,14 +68,14 @@ class SignupForm extends React.Component {
           fields: [
             {
               name: 'email',
-              placeholder: 'Email/Mobile Number',
+              placeholder: 'Email',
               input_type: 'textbox',
               type: 'RequiredString',
             },
             {
               name: 'password',
               placeholder: 'Password',
-              input_type: 'textbox',
+              input_type: 'password',
               type: 'RequiredString',
             },
             {

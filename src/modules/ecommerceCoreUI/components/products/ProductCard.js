@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Card from '~/modules/coreUI/components/items/Card';
 import { Spacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 
-import RoundIconButton from '~/modules/AykCore/components/buttons/RoundIconButton';
+import RoundIconButton from '~/modules/coreUI/components/basic/RoundIconButton';
 import {
   OldPriceLabel,
   CurrentPriceLabel,

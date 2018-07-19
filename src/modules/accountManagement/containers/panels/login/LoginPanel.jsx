@@ -7,7 +7,7 @@ import { PanelContentMinorLabel, PanelContentSmallLabel } from '~/modules/accoun
 import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
-import { SmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import { XSmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
@@ -27,6 +27,7 @@ const CustomFormLayout = locals => (
       <div>{locals.inputs.remember_me}</div>
       <PanelContentSmallLabel>
         <RightAlignedColumn>
+          <XSmallSpacer />
           <ModalLink to="/accountManagement/recoverPassword">
             Lost Your Password
           </ModalLink>
@@ -105,10 +106,8 @@ class LoginFormPanel extends React.Component {
           <LargeSpacer />
           <PanelContentMinorLabel>
             <CenterAlignedRow>
-              By login you agree to our
-              <SmallSpacer />
               <ModalLink to="/accountManagement/recoverPassword">
-                terms &amp; conditions
+                Terms &amp; Conditions
               </ModalLink>
             </CenterAlignedRow>
           </PanelContentMinorLabel>

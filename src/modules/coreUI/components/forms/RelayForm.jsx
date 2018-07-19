@@ -48,6 +48,12 @@ class RelayForm extends Component {
   getValue = () => this.Form.getValue();
   getFieldName = path => path[0];
 
+  initializeOptions = () => {
+    const { options } = this.props;
+    this.tcombOptions = getTcombOptionsFromRawOptions(options);
+    this.tcombTypes = getTcombTypesFromRawOptions(options);
+  }
+
   save = () => {
     const value = this.Form.getValue();
     this.Form.validate();
@@ -101,7 +107,7 @@ class RelayForm extends Component {
           if (response && response[mutationRoot] && response[mutationRoot].errors) {
             response[mutationRoot].errors.forEach((error) => {
               let workAROUND = error.field;
-              // Till the return from the backend isn't 'email' any more
+              // TODO : Till the return from the backend isn't 'email' any more
               serverErrors[workAROUND] = `${error.messages[0]}`;
               if (workAROUND === 'email') {
                 workAROUND = 'user_signin';
@@ -166,17 +172,23 @@ class RelayForm extends Component {
       options,
     } = this.props;
 
-    const { serverErrors, localValidationErrors, isLoading } = this.state;
+    const {
+      serverErrors,
+      localValidationErrors,
+      isLoading,
+    } = this.state;
 
-    const tcombOptions = getTcombOptionsFromRawOptions(options);
-    const tcombTypes = getTcombTypesFromRawOptions(options);
+    if (options && (!this.tcombOptions || !this.tcombTypes)) {
+      this.initializeOptions();
+    }
+
     return (
       <React.Fragment>
         <Form
           tabIndex="0"
           ref={(ref) => { this.Form = ref; }}
-          options={tcombOptions}
-          type={tcombTypes}
+          options={this.tcombOptions}
+          type={this.tcombTypes}
           value={this.state.value}
           onChange={this.onChange}
           context={{
@@ -206,7 +218,6 @@ RelayForm.propTypes = PropTypes.shape({
       type: PropTypes.string.isRequired,
       placeholder: PropTypes.string,
       label: PropTypes.string,
-      overrideType: PropTypes.string,
       displayName: PropTypes.string,
       customInputsContainer: PropTypes.element,
       customLayout: PropTypes.func,
