@@ -40,6 +40,7 @@ const generateDummyProps = () => (
     doesHaveDiscount: dummyData.getRandomDiscountDecision(),
     discount: dummyData.getRandomDiscount(),
     offerType: dummyData.getRandomOfferType(),
+    oldPrice: dummyData.getRandomOldPrice(),
   }
 );
 
@@ -57,9 +58,9 @@ const renderProductTag = (dummyProps) => {
 
 const ProductCard = ({ productInfo }) => {
   const dummyProps = generateDummyProps();
-  dummyProps.oldPrice = (parseFloat(productInfo.price) / (1 - dummyProps.discount)).toFixed(2);
+  const discount = dummyProps.doesHaveDiscount ? dummyProps.discount : 0;
   const originalPrice = dummyProps.doesHaveDiscount ? `${dummyProps.oldPrice} QAR` : <span>&nbsp;</span>;
-  const currentPrice = `${productInfo.price} QAR`;
+  const currentPrice = `${(dummyProps.oldPrice / (1 - discount)).toFixed(2)} QAR`;
 
   return (
     <div>
