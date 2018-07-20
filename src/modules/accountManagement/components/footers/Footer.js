@@ -12,6 +12,7 @@ export const ParagraphFooterContent = styled(CenterAlignedRow)`
   line-height: ${props => props.theme.fonts.sizes.xSmall * 1.7}px;
   font-size: ${props => props.theme.fonts.sizes.small}px;
   
+  ${/* // TODO : Use a color from the theme */null};
   background-color: #faf9f9;
   
   padding: 11px;
@@ -20,9 +21,6 @@ export const ParagraphFooterContent = styled(CenterAlignedRow)`
   border-bottom-left-radius: ${props => props.theme.borders.radius.normal}px;
   border-bottom-right-radius: ${props => props.theme.borders.radius.normal}px;
 `;
-
-// @media (max-width:1024px) and (min-width:768px){
-
 
 const Footer = ({ children }) => (
   <ParagraphFooterContent>

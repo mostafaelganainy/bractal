@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
+import Media from 'react-media';
 import { withRouter } from 'react-router-dom';
+
+import withModalTracker from '~/modules/core/utils/modalHelpers/withModalTracker';
 import Icon from '~/modules/coreUI/components/basic/Icon';
 import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
-import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
 import { cssMediaMin, cssMediaMax, mediaQueryMin, mediaQueryMax } from '~/modules/core/utils/cssHelpers/cssMedia';
 import Image from '~/modules/coreUI/components/basic/Image';
-import Media from 'react-media';
+
 
 const customStyles = {
   content: {
@@ -49,12 +51,13 @@ const CloseIcon = styled(Icon)`
     cursor: pointer;
     z-index: 3;
   }
-font-size: 17px !important;
-color: white;
-cursor: pointer;
-z-index: 1;
-@media (max-width: 1024px) {
-      color: black;
+  font-size: 17px !important;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+
+  @media (max-width: 1024px) {
+    color: black;
   }
 `;
 
@@ -69,9 +72,6 @@ const ModalContainer = styled.div`
   ${cssMediaMax.tablet`
     position: absolute;
     top: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
     min-height: 100vh;
     overflow-x: hidden;
   `}  
@@ -92,47 +92,46 @@ const ModalContainer = styled.div`
 const ModalContent = styled(CenterAlignedColumn)`
   ${cssMediaMax.tablet`
     align-self: flex-start;
-    padding-top: ${props => props.theme.paddings.xxLarge}px;
+    width: 100%;
+    height: 100%;
   `}
 `;
 
 class Modal extends React.Component {
-  closeModal = (location, history) => {
+  closeModal = () => {
     // eslint-disable-next-line
-    closeCurrentModal(location, history);
+    this.props.closeCurrentModal();
   }
 
-  clickedOutsite = (e, location, history, isDesktop) => {
+  clickedOutsite = (e, isDesktop) => {
     if (!isDesktop) {
       return;
     }
     // eslint-disable-next-line
     const domNode = ReactDOM.findDOMNode(this.modalContainer);
     if (domNode === e.target) {
-      this.closeModal(location, history);
+      this.closeModal();
     }
   }
-  renderContent = () => {
-    const { location, history } = this.props;
-
-    return (
-      <ModalContent >
-        <Media query={mediaQueryMax('tablet')}>
-          {matches => (
-            matches ? (
-              <TabletCloseIcon src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal(location, history)} />
-            ) : (
-              <CloseIcon className="close icon closePopup" onClick={() => this.closeModal(location, history)} />
-            )
-          )}
-        </Media>
-        {this.props.children}
-      </ModalContent>
-    );
-  }
+  renderContent = () => (
+    <ModalContent >
+      <Media query={mediaQueryMax('tablet')}>
+        {matches => (
+          matches ? (
+            <TabletCloseIcon src="/images/AccountManagement/close-copy.png" onClick={() => this.closeModal()} />
+          ) : (
+            <CloseIcon className="close icon closePopup" onClick={() => this.closeModal()} />
+          )
+        )}
+      </Media>
+      {this.props.children}
+    </ModalContent>
+  );
 
   render = () => {
-    const { location, history } = this.props;
+    const { location, history, onModalOpened } = this.props;
+
+    onModalOpened();
 
     return (
       <div>
@@ -160,7 +159,8 @@ class Modal extends React.Component {
 Modal.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   history: PropTypes.string.isRequired,
+  closeCurrentModal: PropTypes.func.isRequired,
 }.isRequired;
 
 
-export default withRouter(Modal);
+export default withRouter(withModalTracker(Modal));

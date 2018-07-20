@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import { PanelContentLabel, PanelContentMinorLabel } from '~/modules/accountManagement/components/basic/Labels';
-import Panel from '~/modules/accountManagement/components/basic/Panel';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
@@ -28,12 +27,13 @@ const PanelImage = () => (
 
 const SignUpFormPanel = (props) => {
   const ContentContainer = props.panelContentContainer;
+  const PanelContainer = props.panelContainer;
   const { history, location } = props;
 
   return (
     <Media query={mediaQueryMin('desktop')}>
       {matched => (
-        <Panel showHeader={matched} titleLabel="Register" subTitleLabel="Join our community">
+        <PanelContainer showHeader={matched} titleLabel="Register" subTitleLabel="Join our community">
           <ContentContainer>
             {matched && <PanelImage />}
             <PanelContentLabel >
@@ -53,7 +53,7 @@ const SignUpFormPanel = (props) => {
               &nbsp;
             </PanelContentMinorLabel>
           </ContentContainer>
-        </Panel>
+        </PanelContainer>
       )}
     </Media>
   );
