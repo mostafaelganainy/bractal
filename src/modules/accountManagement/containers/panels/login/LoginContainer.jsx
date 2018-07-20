@@ -24,6 +24,10 @@ const PanelContent = styled(CenterAlignedColumn)`
 
 const PanelContainer = styled(Panel)`
   flex-grow: 0;
+
+  ${cssMediaMax.tablet`
+    flex-grow: 1;
+  `}
 `;
 
 const RootContainer = styled(CenterAlignedRow)`
