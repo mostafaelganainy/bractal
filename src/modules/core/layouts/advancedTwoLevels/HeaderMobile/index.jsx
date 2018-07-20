@@ -11,7 +11,9 @@ import NavWishList from '~/modules/ecommerceCoreUI/components/header/headerActio
 
 class HeaderMobile extends Component {
   toggleVisibility = () => {
-    this.props.toggleVisibility(true);
+    if (this.props.toggleVisibility) {
+      // this.props.toggleVisibility(true);
+    }
   };
   render() {
     return (
