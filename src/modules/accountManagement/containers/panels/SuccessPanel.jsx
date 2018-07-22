@@ -92,8 +92,8 @@ class SuccessPanel extends React.Component {
   render = () => {
     const mode = this.props.mode || 'success';
     return (
-      <Row centerAlign fullWidth fullHeight>
-        <Column centerAlign fullWidth>
+      <Row centerAligned fullWidth fullHeight>
+        <Column centerAligned fullWidth>
           <StyledIcon>
             {mode === 'success' &&
               <React.Fragment>

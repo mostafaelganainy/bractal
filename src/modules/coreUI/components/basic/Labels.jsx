@@ -11,9 +11,20 @@ const getColor = (props) => {
   return props.theme.colors.labels.normal;
 };
 
+const getSize = (props) => {
+  if (props.size) {
+    if (props.theme.fonts.sizes[props.size]) {
+      return props.theme.fonts.sizes[props.size];
+    }
+    return props.size;
+  }
+  return props.theme.fonts.sizes.small;
+};
+
 export const Label = styled.span`
   text-transform: ${props => (props.uppercase ? 'uppercase' : 'none')};
   color: ${props => getColor(props)};
+  font-size: ${props => getSize(props)}px;
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
   line-height: ${props => (props.paragraph ? 1.3 : 1)};
 

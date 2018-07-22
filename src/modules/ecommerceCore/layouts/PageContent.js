@@ -10,6 +10,8 @@ import {
   removeModalPartFromLocation,
 } from '~/modules/core/utils/modalHelpers';
 
+import APIMonitoringHomePage from '~/modules/apiMonitoring/containers/Home';
+
 import HomePage from '../containers/Home';
 
 import { withModules } from '../../core/utils/modulesLoader';
@@ -17,6 +19,7 @@ import { withModules } from '../../core/utils/modulesLoader';
 const PageContent = ({ location }) => (
   <Switch location={removeModalPartFromLocation(location)}>
     <Route exact path="/" component={HomePage} />
+    <Route path="/admin/apiMonitoring" component={APIMonitoringHomePage} />
   </Switch>
 );
 

@@ -11,7 +11,7 @@ import {
 
 const DepartmentDropdown = ({ departments }) => (
   <StyledProductSearchDropdownContainer>
-    <Column fullWidth stretchAlign>
+    <Column fullWidth stretchAligned>
       <Dropdown
         options={departments}
         pointing="top left"

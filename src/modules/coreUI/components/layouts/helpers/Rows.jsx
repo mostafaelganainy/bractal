@@ -2,21 +2,27 @@
 import styled from 'styled-components';
 
 const getJustifyContent = (props) => {
-  if (props.spaceAround) {
+  if (props.spaceAroundJustified) {
     return 'space-around';
-  } else if (props.spaceBetween) {
+  } else if (props.spaceBetweenJustified) {
     return 'space-between';
-  } else if (props.justifyCenter) {
+  } else if (props.centerJustified) {
     return 'center';
+  } else if (props.stretchJustified) {
+    return 'stretch';
+  } else if (props.leftJustified) {
+    return 'flex-start';
+  } else if (props.rightJustified) {
+    return 'flex-end';
   }
 
   return null;
 };
 
 const getAlignItems = (props) => {
-  if (props.stretchAlign) {
+  if (props.stretchAligned) {
     return 'stretch';
-  } else if (props.centerAlign) {
+  } else if (props.centerAligned) {
     return 'center';
   } else if (props.topAligned) {
     return 'flex-start';

@@ -4,7 +4,7 @@ const loadLocales = () => {
   i18next.addResourceBundle('en', 'apiMonitoring', {
     metadata: {
       name: 'apiMonitoring',
-      displayName: 'Api Monitoring Module',
+      displayName: 'Api Monitoring',
       description: 'ApiMonitoring is the best module you could ever find and I LOVE it !',
     },
     home: {

@@ -156,7 +156,7 @@ export class BasicButton extends React.Component {
       <Button
         {...this.props}
         onClick={this.onClick}
-        centerAlign
+        centerAligned
         centerJustify
         width={this.props.width}
       >

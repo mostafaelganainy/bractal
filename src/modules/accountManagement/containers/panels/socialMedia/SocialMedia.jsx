@@ -88,7 +88,7 @@ const socialMedias = [
 // TODO: Move each to a separate comp
 export default function SocialMedia() {
   return (
-    <Column justifyCenter centerAligned fullWidth>
+    <Column centerJustified centerAligned fullWidth>
       <Media
         query={mediaQueryMin('desktop')}
         render={() => (

@@ -22,7 +22,7 @@ const CustomFormLayout = locals => (
   <InputLayout>
     <div>{locals.inputs.user_signin}</div>
     <div>{locals.inputs.password}</div>
-    <Row spaceBetween topAligned fullWidth>
+    <Row spaceBetweenJustified topAligned fullWidth>
       <div>{locals.inputs.remember_me}</div>
       <PanelContentSmallLabel>
         <RightAlignedColumn>
