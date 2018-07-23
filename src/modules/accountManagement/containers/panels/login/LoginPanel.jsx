@@ -8,7 +8,6 @@ import { Row, CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpe
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { XSmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
-import Panel from '~/modules/accountManagement/components/basic/Panel';
 import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnvironment';
 import { RightAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
@@ -17,7 +16,7 @@ import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 import LoginForm from './LoginForm';
 
 const InputLayout = styled.div`
-  width: 100%;
+  width: 100%;  
 `;
 const CustomFormLayout = locals => (
   <InputLayout>
@@ -60,7 +59,7 @@ class LoginFormPanel extends React.Component {
       rememberMe: this.form.getValue().remember_me,
     });
 
-    navigateToModal(location, history, '/accountManagement/loginResult');
+    navigateToModal(location, history, '/accountManagement/showSuccess');
   }
 
   onError = (error) => {
@@ -82,12 +81,13 @@ class LoginFormPanel extends React.Component {
   }
 
   render = () => {
-    const { panelContentContainer } = this.props;
+    const { panelContentContainer, panelContainer } = this.props;
     const { isLoading, panelError } = this.state;
     const ContentContainer = panelContentContainer;
+    const PanelContainer = panelContainer;
 
     return (
-      <Panel
+      <PanelContainer
         titleLabel="Login"
         subTitleLabel="Get in, and discover your daily gift"
         error={panelError}
@@ -112,7 +112,7 @@ class LoginFormPanel extends React.Component {
             </CenterAlignedRow>
           </PanelContentMinorLabel>
         </ContentContainer>
-      </Panel>
+      </PanelContainer>
     );
   };
 }

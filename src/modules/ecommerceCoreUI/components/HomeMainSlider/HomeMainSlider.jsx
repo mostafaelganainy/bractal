@@ -27,6 +27,7 @@ const Item = styled.div`
   padding: 0 10px;
   &:focus {
     border: none;
+    outline: 0;
   }
 `;
 const Header = styled.div`

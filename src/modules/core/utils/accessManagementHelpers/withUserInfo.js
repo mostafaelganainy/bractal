@@ -10,6 +10,7 @@ export default function withUserInfo(WrappedComponent) {
             userInfo={userManagement.userInfo}
             authenticated={userManagement.authenticated}
             updateUserInfo={userManagement.updateUserInfo}
+            updateUserInfoTempPartial={userManagement.updateUserInfoTempPartial}
             invalidateUser={userManagement.invalidateUser}
             {...props}
           />

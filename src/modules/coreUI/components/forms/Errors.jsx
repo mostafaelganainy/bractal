@@ -40,7 +40,7 @@ const renderError = (locals, customErrorTextStyle) => {
   errorMessage = errorMessage || localValidationErrors[fieldName];
 
   if (errorMessage) {
-    errorMessage = `${displayName}, ${errorMessage}`;
+    errorMessage = `${displayName} ${errorMessage}`;
   }
 
   errorMessage = errorMessage || serverErrors[fieldName];

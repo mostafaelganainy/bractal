@@ -4,11 +4,17 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import {
   extractModalPartFromLocation,
   makeModalPath,
-} from '../../utils/modalHelpers';
+} from '~/modules/core/utils/modalHelpers';
 
-const ModalRoute = ({ path, component, location }) => (
+const ModalRoute = ({
+  exact,
+  path,
+  component,
+  location,
+}) => (
   <Switch location={extractModalPartFromLocation(location)}>
     <Route
+      exact={exact}
       path={makeModalPath(path)}
       component={component}
     />
@@ -16,9 +22,11 @@ const ModalRoute = ({ path, component, location }) => (
 );
 
 ModalRoute.propTypes = PropTypes.shape({
+  exact: PropTypes.bool,
   path: PropTypes.string.isRequired,
   component: PropTypes.string.isRequired,
   location: PropTypes.shape({}).isRequired,
+  onModalOpen: PropTypes.func.isRequired,
 }).isRequired;
 
 export default withRouter(ModalRoute);

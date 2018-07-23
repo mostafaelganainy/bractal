@@ -54,7 +54,13 @@ const DropdownLanguageItems = styled.div`
       }
     }
   }
-
+  .ui.top.right.pointing.dropdown>.menu{
+    right: -17px;
+    &:after{
+      right: 38px !important;
+    }
+    
+  }
   .ui.dropdown .menu > .item {
     padding: 8px 3px !important;
     border-bottom: 1px solid #ebebeb;

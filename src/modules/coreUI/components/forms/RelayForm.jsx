@@ -89,12 +89,15 @@ class RelayForm extends Component {
 
     this.onLoading(true);
 
+    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
+
     commitMutation(
       environment,
       {
         mutation,
         variables: {
           ...value,
+          ...addiontalMutationVariables,
         },
         onCompleted: (response, errors) => {
           this.onLoading(false);
@@ -111,6 +114,10 @@ class RelayForm extends Component {
               serverErrors[workAROUND] = `${error.messages[0]}`;
               if (workAROUND === 'email') {
                 workAROUND = 'user_signin';
+                serverErrors[workAROUND] = `${error.messages[0]}`;
+              }
+              if (workAROUND === 'token') {
+                workAROUND = 'code';
                 serverErrors[workAROUND] = `${error.messages[0]}`;
               }
             });
@@ -182,6 +189,9 @@ class RelayForm extends Component {
       this.initializeOptions();
     }
 
+    this.initializeOptions(); // TODO : Workaround to force
+    // form to render to show server errors (When no local errors are there)
+
     return (
       <React.Fragment>
         <Form
@@ -226,6 +236,7 @@ RelayForm.propTypes = PropTypes.shape({
   onFormError: PropTypes.func.isRequired,
   onFormSuccess: PropTypes.func.isRequired,
   onFormLoading: PropTypes.func.isRequired,
+  addiontalMutationVariables: PropTypes.shape({}),
   onChange: PropTypes.func,
 }).isRequired;
 
