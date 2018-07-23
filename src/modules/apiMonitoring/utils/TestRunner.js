@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+import moment from 'moment';
+
 const endPoint = 'http://ayk-test.badrit.com/graphql';
 
 const globalAdditionalHeaders = {};
@@ -9,7 +12,16 @@ export const StepStatus = {
   NORMAL: 3,
 };
 
-const execute = test => fetch(endPoint, {
+export const getTestSuitePath = suiteName =>
+  `${suiteName}`;
+
+export const getTestPath = (suiteName, testName) =>
+  `${suiteName}->${testName}`;
+
+export const getStepPath = (suiteName, testName, stepName) =>
+  `${suiteName}->${testName}->${stepName}`;
+
+const sendRequest = test => fetch(endPoint, {
   method: 'POST',
   headers: {
     ...globalAdditionalHeaders,
@@ -33,16 +45,87 @@ const execute = test => fetch(endPoint, {
   throw err;
 });
 
-const recuriveFindErrors = (obj) => {
+const getField = (obj, fieldChain) => {
+  const fieldsChain = fieldChain.split('.');
+  let current = obj;
+  let currentChain = 'response';
+  fieldsChain.forEach((field) => {
+    currentChain = `${currentChain}.${field}`;
+    if (!current[field]) {
+      throw new Error(`ASSERTION FAILED : '${currentChain}', is required but not found`);
+    } else {
+      current = current[field];
+    }
+  });
+  return current;
+};
+
+const validatePostAssertions = (test, response) =>
+  test.postAssertions && test.postAssertions.forEach((assertion) => {
+    if (assertion.assert === 'fieldsExist') {
+      assertion.params.forEach((param) => {
+        getField(response.data, param);
+      });
+    } else if (assertion.assert === 'timestampRange') {
+      const fieldValue = getField(response.data, assertion.timestampField);
+
+      const now = moment();
+      const fieldAsMoment = moment.unix(parseInt(fieldValue, 10));
+      const diff = moment.duration(fieldAsMoment.diff(now));
+      let checkedValue = 0;
+      if (assertion.check === 'hours') {
+        checkedValue = parseInt(diff.asHours(), 10);
+      }
+      const { range } = assertion;
+      let isValid = !isNaN(checkedValue);
+      let subErrorMessage = '';
+
+      if (isValid && range.equal) {
+        if (!(checkedValue === range.equal)) {
+          isValid = false;
+          subErrorMessage = `should be equal to ${range.equal},`;
+        }
+      }
+      if (isValid && range.from) {
+        if (!(checkedValue >= range.from)) {
+          isValid = false;
+          subErrorMessage = `should be more than ${range.from},`;
+        }
+      }
+      if (isValid && range.to) {
+        if (!(checkedValue <= range.to)) {
+          isValid = false;
+          subErrorMessage = `should be less than ${range.to},`;
+        }
+      }
+
+      if (!isValid) {
+        throw new Error(`ASSERTION FAILED : Validity of token ${subErrorMessage} ${assertion.check}, now it's ${checkedValue}`);
+      }
+    } else if (assertion.assert === 'custom') {
+      assertion.func(response.data);
+    }
+  });
+
+const execute = test => sendRequest(test)
+  .then((response) => {
+    validatePostAssertions(test, response);
+    return response;
+  })
+  .catch((err) => {
+    throw err;
+  });
+
+const recursiveFindErrors = (obj) => {
   if (typeof (obj) === 'object') {
     if (obj.errors && obj.errors.length > 0) {
-      return JSON.stringify(obj.errors, null, 4);
+      throw JSON.stringify(obj.errors, null, 4);
     } else if (obj.error) {
-      return JSON.stringify(obj.error, null, 4);
+      throw JSON.stringify(obj.error, null, 4);
     }
 
     Object.keys(obj).forEach((field) => {
-      const res = recuriveFindErrors(obj[field]);
+      const res = recursiveFindErrors(obj[field]);
       if (res || res !== '"null"') {
         throw (res);
       }
@@ -51,12 +134,9 @@ const recuriveFindErrors = (obj) => {
   return null;
 };
 
-export const getStepPath = (suiteName, testName, stepName) =>
-  `${suiteName}->${testName}->${stepName}`;
-
 const findErrors = (obj) => {
   try {
-    recuriveFindErrors(obj);
+    recursiveFindErrors(obj);
   } catch (err) {
     return err;
   }
@@ -94,7 +174,7 @@ export default (testSuites, onStatusUpdate, onTestSucceded, onTestFailed) => {
               return runInfo; // TODO : not used for now
             })
             .catch((err) => {
-              runInfo.error = err;
+              runInfo.error = err && (err.message || err);
               runInfo.status = StepStatus.FAILED;
               onStatusUpdate(runInfo);
               throw runInfo;

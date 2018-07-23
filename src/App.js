@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/css/App.css';
 
 // import Layout from './modules/core/layouts/simple/Layout';
@@ -8,9 +7,7 @@ import './styles/css/App.css';
 import Layout from './modules/ecommerceCore/layouts/Layout';
 
 const App = () => (
-  <Router>
-    <Layout />
-  </Router>
+  <Layout />
 );
 
 export default App;

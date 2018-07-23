@@ -29,8 +29,15 @@ const getAlignItems = (props) => {
   return null;
 };
 
+const getWidth = (props) => {
+  if (props.width) {
+    return props.width;
+  }
+  return props.fullWidth ? '100%' : null;
+};
+
 export const Column = styled.div`
-  width: ${props => (props.fullWidth ? '100%' : null)};
+  width: ${props => getWidth(props)};
   display: flex;
   flex-direction: column;
   align-items: ${props => getAlignItems(props) || 'center'};  

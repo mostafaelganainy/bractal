@@ -94,12 +94,14 @@ export default class ToggleCard extends Component {
       StepStatus.NORMAL,
     ]),
     children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    colorizeTitle: PropTypes.bool,
   }
 
   static defaultProps = {
     titleSize: 'medium',
     showBorder: true,
     mode: StepStatus.NORMAL,
+    colorizeTitle: false,
   }
 
   state = {
@@ -121,6 +123,7 @@ export default class ToggleCard extends Component {
     >
       <Header
         leftJustified
+        color={this.props.colorizeTitle ? getStatusColor(this.props.mode) : null}
         showBorder={this.props.showBorder}
         backgroundColor={getHeaderBackground(this.props.mode)}
         onClick={() => this.toggleVisibility()}
@@ -128,7 +131,7 @@ export default class ToggleCard extends Component {
         <FontAwesomeIcon icon={this.state.contentVisible ? faCaretDown : faCaretRight} />
         <MediumSpacer />
         <Label
-          color="important"
+          color={this.props.colorizeTitle ? getStatusColor(this.props.mode) : 'important'}
           size={this.props.titleSize}
         >
           {this.props.title}

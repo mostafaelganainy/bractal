@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { translate } from 'react-i18next';
 import { Container } from 'semantic-ui-react';
 
-import TestRunner, { getStepPath } from '~/modules/apiMonitoring/utils/TestRunner';
-import Tests from '~/modules/apiMonitoring/utils/accountMgmtApiTests';
+import TestRunner, { StepStatus, getTestSuitePath, getTestPath, getStepPath } from '~/modules/apiMonitoring/utils/TestRunner';
+import createTests from '~/modules/apiMonitoring/utils/createAccountMgmtApiTests';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 
 import { XXXXLargeSpacer, MediumSpacer, LargeSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
@@ -16,7 +16,10 @@ import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 
 import ToggleCard from '~/modules/apiMonitoring/components/ToggleCard';
 
+import GraphQlConstructs from '../utils/GraphqlConstructs';
+
 const BoxedContent = styled.div`
+  word-wrap: break-word;
   border: solid 1px ${props => props.theme.borders.color.normal};
   padding: ${props => props.theme.paddings.medium}px;
 `;
@@ -27,42 +30,28 @@ const SubcontentCard = styled(ToggleCard)`
 
 class HomePage extends React.Component {
   state = {
-    testStuies: Tests.testSuites,
-    statuses: {
-      suites: {},
-    },
+    testStuies: createTests().testSuites,
+    statuses: {},
     failed: false,
     stepsResults: {},
   }
 
   onStatusUpdate = (stepInfo) => {
-    const suiteChildStatuses = this.state.statuses.suites[stepInfo.testSuiteName] || {};
-    const testChildStatuses = suiteChildStatuses[stepInfo.testName] || {};
-
-    const suiteStatusObj = {
-      status: stepInfo.status,
-      tests: {
-        ...suiteChildStatuses,
-        [stepInfo.testName]: {
-          status: stepInfo.status,
-          steps: {
-            ...testChildStatuses,
-            [stepInfo.stepName]: {
-              status: stepInfo.status,
-            },
-          },
-        },
-      },
-    };
+    const { testSuiteName, testName, stepName } = stepInfo;
+    const suitePath = getTestSuitePath(testSuiteName);
+    const testPath = getTestPath(testSuiteName, testName);
+    const stepPath = getStepPath(testSuiteName, testName, stepName);
 
     this.setState({
       stepsResults: {
         ...this.state.stepsResults,
-        [getStepPath(stepInfo.testSuiteName, stepInfo.testName, stepInfo.stepName)]: stepInfo,
+        [stepPath]: stepInfo,
       },
       statuses: {
         ...this.state.statuses,
-        [stepInfo.testSuiteName]: suiteStatusObj,
+        [suitePath]: stepInfo.status,
+        [testPath]: stepInfo.status,
+        [stepPath]: stepInfo.status,
       },
     });
   }
@@ -82,21 +71,20 @@ class HomePage extends React.Component {
     }
   }
   getTestSuiteStatus = testSuiteName =>
-    (this.state.statuses[testSuiteName] || {}).status;
+    this.state.statuses[getTestSuitePath(testSuiteName)] || StepStatus.NORMAL;
 
   getTestStatus = (testSuiteName, testName) =>
-    ((this.state.statuses[testSuiteName]
-     && this.state.statuses[testSuiteName].tests[testName]
-    ) || {}).status;
+    this.state.statuses[getTestPath(testSuiteName, testName)] || StepStatus.NORMAL;
 
   getStepStatus = (testSuiteName, testName, stepName) =>
-    ((this.state.statuses[testSuiteName]
-     && this.state.statuses[testSuiteName].tests[testName]
-     && this.state.statuses[testSuiteName].tests[testName].steps[stepName]
-    ) || {}).status;
+    this.state.statuses[getStepPath(testSuiteName, testName, stepName)] || StepStatus.NORMAL;
 
   startTest = () => {
-    TestRunner(Tests.testSuites, this.onStatusUpdate, this.onTestSucceded, this.onTestFailed);
+    const newTestSuites = createTests().testSuites;
+    this.setState({
+      testStuies: newTestSuites,
+    });
+    TestRunner(newTestSuites, this.onStatusUpdate, this.onTestSucceded, this.onTestFailed);
   }
 
   stringJsonToFormattedHTML = (text) => {
@@ -112,6 +100,40 @@ class HomePage extends React.Component {
   render = () => (
     <React.Fragment>
       <Container>
+        <XXXXLargeSpacer />
+
+        <Column fullWidth stretchAligned>
+          <XXLargeLabel color={this.state.failed ? 'red' : 'black'} >
+            GraphQL Constructs :
+          </XXLargeLabel>
+          <LargeSpacer />
+          {Object.keys(GraphQlConstructs).map((constructKey) => {
+            const construct = GraphQlConstructs[constructKey];
+            return (
+              <React.Fragment>
+                <MediumSpacer />
+                <ToggleCard
+                  key={construct.displayName}
+                  title={construct.displayName}
+                >
+                  <SubcontentCard
+                    showBorder={false}
+                    title="Construct : "
+                  >
+                    <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(construct.operation) }} />
+                  </SubcontentCard>
+                  <SubcontentCard
+                    showBorder={false}
+                    title="Default Variables : "
+                  >
+                    <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(construct.defaultVariables) }} />
+                  </SubcontentCard>
+                </ToggleCard>
+              </React.Fragment>
+            );
+          })}
+        </Column>
+
         <XXXXLargeSpacer />
 
         <Row leftJustified>
@@ -178,9 +200,11 @@ class HomePage extends React.Component {
                                         mode={stepStatus}
                                       >
                                         <Row topAligned fullWidth stretchJustified>
-                                          <Column leftAligned fullWidth>
+                                          <Column leftAligned width="50%">
                                             {result && (
                                               <SubcontentCard
+                                                colorizeTitle
+                                                mode={StepStatus.SUCCEEDED}
                                                 showBorder={false}
                                                 title="Response :"
                                               >
@@ -189,6 +213,8 @@ class HomePage extends React.Component {
                                             )}
                                             {error && (
                                               <SubcontentCard
+                                                colorizeTitle
+                                                mode={StepStatus.FAILED}
                                                 showBorder={false}
                                                 title="Error :"
                                               >
@@ -196,7 +222,7 @@ class HomePage extends React.Component {
                                               </SubcontentCard>
                                             )}
                                           </Column>
-                                          <Column leftAligned fullWidth>
+                                          <Column leftAligned fullWidth width="50%">
                                             {step.construct.operation && (
                                               <SubcontentCard
                                                 showBorder={false}
@@ -219,6 +245,14 @@ class HomePage extends React.Component {
                                                 title="Variables : "
                                               >
                                                 <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.variables) }} />
+                                              </SubcontentCard>
+                                            )}
+                                            {step.postAssertions && (
+                                              <SubcontentCard
+                                                showBorder={false}
+                                                title="Post Assertions : "
+                                              >
+                                                <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.postAssertions) }} />
                                               </SubcontentCard>
                                             )}
                                           </Column>
