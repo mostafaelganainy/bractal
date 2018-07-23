@@ -11,6 +11,7 @@ import { XSmallSpacer, LargeSpacer } from '~/modules/coreUI/components/layouts/h
 
 export const PanelRoot = styled(Column)`
   width: ${props => props.panelWidth || '248px'};
+  flex-grow: 1;
 `;
 
 
@@ -44,10 +45,11 @@ const Panel = (props) => {
         </CenterAlignedColumn>
       )}
       <PanelHeaderSpacing>
-        <LargeSpacer />
+        <XSmallSpacer />
         <ErrorLabel>
           {error}
         </ErrorLabel>
+        <LargeSpacer />
       </PanelHeaderSpacing>
       <Column fullWidth centerAligned centerJustified grow>
         { children }

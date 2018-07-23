@@ -3,10 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { closeCurrentModal } from '~/modules/core/utils/modalHelpers';
 
 import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
+
+import withModalTracker from '~/modules/core/utils/modalHelpers/withModalTracker';
 
 const StyledIcon = styled.div`
   svg {
@@ -83,7 +84,7 @@ const StyledIcon = styled.div`
 
 class SuccessPanel extends React.Component {
   componentDidMount = () => {
-    const { location, history } = this.props;
+    const { location, history, closeCurrentModal } = this.props;
     setTimeout(() => {
       closeCurrentModal(location, history);
     }, 1000);
@@ -124,4 +125,4 @@ SuccessPanel.propTypes = PropTypes.shape({
   mode: PropTypes.oneOf(['success', 'error']).isRequired,
 }).isRequired;
 
-export default withRouter(SuccessPanel);
+export default withRouter(withModalTracker(SuccessPanel));

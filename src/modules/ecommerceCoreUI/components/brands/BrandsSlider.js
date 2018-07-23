@@ -62,8 +62,8 @@ const BrandsSlider = ({ children }) => (
   </SliderWrapper>
 );
 
-export default BrandsSlider;
-
 BrandsSlider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+export default BrandsSlider;

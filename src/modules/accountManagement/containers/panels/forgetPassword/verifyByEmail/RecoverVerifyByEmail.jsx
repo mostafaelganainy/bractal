@@ -64,7 +64,7 @@ class VerficationCodeEmail extends React.Component {
     const { userInfo } = this.props;
 
     let currentPanelError = panelError;
-    if (!userInfo) {
+    if (!userInfo || !userInfo.email) {
       currentPanelError = 'Email not found, go back and re-enter your email, or contact customer support';
     }
 

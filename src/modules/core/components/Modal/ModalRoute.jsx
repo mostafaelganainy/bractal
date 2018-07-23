@@ -4,7 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import {
   extractModalPartFromLocation,
   makeModalPath,
-} from '../../utils/modalHelpers';
+} from '~/modules/core/utils/modalHelpers';
 
 const ModalRoute = ({
   exact,
@@ -26,6 +26,7 @@ ModalRoute.propTypes = PropTypes.shape({
   path: PropTypes.string.isRequired,
   component: PropTypes.string.isRequired,
   location: PropTypes.shape({}).isRequired,
+  onModalOpen: PropTypes.func.isRequired,
 }).isRequired;
 
 export default withRouter(ModalRoute);

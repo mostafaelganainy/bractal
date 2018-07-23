@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { XXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
+import {
+  graphql,
+} from 'react-relay';
+
+import withRootQuery from '~/modules/core/utils/relayHelpers/withRootQuery';
+
 import BrandsSlider from './BrandsSlider';
 
 const BrandsSliderItems = styled.div`
@@ -9,21 +16,31 @@ const BrandsSliderItems = styled.div`
   }
 `;
 
-const Brands = () => (
+const Brands = ({ queryResult }) => (
   <BrandsSliderItems>
     <XXLargeSpacer />
     <BrandsSlider>
-      <img src="images/Header/app-image.png" alt="" />
-      <img src="images/Header/app-image.png" alt="" />
-      <img src="images/Header/app-image.png" alt="" />
-      <img src="images/Header/app-image.png" alt="" />
-      <img src="images/Header/app-image.png" alt="" />
-      <img src="images/Header/app-image.png" alt="" />
-      <img src="images/Header/app-image.png" alt="" />
+      {queryResult && queryResult.list_brands.map(brand => (
+        <img src={brand.logo_url} alt={brand.logo_url} />
+      ))}
     </BrandsSlider>
     <XXLargeSpacer />
   </BrandsSliderItems>
 );
 
+Brands.propTypes = {
+  queryResult: PropTypes.shape({}).isRequired,
+};
 
-export default Brands;
+/* eslint-disable function-paren-newline */
+export default withRootQuery(
+  Brands,
+  graphql`
+    query BrandsQuery {    
+      list_brands {
+        id
+        logo_url
+      }
+    }
+  `,
+);

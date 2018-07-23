@@ -7,7 +7,6 @@ import ModalLink from '~/modules/core/components/Modal/ModalLink';
 
 import Footer from './Footer';
 
-
 export default () => (
   <Footer>
     <SmallLabel>

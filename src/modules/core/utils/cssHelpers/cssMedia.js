@@ -1,6 +1,11 @@
 // these sizes are arbitrary and you can set them to whatever you wish
 import { css } from 'styled-components';
 
+const QueryMode = {
+  MIN: 0,
+  MAX: 1,
+};
+
 const supportedSizes = [
   'largeDesktop',
   'desktop',
@@ -27,17 +32,16 @@ export const mediaSizesMin = {
 
 
 const emSizeString = (mediaName, isMax) => (isMax ? (
+  // use em in breakpoints to work properly cross-browser and support users
+  // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
   `${mediaSizesMax[mediaName] / 16}em`
 ) : (
   `${mediaSizesMin[mediaName] / 16}em`
 ));
 
-
-const cssMedia = isMax => supportedSizes.reduce((accumulator, label) => {
-  // use em in breakpoints to work properly cross-browser and support users
-  // changing their browsers font-size: https://zellwk.com/blog/media-query-units/
-  const emSize = emSizeString(label, isMax);
-  const queryMode = isMax ? 'max-width' : 'min-width';
+const cssMedia = mode => supportedSizes.reduce((accumulator, label) => {
+  const emSize = emSizeString(label, mode === QueryMode.MAX);
+  const queryMode = mode === QueryMode.MAX ? 'max-width' : 'min-width';
 
   return {
     ...accumulator,
@@ -50,8 +54,9 @@ const cssMedia = isMax => supportedSizes.reduce((accumulator, label) => {
 }, {});
 
 // iterate through the sizes and create a media template
-export const cssMediaMax = cssMedia(true);
-export const cssMediaMin = cssMedia(false);
+export const cssMediaMax = cssMedia(QueryMode.MAX);
+export const cssMediaMin = cssMedia(QueryMode.MIN);
+export const cssMediaRange = cssMedia(QueryMode.RANGE);
 
 export const mediaQueryMax = mediaName => `(max-width: ${emSizeString(mediaName, true)})`;
 export const mediaQueryMin = mediaName => `(min-width: ${emSizeString(mediaName, false)})`;

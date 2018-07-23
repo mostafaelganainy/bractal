@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { translate } from 'react-i18next';
 
 import ModalRoute from '~/modules/core/components/Modal/ModalRoute';
-import { Row } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import Modal from '~/modules/core/components/Modal/index';
 import { cssMediaMin, cssMediaMax } from '~/modules/core/utils/cssHelpers/cssMedia';
@@ -24,10 +23,12 @@ import VerifyRecoverByEmail from '~/modules/accountManagement/containers/panels/
 import ModalLoginFooter from '~/modules/accountManagement/components/footers/ModalLoginFooter';
 import AykCopyRightsFooter from '~/modules/accountManagement/components/footers/AykCopyRightsFooter';
 
-const PanelsContainer = styled(Row)` 
+const PanelsContainer = styled(Column)` 
+  justify-content: stretch;
+  align-items: center;
+
   ${cssMediaMax.tablet`
-    flex-direction: column;
-    align-items: center;
+    padding-top: 20px;
     padding-bottom: 30px;
   `}
   ${cssMediaMin.desktop`
@@ -39,23 +40,26 @@ const PanelsContainer = styled(Row)`
 
 const PanelsFooter = styled(Column)`
   justify-self: flex-end;
-  ${cssMediaMax.tablet`
-    flex-direction: column;
-    align-items: center;
-  `}
-
-  flex-grow: 1;
 `;
 
 const backgroundImagePath = '/images/AccountManagement/panel_background/bg.png';
 
 const ModalContent = styled(Column)`
+  position: unset;
+
+  height: 100%;
+  width: 100%;
+
   ${cssMediaMin.desktop`
     width: 920px;
-    height: 600px;
+    height: 610px;
+    position: relative;
   `}
 
-  position: unset;
+  ${cssMediaMax.tablet`
+    min-height: 100vh;
+  `}
+
   align-items: stretch;
   justify-content: space-between;
 
@@ -95,6 +99,8 @@ const AccountManagementModals = () => (
 
         <ModalRoute exact path="/accountManagement/singup" component={SocialMedia} />
         <ModalRoute exact path="/accountManagement/singup" component={ModalLoginFooter} />
+
+        <ModalRoute exact path="/accountManagement/VerifyAccountEmailOrSms" component={ModalLoginFooter} />
 
         <ModalRoute exact path="/accountManagement/VerifyByEmail" component={SocialMedia} />
         <ModalRoute exact path="/accountManagement/VerifyByEmail" component={ModalLoginFooter} />
