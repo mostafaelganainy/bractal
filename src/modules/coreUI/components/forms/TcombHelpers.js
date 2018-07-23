@@ -101,6 +101,8 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
         importantLabel: option.importantLabel,
         displayName: option.displayName,
       },
+      error: null,
+      hasError: false,
     };
   });
 
