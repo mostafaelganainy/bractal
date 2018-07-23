@@ -32,7 +32,7 @@ class RelayForm extends Component {
     this.state = {
       value: {},
       isLoading: false,
-      localValidationErrors: {},
+      // localValidationErrors: {},
       options: {},
     };
   }
@@ -45,10 +45,6 @@ class RelayForm extends Component {
 
   onChange = (value, path) => {
     // reset this field's error state
-    this.updateLocalValidationErrors({
-      ...this.state.localValidationErrors,
-      [this.getFieldName(path)]: null,
-    });
     this.Form.getComponent(path).validate();
     const options = t.update(this.state.options, {});
     this.setState({ options, value });
@@ -76,10 +72,6 @@ class RelayForm extends Component {
     }
   };
 
-  updateLocalValidationErrors = (errors) => {
-    this.setState({ localValidationErrors: errors });
-  };
-
   updatetCompOptionsWithErrors(errors) {
     const { options } = this.props;
     const fields = {};
@@ -101,23 +93,12 @@ class RelayForm extends Component {
 
   commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
     // Apply local validations first
-    const localErrors = this.Form.validate();
+    this.Form.validate();
     const value = this.Form.getValue();
 
-    this.updateLocalValidationErrors({});
     if (!value) {
-      const errors = (localErrors && localErrors.errors) || [];
-      const localValidationErrors = {};
-
-      errors.forEach((error) => {
-        if (error.path && error.path.length > 0) {
-          localValidationErrors[error.path[0]] = error.message;
-        } else {
-          localValidationErrors.global = error.message;
-        }
-      });
-
-      this.updateLocalValidationErrors(localValidationErrors);
+      const options = t.update(this.state.options, {});
+      this.setState({ options, value });
 
       return;
     }
@@ -197,7 +178,7 @@ class RelayForm extends Component {
   render = () => {
     const { options } = this.props;
 
-    const { localValidationErrors, isLoading } = this.state;
+    const { isLoading } = this.state;
 
     const type = getTcombTypesFromRawOptions(options);
 
@@ -214,7 +195,6 @@ class RelayForm extends Component {
           context={{
             customInputsContainer: options.customInputsContainer, // Options are not being passed
             // to Form Layout, so that we put it in context
-            localValidationErrors,
             isLoading,
             onSubmit: this.submitForm,
             onKeyUp: (event) => {
