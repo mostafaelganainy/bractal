@@ -1,4 +1,7 @@
-import t, { maybe } from 'tcomb-form';
+// Here
+import t, {
+  maybe,
+} from 'tcomb-form';
 
 import FormLayout from './FormLayout';
 import Templates from './Template';
