@@ -16,7 +16,9 @@ const { Form } = { Form: t.form.Form };
 
 class RelayForm extends Component {
   static getDerivedStateFromProps(nextProps, currentState) {
-    const cond = JSON.stringify(currentState.prevOptions) !== JSON.stringify(nextProps.options);
+    const objectsDeepNotEqualComparison = (obj1, obj2) =>
+      JSON.stringify(obj1) !== JSON.stringify(obj2);
+    const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
     if (cond) {
       return {
         prevOptions: nextProps.options,
