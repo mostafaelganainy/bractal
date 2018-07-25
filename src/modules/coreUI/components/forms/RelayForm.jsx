@@ -17,6 +17,7 @@ class RelayForm extends Component {
     const objectsDeepNotEqualComparison = (obj1, obj2) =>
       JSON.stringify(obj1) !== JSON.stringify(obj2);
     const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
+
     if (cond) {
       return {
         prevOptions: nextProps.options,
@@ -48,9 +49,9 @@ class RelayForm extends Component {
     const { options } = this.state;
     this.setState({ options, value });
   };
+
   onLoading = (isLoading) => {
     this.setState({ isLoading });
-
     const { onFormLoading } = this.props;
     onFormLoading(isLoading);
   };
@@ -60,11 +61,13 @@ class RelayForm extends Component {
   };
 
   getFieldName = path => path[0];
+
   getValue = () => this.Form.getValue();
 
   save = () => {
     const value = this.Form.getValue();
     this.Form.validate();
+
     if (value) {
       // value here is an instance of Person
       console.log(value);
@@ -74,6 +77,7 @@ class RelayForm extends Component {
   updatetCompOptionsWithErrors(errors) {
     const { options } = this.props;
     const fields = {};
+
     options.fields.forEach((option) => {
       if (errors[option.name]) {
         fields[option.name] = {
@@ -86,6 +90,7 @@ class RelayForm extends Component {
         };
       }
     });
+
     const updatedOptions = t.update(this.state.options, { fields });
     this.setState({ options: updatedOptions });
   }
@@ -93,12 +98,9 @@ class RelayForm extends Component {
   commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
     // Apply local validations first
     this.Form.validate();
-    const value = this.Form.getValue();
+    const formValues = this.Form.getValue();
 
-    if (!value) {
-      const options = t.update(this.state.options, {});
-      this.setState({ options, value });
-
+    if (!formValues) {
       return;
     }
 
@@ -109,9 +111,10 @@ class RelayForm extends Component {
     commitMutation(environment, {
       mutation,
       variables: {
-        ...value,
+        ...formValues,
         ...addiontalMutationVariables,
       },
+
       onCompleted: (response, errors) => {
         this.onLoading(false);
         const serverErrors = {};
@@ -120,15 +123,18 @@ class RelayForm extends Component {
         if (globalError) {
           serverErrors.global = globalError.message;
         }
+
         if (response && response[mutationRoot] && response[mutationRoot].errors) {
           response[mutationRoot].errors.forEach((error) => {
             let workAROUND = error.field;
             // TODO : Till the return from the backend isn't 'email' any more
             serverErrors[workAROUND] = `${error.messages[0]}`;
+
             if (workAROUND === 'email') {
               workAROUND = 'user_signin';
               serverErrors[workAROUND] = `${error.messages[0]}`;
             }
+
             if (workAROUND === 'token') {
               workAROUND = 'code';
               serverErrors[workAROUND] = `${error.messages[0]}`;
@@ -136,9 +142,11 @@ class RelayForm extends Component {
           });
           this.updatetCompOptionsWithErrors(serverErrors);
         }
+
         // form to render to show server errors (When no local errors are there)
         resultCallback(response, serverErrors);
       },
+
       onError: (err) => {
         this.onLoading(false);
         resultCallback(null, err.message || err.toString());
