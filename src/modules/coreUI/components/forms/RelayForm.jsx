@@ -34,7 +34,6 @@ class RelayForm extends Component {
     this.state = {
       value: {},
       isLoading: false,
-      // localValidationErrors: {},
       options: {},
     };
   }
