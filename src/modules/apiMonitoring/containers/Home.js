@@ -110,24 +110,25 @@ class HomePage extends React.Component {
           {Object.keys(GraphQlConstructs).map((constructKey) => {
             const construct = GraphQlConstructs[constructKey];
             return (
-              <React.Fragment>
+              <React.Fragment key={construct.displayName}>
                 <MediumSpacer />
                 <ToggleCard
-                  key={construct.displayName}
                   title={construct.displayName}
                 >
-                  <SubcontentCard
-                    showBorder={false}
-                    title="Construct : "
-                  >
-                    <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(construct.operation) }} />
-                  </SubcontentCard>
-                  <SubcontentCard
-                    showBorder={false}
-                    title="Default Variables : "
-                  >
-                    <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(construct.defaultVariables) }} />
-                  </SubcontentCard>
+                  <React.Fragment>
+                    <SubcontentCard
+                      showBorder={false}
+                      title="Construct : "
+                    >
+                      <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(construct.operation) }} />
+                    </SubcontentCard>
+                    <SubcontentCard
+                      showBorder={false}
+                      title="Default Variables : "
+                    >
+                      <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(construct.defaultVariables) }} />
+                    </SubcontentCard>
+                  </React.Fragment>
                 </ToggleCard>
               </React.Fragment>
             );
@@ -152,10 +153,9 @@ class HomePage extends React.Component {
           const suiteCardStatus = this.getTestSuiteStatus(testSuite.name);
 
           return (
-            <React.Fragment>
+            <React.Fragment key={testSuite.name}>
               <MediumSpacer />
               <ToggleCard
-                key={testSuite.name}
                 title={testSuite.name}
                 titleSize="large"
                 mode={suiteCardStatus}
@@ -167,101 +167,105 @@ class HomePage extends React.Component {
                   { testSuite.tests.map((test) => {
                       const testCardStatus = this.getTestStatus(testSuite.name, test.name);
                       return (
-                        <React.Fragment>
+                        <React.Fragment key={`${testSuite.name}-${test.name}`}>
                           <MediumSpacer />
                           <Row fullWidth stretchJustified>
                             <MediumSpacer />
-                            <ToggleCard key={test.name} title={test.name} mode={testCardStatus}>
-                              { test.steps.map((step) => {
-                                const stepStatus =
-                                  this.getStepStatus(testSuite.name, test.name, step.name);
-                                const stepInfo = this.state.stepsResults[
-                                  getStepPath(testSuite.name, test.name, step.name)];
+                            <ToggleCard
+                              title={test.name}
+                              mode={testCardStatus}
+                            >
+                              <React.Fragment>
+                                { test.steps.map((step) => {
+                                  const stepStatus =
+                                    this.getStepStatus(testSuite.name, test.name, step.name);
+                                  const stepInfo = this.state.stepsResults[
+                                    getStepPath(testSuite.name, test.name, step.name)];
 
-                                const error = stepInfo
-                                  && stepInfo.error
-                                  && this.stringJsonToFormattedHTML(stepInfo.error);
+                                  const error = stepInfo
+                                    && stepInfo.error
+                                    && this.stringJsonToFormattedHTML(stepInfo.error);
 
-                                const result = stepInfo
-                                  && stepInfo.result
-                                  && this.stringJsonToFormattedHTML(stepInfo.result);
+                                  const result = stepInfo
+                                    && stepInfo.result
+                                    && this.stringJsonToFormattedHTML(stepInfo.result);
 
-                                return (
-                                  <React.Fragment>
-                                    <MediumLabel color="important">
-                                      <b>Steps :</b>
-                                    </MediumLabel>
-                                    <MediumSpacer />
-                                    <Row fullWidth stretchJustified>
+                                  return (
+                                    <React.Fragment key={`${testSuite.name}-${test.name}-${step.name}`}>
+                                      <MediumLabel color="important">
+                                        <b>Steps :</b>
+                                      </MediumLabel>
                                       <MediumSpacer />
-                                      <ToggleCard
-                                        key={step.name}
-                                        title={step.name}
-                                        mode={stepStatus}
-                                      >
-                                        <Row topAligned fullWidth stretchJustified>
-                                          <Column leftAligned width="50%">
-                                            {result && (
-                                              <SubcontentCard
-                                                colorizeTitle
-                                                mode={StepStatus.SUCCEEDED}
-                                                showBorder={false}
-                                                title="Response :"
-                                              >
-                                                <BoxedContent dangerouslySetInnerHTML={{ __html: result }} />
-                                              </SubcontentCard>
-                                            )}
-                                            {error && (
-                                              <SubcontentCard
-                                                colorizeTitle
-                                                mode={StepStatus.FAILED}
-                                                showBorder={false}
-                                                title="Error :"
-                                              >
-                                                <BoxedContent dangerouslySetInnerHTML={{ __html: error }} />
-                                              </SubcontentCard>
-                                            )}
-                                          </Column>
-                                          <Column leftAligned fullWidth width="50%">
-                                            {step.construct.operation && (
-                                              <SubcontentCard
-                                                showBorder={false}
-                                                title="Operation :"
-                                              >
-                                                <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.construct.operation) }} />
-                                              </SubcontentCard>
-                                            )}
-                                            {step.construct.defaultVariables && (
-                                              <SubcontentCard
-                                                showBorder={false}
-                                                title="Default Variables : "
-                                              >
-                                                <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.construct.defaultVariables) }} />
-                                              </SubcontentCard>
-                                            )}
-                                            {step.variables && (
-                                              <SubcontentCard
-                                                showBorder={false}
-                                                title="Variables : "
-                                              >
-                                                <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.variables) }} />
-                                              </SubcontentCard>
-                                            )}
-                                            {step.postAssertions && (
-                                              <SubcontentCard
-                                                showBorder={false}
-                                                title="Post Assertions : "
-                                              >
-                                                <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.postAssertions) }} />
-                                              </SubcontentCard>
-                                            )}
-                                          </Column>
-                                        </Row>
-                                      </ToggleCard>
-                                    </Row>
-                                  </React.Fragment>
-                                );
-                              })}
+                                      <Row fullWidth stretchJustified>
+                                        <MediumSpacer />
+                                        <ToggleCard
+                                          title={step.name}
+                                          mode={stepStatus}
+                                        >
+                                          <Row topAligned fullWidth stretchJustified>
+                                            <Column leftAligned width="50%">
+                                              {result && (
+                                                <SubcontentCard
+                                                  colorizeTitle
+                                                  mode={StepStatus.SUCCEEDED}
+                                                  showBorder={false}
+                                                  title="Response :"
+                                                >
+                                                  <BoxedContent dangerouslySetInnerHTML={{ __html: result }} />
+                                                </SubcontentCard>
+                                              )}
+                                              {error && (
+                                                <SubcontentCard
+                                                  colorizeTitle
+                                                  mode={StepStatus.FAILED}
+                                                  showBorder={false}
+                                                  title="Error :"
+                                                >
+                                                  <BoxedContent dangerouslySetInnerHTML={{ __html: error }} />
+                                                </SubcontentCard>
+                                              )}
+                                            </Column>
+                                            <Column leftAligned fullWidth width="50%">
+                                              {step.construct.operation && (
+                                                <SubcontentCard
+                                                  showBorder={false}
+                                                  title="Operation :"
+                                                >
+                                                  <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.construct.operation) }} />
+                                                </SubcontentCard>
+                                              )}
+                                              {step.construct.defaultVariables && (
+                                                <SubcontentCard
+                                                  showBorder={false}
+                                                  title="Default Variables : "
+                                                >
+                                                  <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.construct.defaultVariables) }} />
+                                                </SubcontentCard>
+                                              )}
+                                              {step.variables && (
+                                                <SubcontentCard
+                                                  showBorder={false}
+                                                  title="Variables : "
+                                                >
+                                                  <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.variables) }} />
+                                                </SubcontentCard>
+                                              )}
+                                              {step.postAssertions && (
+                                                <SubcontentCard
+                                                  showBorder={false}
+                                                  title="Post Assertions : "
+                                                >
+                                                  <BoxedContent dangerouslySetInnerHTML={{ __html: this.stringJsonToFormattedHTML(step.postAssertions) }} />
+                                                </SubcontentCard>
+                                              )}
+                                            </Column>
+                                          </Row>
+                                        </ToggleCard>
+                                      </Row>
+                                    </React.Fragment>
+                                  );
+                                })}
+                              </React.Fragment>
                             </ToggleCard>
                           </Row>
                         </React.Fragment>

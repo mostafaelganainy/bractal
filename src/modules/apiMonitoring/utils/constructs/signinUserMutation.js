@@ -33,6 +33,7 @@ mutation SigninMutation (
 export default {
     SIGNIN_USER_MUTATION: {
         operation: signinUserMutation,
+        name: 'signinUserMutation',
         displayName: 'Mutation : Signin User',
         defaultVariables: {
             user_signin: '123456',

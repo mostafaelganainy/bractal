@@ -47,12 +47,12 @@ const sendRequest = test => fetch(endPoint, {
 
 const getField = (obj, fieldChain) => {
   const fieldsChain = fieldChain.split('.');
-  let current = obj;
-  let currentChain = 'response';
+  let current = obj.data;
+  let currentChain = 'data';
   fieldsChain.forEach((field) => {
     currentChain = `${currentChain}.${field}`;
     if (!current[field]) {
-      throw new Error(`ASSERTION FAILED : '${currentChain}', is required but not found`);
+      throw new Error(`ASSERTION FAILED : '${currentChain}', is required but not found, in the object ${JSON.stringify(obj)}`);
     } else {
       current = current[field];
     }
@@ -64,10 +64,10 @@ const validatePostAssertions = (test, response) =>
   test.postAssertions && test.postAssertions.forEach((assertion) => {
     if (assertion.assert === 'fieldsExist') {
       assertion.params.forEach((param) => {
-        getField(response.data, param);
+        getField(response, param);
       });
     } else if (assertion.assert === 'timestampRange') {
-      const fieldValue = getField(response.data, assertion.timestampField);
+      const fieldValue = getField(response, assertion.timestampField);
 
       const now = moment();
       const fieldAsMoment = moment.unix(parseInt(fieldValue, 10));
@@ -189,7 +189,6 @@ export default (testSuites, onStatusUpdate, onTestSucceded, onTestFailed) => {
         })
         .catch((failedStepInfo) => {
           onTestFailed(failedStepInfo);
-          console.log(failedStepInfo);
         });
     });
   });

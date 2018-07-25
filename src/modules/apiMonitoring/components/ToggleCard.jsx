@@ -84,7 +84,7 @@ const Header = styled(Row)`
 `;
 export default class ToggleCard extends Component {
   static propTypes = {
-    titleSize: PropTypes.number,
+    titleSize: PropTypes.string,
     title: PropTypes.string.isRequired,
     showBorder: PropTypes.bool,
     mode: PropTypes.oneOf([
@@ -93,7 +93,7 @@ export default class ToggleCard extends Component {
       StepStatus.FAILED,
       StepStatus.NORMAL,
     ]),
-    children: PropTypes.arrayOf(PropTypes.element).isRequired,
+    children: PropTypes.element.isRequired,
     colorizeTitle: PropTypes.bool,
   }
 

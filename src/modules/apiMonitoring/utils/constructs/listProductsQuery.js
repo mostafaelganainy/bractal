@@ -4,15 +4,21 @@ import faker from 'faker';
 
 const listProductsQuery = `
 query ListProductsQuery (
-    $where: ProductSearchInput
+    $search: ProductSearchInput
 )
 {
     list_products(
-        where: $where
+        search: $search
     ) {
         id
-        name
         images
+        name
+        avg_rating
+        price
+        discount_price
+        has_discount
+        has_offer
+        hot_deal
     }
 }
 `;
@@ -22,7 +28,7 @@ export default {
         operation: listProductsQuery,
         displayName: 'Query : List Products',
         defaultVariables: {
-            where: {},
+            search: {},
         },
     },
 };
