@@ -74,7 +74,7 @@ class RelayForm extends Component {
     }
   };
 
-  updatetCompOptionsWithErrors(fieldsErrors) {
+  updateTCompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
     const fields = {};
 
@@ -141,7 +141,7 @@ class RelayForm extends Component {
               serverErrors[workAROUND] = `${error.messages[0]}`;
             }
           });
-          this.updatetCompOptionsWithErrors(serverErrors);
+          this.updateTCompOptionsWithErrors(serverErrors);
         }
 
         // form to render to show server errors (When no local errors are there)
