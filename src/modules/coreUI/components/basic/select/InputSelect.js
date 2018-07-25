@@ -163,7 +163,7 @@ class InputSelect extends Component {
             width={showInput ? `${selectButtonRatio}%` : '100%'}
             rightBorderRadius={showInput ? '0px' : null}
             fontSize={showInput ? theme.fonts.sizes.xSmall : null}
-            dropIconDistanceFromRight={showInput && theme.paddings.medium}
+            dropIconDistanceFromRight={showInput ? theme.paddings.medium : null}
             onMouseDown={this.toggleDropdown}
             onKeyDown={this.onKeyDown}
           />

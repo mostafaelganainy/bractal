@@ -24,12 +24,9 @@ const RelayInitializer = {
         query: operation.text,
         variables,
       }),
-    }).then((response) => {
-      // TODO, handle when response.ok = false
-      console.log(response);
-      return response.json();
-    }).catch((err) => {
-      console.log(err);
+    }).then(response => response.json()).catch((err) => {
+      // TODO : To be replaced with Alert
+      throw err;
     }));
 
     // 5

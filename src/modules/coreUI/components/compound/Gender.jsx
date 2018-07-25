@@ -1,5 +1,5 @@
 import React from 'react';
-import t from 'tcomb-form';
+
 import styled from 'styled-components';
 
 import PropTypes from 'prop-types';
@@ -29,10 +29,6 @@ const Input = styled.input`
     color: ${props => props.theme.colors.primaryClicked};
   }
 `;
-const Gender = t.enums({
-  M: 'Male',
-  F: 'Female',
-});
 // Should take same height as text inputs
 const Icon = styled.i`
   color: ${props => props.theme.inputs.borderColor};
@@ -40,10 +36,6 @@ const Icon = styled.i`
   opacity: 0.7;
   cursor: pointer;
 `;
-const Person = t.struct({
-  gender: Gender, // enum
-});
-console.log(Person);
 
 const handleOptionChange = (event, onChange) => {
   onChange(event.target.value);

@@ -166,7 +166,7 @@ const NavUserProfile = (props) => {
             AccountItems.map((item) => {
               if (item.guestView || props.authenticated) {
                   return (
-                    <Dropdown.Item>
+                    <Dropdown.Item key={item.name}>
                       <CenterAlignedRow>
                         <i className={item.icon} />
                         <LargeSpacer size={8} />

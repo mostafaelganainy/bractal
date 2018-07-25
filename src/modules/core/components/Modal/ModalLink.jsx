@@ -10,7 +10,7 @@ const ModalLink = (props) => {
   const { to, location, children } = props;
   return (
     <Label>
-      <Link {...props} to={makeModalFullPath(location, to)}>
+      <Link to={makeModalFullPath(location, to)}>
         {children}
       </Link>
     </Label>

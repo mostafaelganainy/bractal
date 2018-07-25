@@ -38,16 +38,26 @@ class TwoLevelsHeader extends React.Component {
   generateMenuItemsKeys = (menuInfo) => {
     const AllItemsGroups = [
       menuInfo.desktop.top.left,
+      menuInfo.desktop.top.center,
       menuInfo.desktop.top.right,
+
       menuInfo.desktop.bottom.left,
+      menuInfo.desktop.bottom.center,
       menuInfo.desktop.bottom.right,
+
       menuInfo.mobile.top.left,
+      menuInfo.mobile.top.center,
       menuInfo.mobile.top.right,
+
       menuInfo.mobile.bottom.left,
+      menuInfo.mobile.bottom.center,
       menuInfo.mobile.bottom.right,
     ];
 
     AllItemsGroups.forEach((menuSpecs) => {
+      if (!menuSpecs) {
+        return;
+      }
       menuSpecs.forEach((item) => {
         if (item.key) return;
         // eslint-disable-next-line no-param-reassign

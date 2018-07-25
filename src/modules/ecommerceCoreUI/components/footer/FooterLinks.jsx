@@ -22,9 +22,8 @@ const FooterLinks = ({ links, title }) => (
       :
       ' ' }
     {links.map(link => (
-      <div className="link-item" key={link.id} >{link.name} <LargeSpacer size={12} /> </div>
+      <div className="link-item" key={link.name} >{link.name} <LargeSpacer size={12} /> </div>
     ))}
-    {/* <LargeSpacer /> */}
   </FooterLinksItems>
 );
 
@@ -32,7 +31,9 @@ export default FooterLinks;
 
 FooterLinks.propTypes = {
   title: PropTypes.string,
-  links: PropTypes.node.isRequired,
+  links: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 FooterLinks.defaultProps = {

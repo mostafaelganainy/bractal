@@ -98,6 +98,9 @@ const ModalContent = styled(CenterAlignedColumn)`
 `;
 
 class Modal extends React.Component {
+  componentDidMount = () => {
+    this.props.onModalOpened();
+  }
   closeModal = () => {
     // eslint-disable-next-line
     this.props.closeCurrentModal();
@@ -129,9 +132,7 @@ class Modal extends React.Component {
   );
 
   render = () => {
-    const { location, history, onModalOpened } = this.props;
-
-    onModalOpened();
+    const { location, history } = this.props;
 
     return (
       <div>

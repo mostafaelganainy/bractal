@@ -36,7 +36,7 @@ const CustomFormLayout = locals => (
   </InputLayout>
 );
 
-class LoginFormPanel extends React.Component {
+class LoginPanel extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
@@ -94,7 +94,9 @@ class LoginFormPanel extends React.Component {
       >
         <ContentContainer>
           <LoginForm
-            ref={(ref) => { this.form = ref; }}
+            // FIXME : React sees the LoginForm as a stateless function and complalins when the
+            //        Normal 'ref' is used
+            onRef={(ref) => { this.form = ref; }}
             customLayout={CustomFormLayout}
             onFormError={error => this.onError(error)}
             onFormSuccess={response => this.onSuccess(response)}
@@ -117,9 +119,9 @@ class LoginFormPanel extends React.Component {
   };
 }
 
-LoginFormPanel.propTypes = PropTypes.shape({
+LoginPanel.propTypes = PropTypes.shape({
   panelContentContainer: PropTypes.element,
   userInfo: PropTypes.shape({}),
 }).isRequired;
 
-export default withRelayEnvironment(withUserInfo(withRouter(LoginFormPanel)));
+export default withRelayEnvironment(withUserInfo(withRouter(LoginPanel)));

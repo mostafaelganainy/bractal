@@ -4,6 +4,8 @@ import { commitMutation } from 'react-relay';
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
 
+import cuid from 'cuid';
+
 import assert from '~/modules/core/utils/jsHelpers/assert';
 import objectsDeepNotEqualComparison from '~/modules/core/utils/jsHelpers/objectsDeepComparison';
 
@@ -16,6 +18,11 @@ import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnv
 
 const { Form } = { Form: t.form.Form };
 
+class SeededTcombForm extends Form {
+  // Without this, all forms' input fields will have
+  // similar generated ids, and browswer will complaint
+  getSeed = () => cuid();
+}
 class RelayForm extends Component {
   static getDerivedStateFromProps(nextProps, currentState) {
     const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
@@ -47,7 +54,9 @@ class RelayForm extends Component {
 
   onChange = (value, path) => {
     // reset this field's error state
-    this.Form.getComponent(path).validate();
+    if (this.Form) {
+      this.Form.getComponent(path).validate();
+    }
     const { tcombOptions } = this.state;
     this.setState({ tcombOptions, value });
   };
@@ -65,16 +74,6 @@ class RelayForm extends Component {
   getFieldName = path => path[0];
 
   getValue = () => this.Form.getValue();
-
-  save = () => {
-    const value = this.Form.getValue();
-    this.Form.validate();
-
-    if (value) {
-      // value here is an instance of Person
-      console.log(value);
-    }
-  };
 
   updateTcompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
@@ -194,16 +193,26 @@ class RelayForm extends Component {
 
     const type = getTcombTypesFromRawOptions(options);
 
+    // FIXME: Nested values needs different handling
+    const formValues = {
+      ...options.initialFormValue,
+      ...this.state.value,
+    };
+
     return (
-      <form onSubmit={this.onSubmit}>
-        <Form
+      <form
+        // External form helps with Autocomplete
+        onSubmit={this.onSubmit}
+      >
+        <SeededTcombForm
           ref={(ref) => {
+            console.log('Welcome to our great world!');
             this.Form = ref;
           }}
           type={type}
           options={this.state.tcombOptions}
-          value={this.state.value}
-          onChange={this.onChange}
+          value={formValues}
+          onChange={(value, path) => this.onChange(value, path)}
           context={{
             customInputsContainer: options.customInputsContainer, // Options are not being passed
             // to Form Layout, so that we put it in context
@@ -223,6 +232,7 @@ class RelayForm extends Component {
 
 RelayForm.propTypes = PropTypes.shape({
   options: PropTypes.shape({
+    initialFormValue: PropTypes.shape({}),
     fields: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
       input_type: PropTypes.string.isRequired,
