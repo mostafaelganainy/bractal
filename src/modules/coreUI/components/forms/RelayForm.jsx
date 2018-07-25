@@ -45,7 +45,7 @@ class RelayForm extends Component {
   onChange = (value, path) => {
     // reset this field's error state
     this.Form.getComponent(path).validate();
-    const options = t.update(this.state.options, {});
+    const { options } = this.state;
     this.setState({ options, value });
   };
   onLoading = (isLoading) => {
