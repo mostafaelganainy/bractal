@@ -16,12 +16,13 @@ class RelayForm extends Component {
   static getDerivedStateFromProps(nextProps, currentState) {
     const objectsDeepNotEqualComparison = (obj1, obj2) =>
       JSON.stringify(obj1) !== JSON.stringify(obj2);
+
     const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
 
     if (cond) {
       return {
         prevOptions: nextProps.options,
-        options: getTcombOptionsFromRawOptions(nextProps.options),
+        tcombOptions: getTcombOptionsFromRawOptions(nextProps.options),
       };
     }
 
@@ -33,7 +34,7 @@ class RelayForm extends Component {
     this.state = {
       value: {},
       isLoading: false,
-      options: {},
+      tcombOptions: {},
     };
   }
 
@@ -46,8 +47,8 @@ class RelayForm extends Component {
   onChange = (value, path) => {
     // reset this field's error state
     this.Form.getComponent(path).validate();
-    const { options } = this.state;
-    this.setState({ options, value });
+    const { tcombOptions } = this.state;
+    this.setState({ tcombOptions, value });
   };
 
   onLoading = (isLoading) => {
@@ -74,7 +75,7 @@ class RelayForm extends Component {
     }
   };
 
-  updateTCompOptionsWithErrors(fieldsErrors) {
+  updateTcompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
     const fields = {};
 
@@ -91,8 +92,8 @@ class RelayForm extends Component {
       }
     });
 
-    const updatedOptions = t.update(this.state.options, { fields });
-    this.setState({ options: updatedOptions });
+    const updatedOptions = t.update(this.state.tcombOptions, { fields });
+    this.setState({ tcombOptions: updatedOptions });
   }
 
   commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
@@ -141,7 +142,7 @@ class RelayForm extends Component {
               serverErrors[workAROUND] = `${error.messages[0]}`;
             }
           });
-          this.updateTCompOptionsWithErrors(serverErrors);
+          this.updateTcompOptionsWithErrors(serverErrors);
         }
 
         // form to render to show server errors (When no local errors are there)
@@ -157,11 +158,7 @@ class RelayForm extends Component {
 
   submitForm = () => {
     const {
-      onFormError,
-      onFormSuccess,
-      mutationRoot,
-      environment,
-      mutation,
+      onFormError, onFormSuccess, mutationRoot, environment, mutation,
     } = this.props;
 
     if (this.state.isLoading) {
@@ -201,7 +198,7 @@ class RelayForm extends Component {
             this.Form = ref;
           }}
           type={type}
-          options={this.state.options}
+          options={this.state.tcombOptions}
           value={this.state.value}
           onChange={this.onChange}
           context={{
