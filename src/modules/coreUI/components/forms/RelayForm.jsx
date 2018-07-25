@@ -3,6 +3,9 @@ import { commitMutation } from 'react-relay';
 
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
+
+import { objectsDeepNotEqualComparison, assert } from '~/modules/coreUI/helpers/helperFunctions';
+
 import {
   getTcombOptionsFromRawOptions,
   getTcombTypesFromRawOptions,
@@ -14,9 +17,6 @@ const { Form } = { Form: t.form.Form };
 
 class RelayForm extends Component {
   static getDerivedStateFromProps(nextProps, currentState) {
-    const objectsDeepNotEqualComparison = (obj1, obj2) =>
-      JSON.stringify(obj1) !== JSON.stringify(obj2);
-
     const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
 
     if (cond) {
@@ -166,19 +166,21 @@ class RelayForm extends Component {
     }
 
     this.commitFormMutation(environment, mutation, mutationRoot, (response, errors) => {
-      if (onFormError) {
-        if (response && errors.global) {
-          onFormError(errors.global);
-        } else if (typeof errors === 'string') {
-          onFormError(errors);
-        } else {
-          onFormError(null);
-        }
+      // onFormError & onFormSuccess shouldn't be empty or undefined
+      assert(onFormError, 'onFormError Should Not Be Undefined');
+      assert(onFormSuccess, 'onFormSuccess Should Not Be Undefined');
+
+      if (response && errors.global) {
+        onFormError(errors.global);
+      } else if (typeof errors === 'string') {
+        onFormError(errors);
+      } else {
+        onFormError(null);
       }
 
       const errorsExist = errors && (Object.keys(errors).length > 0 || errors.length > 0);
 
-      if (onFormSuccess && !errorsExist) {
+      if (!errorsExist) {
         onFormSuccess(response);
       }
     });
