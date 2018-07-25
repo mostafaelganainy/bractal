@@ -74,18 +74,18 @@ class RelayForm extends Component {
     }
   };
 
-  updatetCompOptionsWithErrors(errors) {
+  updatetCompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
     const fields = {};
 
     options.fields.forEach((option) => {
-      if (errors[option.name]) {
+      if (fieldsErrors[option.name]) {
         fields[option.name] = {
           hasError: {
             $set: true,
           },
           error: {
-            $set: `${errors[option.name]}`,
+            $set: `${fieldsErrors[option.name]}`,
           },
         };
       }
