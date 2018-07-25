@@ -98,6 +98,7 @@ class RelayForm extends Component {
   commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
     // Apply local validations first
     this.Form.validate();
+
     const formValues = this.Form.getValue();
 
     if (!formValues) {
