@@ -4,7 +4,8 @@ import { commitMutation } from 'react-relay';
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
 
-import { objectsDeepNotEqualComparison, assert } from '~/modules/coreUI/helpers/helperFunctions';
+import assert from '~/modules/core/utils/jsHelpers/assert';
+import objectsDeepNotEqualComparison from '~/modules/core/utils/jsHelpers/objectsDeepComparison';
 
 import {
   getTcombOptionsFromRawOptions,
