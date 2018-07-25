@@ -1,5 +1,3 @@
-// Here!
-
 import React, { Component } from 'react';
 import { commitMutation } from 'react-relay';
 

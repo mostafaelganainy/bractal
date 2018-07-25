@@ -1,4 +1,3 @@
-// Here
 import t, {
   maybe,
 } from 'tcomb-form';

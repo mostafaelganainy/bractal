@@ -1,5 +1,3 @@
-// Here
-
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
 import changeCase from 'change-case';
