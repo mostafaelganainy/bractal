@@ -67,6 +67,7 @@ class SignupForm extends React.Component {
           customInputsContainer,
           initialFormValue: {
             register_for_news: true,
+            mobile_number: '(+974)',
           },
           fields: [
             {

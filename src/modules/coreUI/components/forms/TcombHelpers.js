@@ -31,7 +31,7 @@ const RequiredString = defineSubtype(
 );
 
 const isValidPhoneNumber = (val) => {
-  const cleanedVal = val && val.replace(/[ ()-]/g, '');
+  const cleanedVal = val && val.replace(/[ ()+-]/g, '');
   return parseInt(cleanedVal, 10).toString() === cleanedVal;
 };
 

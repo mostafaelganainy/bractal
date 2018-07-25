@@ -10,7 +10,7 @@ class PhoneNumber extends React.Component {
   getCountriesData = () => AllCountries.map(country => ({
     label: country.name,
     image: <Image src={country.flag} alt={country.flag} />,
-    value: country.alpha3Code,
+    value: `+${country.callingCodes[0]}`,
     rightPulledLabel: `+${country.callingCodes}`,
     attrs: {
       callingCodes: country.callingCodes,
@@ -20,8 +20,9 @@ class PhoneNumber extends React.Component {
   render = () => (
     <InputSelect
       showInput
+      value={this.props.value}
       selectButtonRatio={40}
-      onChange={(entry, text) => this.props.onChange(entry, text)}
+      onChange={(value, text) => this.props.onChange(`(${value}) ${text}`)}
       showImageOnButton={false}
       getSelectedItemLabel={entry => `+${entry.attrs.callingCodes}`}
       getSelectedItemImage={entry => entry.image}
@@ -31,9 +32,13 @@ class PhoneNumber extends React.Component {
   );
 }
 
+PhoneNumber.defaultProps = {
+  value: '',
+};
 
 PhoneNumber.propTypes = {
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };
 
 export default PhoneNumber;

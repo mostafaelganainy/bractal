@@ -201,12 +201,11 @@ class RelayForm extends Component {
 
     return (
       <form
-        // External form helps with Autocomplete
+        // External form helps with Autocomplete from browsers
         onSubmit={this.onSubmit}
       >
         <SeededTcombForm
           ref={(ref) => {
-            console.log('Welcome to our great world!');
             this.Form = ref;
           }}
           type={type}

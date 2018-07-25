@@ -47,7 +47,7 @@ const DesktopFormLayout = locals => (
     <Separator
       vertical
       spacerSize="xxxxxLarge"
-      separatorLength="xLarge"
+      separatorLength="full"
       separatorColorTone="normal"
     />
     <InputLayout>
