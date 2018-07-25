@@ -157,7 +157,11 @@ class RelayForm extends Component {
 
   submitForm = () => {
     const {
-      onFormError, onFormSuccess, mutationRoot, environment, mutation,
+      onFormError,
+      onFormSuccess,
+      mutationRoot,
+      environment,
+      mutation,
     } = this.props;
 
     if (this.state.isLoading) {
