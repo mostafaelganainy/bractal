@@ -1,4 +1,6 @@
-import t, { maybe } from 'tcomb-form';
+import t, {
+  maybe,
+} from 'tcomb-form';
 
 import FormLayout from './FormLayout';
 import Templates from './Template';
@@ -98,6 +100,8 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
         importantLabel: option.importantLabel,
         displayName: option.displayName,
       },
+      error: null,
+      hasError: false,
     };
   });
 

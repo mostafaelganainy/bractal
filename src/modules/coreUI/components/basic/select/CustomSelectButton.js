@@ -157,7 +157,7 @@ CustomButton.defaultProps = {
   visible: false,
 };
 CustomButton.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.element,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   width: PropTypes.string,

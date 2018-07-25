@@ -22,10 +22,8 @@ import {
 } from './Header.styles';
 import { TabLabel } from '../../ecommerceCoreUI/components/basic/Labels';
 
-const SocialMediaItemRenderer = (src, url) => (
-  <a href={url}>
-    <Image style={{ width: '25px', height: '25px' }} src={src} />
-  </a>
+const SocialMediaItemRenderer = src => (
+  <Image style={{ width: '25px', height: '25px' }} src={src} />
 );
 
 const MainHeader = styled.div`
@@ -114,7 +112,7 @@ const Header = () => {
         ],
         right: [
           {
-            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/fb-lg.png', 'http://facebook.com'),
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/fb-lg.png'),
             targetURL: 'http://facebook.com',
             position: 'right',
           },
@@ -123,7 +121,7 @@ const Header = () => {
             spacerWidth: 'medium',
           },
           {
-            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/tr-lg.png', 'http://facebook.com'),
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/tr-lg.png'),
             targetURL: 'http://twitter.com',
             position: 'right',
           },
@@ -132,7 +130,7 @@ const Header = () => {
             spacerWidth: 'medium',
           },
           {
-            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/yb-lg.png', 'http://facebook.com'),
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/yb-lg.png'),
             targetURL: 'http://youtube.com',
             position: 'right',
           },
@@ -141,7 +139,7 @@ const Header = () => {
             spacerWidth: 'medium',
           },
           {
-            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/inst-lg.png', 'http://facebook.com'),
+            itemRenderer: SocialMediaItemRenderer('/images/SocialMedia/inst-lg.png'),
             targetURL: 'http://instagram.com',
             position: 'right',
           },

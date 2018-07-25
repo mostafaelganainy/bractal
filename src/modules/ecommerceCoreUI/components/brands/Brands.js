@@ -21,7 +21,7 @@ const Brands = ({ queryResult }) => (
     <XXLargeSpacer />
     <BrandsSlider>
       {queryResult && queryResult.list_brands.map(brand => (
-        <img src={brand.logo_url} alt={brand.logo_url} />
+        <img key={brand.id} src={brand.logo_url} alt={brand.logo_url} />
       ))}
     </BrandsSlider>
     <XXLargeSpacer />

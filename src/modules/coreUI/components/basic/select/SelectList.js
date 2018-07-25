@@ -75,7 +75,7 @@ const ListContainer = styled.div`
   display: ${props => (props.visible ? 'block' : 'none')};
 `;
 
-export default class countriesList extends Component {
+export default class SelectList extends Component {
   state = {
     filter: null,
     visible: false,
@@ -186,7 +186,7 @@ export default class countriesList extends Component {
         <Arrow />
         <Dropdown>
           <Input
-            value={this.state.filter}
+            value={this.state.filter || ''}
             placeholder="Search..."
             innerRef={(ref) => { this.inputRef = ref; }}
             onBlur={this.onBlur}
@@ -209,19 +209,20 @@ export default class countriesList extends Component {
   }
 }
 
-countriesList.defaultProps = {
+SelectList.defaultProps = {
   onDropdownShown: null,
   onDropdownHidden: null,
+  selectedValue: null,
 };
 
-countriesList.propTypes = {
+SelectList.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     image: PropTypes.element,
     value: PropTypes.string,
     attrs: PropTypes.shape({}),
   })).isRequired,
-  selectedValue: PropTypes.string.isRequired,
+  selectedValue: PropTypes.string,
   onItemSelected: PropTypes.func.isRequired,
   onDropdownShown: PropTypes.func,
   onDropdownHidden: PropTypes.func,

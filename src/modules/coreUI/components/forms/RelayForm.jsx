@@ -1,10 +1,14 @@
-
 import React, { Component } from 'react';
 import { commitMutation } from 'react-relay';
 
-
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
+
+import cuid from 'cuid';
+
+import assert from '~/modules/core/utils/jsHelpers/assert';
+import objectsDeepNotEqualComparison from '~/modules/core/utils/jsHelpers/objectsDeepComparison';
+
 import {
   getTcombOptionsFromRawOptions,
   getTcombTypesFromRawOptions,
@@ -14,76 +18,91 @@ import withRelayEnvironment from '~/modules/core/utils/relayHelpers/withRelayEnv
 
 const { Form } = { Form: t.form.Form };
 
+class SeededTcombForm extends Form {
+  // Without this, all forms' input fields will have
+  // similar generated ids, and browswer will complaint
+  getSeed = () => cuid();
+}
 class RelayForm extends Component {
-  state = {
-    value: {},
-    serverErrors: {},
-    isLoading: false,
-    localValidationErrors: {},
-  };
+  static getDerivedStateFromProps(nextProps, currentState) {
+    const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
+
+    if (cond) {
+      return {
+        prevOptions: nextProps.options,
+        tcombOptions: getTcombOptionsFromRawOptions(nextProps.options),
+      };
+    }
+
+    return null;
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: {},
+      isLoading: false,
+      tcombOptions: {},
+    };
+  }
 
   componentDidMount = () => {
     if (this.props.onRef) {
       this.props.onRef(this);
     }
-  }
+  };
+
+  onChange = (value, path) => {
+    // reset this field's error state
+    if (this.Form) {
+      this.Form.getComponent(path).validate();
+    }
+    const { tcombOptions } = this.state;
+    this.setState({ tcombOptions, value });
+  };
 
   onLoading = (isLoading) => {
     this.setState({ isLoading });
-
     const { onFormLoading } = this.props;
     onFormLoading(isLoading);
-  }
+  };
 
-  onChange = (value, path) => {
-    this.setState({ value });
-    // reset this field's error state
-    this.updateLocalValidationErrors({
-      ...this.state.localValidationErrors,
-      [this.getFieldName(path)]: null,
-    });
-    this.Form.getComponent(path).validate();
-  }
+  onSubmit = (evt) => {
+    evt.preventDefault();
+  };
 
-  getValue = () => this.Form.getValue();
   getFieldName = path => path[0];
 
-  initializeOptions = () => {
+  getValue = () => this.Form.getValue();
+
+  updateTcompOptionsWithErrors(fieldsErrors) {
     const { options } = this.props;
-    this.tcombOptions = getTcombOptionsFromRawOptions(options);
-    this.tcombTypes = getTcombTypesFromRawOptions(options);
-  }
+    const fields = {};
 
-  save = () => {
-    const value = this.Form.getValue();
-    this.Form.validate();
-    console.log(value);
-  }
+    options.fields.forEach((option) => {
+      if (fieldsErrors[option.name]) {
+        fields[option.name] = {
+          hasError: {
+            $set: true,
+          },
+          error: {
+            $set: `${fieldsErrors[option.name]}`,
+          },
+        };
+      }
+    });
 
-  updateLocalValidationErrors = (errors) => {
-    this.setState({ localValidationErrors: errors });
+    const updatedOptions = t.update(this.state.tcombOptions, { fields });
+    this.setState({ tcombOptions: updatedOptions });
   }
 
   commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
     // Apply local validations first
-    const localErrors = this.Form.validate();
-    const value = this.Form.getValue();
+    this.Form.validate();
 
-    this.updateLocalValidationErrors({});
-    if (!value) {
-      const errors = (localErrors && localErrors.errors) || [];
-      const localValidationErrors = {};
+    const formValues = this.Form.getValue();
 
-      errors.forEach((error) => {
-        if (error.path && error.path.length > 0) {
-          localValidationErrors[error.path[0]] = error.message;
-        } else {
-          localValidationErrors.global = error.message;
-        }
-      });
-
-      this.updateLocalValidationErrors(localValidationErrors);
-
+    if (!formValues) {
       return;
     }
 
@@ -91,121 +110,112 @@ class RelayForm extends Component {
 
     const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
 
-    commitMutation(
-      environment,
-      {
-        mutation,
-        variables: {
-          ...value,
-          ...addiontalMutationVariables,
-        },
-        onCompleted: (response, errors) => {
-          this.onLoading(false);
-          const serverErrors = {};
-          const globalError = errors && errors.length > 0 && errors[0];
-
-          if (globalError) {
-            serverErrors.global = globalError.message;
-          }
-          if (response && response[mutationRoot] && response[mutationRoot].errors) {
-            response[mutationRoot].errors.forEach((error) => {
-              let workAROUND = error.field;
-              // TODO : Till the return from the backend isn't 'email' any more
-              serverErrors[workAROUND] = `${error.messages[0]}`;
-              if (workAROUND === 'email') {
-                workAROUND = 'user_signin';
-                serverErrors[workAROUND] = `${error.messages[0]}`;
-              }
-              if (workAROUND === 'token') {
-                workAROUND = 'code';
-                serverErrors[workAROUND] = `${error.messages[0]}`;
-              }
-            });
-          }
-
-          resultCallback(response, serverErrors);
-        },
-        onError: (err) => {
-          this.onLoading(false);
-          resultCallback(null, err.message || err.toString());
-        },
+    commitMutation(environment, {
+      mutation,
+      variables: {
+        ...formValues,
+        ...addiontalMutationVariables,
       },
-    );
+
+      onCompleted: (response, errors) => {
+        this.onLoading(false);
+        const serverErrors = {};
+        const globalError = errors && errors.length > 0 && errors[0];
+
+        if (globalError) {
+          serverErrors.global = globalError.message;
+        }
+
+        if (response && response[mutationRoot] && response[mutationRoot].errors) {
+          response[mutationRoot].errors.forEach((error) => {
+            let workAROUND = error.field;
+            // TODO : Till the return from the backend isn't 'email' any more
+            serverErrors[workAROUND] = `${error.messages[0]}`;
+
+            if (workAROUND === 'email') {
+              workAROUND = 'user_signin';
+              serverErrors[workAROUND] = `${error.messages[0]}`;
+            }
+
+            if (workAROUND === 'token') {
+              workAROUND = 'code';
+              serverErrors[workAROUND] = `${error.messages[0]}`;
+            }
+          });
+          this.updateTcompOptionsWithErrors(serverErrors);
+        }
+
+        // form to render to show server errors (When no local errors are there)
+        resultCallback(response, serverErrors);
+      },
+
+      onError: (err) => {
+        this.onLoading(false);
+        resultCallback(null, err.message || err.toString());
+      },
+    });
   };
 
   submitForm = () => {
     const {
-      onFormError,
-      onFormSuccess,
-      mutationRoot,
-      environment,
-      mutation,
+      onFormError, onFormSuccess, mutationRoot, environment, mutation,
     } = this.props;
 
     if (this.state.isLoading) {
       return;
     }
 
-    this.commitFormMutation(
-      environment,
-      mutation,
-      mutationRoot,
-      (response, errors) => {
-        this.setState({
-          serverErrors: errors,
-        });
+    this.commitFormMutation(environment, mutation, mutationRoot, (response, errors) => {
+      // onFormError & onFormSuccess shouldn't be empty or undefined
+      assert(onFormError, 'onFormError Should Not Be Undefined');
+      assert(onFormSuccess, 'onFormSuccess Should Not Be Undefined');
 
-        if (onFormError) {
-          if (response && errors.global) {
-            onFormError(errors.global);
-          } else if (typeof (errors) === 'string') {
-            onFormError(errors);
-          } else {
-            onFormError(null);
-          }
-        }
+      if (response && errors.global) {
+        onFormError(errors.global);
+      } else if (typeof errors === 'string') {
+        onFormError(errors);
+      } else {
+        onFormError(null);
+      }
 
-        const errorsExist = errors && (Object.keys(errors).length > 0 || errors.length > 0);
+      const errorsExist = errors && (Object.keys(errors).length > 0 || errors.length > 0);
 
-        if (onFormSuccess && !errorsExist) {
-          onFormSuccess(response);
-        }
-      },
-    );
-  }
+      if (!errorsExist) {
+        onFormSuccess(response);
+      }
+    });
+  };
 
   render = () => {
-    const {
-      options,
-    } = this.props;
+    const { options } = this.props;
 
-    const {
-      serverErrors,
-      localValidationErrors,
-      isLoading,
-    } = this.state;
+    const { isLoading } = this.state;
 
-    if (options && (!this.tcombOptions || !this.tcombTypes)) {
-      this.initializeOptions();
-    }
+    const type = getTcombTypesFromRawOptions(options);
 
-    this.initializeOptions(); // TODO : Workaround to force
-    // form to render to show server errors (When no local errors are there)
+    // FIXME: Nested values needs different handling
+    const formValues = {
+      ...options.initialFormValue,
+      ...this.state.value,
+    };
 
     return (
-      <React.Fragment>
-        <Form
-          tabIndex="0"
-          ref={(ref) => { this.Form = ref; }}
-          options={this.tcombOptions}
-          type={this.tcombTypes}
-          value={this.state.value}
-          onChange={this.onChange}
+      <form
+        // External form helps with Autocomplete
+        onSubmit={this.onSubmit}
+      >
+        <SeededTcombForm
+          ref={(ref) => {
+            console.log('Welcome to our great world!');
+            this.Form = ref;
+          }}
+          type={type}
+          options={this.state.tcombOptions}
+          value={formValues}
+          onChange={(value, path) => this.onChange(value, path)}
           context={{
             customInputsContainer: options.customInputsContainer, // Options are not being passed
             // to Form Layout, so that we put it in context
-            serverErrors,
-            localValidationErrors,
             isLoading,
             onSubmit: this.submitForm,
             onKeyUp: (event) => {
@@ -215,13 +225,14 @@ class RelayForm extends Component {
             },
           }}
         />
-      </React.Fragment>
+      </form>
     );
-  }
+  };
 }
 
 RelayForm.propTypes = PropTypes.shape({
   options: PropTypes.shape({
+    initialFormValue: PropTypes.shape({}),
     fields: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
       input_type: PropTypes.string.isRequired,

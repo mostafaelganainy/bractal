@@ -31,7 +31,7 @@ const renderApp = (modules, environment) => {
 };
 
 i18next = i18nextLoader.load((err) => {
-  if (err) return console.error(err);
+  if (err) throw err;
   // const environment = RelayInitializer.init('https://eu1.prisma.sh/mostafa-elganainy-2630c3/demo_3/dev');
   const environment = RelayInitializer.init('http://ayk-test.badrit.com/graphql');
   /* 'http://localhost:4000',

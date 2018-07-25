@@ -19,7 +19,6 @@ import Theme from '../Theme';
 // eslint-disable-next-line react/prop-types
 const Root = ({ isTabletOrMobile, isModalOpen }) => {
   const opacity = isModalOpen && isTabletOrMobile ? 0 : 1;
-  console.log(`Should show : ${opacity}`);
   return (
     <div style={{ opacity }}>
       <Header />

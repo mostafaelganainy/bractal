@@ -41,35 +41,37 @@ const Option = styled.li`
 `;
 
 export default class FilteredItemsList extends React.Component {
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(newProps, prevState) {
+    let newStateChanges = {};
+
     if (
-      props.selectedValue !== state.currentFocusValue &&
-      props.selectedValue !== state.prevSelectedValueProp
+      newProps.selectedValue !== prevState.currentFocusValue &&
+      newProps.selectedValue !== prevState.prevSelectedValueProp
     ) {
-      return {
-        prevSelectedValueProp: props.selectedValue,
-        currentFocusValue: props.selectedValue,
+      newStateChanges = {
+        ...newStateChanges,
+        prevSelectedValueProp: newProps.selectedValue,
+        currentFocusValue: newProps.selectedValue,
       };
     }
-    return null;
+
+    if (newProps.options !== prevState.lastConfiguredOptions
+        || newProps.filter !== prevState.lastConfiguredFilter
+    ) {
+      newStateChanges = {
+        ...newStateChanges,
+        ...FilteredItemsList.getNewFilteredListState(
+          newProps.options,
+          newProps.filter,
+          newProps.currentFocusValue,
+        ),
+      };
+    }
+
+    return newStateChanges;
   }
 
-  state = {
-    prevSelectedValueProp: null, // eslint-disable-line react/no-unused-state
-    currentFocusValue: null,
-    lastConfiguredOptions: null,
-    lastConfiguredFilter: null,
-  }
-
-  getOptionRefAt = entry => this[`option_${entry.value}_ref`];
-  setOptionRefAt = (entry, ref) => {
-    this[`option_${entry.value}_ref`] = ref;
-  }
-
-  getElementsArroundCurrentFocus = () => {
-    const currVal = this.state.currentFocusValue;
-    const list = this.filteredList;
-
+  static getElementsArroundEntry = (list, focus) => {
     const result = {
       current: null,
       previous: null,
@@ -78,10 +80,10 @@ export default class FilteredItemsList extends React.Component {
 
     let prev = null;
     for (let i = 0; i < list.length; i += 1) {
-      if (currVal === list[i].value) {
+      if (focus === list[i].value) {
         result.previous = prev;
         result.current = list[i];
-      } else if (prev && currVal === prev.value) {
+      } else if (prev && focus === prev.value) {
         result.next = list[i];
         break;
       }
@@ -91,30 +93,49 @@ export default class FilteredItemsList extends React.Component {
     return result;
   }
 
-  updateFilteredList = (options, filter) => {
-    if (options === this.state.lastConfiguredOptions
-        && filter === this.state.lastConfiguredFilter) {
-      return;
-    }
-
-    this.filteredList = options.filter(entry =>
+  static getNewFilteredListState = (options, filter, currentFocusValue) => {
+    const newFilteredList = options.filter(entry =>
       !filter || entry.label.toLowerCase().indexOf(filter.toLowerCase()) === 0);
 
-    const { current } = this.getElementsArroundCurrentFocus();
+    const { current } =
+      FilteredItemsList.getElementsArroundEntry(newFilteredList, currentFocusValue);
+
     // check if the current focus, is still shown, and filter not changed
     const newFocus =
     (
       current
       && current.value
     ) || (
-        this.filteredList[0]
-        && this.filteredList[0].value
+        newFilteredList[0]
+        && newFilteredList[0].value
       );
-    this.setState({
+
+    return {
+      filteredList: newFilteredList,
       lastConfiguredFilter: filter,
       lastConfiguredOptions: options,
       currentFocusValue: newFocus,
-    });
+    };
+  }
+
+  state = {
+    prevSelectedValueProp: null, // eslint-disable-line react/no-unused-state
+    currentFocusValue: null,
+    lastConfiguredOptions: null, // eslint-disable-line react/no-unused-state
+    lastConfiguredFilter: null, // eslint-disable-line react/no-unused-state
+    filteredList: [],
+  }
+
+  getOptionRefAt = entry => this[`option_${entry.value}_ref`];
+  setOptionRefAt = (entry, ref) => {
+    this[`option_${entry.value}_ref`] = ref;
+  }
+
+  getElementsArroundCurrentFocus = () => {
+    const focus = this.state.currentFocusValue;
+    const list = this.state.filteredList;
+
+    return FilteredItemsList.getElementsArroundEntry(list, focus, this.state.currentFocusValue);
   }
 
   scrollToEntry = (entry) => {
@@ -141,7 +162,7 @@ export default class FilteredItemsList extends React.Component {
   }
 
   moveFocusTop = () => {
-    const firstElem = this.filteredList && this.filteredList[0];
+    const firstElem = this.state.filteredList && this.state.filteredList[0];
     if (firstElem) {
       this.scrollToEntry(firstElem);
     }
@@ -175,39 +196,45 @@ export default class FilteredItemsList extends React.Component {
     }
   }
 
-  render = () => {
-    const { options, filter } = this.props;
+  render = () => this.state.filteredList.map(entry => (
+    <Option
+      innerRef={ref => this.setOptionRefAt(entry, ref)}
+      id={entry.value}
+      value={entry.value}
+      isFocusOption={entry.value === this.state.currentFocusValue}
+      key={entry.value}
+      className="item"
+      onMouseDown={() => {
+        this.listEntryClicked(entry);
+      }}
+    >
+      {entry.image &&
+        <div className="imgCountry">
+          {entry.image}
+        </div>
+      }
 
-    this.updateFilteredList(options, filter);
-    return this.filteredList.map(entry => (
-      <Option
-        innerRef={ref => this.setOptionRefAt(entry, ref)}
-        id={entry.value}
-        value={entry.value}
-        isFocusOption={entry.value === this.state.currentFocusValue}
-        key={entry.value}
-        className="item"
-        onMouseDown={() => {
-          this.listEntryClicked(entry);
-        }}
-      >
-        {entry.image &&
-          <div className="imgCountry">
-            {entry.image}
-          </div>
-        }
-
-        <ItemName className="ItemName">{entry.label}</ItemName>
-        {entry.rightPulledLabel &&
-          entry.rightPulledLabel
-        }
-      </Option>
-    ));
-  };
+      <ItemName className="ItemName">{entry.label}</ItemName>
+      {entry.rightPulledLabel &&
+        entry.rightPulledLabel
+      }
+    </Option>
+  ));
 }
 
+FilteredItemsList.defaultProps = {
+  filter: null,
+};
+
 FilteredItemsList.propTypes = {
-  options: PropTypes.shape({}).isRequired,
-  filter: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  options: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    image: PropTypes.element,
+    value: PropTypes.string,
+    attrs: PropTypes.shape({}),
+  })).isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  filter: PropTypes.string,
   listEntryClicked: PropTypes.func.isRequired,
 };

@@ -18,5 +18,6 @@ export default createFragmentContainer(Product, graphql`
   fragment Product_productInfo on Product {
     id
     name
+    price
   }
 `);
