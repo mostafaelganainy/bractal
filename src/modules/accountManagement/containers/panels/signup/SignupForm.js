@@ -67,20 +67,9 @@ class SignupForm extends React.Component {
           customInputsContainer,
           initialFormValue: {
             register_for_news: true,
+            mobile_number: '(+974)',
           },
           fields: [
-            {
-              name: 'email',
-              placeholder: 'Email',
-              input_type: 'textbox',
-              type: 'RequiredString',
-            },
-            {
-              name: 'password',
-              placeholder: 'Password',
-              input_type: 'password',
-              type: 'RequiredString',
-            },
             {
               name: 'first_name',
               placeholder: 'First Name',
@@ -91,6 +80,18 @@ class SignupForm extends React.Component {
               name: 'last_name',
               placeholder: 'Last Name',
               input_type: 'textbox',
+              type: 'RequiredString',
+            },
+            {
+              name: 'email',
+              placeholder: 'Email',
+              input_type: 'textbox',
+              type: 'RequiredString',
+            },
+            {
+              name: 'password',
+              placeholder: 'Password',
+              input_type: 'password',
               type: 'RequiredString',
             },
             {

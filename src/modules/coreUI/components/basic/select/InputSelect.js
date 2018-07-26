@@ -8,7 +8,6 @@ import { SmallSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers
 import SelectButton from './CustomSelectButton';
 import SelectList from './SelectList';
 
-
 const RelativePosition = styled(CenterAlignedRow)`
   width: ${props => props.width || '100%'};
 
@@ -44,18 +43,37 @@ const Input = styled.input`
 `;
 
 class InputSelect extends Component {
+  static getDerivedStateFromProps(newProps, prevState) {
+    if (
+      newProps.value !== prevState.prevOptionsValue
+    ) {
+      if (newProps.value) {
+        const parsedParts = newProps.value.replace(/[ (]/g, '').split(')');
+        return {
+          prevOptionsValue: newProps.value,
+          selectedValue: parsedParts && parsedParts.length > 0 && parsedParts[0],
+          inputValue: (parsedParts && parsedParts.length > 1 && parsedParts[1]) || '',
+        };
+      }
+      return {
+        prevOptionsValue: newProps.value,
+        selectedValue: null,
+        inputValue: '',
+      };
+    }
+    return null;
+  }
   state = {
-    selectedEntry: null,
+    selectedValue: null,
+    inputValue: null,
+    prevOptionsValue: null, // eslint-disable-line react/no-unused-state
     dropdownShown: false,
   }
 
   onListItemSelected = (item) => {
     if (item != null) { // It comes as null, when the list
       // want to abort the operation, without any change to the selected item
-      this.setState({
-        selectedEntry: item,
-      });
-      this.notifyValueChange(item);
+      this.notifyValueChange(item.value);
     }
     setTimeout( // Giving it a moment, so that focus is taken correctly on the button
       () => this.buttonRef.focus(),
@@ -91,11 +109,23 @@ class InputSelect extends Component {
     });
   }
   onInputChanged = () => {
-    this.notifyValueChange(this.state.selectedEntry);
+    this.notifyValueChange(this.state.selectedValue);
   }
+  getEntry = (value) => {
+    if (!this.props.options) {
+      return null;
+    }
+
+    const matches = this.props.options.filter(entry => entry.value === value);
+    return (matches && matches.length > 0)
+      ? matches[0]
+      : null;
+  }
+
   getSelectedItemImage = () => {
-    const { selectedEntry } = this.state;
+    const { selectedValue } = this.state;
     const { getSelectedItemImage } = this.props;
+    const selectedEntry = this.getEntry(selectedValue);
 
     if (!selectedEntry) {
       return null;
@@ -108,8 +138,9 @@ class InputSelect extends Component {
     return selectedEntry.image;
   }
   getSelectedItemLabel = () => {
-    const { selectedEntry } = this.state;
+    const { selectedValue } = this.state;
     const { getSelectedItemLabel } = this.props;
+    const selectedEntry = this.getEntry(selectedValue);
 
     if (!selectedEntry) {
       return null;
@@ -122,10 +153,10 @@ class InputSelect extends Component {
     return selectedEntry.image;
   }
 
-  notifyValueChange = (entry) => {
+  notifyValueChange = (selectedValue) => {
     if (this.props.onChange) {
       const inputText = this.props.showInput && this.inputRef.value;
-      this.props.onChange(entry, inputText);
+      this.props.onChange(selectedValue, inputText);
     }
   }
 
@@ -151,13 +182,19 @@ class InputSelect extends Component {
       theme,
     } = this.props;
 
+    const {
+      selectedValue,
+      dropdownShown,
+      inputValue,
+    } = this.state;
+
     return (
       <React.Fragment>
         <RelativePosition width={width}>
           <SelectButton
             ref={(ref) => { this.buttonRef = ref; }}
             label={this.getSelectedItemLabel()}
-            actAsInFocus={this.state.dropdownShown}
+            actAsInFocus={dropdownShown}
             placeholder={showInput ? 'Select' : placeholder}
             image={this.getSelectedItemImage()}
             width={showInput ? `${selectButtonRatio}%` : '100%'}
@@ -172,6 +209,7 @@ class InputSelect extends Component {
               <SmallSpacer />
               <Input
                 type="text"
+                value={inputValue}
                 placeholder={placeholder}
                 innerRef={(ref) => { this.inputRef = ref; }}
                 onChange={() => this.onInputChanged()}
@@ -182,7 +220,7 @@ class InputSelect extends Component {
           <SelectList
             ref={(ref) => { this.listRef = ref; }}
             options={options}
-            selectedValue={this.state.selectedEntry && this.state.selectedEntry.value}
+            selectedValue={selectedValue}
             onItemSelected={this.onListItemSelected}
             onDropdownShown={this.onDropdownShown}
             onDropdownHidden={this.onDropdownHidden}

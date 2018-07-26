@@ -78,7 +78,7 @@ const VerifyByEmailButton = () => (
 
 const VerifyBySMSButton = () => (
   <InputLayout>
-    <BasicButton disabled width="100%">
+    <BasicButton width="100%">
       <Trans i18nKey="verifyAccount.VerifyBySMS" />
     </BasicButton>
   </InputLayout>
@@ -86,8 +86,8 @@ const VerifyBySMSButton = () => (
 
 const EmailOrSMS = () => (
   <ResponsivePanel
-    title="VERIFY YOUR ACCOUNT"
-    subTitle="Necessary Step to active your account"
+    titleLabel="VERIFY YOUR ACCOUNT"
+    subTitleLabel="Necessary Step to active your account"
   >
     <CenterAlignedColumn>
       <MediumLogo />
