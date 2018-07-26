@@ -65,6 +65,9 @@ class SignupForm extends React.Component {
         options={{
           customLayout,
           customInputsContainer,
+          initialFormValue: {
+            register_for_news: true,
+          },
           fields: [
             {
               name: 'email',
