@@ -71,18 +71,6 @@ class SignupForm extends React.Component {
           },
           fields: [
             {
-              name: 'email',
-              placeholder: 'Email',
-              input_type: 'textbox',
-              type: 'RequiredString',
-            },
-            {
-              name: 'password',
-              placeholder: 'Password',
-              input_type: 'password',
-              type: 'RequiredString',
-            },
-            {
               name: 'first_name',
               placeholder: 'First Name',
               input_type: 'textbox',
@@ -92,6 +80,18 @@ class SignupForm extends React.Component {
               name: 'last_name',
               placeholder: 'Last Name',
               input_type: 'textbox',
+              type: 'RequiredString',
+            },
+            {
+              name: 'email',
+              placeholder: 'Email',
+              input_type: 'textbox',
+              type: 'RequiredString',
+            },
+            {
+              name: 'password',
+              placeholder: 'Password',
+              input_type: 'password',
               type: 'RequiredString',
             },
             {

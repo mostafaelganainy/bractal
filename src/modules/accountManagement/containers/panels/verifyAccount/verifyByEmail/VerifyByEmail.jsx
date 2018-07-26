@@ -64,8 +64,8 @@ class VerficationCodeEmail extends React.Component {
 
     return (
       <Panel
-        title="VERIFY YOUR ACCOUNT"
-        subTitle="Necessary Step to active your account"
+        titleLabel="VERIFY YOUR ACCOUNT"
+        subTitleLabel="Necessary Step to active your account"
         error={panelError}
         panelWidth="100%"
       >

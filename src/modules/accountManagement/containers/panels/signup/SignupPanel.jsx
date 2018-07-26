@@ -27,16 +27,16 @@ const DesktopFormLayout = locals => (
         <CenterAlignedColumn>
           <InputLayout>
             <div>{locals.inputs.first_name}</div>
-            <div>{locals.inputs.last_name}</div>
             <div>{locals.inputs.email}</div>
+            <div>{locals.inputs.nationality}</div>
           </InputLayout>
         </CenterAlignedColumn>
         <LargeSpacer />
         <CenterAlignedColumn>
           <InputLayout>
-            <div>{locals.inputs.nationality}</div>
-            <div>{locals.inputs.mobile_number}</div>
+            <div>{locals.inputs.last_name}</div>
             <div>{locals.inputs.password}</div>
+            <div>{locals.inputs.mobile_number}</div>
           </InputLayout>
         </CenterAlignedColumn>
       </CenterAlignedRow>
@@ -100,14 +100,14 @@ class SignupPanel extends React.Component {
     const { isLoading, panelError } = this.state;
 
     return (
-      <Panel
-        titleLabel="Register"
-        subTitleLabel="Join our community"
-        error={panelError}
-        panelWidth="100%"
-      >
-        <Media query={mediaQueryMin('desktop')}>
-          {isOnDesktop => (
+      <Media query={mediaQueryMin('desktop')}>
+        {isOnDesktop => (
+          <Panel
+            titleLabel="Register"
+            subTitleLabel="Join our community"
+            error={panelError}
+            panelWidth={isOnDesktop ? '100%' : null}
+          >
             <React.Fragment>
               <SignupForm
                 ref={(ref) => { this.form = ref; }}
@@ -129,9 +129,9 @@ class SignupPanel extends React.Component {
                 </InputLayout>
               }
             </React.Fragment>
-          )}
-        </Media>
-      </Panel>
+          </Panel>
+        )}
+      </Media>
     );
   };
 }

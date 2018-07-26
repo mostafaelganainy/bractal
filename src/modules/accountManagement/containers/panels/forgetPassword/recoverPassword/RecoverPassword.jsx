@@ -54,8 +54,8 @@ class RecoverPasswords extends React.Component {
 
     return (
       <Panel
-        title="RECOVER YOUR PASSWORD"
-        subTitle="Follow the steps to reset your password"
+        titleLabel="RECOVER YOUR PASSWORD"
+        subTitleLabel="Follow the steps to reset your password"
         error={panelError}
         panelWidth="100%"
       >

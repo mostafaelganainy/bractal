@@ -3,6 +3,7 @@ import { commitMutation } from 'react-relay';
 
 import t from 'tcomb-form';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import cuid from 'cuid';
 
@@ -23,6 +24,10 @@ class SeededTcombForm extends Form {
   // similar generated ids, and browswer will complaint
   getSeed = () => cuid();
 }
+
+const FullWidthForm = styled.form`
+  width: 100%;
+`;
 class RelayForm extends Component {
   static getDerivedStateFromProps(nextProps, currentState) {
     const cond = objectsDeepNotEqualComparison(currentState.prevOptions, nextProps.options);
@@ -200,7 +205,7 @@ class RelayForm extends Component {
     };
 
     return (
-      <form
+      <FullWidthForm
         // External form helps with Autocomplete from browsers
         onSubmit={this.onSubmit}
       >
@@ -224,7 +229,7 @@ class RelayForm extends Component {
             },
           }}
         />
-      </form>
+      </FullWidthForm>
     );
   };
 }

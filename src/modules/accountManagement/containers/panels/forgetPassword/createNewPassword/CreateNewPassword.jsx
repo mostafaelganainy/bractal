@@ -52,8 +52,8 @@ class CreateNewPassword extends React.Component {
 
     return (
       <Panel
-        title="RECOVER YOUR PASSWORD"
-        subTitle="Follow the steps to reset your password"
+        titleLabel="RECOVER YOUR PASSWORD"
+        subTitleLabel="Follow the steps to reset your password"
         currentPanelError={currentPanelError}
       >
         <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
