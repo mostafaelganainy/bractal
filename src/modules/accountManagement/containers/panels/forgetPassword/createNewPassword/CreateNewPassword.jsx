@@ -38,7 +38,9 @@ class CreateNewPassword extends React.Component {
   onError = error => this.setState({ panelError: error });
 
   setLoadingState = (isLoading) => {
-    this.setState({ isLoading });
+    this.setState({
+      isLoading,
+    });
   }
 
   render = () => {
@@ -79,7 +81,8 @@ class CreateNewPassword extends React.Component {
           />
           <BasicButton
             loading={isLoading}
-            onClick={() => this.form.submitForm()}
+            disabled={isLoading}
+            onClicked={() => this.form.submitForm()}
           >
             <Trans i18nKey="CreateNewPassword.Button" />
           </BasicButton>

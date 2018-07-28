@@ -9,7 +9,6 @@ import { CenterAlignedColumn, LeftAlignedColumn } from '~/modules/coreUI/compone
 import { CenterAlignedRow } from '~/modules/coreUI/components/layouts/helpers/Rows';
 import { LinearLayout } from '~/modules/coreUI/components/layouts/helpers/LinearLayout';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
-import ModalLink from '~/modules/core/components/Modal/ModalLink';
 import { MediumSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import Panel, { PanelRoot } from '~/modules/accountManagement/components/basic/Panel';
 import { cssMediaMax, mediaQueryMin } from '~/modules/core/utils/cssHelpers/cssMedia';
@@ -67,21 +66,35 @@ class EmailOrSMS extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
+    buttonsDisabled: false,
   };
 
+  componentDidMount = () => {
+    if (!this.props.userInfo || !this.props.userInfo.email) {
+      this.setState({
+        panelError: 'Seems like you reached here by mistake, email is missing, kindly go to the previous step and try again',
+        buttonsDisabled: true,
+      });
+    }
+  }
+
   onMutationError = (error) => {
-    this.setState({ panelError: error });
+    this.setState({ panelError: JSON.stringify(error) });
   }
   onMutationSuccess = () => {
     navigateToModal(this.props.location, this.props.history, '/accountManagement/showSuccess');
   }
   onMutationLoading = (isLoading) => {
-    this.setState({ isLoading });
+    this.setState({
+      isLoading,
+      buttonsDisabled: isLoading,
+    });
   }
-  verifyByEmail = () => {
+  verifyByEmail = (e) => {
     this.props.onMutationSubmit({
       email: this.props.userInfo.email,
     });
+    e.stopPropagation();
   }
   render = () => (
     <ResponsivePanel
@@ -104,15 +117,13 @@ class EmailOrSMS extends React.Component {
           {isOnDesktop => (
             <LinearLayout row={isOnDesktop}>
               <InputLayout>
-                <ModalLink to="/accountManagement/VerifyByEmail">
-                  <BasicButton loading={this.state.isLoading} onClick={this.verifyByEmail} width="100%">
-                    <Trans i18nKey="verifyAccount.VerifyByMail" />
-                  </BasicButton>
-                </ModalLink>
+                <BasicButton disabled={this.state.buttonsDisabled} loading={this.state.isLoading} onClicked={this.verifyByEmail} width="100%">
+                  <Trans i18nKey="verifyAccount.VerifyByMail" />
+                </BasicButton>
               </InputLayout>
               <MediumSpacer />
               <InputLayout>
-                <BasicButton loading={this.state.isLoading} width="100%">
+                <BasicButton disabled={this.state.buttonsDisabled} width="100%">
                   <Trans i18nKey="verifyAccount.VerifyBySMS" />
                 </BasicButton>
               </InputLayout>

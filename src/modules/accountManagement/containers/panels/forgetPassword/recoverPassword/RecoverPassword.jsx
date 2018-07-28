@@ -82,7 +82,8 @@ class RecoverPasswords extends React.Component {
           <XLargeSpacer />
           <BasicButton
             loading={isLoading}
-            onClick={() => this.form.submitForm()}
+            disabled={isLoading}
+            onClicked={() => this.form.submitForm()}
           >
             <Trans i18nKey="recoverPassword.Button" />
           </BasicButton>

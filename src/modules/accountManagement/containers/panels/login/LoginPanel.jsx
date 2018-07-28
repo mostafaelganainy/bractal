@@ -102,7 +102,12 @@ class LoginPanel extends React.Component {
             onFormSuccess={response => this.onSuccess(response)}
             onFormLoading={loading => this.setLoadingState(loading)}
           />
-          <BasicButton secondary loading={isLoading} onClick={() => this.form.submitForm()}>
+          <BasicButton
+            secondary
+            disabled={isLoading}
+            loading={isLoading}
+            onClicked={() => this.form.submitForm()}
+          >
             Login
           </BasicButton>
           <LargeSpacer />

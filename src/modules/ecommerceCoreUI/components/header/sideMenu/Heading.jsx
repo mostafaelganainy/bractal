@@ -35,7 +35,7 @@ const Heading = props => (
         <img src="/images/Header/sideMenu-logo.png" alt="logo" />
         <BasicButton
           primary
-          onClick={() => navigateToModal(props.location, props.history, '/accountManagement/login')}
+          onClicked={() => navigateToModal(props.location, props.history, '/accountManagement/login')}
         >
           Log in / Sign up
         </BasicButton>

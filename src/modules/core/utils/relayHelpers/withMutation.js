@@ -48,17 +48,17 @@ class Wrapper extends React.Component {
           });
         }
 
+        this.onLoading(false);
         // form to render to show server errors (When no local errors are there)
-        if (serverErrors) {
+        if (serverErrors && Object.keys(serverErrors).length > 0) {
           this.onError(serverErrors);
         } else {
           this.onSuccess(response);
         }
-        this.onLoading(false);
       },
       onError: (err) => {
-        this.onError(err.message || err.toString());
         this.onLoading(false);
+        this.onError(err.message || err.toString());
       },
     });
   }

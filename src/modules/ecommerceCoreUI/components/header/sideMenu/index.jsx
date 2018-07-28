@@ -60,7 +60,7 @@ const SideMenu = props => (
           <LargeSpacer />
           <BasicButton
             primary
-            onClick={e => logout(e, props.invalidateUser)}
+            onClicked={e => logout(e, props.invalidateUser)}
           >
             Log out
           </BasicButton>

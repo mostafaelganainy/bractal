@@ -90,7 +90,8 @@ class VerficationCodeEmail extends React.Component {
             />
             <BasicButton
               loading={isLoading}
-              onClick={() => this.form.submitForm()}
+              disabled={isLoading}
+              onClicked={() => this.form.submitForm()}
             >
               <Trans i18nKey="verifyAccount.ButtonCreateAccount" />
             </BasicButton>

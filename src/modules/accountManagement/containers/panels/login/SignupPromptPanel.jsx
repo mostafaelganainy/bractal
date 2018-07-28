@@ -43,7 +43,7 @@ const SignUpFormPanel = (props) => {
             <BasicButton
               primary
               inverted
-              onClick={() => navigateToModal(location, history, '/accountManagement/singup')}
+              onClicked={() => navigateToModal(location, history, '/accountManagement/singup')}
             >
               Create an account
             </BasicButton>

@@ -54,8 +54,9 @@ const DesktopFormLayout = locals => (
       <div>{locals.inputs.register_for_news}</div>
       <BasicButton
         loading={locals.context.isLoading}
+        disabled={locals.context.isLoading}
         secondary
-        onClick={() => locals.context.onSubmit()}
+        onClicked={() => locals.context.onSubmit()}
       >
         Signup
       </BasicButton>
@@ -121,8 +122,9 @@ class SignupPanel extends React.Component {
                 <InputLayout>
                   <BasicButton
                     loading={isLoading}
+                    disabled={isLoading}
                     secondary
-                    onClick={() => this.form.submitForm()}
+                    onClicked={() => this.form.submitForm()}
                   >
                     Signup
                   </BasicButton>
