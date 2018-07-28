@@ -1,17 +1,19 @@
 import { graphql } from 'react-relay';
 
+export const ResendConfirmationCodeMutationRoot = 'send_confirmation_code';
+
 export default graphql`
-  mutation VerifyAccountEmailOrSMSPanelMutation (
+  mutation ResendConfirmationCodeMutation (
     $email: String!,
   ) {
-    forgot_password_send_code(
+    send_confirmation_code (
       email: $email,
     ) {      
       errors {
         field
         messages
       }
-      message
+      sent
     }
   }
 `;

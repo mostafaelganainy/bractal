@@ -102,6 +102,13 @@ class RelayForm extends Component {
   }
 
   commitFormMutation = (environment, mutation, variables, mutationRoot, callbacks) => {
+    const knownFields = {};
+    if (this.state.tcombOptions.fields) {
+      Object.keys(this.state.tcombOptions.fields).forEach((field) => {
+        knownFields[field] = true;
+      });
+    }
+
     commitMutation(environment, {
       mutation,
       variables,
@@ -113,22 +120,21 @@ class RelayForm extends Component {
           serverErrors.global = globalError.message;
         }
 
+        const unKnownFieldsErrors = {};
+
         if (response && response[mutationRoot] && response[mutationRoot].errors) {
           response[mutationRoot].errors.forEach((error) => {
-            let workAROUND = error.field;
-            // TODO : Till the return from the backend isn't 'email' any more
-            serverErrors[workAROUND] = `${error.messages[0]}`;
-
-            if (workAROUND === 'email') {
-              workAROUND = 'user_signin';
-              serverErrors[workAROUND] = `${error.messages[0]}`;
-            }
-
-            if (workAROUND === 'token') {
-              workAROUND = 'code';
-              serverErrors[workAROUND] = `${error.messages[0]}`;
+            const errorMessage = `${error.message || error.messages[0]}`;
+            if (knownFields[error.field]) {
+              serverErrors[error.field] = errorMessage;
+            } else {
+              unKnownFieldsErrors[error.field] = errorMessage;
             }
           });
+        }
+
+        if (Object.keys(unKnownFieldsErrors).length > 0) {
+          serverErrors.global = JSON.stringify(unKnownFieldsErrors);
         }
 
         // form to render to show server errors (When no local errors are there)

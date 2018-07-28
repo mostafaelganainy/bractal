@@ -19,7 +19,7 @@ import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserI
 
 import { navigateToModal } from '~/modules/core/utils/modalHelpers';
 
-import VerifyAccountEmailOrSMSPanelMutation from './VerifyAccountEmailOrSMSPanelMutation';
+import ResendConfirmationCodeMutation, { ResendConfirmationCodeMutationRoot } from '~/modules/accountManagement/containers/panels/ResendConfirmationCodeMutation';
 
 const InputLayout = styled(PanelRoot)`
   display: flex;
@@ -66,14 +66,12 @@ class EmailOrSMS extends React.Component {
   state = {
     panelError: null,
     isLoading: false,
-    buttonsDisabled: false,
   };
 
   componentDidMount = () => {
     if (!this.props.userInfo || !this.props.userInfo.email) {
       this.setState({
         panelError: 'Seems like you reached here by mistake, email is missing, kindly go to the previous step and try again',
-        buttonsDisabled: true,
       });
     }
   }
@@ -82,19 +80,17 @@ class EmailOrSMS extends React.Component {
     this.setState({ panelError: JSON.stringify(error) });
   }
   onMutationSuccess = () => {
-    navigateToModal(this.props.location, this.props.history, '/accountManagement/showSuccess');
+    navigateToModal(this.props.location, this.props.history, '/accountManagement/VerifyByEmail');
   }
   onMutationLoading = (isLoading) => {
     this.setState({
       isLoading,
-      buttonsDisabled: isLoading,
     });
   }
-  verifyByEmail = (e) => {
+  verifyByEmail = () => {
     this.props.onMutationSubmit({
       email: this.props.userInfo.email,
     });
-    e.stopPropagation();
   }
   render = () => (
     <ResponsivePanel
@@ -117,13 +113,13 @@ class EmailOrSMS extends React.Component {
           {isOnDesktop => (
             <LinearLayout row={isOnDesktop}>
               <InputLayout>
-                <BasicButton disabled={this.state.buttonsDisabled} loading={this.state.isLoading} onClicked={this.verifyByEmail} width="100%">
+                <BasicButton disabled={this.state.isLoading} loading={this.state.isLoading} onClicked={this.verifyByEmail} width="100%">
                   <Trans i18nKey="verifyAccount.VerifyByMail" />
                 </BasicButton>
               </InputLayout>
               <MediumSpacer />
               <InputLayout>
-                <BasicButton disabled={this.state.buttonsDisabled} width="100%">
+                <BasicButton disabled={this.state.isLoading} width="100%">
                   <Trans i18nKey="verifyAccount.VerifyBySMS" />
                 </BasicButton>
               </InputLayout>
@@ -161,4 +157,8 @@ EmailOrSMS.propTypes = {
   }).isRequired,
 };
 
-export default withUserInfo(withMutation(EmailOrSMS, VerifyAccountEmailOrSMSPanelMutation, 'forgot_password_send_code'));
+export default withUserInfo(withMutation(
+  EmailOrSMS,
+  ResendConfirmationCodeMutation,
+  ResendConfirmationCodeMutationRoot,
+));
