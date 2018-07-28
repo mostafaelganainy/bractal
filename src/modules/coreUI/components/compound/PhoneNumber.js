@@ -10,7 +10,7 @@ class PhoneNumber extends React.Component {
   getCountriesData = () => AllCountries.map(country => ({
     label: country.name,
     image: <Image src={country.flag} alt={country.flag} />,
-    value: `+${country.callingCodes[0]}`,
+    value: `+${country.callingCodes[0]}`, // FIXME : CallingCode isn't a unique identifier, use CountryCode instead
     rightPulledLabel: `+${country.callingCodes}`,
     attrs: {
       callingCodes: country.callingCodes,

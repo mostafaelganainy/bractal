@@ -202,7 +202,7 @@ export default class FilteredItemsList extends React.Component {
       id={entry.value}
       value={entry.value}
       isFocusOption={entry.value === this.state.currentFocusValue}
-      key={entry.value}
+      key={entry.label}
       className="item"
       onMouseDown={() => {
         this.listEntryClicked(entry);

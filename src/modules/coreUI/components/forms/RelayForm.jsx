@@ -101,29 +101,11 @@ class RelayForm extends Component {
     this.setState({ tcombOptions: updatedOptions });
   }
 
-  commitFormMutation = (environment, mutation, mutationRoot, resultCallback) => {
-    // Apply local validations first
-    this.Form.validate();
-
-    const formValues = this.Form.getValue();
-
-    if (!formValues) {
-      return;
-    }
-
-    this.onLoading(true);
-
-    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
-
+  commitFormMutation = (environment, mutation, variables, mutationRoot, callbacks) => {
     commitMutation(environment, {
       mutation,
-      variables: {
-        ...formValues,
-        ...addiontalMutationVariables,
-      },
-
+      variables,
       onCompleted: (response, errors) => {
-        this.onLoading(false);
         const serverErrors = {};
         const globalError = errors && errors.length > 0 && errors[0];
 
@@ -147,16 +129,14 @@ class RelayForm extends Component {
               serverErrors[workAROUND] = `${error.messages[0]}`;
             }
           });
-          this.updateTcompOptionsWithErrors(serverErrors);
         }
 
         // form to render to show server errors (When no local errors are there)
-        resultCallback(response, serverErrors);
+        callbacks.completed(response, serverErrors);
       },
 
       onError: (err) => {
-        this.onLoading(false);
-        resultCallback(null, err.message || err.toString());
+        callbacks.completed(null, err.message || err.toString());
       },
     });
   };
@@ -166,29 +146,63 @@ class RelayForm extends Component {
       onFormError, onFormSuccess, mutationRoot, environment, mutation,
     } = this.props;
 
+    // onFormError & onFormSuccess shouldn't be empty or undefined
+    assert(onFormError, 'onFormError Should Not Be Undefined');
+    assert(onFormSuccess, 'onFormSuccess Should Not Be Undefined');
+
     if (this.state.isLoading) {
       return;
     }
 
-    this.commitFormMutation(environment, mutation, mutationRoot, (response, errors) => {
-      // onFormError & onFormSuccess shouldn't be empty or undefined
-      assert(onFormError, 'onFormError Should Not Be Undefined');
-      assert(onFormSuccess, 'onFormSuccess Should Not Be Undefined');
+    // Apply local validations first
+    this.Form.validate();
 
-      if (response && errors.global) {
-        onFormError(errors.global);
-      } else if (typeof errors === 'string') {
-        onFormError(errors);
-      } else {
-        onFormError(null);
-      }
+    const formValues = this.Form.getValue();
 
-      const errorsExist = errors && (Object.keys(errors).length > 0 || errors.length > 0);
+    if (!formValues) {
+      return;
+    }
 
-      if (!errorsExist) {
-        onFormSuccess(response);
-      }
-    });
+    const addiontalMutationVariables = this.props.addiontalMutationVariables || {};
+
+    const variables = {
+      ...formValues,
+      ...addiontalMutationVariables,
+    };
+
+    this.onLoading(true);
+
+    this.commitFormMutation(
+      environment,
+      mutation,
+      variables,
+      mutationRoot,
+      {
+        preCommit: () => {
+
+        },
+        completed: (response, errors) => {
+          if (errors) {
+            this.updateTcompOptionsWithErrors(errors);
+          }
+
+          if (response && errors.global) {
+            onFormError(errors.global);
+          } else if (typeof errors === 'string') {
+            onFormError(errors);
+          } else {
+            onFormError(null);
+          }
+
+          const errorsExist = errors && (Object.keys(errors).length > 0 || errors.length > 0);
+
+          if (!errorsExist) {
+            onFormSuccess(response);
+          }
+          this.onLoading(false);
+        },
+      },
+    );
   };
 
   render = () => {

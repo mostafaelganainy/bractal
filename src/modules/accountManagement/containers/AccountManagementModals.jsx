@@ -15,7 +15,7 @@ import Signup from '~/modules/accountManagement/containers/panels/signup/SignupP
 import RecoverPassword from '~/modules/accountManagement/containers/panels/forgetPassword/recoverPassword/RecoverPassword';
 import CreateNewPassword from '~/modules/accountManagement/containers/panels/forgetPassword/createNewPassword/CreateNewPassword';
 
-import VerifyAccountByEmailOrSms from '~/modules/accountManagement/containers/panels/verifyAccount/VerifyAccountEmailOrSms';
+import VerifyAccountByEmailOrSms from '~/modules/accountManagement/containers/panels/verifyAccount/veryAccountEmailOrSMS/VerifyAccountEmailOrSMSPanel';
 
 import VerifyAccountByEmail from '~/modules/accountManagement/containers/panels/verifyAccount/verifyByEmail/VerifyByEmail';
 import VerifyRecoverByEmail from '~/modules/accountManagement/containers/panels/forgetPassword/verifyByEmail/RecoverVerifyByEmail';
