@@ -60,10 +60,10 @@ class RelayForm extends Component {
   onChange = (value, path) => {
     // reset this field's error state
     if (this.Form) {
+      this.resetTcompOptionsErrors(path[0]);
       this.Form.getComponent(path).validate();
     }
-    const { tcombOptions } = this.state;
-    this.setState({ tcombOptions, value });
+    this.setState({ value });
   };
 
   onLoading = (isLoading) => {
@@ -91,10 +91,33 @@ class RelayForm extends Component {
             $set: true,
           },
           error: {
-            $set: `${fieldsErrors[option.name]}`,
+            // FIXME : Replace the 'SERVER_ERROR: ' part, with a more elegant solution.
+            //        It's used mainly in the Errors.jsx to differentiate local & server errors
+            $set: `SERVER_ERROR: ${fieldsErrors[option.name]}`,
           },
         };
       }
+    });
+
+    const updatedOptions = t.update(this.state.tcombOptions, { fields });
+    this.setState({ tcombOptions: updatedOptions });
+  }
+
+  resetTcompOptionsErrors(fieldName) {
+    const { options } = this.props;
+    const fields = {};
+
+    const fieldsToChange = fieldName ? [fieldName] : options.fields.map(option => option.name);
+
+    fieldsToChange.forEach((field) => {
+      fields[field] = {
+        hasError: {
+          $set: false,
+        },
+        error: {
+          $set: null,
+        },
+      };
     });
 
     const updatedOptions = t.update(this.state.tcombOptions, { fields });
@@ -151,6 +174,8 @@ class RelayForm extends Component {
     const {
       onFormError, onFormSuccess, mutationRoot, environment, mutation,
     } = this.props;
+
+    this.resetTcompOptionsErrors();
 
     // onFormError & onFormSuccess shouldn't be empty or undefined
     assert(onFormError, 'onFormError Should Not Be Undefined');

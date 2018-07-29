@@ -29,14 +29,16 @@ const renderError = (locals, customErrorTextStyle) => {
 
   const displayName = locals.attrs.displayName || changeCase.sentence(fieldName);
 
-  const localValidationErrors = locals.context.localValidationErrors || {};
   const serverErrors = (locals.context && locals.context.serverErrors) || {};
 
   let errorMessage = locals.hasError && locals.error;
-  errorMessage = errorMessage || localValidationErrors[fieldName];
 
   if (errorMessage) {
-    errorMessage = `${displayName} ${errorMessage}`;
+    if (errorMessage.startsWith('SERVER_ERROR: ')) {
+      errorMessage = errorMessage.replace('SERVER_ERROR: ', '');
+    } else {
+      errorMessage = `${displayName} ${errorMessage}`;
+    }
   }
 
   errorMessage = errorMessage || serverErrors[fieldName];
