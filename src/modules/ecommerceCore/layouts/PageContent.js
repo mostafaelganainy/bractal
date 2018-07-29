@@ -14,9 +14,12 @@ import HomePage from '../containers/Home';
 
 import { withModules } from '../../core/utils/modulesLoader';
 
+const SampleContent = () => (<h1>SAMPLE</h1>);
+
 const PageContent = ({ location }) => (
   <Switch location={removeModalPartFromLocation(location)}>
     <Route exact path="/" component={HomePage} />
+    <Route exact path="/sample/path" component={SampleContent} />
   </Switch>
 );
 
