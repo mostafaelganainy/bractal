@@ -104,6 +104,7 @@ export default function SocialMedia() {
         <CenterAlignedRow>
           {socialMedias.map(socialMedia => (
             <SocialMediaButton
+              key={socialMedia.name}
               background={socialMedia.background}
               isInstagram={socialMedia.isInstagram}
             >

@@ -29,9 +29,11 @@ class UserInfoProvider extends React.Component {
     if (allValuesExist) {
       if (new Date(parseInt(userInfo.expiry, 10) * 1000) > new Date()) {
         this.updateUserInfo(userInfo);
-      } else {
-        this.invalidateUser();
       }
+    } else if (userInfo) {
+      this.invalidateUser(userInfo.rememberMe, userInfo.email);
+    } else {
+      this.invalidateUser();
     }
   }
   updateUserInfoTempPartial = (newUserInfo) => {
@@ -48,8 +50,7 @@ class UserInfoProvider extends React.Component {
   }
 
   updateUserInfo = (userInfo) => {
-    this.invalidateUser();
-
+    this.invalidateUser(userInfo.rememberMe);
     const allValuesExist = this.validateUserInfoObject(userInfo);
 
     if (!allValuesExist) {
@@ -71,12 +72,33 @@ class UserInfoProvider extends React.Component {
       },
     });
   }
-  invalidateUser = () => {
-    localStorage.setItem('userInfo', null);
+  invalidateUser = (rememberMe, email) => {
+    const { userInfo } = this.state.userManagement;
+    const shouldRemember = rememberMe || (userInfo && userInfo.rememberMe);
+    let newUserInfo = null;
+
+    if (shouldRemember) {
+      newUserInfo = {
+        email: email || (userInfo && userInfo.email),
+        rememberMe: true,
+      };
+
+      localStorage.setItem('userInfo', JSON.stringify(newUserInfo));
+    } else {
+      localStorage.setItem('userInfo', null);
+    }
+
+    sessionStorage.setItem('userInfo', null);
 
     this.persist();
 
-    this.setState(this.initialState);
+    this.setState({
+      ...this.initialState,
+      userManagement: {
+        ...this.initialState.userManagement,
+        userInfo: newUserInfo,
+      },
+    });
   }
 
   persist = () => {

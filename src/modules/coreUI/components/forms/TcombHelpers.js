@@ -1,4 +1,6 @@
-import t, { maybe } from 'tcomb-form';
+import t, {
+  maybe,
+} from 'tcomb-form';
 
 import FormLayout from './FormLayout';
 import Templates from './Template';
@@ -29,7 +31,7 @@ const RequiredString = defineSubtype(
 );
 
 const isValidPhoneNumber = (val) => {
-  const cleanedVal = val && val.replace(/[ ()-]/g, '');
+  const cleanedVal = val && val.replace(/[ ()+-]/g, '');
   return parseInt(cleanedVal, 10).toString() === cleanedVal;
 };
 
@@ -98,6 +100,8 @@ export const getTcombOptionsFromRawOptions = (rawOptions) => {
         importantLabel: option.importantLabel,
         displayName: option.displayName,
       },
+      error: null,
+      hasError: false,
     };
   });
 

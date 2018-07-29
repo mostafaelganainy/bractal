@@ -14,10 +14,11 @@ const CountriesOptions = AllCountries.map(country => ({
   },
 }));
 
-const CountriesDropdown = ({ onChange }) => (
+const CountriesDropdown = ({ onChange, value }) => (
   <InputSelect
     showInput={false}
-    onChange={entry => onChange(entry)}
+    value={value}
+    onChange={newValue => onChange(`(${newValue})`)}
     showImageOnButton={false}
     getSelectedItemLabel={entry => `${entry.label}`}
     getSelectedItemImage={() => null}
@@ -26,7 +27,12 @@ const CountriesDropdown = ({ onChange }) => (
   />
 );
 
+CountriesDropdown.defaultProps = {
+  value: '',
+};
+
 CountriesDropdown.propTypes = {
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

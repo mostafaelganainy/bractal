@@ -81,7 +81,6 @@
   "scripts": {
     "start-internal": "sass --watch src/styles/scss:src/styles/css | PORT=3000 node scripts/start.js",
     "build": "node scripts/build.js",
-    "postbuild": "gzip -r build/static",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",

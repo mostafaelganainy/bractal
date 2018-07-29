@@ -46,7 +46,7 @@ class RecoverByPasswordForm extends React.Component {
           fields: [
             {
               name: 'email',
-              placeholder: 'Email',
+              placeholder: 'Email / Mobile Number',
               input_type: 'textbox',
               type: 'RequiredString',
             },

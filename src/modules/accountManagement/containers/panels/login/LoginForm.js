@@ -3,6 +3,7 @@ import { graphql } from 'react-relay';
 import PropTypes from 'prop-types';
 
 import RelayForm from '~/modules/coreUI/components/forms/RelayForm';
+import withUserInfo from '~/modules/core/utils/accessManagementHelpers/withUserInfo';
 
 const FormMutation = graphql`
   mutation LoginFormMutation (
@@ -34,6 +35,12 @@ const FormMutation = graphql`
 
 
 class LoginForm extends React.Component {
+  componentDidMount = () => {
+    if (this.props.onRef) {
+      this.props.onRef(this);
+    }
+  }
+
   getValue = () => this.form.getValue();
 
   submitForm = () => {
@@ -46,6 +53,7 @@ class LoginForm extends React.Component {
       onFormError,
       onFormSuccess,
       onFormLoading,
+      userInfo,
     } = this.props;
 
     return (
@@ -57,6 +65,9 @@ class LoginForm extends React.Component {
         mutationRoot="signin_user"
         options={{
           customLayout,
+          initialFormValue: {
+            user_signin: userInfo && userInfo.email,
+          },
           fields: [
             {
               name: 'user_signin',
@@ -91,4 +102,4 @@ LoginForm.propTypes = PropTypes.shape({
   onFormLoading: PropTypes.func.isRequired,
 }).isRequired;
 
-export default LoginForm;
+export default withUserInfo(LoginForm);

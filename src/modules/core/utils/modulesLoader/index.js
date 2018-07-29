@@ -11,7 +11,6 @@ const ModulesLoader = {
     modulesSpecs.unshift(CoreModule);
 
     const modules = modulesSpecs.map((module) => {
-      console.log(`Loading Module : ${module.name}`);
       module.loadModule();
       return module;
     });

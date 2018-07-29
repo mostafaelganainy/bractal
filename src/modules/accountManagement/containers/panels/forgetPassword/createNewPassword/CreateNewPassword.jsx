@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import Image from '~/modules/coreUI/components/basic/Image';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { MediumSpacer, XXXXXLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
@@ -38,7 +37,9 @@ class CreateNewPassword extends React.Component {
   onError = error => this.setState({ panelError: error });
 
   setLoadingState = (isLoading) => {
-    this.setState({ isLoading });
+    this.setState({
+      isLoading,
+    });
   }
 
   render = () => {
@@ -52,38 +53,37 @@ class CreateNewPassword extends React.Component {
 
     return (
       <Panel
-        title="RECOVER YOUR PASSWORD"
-        subTitle="Follow the steps to reset your password"
-        currentPanelError={currentPanelError}
+        titleLabel="RECOVER YOUR PASSWORD"
+        subTitleLabel="Follow the steps to reset your password"
+        error={currentPanelError}
       >
-        <CenterAlignedColumn style={{ backgroundColor: 'white' }}>
-          <RecoverPasswordImage
-            src={`${IMAGE_PATH}/finger.png`}
-            srcset={`${IMAGE_PATH}/finger@2x.png 2x,
-            ${IMAGE_PATH}/finger@3x.png 3x`}
-          />
-          <XXXXXLargeSpacer />
-          <CenteredParagraphPanelContent>
-            <Trans i18nKey="CreateNewPassword.CreateNewPassParagraph" />
-          </CenteredParagraphPanelContent>
-          <MediumSpacer />
-          <CreateNewPasswordForm
-            ref={(ref) => { this.form = ref; }}
-            addiontalMutationVariables={{
-              email: userInfo && userInfo.email,
-              code: userInfo && userInfo.code,
-            }}
-            onFormError={error => this.onError(error)}
-            onFormSuccess={response => this.onSuccess(response)}
-            onFormLoading={loading => this.setLoadingState(loading)}
-          />
-          <BasicButton
-            loading={isLoading}
-            onClick={() => this.form.submitForm()}
-          >
-            <Trans i18nKey="CreateNewPassword.Button" />
-          </BasicButton>
-        </CenterAlignedColumn>
+        <RecoverPasswordImage
+          src={`${IMAGE_PATH}/finger.png`}
+          srcset={`${IMAGE_PATH}/finger@2x.png 2x,
+          ${IMAGE_PATH}/finger@3x.png 3x`}
+        />
+        <XXXXXLargeSpacer />
+        <CenteredParagraphPanelContent>
+          <Trans i18nKey="CreateNewPassword.CreateNewPassParagraph" />
+        </CenteredParagraphPanelContent>
+        <MediumSpacer />
+        <CreateNewPasswordForm
+          ref={(ref) => { this.form = ref; }}
+          addiontalMutationVariables={{
+            email: userInfo && userInfo.email,
+            code: userInfo && userInfo.code,
+          }}
+          onFormError={error => this.onError(error)}
+          onFormSuccess={response => this.onSuccess(response)}
+          onFormLoading={loading => this.setLoadingState(loading)}
+        />
+        <BasicButton
+          loading={isLoading}
+          disabled={isLoading}
+          onClicked={() => this.form.submitForm()}
+        >
+          <Trans i18nKey="CreateNewPassword.Button" />
+        </BasicButton>
       </Panel>
     );
   };

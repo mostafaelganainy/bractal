@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { CenteredParagraphPanelContent } from '~/modules/accountManagement/components/basic/Labels';
-import { CenterAlignedColumn } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { BasicButton } from '~/modules/coreUI/components/basic/Button';
 import { LargeSpacer, XLargeSpacer } from '~/modules/coreUI/components/layouts/helpers/Spacers';
 import { Trans } from 'react-i18next';
@@ -64,38 +63,37 @@ class VerficationCodeEmail extends React.Component {
 
     return (
       <Panel
-        title="VERIFY YOUR ACCOUNT"
-        subTitle="Necessary Step to active your account"
+        titleLabel="VERIFY YOUR ACCOUNT"
+        subTitleLabel="Necessary Step to active your account"
         error={panelError}
         panelWidth="100%"
       >
-        <CenterAlignedColumn>
-          <RecoverPasswordImage
-            src={`${IMAGE_PATH}/SMSImages.png`}
-            srcset={`${IMAGE_PATH}/SMSImages.png 2x,
-            ${IMAGE_PATH}/SMSImages.png 3x`}
+        <RecoverPasswordImage
+          src={`${IMAGE_PATH}/SMSImages.png`}
+          srcset={`${IMAGE_PATH}/SMSImages.png 2x,
+          ${IMAGE_PATH}/SMSImages.png 3x`}
+        />
+        <LargeSpacer />
+        <XLargeSpacer />
+        <CenteredParagraphPanelContent>
+          <Trans i18nKey="verifyAccount.EmailTxt" />
+        </CenteredParagraphPanelContent>
+        <XLargeSpacer />
+        <InputLayout>
+          <VerifyByEmailForm
+            ref={(ref) => { this.form = ref; }}
+            onFormError={error => this.onError(error)}
+            onFormSuccess={response => this.onSuccess(response)}
+            onFormLoading={loading => this.setLoadingState(loading)}
           />
-          <LargeSpacer />
-          <XLargeSpacer />
-          <CenteredParagraphPanelContent>
-            <Trans i18nKey="verifyAccount.EmailTxt" />
-          </CenteredParagraphPanelContent>
-          <XLargeSpacer />
-          <InputLayout>
-            <VerifyByEmailForm
-              ref={(ref) => { this.form = ref; }}
-              onFormError={error => this.onError(error)}
-              onFormSuccess={response => this.onSuccess(response)}
-              onFormLoading={loading => this.setLoadingState(loading)}
-            />
-            <BasicButton
-              loading={isLoading}
-              onClick={() => this.form.submitForm()}
-            >
-              <Trans i18nKey="verifyAccount.ButtonCreateAccount" />
-            </BasicButton>
-          </InputLayout>
-        </CenterAlignedColumn>
+          <BasicButton
+            loading={isLoading}
+            disabled={isLoading}
+            onClicked={() => this.form.submitForm()}
+          >
+            <Trans i18nKey="verifyAccount.ButtonCreateAccount" />
+          </BasicButton>
+        </InputLayout>
       </Panel>
     );
   }

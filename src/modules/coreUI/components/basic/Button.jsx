@@ -7,6 +7,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { Column } from '~/modules/coreUI/components/layouts/helpers/Columns';
 import { MediumLabel } from '~/modules/coreUI/components/basic/Labels';
+import assert from '~/modules/core/utils/jsHelpers/assert';
 
 const getBackgroundColor = (props) => {
   if (props.disabled) {
@@ -93,7 +94,7 @@ const ButtonLabelStyle = css`
 
 // Must be of relative position for the loading icon to be drawn correctly
 const Button = styled(Column)`
-  width: ${props => props.width || '100%'};
+  width: '100%';
   position: relative;  
     
   background-color: ${props => getBackgroundColor(props)};
@@ -143,19 +144,29 @@ const PaddingSpacer = styled.div`
   height: ${props => props.padding || props.theme.buttons.padding}px;
 `;
 
+const ButtonContainer = styled.div`
+  width: ${props => props.width || '100%'};
+`;
+
 export class BasicButton extends React.Component {
+  componentDidMount = () => {
+    // FIXME : The reason for the following work around, is that onClick would be called on the
+    //         External component first, and thus causes the onClick being called twice
+    assert(!this.props.onClick, "onClick shouldn't be used on BasicButton, use onClicked instead");
+  }
+
   onClick = (e) => {
-    if (!this.props.disabled && this.props.onClick) {
-      this.props.onClick(e);
+    if (this.props.onClicked) {
+      this.props.onClicked(e);
     }
   };
 
   render = () => (
-    <React.Fragment>
+    <ButtonContainer {...this.props}>
       <HiddenActualButton {...this.props} />
       <Button
         {...this.props}
-        onClick={this.onClick}
+        onClick={e => this.onClick(e)}
         centerAligned
         centerJustify
         width={this.props.width}
@@ -169,7 +180,7 @@ export class BasicButton extends React.Component {
         </MediumLabel>
         <PaddingSpacer padding={this.props.padding} />
       </Button>
-    </React.Fragment>
+    </ButtonContainer>
   );
 }
 

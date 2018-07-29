@@ -154,7 +154,7 @@ const NavUserProfile = (props) => {
                   radius="25"
                   width="55%"
                   padding="7"
-                  onClick={() => navigateToModal(props.location, props.history, '/accountManagement/login')}
+                  onClicked={() => navigateToModal(props.location, props.history, '/accountManagement/login')}
                 >
                   Log in / Sign up
                 </BasicButton>
@@ -166,7 +166,7 @@ const NavUserProfile = (props) => {
             AccountItems.map((item) => {
               if (item.guestView || props.authenticated) {
                   return (
-                    <Dropdown.Item>
+                    <Dropdown.Item key={item.name}>
                       <CenterAlignedRow>
                         <i className={item.icon} />
                         <LargeSpacer size={8} />
@@ -188,7 +188,7 @@ const NavUserProfile = (props) => {
                   radius="25"
                   width="55%"
                   padding="7"
-                  onClick={e => logout(e, props.invalidateUser)}
+                  onClicked={e => logout(e, props.invalidateUser)}
                 >
                   Log out
                 </BasicButton>

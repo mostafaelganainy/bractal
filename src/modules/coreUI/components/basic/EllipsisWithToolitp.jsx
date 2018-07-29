@@ -13,7 +13,7 @@ const EllipsisContainer = styled.div`
 
   line-height: 1;
 
-  border-bottom: ${props => (props.overflow ? 'dotted 1px' : null)};
+  border-bottom: ${props => (props.hasOverflow ? 'dotted 1px' : null)};
 
   &:hover .tooltip {
     display: block;
@@ -72,7 +72,7 @@ class EllipisWithTooltip extends React.Component {
     return (
       <PositionedParent>
         <EllipsisContainer
-          overflow={hasOverflow}
+          hasOverflow={hasOverflow}
           innerRef={(ref) => { this.rootElement = ref; }}
           onMouseEnter={this.updateOverflow}
         >

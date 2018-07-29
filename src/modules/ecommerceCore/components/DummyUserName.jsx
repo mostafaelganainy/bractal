@@ -14,7 +14,7 @@ const DummyUserName = props => (
     <Label> USER : <b>{(props.userInfo && props.userInfo.firstName) || 'Not Loggedin'}</b></Label>
     <BasicButton
       disabled={!props.authenticated}
-      onClick={e => logout(e, props.invalidateUser)}
+      onClicked={e => logout(e, props.invalidateUser)}
     >
       Logout
     </BasicButton>

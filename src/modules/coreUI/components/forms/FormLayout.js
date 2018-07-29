@@ -11,7 +11,7 @@ export default (locals) => {
   return (
     <Container>
       {Object.keys(locals.inputs).map((fieldName => (
-        <div>{locals.inputs[fieldName]}</div>
+        <div key={fieldName}>{locals.inputs[fieldName]}</div>
       )))}
     </Container>
   );
