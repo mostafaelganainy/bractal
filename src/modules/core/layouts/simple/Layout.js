@@ -1,6 +1,8 @@
 import React from 'react';
+
+import PageContent from '~/modules/core/containers/AllLoadedModulesContent';
+
 import DesktopMenu from './DesktopMenu';
-import PageContent from '../content/AllLoadedModulesContent';
 
 export default function Layout() {
   return (

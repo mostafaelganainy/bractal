@@ -50,7 +50,7 @@ export default {
       ],
     },
     {
-      name: "RememberMe : Token Validity should be 335 hours if 'remember_me' is false",
+      name: "RememberMe : Token Validity should be 335 hours if 'remember_me' is true",
       steps: [
         {
           name: 'Login',
@@ -60,12 +60,6 @@ export default {
           },
           postAssertions: [
             {
-              // assert: 'timestamp',
-              // expect: {
-              //   field: 'signin_user.expiry',
-              //   'to.not.have.property': 'b',
-              //   'to.have.nested.property': 'a.b[1]',
-              // },
               assert: 'timestampRange',
               timestampField: 'signin_user.expiry',
               check: 'hours',

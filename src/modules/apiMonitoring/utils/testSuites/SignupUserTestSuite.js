@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import faker from 'faker';
 
 import GraphQlConstructs from '../GraphqlConstructs';
@@ -27,6 +28,27 @@ export default {
                 'create_user.user.last_name',
                 'create_user.user.email',
               ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Reject wrong formatted inputs',
+      steps: [
+        {
+          name: 'Reject wrong email format',
+          construct: GraphQlConstructs.CREATE_USER_MUTATION,
+          variables: {
+            email: 'some joke !!',
+          },
+          postAssertions: [
+            {
+              assert: 'custom',
+              func: (response) => {
+                expect(response.create_user).to.nested.include({ 'errors[0].field': 'email' });
+                expect(response.create_user).to.nested.include({ 'errors[0].messages[0]': 'Invalid Email Format.' });
+              },
             },
           ],
         },

@@ -52,7 +52,7 @@ const getField = (obj, fieldChain) => {
   fieldsChain.forEach((field) => {
     currentChain = `${currentChain}.${field}`;
     if (!current[field]) {
-      throw new Error(`ASSERTION FAILED : '${currentChain}', is required but not found, in the object ${JSON.stringify(obj)}`);
+      throw new Error(`ASSERTION FAILED : '${currentChain}', is required but not found, in the object ${JSON.stringify(obj, null, 4)}`);
     } else {
       current = current[field];
     }
@@ -165,7 +165,11 @@ export default (testSuites, onStatusUpdate, onTestSucceded, onTestFailed) => {
           return execute(step)
             .then((res) => {
               const error = findErrors(res);
-              if (error) {
+              if (step.isErrorExpected) {
+                if (!error) {
+                  throw new Error('And error is expected, but none, was found');
+                }
+              } else if (error) {
                 throw error;
               }
               runInfo.result = res;

@@ -87,9 +87,17 @@ class HomePage extends React.Component {
     TestRunner(newTestSuites, this.onStatusUpdate, this.onTestSucceded, this.onTestFailed);
   }
 
+  // TODO : It returns a malformed string. Needs better handling
+  /*
+  if (typeof value === 'function') {
+    return value.toString();
+  }
+  */
+  stringifyFunction = (key, value) => value;
+
   stringJsonToFormattedHTML = (text) => {
     if (typeof (text) === 'object') {
-      return JSON.stringify(text, null, 4).replace(/\n/g, '<br/>').replace(/[ ]/g, '&nbsp;');
+      return JSON.stringify(text, this.stringifyFunction, 4).replace(/\n/g, '<br/>').replace(/\\n/g, '<br/>').replace(/[ ]/g, '&nbsp;');
     } else if (text) {
       return text.replace(/\n/g, '<br/>').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;').replace(/[ ]/g, '&nbsp;');
     }

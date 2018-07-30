@@ -11,6 +11,7 @@ import APIMonitoring from './modules/apiMonitoring/containers/Home';
 // import Layout from './modules/ecommerceCore/layouts/Layout';
 
 BractalCore.renderApp(APIMonitoring);
+// BractalCore.renderApp(Layout);
 
 export const { renderApp } = BractalCore;
 

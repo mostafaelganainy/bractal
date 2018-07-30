@@ -1,6 +1,10 @@
 
-import { expect } from 'chai';
+import chai from 'chai';
+import chaiThings from 'chai-things';
 import GraphQlConstructs from '../GraphqlConstructs';
+
+chai.should();
+chai.use(chaiThings);
 
 export default {
   name: 'List Products',
@@ -14,17 +18,16 @@ export default {
           postAssertions: [
             {
               assert: 'custom',
-              func: response => expect(response.list_products)
-                .to.be.an('array')
-                .that.has.deep.property('id')
-                .and.has.deep.property('name')
-                .and.has.deep.property('images')
-                .and.has.deep.property('avg_rating')
-                .and.has.deep.property('price')
-                .and.has.deep.property('discount_price')
-                .and.has.deep.property('has_discount')
-                .and.has.deep.property('has_offer')
-                .and.has.deep.property('hot_deal'),
+              func: response => response.list_products
+                .should.all.have.property('id')
+                .and.all.have.property('name')
+                .and.all.have.property('images')
+                .and.all.have.property('avg_rating')
+                .and.all.have.property('price')
+                .and.all.have.property('discount_price')
+                .and.all.have.property('has_discount')
+                .and.all.have.property('has_offer')
+                .and.all.have.property('hot_deal'),
             },
           ],
         },
