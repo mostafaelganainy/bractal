@@ -15,6 +15,7 @@ import PageContent from './PageContent';
 // eslint-disable-next-line react/prop-types
 const Root = ({ isTabletOrMobile, isModalOpen }) => {
   const opacity = isModalOpen && isTabletOrMobile ? 0 : 1;
+
   return (
     <div style={{ opacity }}>
       <Header />

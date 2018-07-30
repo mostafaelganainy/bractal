@@ -142,7 +142,7 @@ class HomePage extends React.Component {
             Test Suites
           </XXLargeLabel>
           <LargeSpacer />
-          <BasicButton width="100px" primary onClick={() => this.startTest()}>
+          <BasicButton width="100px" primary onClicked={() => this.startTest()}>
             RUN
           </BasicButton>
         </Row>

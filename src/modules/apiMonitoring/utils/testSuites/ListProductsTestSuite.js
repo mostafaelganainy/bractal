@@ -1,4 +1,5 @@
 
+import { expect } from 'chai';
 import GraphQlConstructs from '../GraphqlConstructs';
 
 export default {
@@ -12,18 +13,18 @@ export default {
           construct: GraphQlConstructs.LIST_PRODUCTS_QUERY,
           postAssertions: [
             {
-              assert: '',
-              params: [
-                'list_products[].id',
-                'list_products[].name',
-                'list_products[].images',
-                'list_products[].avg_rating',
-                'list_products[].price',
-                'list_products[].discount_price',
-                'list_products[].has_discount',
-                'list_products[].has_offer',
-                'list_products[].hot_deal',
-              ],
+              assert: 'custom',
+              func: response => expect(response.list_products)
+                .to.be.an('array')
+                .that.has.deep.property('id')
+                .and.has.deep.property('name')
+                .and.has.deep.property('images')
+                .and.has.deep.property('avg_rating')
+                .and.has.deep.property('price')
+                .and.has.deep.property('discount_price')
+                .and.has.deep.property('has_discount')
+                .and.has.deep.property('has_offer')
+                .and.has.deep.property('hot_deal'),
             },
           ],
         },
